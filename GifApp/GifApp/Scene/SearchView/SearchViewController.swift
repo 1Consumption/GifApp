@@ -40,9 +40,13 @@ extension SearchViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: GifCell.identifier, for: indexPath) as? GifCell else { return UICollectionViewCell() }
-        let url = URL(string: GifInfo.stub[indexPath.item].images.original.url)!
-        let data = try! Data(contentsOf: url)
-        cell.gifImageView.image = UIImage(data: data)
+        DispatchQueue.global().async {
+            let url = URL(string: GifInfo.stub[indexPath.item].images.original.url)!
+            let data = try! Data(contentsOf: url)
+            DispatchQueue.main.async {
+                cell.gifImageView.image = UIImage(data: data)
+            }
+        }
         return cell
     }
 }
@@ -53,5 +57,9 @@ extension SearchViewController: UICollectionViewDelegateFlowLayout {
         let width = CGFloat(Double(GifInfo.stub[indexPath.item].images.original.width)!)
         
         return CGSize(width: view.frame.width / 2, height: height * view.frame.width / 2 / width)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        print(indexPath)
     }
 }

@@ -28,6 +28,7 @@ final class SearchViewController: UIViewController {
     private func setUpTrandingCollectionView() {
         trandingCollectionView.register(UINib(nibName: GifCell.identifier, bundle: .main), forCellWithReuseIdentifier: GifCell.identifier)
         trandingCollectionView.dataSource = self
+        trandingCollectionView.delegate = self
     }
 }
 
@@ -42,5 +43,14 @@ extension SearchViewController: UICollectionViewDataSource {
         let data = try! Data(contentsOf: url)
         cell.gifImageView.image = UIImage(data: data)
         return cell
+    }
+}
+
+extension SearchViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let height = CGFloat(Double(GifInfo.stub[indexPath.item].images.original.height)!)
+        let width = CGFloat(Double(GifInfo.stub[indexPath.item].images.original.width)!)
+        
+        return CGSize(width: view.frame.width / 2, height: height * view.frame.width / 2 / width)
     }
 }

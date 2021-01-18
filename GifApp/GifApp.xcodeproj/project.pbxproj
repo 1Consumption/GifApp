@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A51809C625B569BE00E0B589 /* GifInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51809C525B569BE00E0B589 /* GifInfo.swift */; };
 		A57D3A2B25B489F0005C3338 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A57D3A2A25B489F0005C3338 /* AppDelegate.swift */; };
 		A57D3A2D25B489F0005C3338 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A57D3A2C25B489F0005C3338 /* SceneDelegate.swift */; };
 		A57D3A2F25B489F0005C3338 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A57D3A2E25B489F0005C3338 /* SearchViewController.swift */; };
@@ -16,6 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A51809C525B569BE00E0B589 /* GifInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GifInfo.swift; sourceTree = "<group>"; };
 		A57D3A2725B489F0005C3338 /* GifApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GifApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A57D3A2A25B489F0005C3338 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A57D3A2C25B489F0005C3338 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -45,6 +47,14 @@
 			path = Scene;
 			sourceTree = "<group>";
 		};
+		A51809C425B569AA00E0B589 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				A51809C525B569BE00E0B589 /* GifInfo.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		A57D3A1E25B489F0005C3338 = {
 			isa = PBXGroup;
 			children = (
@@ -64,6 +74,7 @@
 		A57D3A2925B489F0005C3338 /* GifApp */ = {
 			isa = PBXGroup;
 			children = (
+				A51809C425B569AA00E0B589 /* Model */,
 				A51809C225B5676900E0B589 /* Scene */,
 				A57D3A3025B489F0005C3338 /* Main.storyboard */,
 				A57D3A3525B489F2005C3338 /* LaunchScreen.storyboard */,
@@ -147,6 +158,7 @@
 			files = (
 				A57D3A2F25B489F0005C3338 /* SearchViewController.swift in Sources */,
 				A57D3A2B25B489F0005C3338 /* AppDelegate.swift in Sources */,
+				A51809C625B569BE00E0B589 /* GifInfo.swift in Sources */,
 				A57D3A2D25B489F0005C3338 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

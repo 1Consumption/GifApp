@@ -29,6 +29,7 @@ final class SearchViewController: UIViewController {
         trandingCollectionView.register(UINib(nibName: GifCell.identifier, bundle: .main), forCellWithReuseIdentifier: GifCell.identifier)
         trandingCollectionView.dataSource = self
         trandingCollectionView.delegate = self
+        trandingCollectionView.delaysContentTouches = false
     }
 }
 

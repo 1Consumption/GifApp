@@ -20,14 +20,13 @@
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="questionmark.folder.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="bfd-2C-kKq">
                         <rect key="frame" x="0.0" y="1" width="179" height="187.5"/>
                     </imageView>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6mt-QG-62B">
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="4fg-QC-fcI">
                         <rect key="frame" x="69.5" y="75" width="40" height="40"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="40" id="1kL-sC-lPI"/>
-                            <constraint firstAttribute="width" secondItem="6mt-QG-62B" secondAttribute="height" multiplier="1:1" id="hG3-uQ-2Ni"/>
+                            <constraint firstAttribute="width" secondItem="4fg-QC-fcI" secondAttribute="height" multiplier="1:1" id="NXX-Bi-pPn"/>
+                            <constraint firstAttribute="width" constant="40" id="h2B-Os-9yr"/>
                         </constraints>
-                        <state key="normal" image="heart"/>
-                    </button>
+                    </imageView>
                 </subviews>
             </view>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
@@ -36,19 +35,18 @@
                 <constraint firstAttribute="bottom" secondItem="bfd-2C-kKq" secondAttribute="bottom" id="7Il-Dn-aoQ"/>
                 <constraint firstAttribute="trailing" secondItem="bfd-2C-kKq" secondAttribute="trailing" id="HkV-QT-iIl"/>
                 <constraint firstItem="bfd-2C-kKq" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="ZMJ-N5-0Cv"/>
-                <constraint firstItem="6mt-QG-62B" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="jze-kP-QtW"/>
-                <constraint firstItem="6mt-QG-62B" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="rqu-Hx-Ymt"/>
+                <constraint firstItem="4fg-QC-fcI" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="t4d-Vj-cey"/>
+                <constraint firstItem="4fg-QC-fcI" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="uBN-UF-cyJ"/>
             </constraints>
             <size key="customSize" width="179" height="190"/>
             <connections>
-                <outlet property="favoriteButton" destination="6mt-QG-62B" id="ZzU-6S-cLB"/>
+                <outlet property="favoriteImageView" destination="4fg-QC-fcI" id="gsK-fF-iHZ"/>
                 <outlet property="gifImageView" destination="bfd-2C-kKq" id="sBH-rH-kXM"/>
             </connections>
             <point key="canvasLocation" x="221.01449275362322" y="161.38392857142856"/>
         </collectionViewCell>
     </objects>
     <resources>
-        <image name="heart" width="42.666667938232422" height="42.666667938232422"/>
         <image name="questionmark.folder.fill" catalog="system" width="128" height="97"/>
     </resources>
 </document>

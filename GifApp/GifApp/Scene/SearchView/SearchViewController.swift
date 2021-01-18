@@ -32,6 +32,9 @@ final class SearchViewController: UIViewController {
         trandingCollectionView.dataSource = self
         trandingCollectionView.delegate = self
         trandingCollectionView.delaysContentTouches = false
+        if let layout = trandingCollectionView?.collectionViewLayout as? PinterestLayout {
+          layout.delegate = self
+        }
     }
 }
 
@@ -55,10 +58,9 @@ extension SearchViewController: UICollectionViewDataSource {
 
 extension SearchViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let height = CGFloat(Double(GifInfo.stub[indexPath.item].images.original.height)!)
-        let width = CGFloat(Double(GifInfo.stub[indexPath.item].images.original.width)!)
+        let itemSize = (collectionView.frame.width) / 2
         
-        return CGSize(width: view.frame.width / 2, height: height * view.frame.width / 2 / width)
+        return CGSize(width: itemSize, height: itemSize)
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -71,5 +73,14 @@ extension SearchViewController: UICollectionViewDelegateFlowLayout {
         guard lastItem < indexPath.item + 1 else { return }
         
         print("will display last cell")
+    }
+}
+
+extension SearchViewController: PinterestLayoutDelegate {
+    func collectionView(_ collectionView: UICollectionView, heightForPhotoAtIndexPath indexPath: IndexPath) -> CGSize {
+        let height = CGFloat(Double(GifInfo.stub[indexPath.item].images.original.height)!)
+        let width = CGFloat(Double(GifInfo.stub[indexPath.item].images.original.width)!)
+        
+        return CGSize(width: width, height: height)
     }
 }

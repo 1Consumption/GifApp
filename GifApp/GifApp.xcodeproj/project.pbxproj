@@ -16,6 +16,7 @@
 		A57D3A3225B489F0005C3338 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A57D3A3025B489F0005C3338 /* Main.storyboard */; };
 		A57D3A3425B489F2005C3338 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A57D3A3325B489F2005C3338 /* Assets.xcassets */; };
 		A57D3A3725B489F2005C3338 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A57D3A3525B489F2005C3338 /* LaunchScreen.storyboard */; };
+		A5DA20F925B5A11C00B544D4 /* PinterestLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5DA20F825B5A11C00B544D4 /* PinterestLayout.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		A57D3A3325B489F2005C3338 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A57D3A3625B489F2005C3338 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A57D3A3825B489F2005C3338 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A5DA20F825B5A11C00B544D4 /* PinterestLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinterestLayout.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +90,7 @@
 		A57D3A2925B489F0005C3338 /* GifApp */ = {
 			isa = PBXGroup;
 			children = (
+				A5DA20F625B5A10700B544D4 /* Common */,
 				A51809C425B569AA00E0B589 /* Model */,
 				A51809C225B5676900E0B589 /* Scene */,
 				A57D3A3025B489F0005C3338 /* Main.storyboard */,
@@ -98,6 +101,22 @@
 				A57D3A3825B489F2005C3338 /* Info.plist */,
 			);
 			path = GifApp;
+			sourceTree = "<group>";
+		};
+		A5DA20F625B5A10700B544D4 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				A5DA20F725B5A10B00B544D4 /* Layout */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		A5DA20F725B5A10B00B544D4 /* Layout */ = {
+			isa = PBXGroup;
+			children = (
+				A5DA20F825B5A11C00B544D4 /* PinterestLayout.swift */,
+			);
+			path = Layout;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -171,6 +190,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A5DA20F925B5A11C00B544D4 /* PinterestLayout.swift in Sources */,
 				A57D3A2F25B489F0005C3338 /* SearchViewController.swift in Sources */,
 				A57D3A2B25B489F0005C3338 /* AppDelegate.swift in Sources */,
 				A51809D725B5757300E0B589 /* GifCell.swift in Sources */,

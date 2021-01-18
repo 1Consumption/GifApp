@@ -17,8 +17,8 @@
                 <rect key="frame" x="0.0" y="0.0" width="179" height="190"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="questionmark.folder.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="bfd-2C-kKq">
-                        <rect key="frame" x="0.0" y="1" width="179" height="187.5"/>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bfd-2C-kKq">
+                        <rect key="frame" x="0.0" y="0.0" width="179" height="190"/>
                     </imageView>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="4fg-QC-fcI">
                         <rect key="frame" x="69.5" y="75" width="40" height="40"/>
@@ -46,7 +46,4 @@
             <point key="canvasLocation" x="221.01449275362322" y="161.38392857142856"/>
         </collectionViewCell>
     </objects>
-    <resources>
-        <image name="questionmark.folder.fill" catalog="system" width="128" height="97"/>
-    </resources>
 </document>

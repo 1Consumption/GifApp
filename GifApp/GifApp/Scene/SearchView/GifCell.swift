@@ -8,6 +8,8 @@
 import UIKit
 
 final class GifCell: UICollectionViewCell {
+    
+    static let identifier: String = "GifCell"
 
     @IBOutlet weak var favoriteButton: UIButton!
     @IBOutlet weak var gifImageView: UIImageView!

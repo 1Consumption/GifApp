@@ -30,10 +30,10 @@
 		A5DA216E25B6BF5C00B544D4 /* HTTPMethodTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5DA216D25B6BF5C00B544D4 /* HTTPMethodTests.swift */; };
 		A5DA217225B6C02800B544D4 /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5DA217125B6C02800B544D4 /* HTTPMethod.swift */; };
 		A5DA217F25B6CCA600B544D4 /* NetworkError+Equatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5DA217E25B6CCA600B544D4 /* NetworkError+Equatable.swift */; };
-		A5DA218525B6CF3400B544D4 /* MockFailureWithRequestRequester.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5DA218425B6CF3400B544D4 /* MockFailureWithRequestRequester.swift */; };
-		A5DA218A25B6D27700B544D4 /* MockFailureWithNonHTTPResponseRequester.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5DA218925B6D27700B544D4 /* MockFailureWithNonHTTPResponseRequester.swift */; };
-		A5DA219225B6D56000B544D4 /* MockFailureWithInvalidHTTPStatusCodeRequester.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5DA219125B6D56000B544D4 /* MockFailureWithInvalidHTTPStatusCodeRequester.swift */; };
-		A5DA219B25B6D69E00B544D4 /* MockFailureWithEmptyDataRequester.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5DA219A25B6D69E00B544D4 /* MockFailureWithEmptyDataRequester.swift */; };
+		A5DA218525B6CF3400B544D4 /* MockFailureRequesterWithRequestError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5DA218425B6CF3400B544D4 /* MockFailureRequesterWithRequestError.swift */; };
+		A5DA218A25B6D27700B544D4 /* MockFailureRequesterWithNonHTTPResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5DA218925B6D27700B544D4 /* MockFailureRequesterWithNonHTTPResponse.swift */; };
+		A5DA219225B6D56000B544D4 /* MockFailureRequesterWithInvalidHTTPStatusCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5DA219125B6D56000B544D4 /* MockFailureRequesterWithInvalidHTTPStatusCode.swift */; };
+		A5DA219B25B6D69E00B544D4 /* MockFailureRequesterWithEmptyData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5DA219A25B6D69E00B544D4 /* MockFailureRequesterWithEmptyData.swift */; };
 		A5DA21A725B6D81200B544D4 /* EndpointTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5DA21A625B6D81200B544D4 /* EndpointTests.swift */; };
 		A5DA21AB25B6E24B00B544D4 /* Secret.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5DA21AA25B6E24B00B544D4 /* Secret.swift */; };
 		A5DA21AF25B6E28100B544D4 /* EndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5DA21AE25B6E28100B544D4 /* EndPoint.swift */; };
@@ -47,8 +47,8 @@
 		A5DA21DF25B6FE9C00B544D4 /* MockSuccessNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5DA21DE25B6FE9C00B544D4 /* MockSuccessNetworkManager.swift */; };
 		A5DA21E625B700AE00B544D4 /* DummyRequester.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5DA21E525B700AE00B544D4 /* DummyRequester.swift */; };
 		A5DA21F925B7031A00B544D4 /* GifInfoResponse+Equtable+Encodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5DA21F825B7031A00B544D4 /* GifInfoResponse+Equtable+Encodable.swift */; };
-		A5DA21FD25B7080900B544D4 /* MockFailureWithDecodeErrorNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5DA21FC25B7080900B544D4 /* MockFailureWithDecodeErrorNetworkManager.swift */; };
-		A5DA220125B70A0A00B544D4 /* MockFailureWithNetworkErrorNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5DA220025B70A0A00B544D4 /* MockFailureWithNetworkErrorNetworkManager.swift */; };
+		A5DA21FD25B7080900B544D4 /* MockFailureNetworkManagerWithDecodeError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5DA21FC25B7080900B544D4 /* MockFailureNetworkManagerWithDecodeError.swift */; };
+		A5DA220125B70A0A00B544D4 /* MockFailureNetworkManagerWithNetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5DA220025B70A0A00B544D4 /* MockFailureNetworkManagerWithNetworkError.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -89,10 +89,10 @@
 		A5DA216D25B6BF5C00B544D4 /* HTTPMethodTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPMethodTests.swift; sourceTree = "<group>"; };
 		A5DA217125B6C02800B544D4 /* HTTPMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
 		A5DA217E25B6CCA600B544D4 /* NetworkError+Equatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NetworkError+Equatable.swift"; sourceTree = "<group>"; };
-		A5DA218425B6CF3400B544D4 /* MockFailureWithRequestRequester.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockFailureWithRequestRequester.swift; sourceTree = "<group>"; };
-		A5DA218925B6D27700B544D4 /* MockFailureWithNonHTTPResponseRequester.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockFailureWithNonHTTPResponseRequester.swift; sourceTree = "<group>"; };
-		A5DA219125B6D56000B544D4 /* MockFailureWithInvalidHTTPStatusCodeRequester.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockFailureWithInvalidHTTPStatusCodeRequester.swift; sourceTree = "<group>"; };
-		A5DA219A25B6D69E00B544D4 /* MockFailureWithEmptyDataRequester.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockFailureWithEmptyDataRequester.swift; sourceTree = "<group>"; };
+		A5DA218425B6CF3400B544D4 /* MockFailureRequesterWithRequestError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockFailureRequesterWithRequestError.swift; sourceTree = "<group>"; };
+		A5DA218925B6D27700B544D4 /* MockFailureRequesterWithNonHTTPResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockFailureRequesterWithNonHTTPResponse.swift; sourceTree = "<group>"; };
+		A5DA219125B6D56000B544D4 /* MockFailureRequesterWithInvalidHTTPStatusCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockFailureRequesterWithInvalidHTTPStatusCode.swift; sourceTree = "<group>"; };
+		A5DA219A25B6D69E00B544D4 /* MockFailureRequesterWithEmptyData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockFailureRequesterWithEmptyData.swift; sourceTree = "<group>"; };
 		A5DA21A625B6D81200B544D4 /* EndpointTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndpointTests.swift; sourceTree = "<group>"; };
 		A5DA21AA25B6E24B00B544D4 /* Secret.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Secret.swift; sourceTree = "<group>"; };
 		A5DA21AE25B6E28100B544D4 /* EndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPoint.swift; sourceTree = "<group>"; };
@@ -106,8 +106,8 @@
 		A5DA21DE25B6FE9C00B544D4 /* MockSuccessNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockSuccessNetworkManager.swift; sourceTree = "<group>"; };
 		A5DA21E525B700AE00B544D4 /* DummyRequester.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyRequester.swift; sourceTree = "<group>"; };
 		A5DA21F825B7031A00B544D4 /* GifInfoResponse+Equtable+Encodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GifInfoResponse+Equtable+Encodable.swift"; sourceTree = "<group>"; };
-		A5DA21FC25B7080900B544D4 /* MockFailureWithDecodeErrorNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockFailureWithDecodeErrorNetworkManager.swift; sourceTree = "<group>"; };
-		A5DA220025B70A0A00B544D4 /* MockFailureWithNetworkErrorNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockFailureWithNetworkErrorNetworkManager.swift; sourceTree = "<group>"; };
+		A5DA21FC25B7080900B544D4 /* MockFailureNetworkManagerWithDecodeError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockFailureNetworkManagerWithDecodeError.swift; sourceTree = "<group>"; };
+		A5DA220025B70A0A00B544D4 /* MockFailureNetworkManagerWithNetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockFailureNetworkManagerWithNetworkError.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -289,10 +289,10 @@
 			isa = PBXGroup;
 			children = (
 				A5DA215F25B6BA3500B544D4 /* MockSuccessRequester.swift */,
-				A5DA219A25B6D69E00B544D4 /* MockFailureWithEmptyDataRequester.swift */,
-				A5DA219125B6D56000B544D4 /* MockFailureWithInvalidHTTPStatusCodeRequester.swift */,
-				A5DA218925B6D27700B544D4 /* MockFailureWithNonHTTPResponseRequester.swift */,
-				A5DA218425B6CF3400B544D4 /* MockFailureWithRequestRequester.swift */,
+				A5DA219A25B6D69E00B544D4 /* MockFailureRequesterWithEmptyData.swift */,
+				A5DA219125B6D56000B544D4 /* MockFailureRequesterWithInvalidHTTPStatusCode.swift */,
+				A5DA218925B6D27700B544D4 /* MockFailureRequesterWithNonHTTPResponse.swift */,
+				A5DA218425B6CF3400B544D4 /* MockFailureRequesterWithRequestError.swift */,
 			);
 			path = Requester;
 			sourceTree = "<group>";
@@ -318,8 +318,8 @@
 			isa = PBXGroup;
 			children = (
 				A5DA21DE25B6FE9C00B544D4 /* MockSuccessNetworkManager.swift */,
-				A5DA21FC25B7080900B544D4 /* MockFailureWithDecodeErrorNetworkManager.swift */,
-				A5DA220025B70A0A00B544D4 /* MockFailureWithNetworkErrorNetworkManager.swift */,
+				A5DA21FC25B7080900B544D4 /* MockFailureNetworkManagerWithDecodeError.swift */,
+				A5DA220025B70A0A00B544D4 /* MockFailureNetworkManagerWithNetworkError.swift */,
 			);
 			path = NetworkManager;
 			sourceTree = "<group>";
@@ -463,21 +463,21 @@
 				A5DA21DF25B6FE9C00B544D4 /* MockSuccessNetworkManager.swift in Sources */,
 				A5DA21E625B700AE00B544D4 /* DummyRequester.swift in Sources */,
 				A5DA215425B6B91E00B544D4 /* NetworkManagerTests.swift in Sources */,
-				A5DA21FD25B7080900B544D4 /* MockFailureWithDecodeErrorNetworkManager.swift in Sources */,
-				A5DA218A25B6D27700B544D4 /* MockFailureWithNonHTTPResponseRequester.swift in Sources */,
+				A5DA21FD25B7080900B544D4 /* MockFailureNetworkManagerWithDecodeError.swift in Sources */,
+				A5DA218A25B6D27700B544D4 /* MockFailureRequesterWithNonHTTPResponse.swift in Sources */,
 				A5DA215A25B6B98F00B544D4 /* MockURLSessionDataTask.swift in Sources */,
 				A5DA217F25B6CCA600B544D4 /* NetworkError+Equatable.swift in Sources */,
 				A5DA211025B6AB4300B544D4 /* DefaultRequesterTests.swift in Sources */,
-				A5DA219B25B6D69E00B544D4 /* MockFailureWithEmptyDataRequester.swift in Sources */,
+				A5DA219B25B6D69E00B544D4 /* MockFailureRequesterWithEmptyData.swift in Sources */,
 				A5DA214025B6B29500B544D4 /* NetworkErrorTests.swift in Sources */,
 				A5DA21C925B6F4F000B544D4 /* UseCaseErrorTests.swift in Sources */,
-				A5DA220125B70A0A00B544D4 /* MockFailureWithNetworkErrorNetworkManager.swift in Sources */,
+				A5DA220125B70A0A00B544D4 /* MockFailureNetworkManagerWithNetworkError.swift in Sources */,
 				A5DA21F925B7031A00B544D4 /* GifInfoResponse+Equtable+Encodable.swift in Sources */,
-				A5DA218525B6CF3400B544D4 /* MockFailureWithRequestRequester.swift in Sources */,
+				A5DA218525B6CF3400B544D4 /* MockFailureRequesterWithRequestError.swift in Sources */,
 				A5DA216025B6BA3500B544D4 /* MockSuccessRequester.swift in Sources */,
 				A5DA21B725B6E7A800B544D4 /* TrendingGifUseCaseTests.swift in Sources */,
 				A5DA21A725B6D81200B544D4 /* EndpointTests.swift in Sources */,
-				A5DA219225B6D56000B544D4 /* MockFailureWithInvalidHTTPStatusCodeRequester.swift in Sources */,
+				A5DA219225B6D56000B544D4 /* MockFailureRequesterWithInvalidHTTPStatusCode.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

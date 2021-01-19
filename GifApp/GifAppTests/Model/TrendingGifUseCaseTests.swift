@@ -39,7 +39,7 @@ final class TrendingGifUseCaseTests: XCTestCase {
         let expectation = XCTestExpectation(description: "failure with decode error")
         defer { wait(for: [expectation], timeout: 1.0) }
         
-        let networkManager = MockFailureWithDecodeErrorNetworkManager()
+        let networkManager = MockFailureNetworkManagerWithDecodeError()
         let useCase = TrendingGifUseCase(networkManager: networkManager)
         
         useCase.retrieveGifInfo(failureHandler: { error in
@@ -58,7 +58,7 @@ final class TrendingGifUseCaseTests: XCTestCase {
         let expectation = XCTestExpectation(description: "failure with network error")
         defer { wait(for: [expectation], timeout: 1.0) }
         
-        let networkManager = MockFailureWithNetworkErrorNetworkManager()
+        let networkManager = MockFailureNetworkManagerWithNetworkError()
         let useCase = TrendingGifUseCase(networkManager: networkManager)
         
         useCase.retrieveGifInfo(failureHandler: { error in

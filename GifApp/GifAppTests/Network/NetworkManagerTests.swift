@@ -61,7 +61,7 @@ final class NetworkManagerTests: XCTestCase {
         defer { wait(for: [expectation], timeout: 1.0) }
         
         let request = URLRequest(url: URL(string: "test")!)
-        let requester = MockFailureWithRequestRequester()
+        let requester = MockFailureRequesterWithRequestError()
         let networkManager = NetworkManager(requester: requester)
         
         let _ = networkManager.loadData(with: request.url,
@@ -85,7 +85,7 @@ final class NetworkManagerTests: XCTestCase {
         defer { wait(for: [expectation], timeout: 1.0) }
         
         let request = URLRequest(url: URL(string: "test")!)
-        let requester = MockFailureWithNonHTTPResponseRequester()
+        let requester = MockFailureRequesterWithNonHTTPResponse()
         let networkManager = NetworkManager(requester: requester)
         
         let _ = networkManager.loadData(with: request.url,
@@ -109,7 +109,7 @@ final class NetworkManagerTests: XCTestCase {
         defer { wait(for: [expectation], timeout: 1.0) }
         
         let request = URLRequest(url: URL(string: "test")!)
-        let requester = MockFailureWithInvalidHTTPStatusCodeRequester()
+        let requester = MockFailureRequesterWithInvalidHTTPStatusCode()
         let networkManager = NetworkManager(requester: requester)
         
         let _ = networkManager.loadData(with: request.url,
@@ -133,7 +133,7 @@ final class NetworkManagerTests: XCTestCase {
         defer { wait(for: [expectation], timeout: 1.0) }
         
         let request = URLRequest(url: URL(string: "test")!)
-        let requester = MockFailureWithEmptyDataRequester()
+        let requester = MockFailureRequesterWithEmptyData()
         let networkManager = NetworkManager(requester: requester)
         
         let _ = networkManager.loadData(with: request.url,

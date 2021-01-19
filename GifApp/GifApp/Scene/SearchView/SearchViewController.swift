@@ -15,7 +15,7 @@ final class SearchViewController: UIViewController {
         setUpTrandingCollectionView()
     }
     
-    @IBOutlet weak var trandingCollectionView: UICollectionView!
+    @IBOutlet weak var trendingCollectionView: UICollectionView!
     
     private func setUpNavigationBar() {
         navigationController?.navigationBar.barStyle = .black
@@ -28,11 +28,11 @@ final class SearchViewController: UIViewController {
     }
     
     private func setUpTrandingCollectionView() {
-        trandingCollectionView.register(UINib(nibName: GifCell.identifier, bundle: .main), forCellWithReuseIdentifier: GifCell.identifier)
-        trandingCollectionView.dataSource = self
-        trandingCollectionView.delegate = self
-        trandingCollectionView.delaysContentTouches = false
-        if let layout = trandingCollectionView?.collectionViewLayout as? PinterestLayout {
+        trendingCollectionView.register(UINib(nibName: GifCell.identifier, bundle: .main), forCellWithReuseIdentifier: GifCell.identifier)
+        trendingCollectionView.dataSource = self
+        trendingCollectionView.delegate = self
+        trendingCollectionView.delaysContentTouches = false
+        if let layout = trendingCollectionView?.collectionViewLayout as? PinterestLayout {
           layout.delegate = self
         }
     }

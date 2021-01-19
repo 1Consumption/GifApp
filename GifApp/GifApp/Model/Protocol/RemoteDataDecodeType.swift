@@ -24,8 +24,13 @@ extension RemoteDataDecodeType {
             case .success(let data):
                 let decoder = JSONDecoder()
                 decoder.keyDecodingStrategy = .convertFromSnakeCase
-                let model = try! decoder.decode(T.self, from: data)
-                successHandler(model)
+                
+                do {
+                    let model = try decoder.decode(T.self, from: data)
+                    successHandler(model)
+                } catch {
+                    failureHandler(.decodeError)
+                }
                 
                 break
             case .failure(_):

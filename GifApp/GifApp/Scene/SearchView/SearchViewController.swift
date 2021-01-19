@@ -13,9 +13,14 @@ final class SearchViewController: UIViewController {
         super.viewDidLoad()
         setUpNavigationBar()
         setUpTrandingCollectionView()
+        trendingGifViewModelIntput.loadGifInfo.fire()
     }
     
     @IBOutlet weak var trendingCollectionView: UICollectionView!
+    
+    private let trendingGifViewModel: TrendingGifViewModel = TrendingGifViewModel()
+    private let trendingGifViewModelIntput: TrendingGifViewModelInput = TrendingGifViewModelInput()
+    private var bag: CancellableBag = CancellableBag()
     
     private func setUpNavigationBar() {
         navigationController?.navigationBar.barStyle = .black
@@ -35,23 +40,28 @@ final class SearchViewController: UIViewController {
         if let layout = trendingCollectionView?.collectionViewLayout as? PinterestLayout {
           layout.delegate = self
         }
+        bindWithTrendingGifViewModel()
+    }
+    
+    private func bindWithTrendingGifViewModel() {
+        let output = trendingGifViewModel.transform(trendingGifViewModelIntput)
+        
+        output.gifInfoDelivered.bind { gifInfo in
+            DispatchQueue.main.async { [weak self] in
+                self?.trendingCollectionView.reloadData()
+            }
+        }.store(in: &bag)
     }
 }
 
 extension SearchViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return GifInfo.stub.count
+        return trendingGifViewModel.gifInfoArray.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: GifCell.identifier, for: indexPath) as? GifCell else { return UICollectionViewCell() }
-        DispatchQueue.global().async {
-            let url = URL(string: GifInfo.stub[indexPath.item].images.original.url)!
-            let data = try! Data(contentsOf: url)
-            DispatchQueue.main.async {
-                cell.gifImageView.image = UIImage(data: data)
-            }
-        }
+
         return cell
     }
 }
@@ -78,9 +88,9 @@ extension SearchViewController: UICollectionViewDelegateFlowLayout {
 
 extension SearchViewController: PinterestLayoutDelegate {
     func collectionView(_ collectionView: UICollectionView, heightForPhotoAtIndexPath indexPath: IndexPath) -> CGSize {
-        let height = CGFloat(Double(GifInfo.stub[indexPath.item].images.original.height)!)
-        let width = CGFloat(Double(GifInfo.stub[indexPath.item].images.original.width)!)
-        
+        let height = Double(trendingGifViewModel.gifInfoArray[indexPath.item].images.original.height)!
+        let width = Double(trendingGifViewModel.gifInfoArray[indexPath.item].images.original.width)!
+
         return CGSize(width: width, height: height)
     }
 }

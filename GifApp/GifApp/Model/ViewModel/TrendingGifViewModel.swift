@@ -20,19 +20,22 @@ final class TrendingGifViewModel: ViewModelType {
     
     private let useCase: TrendingGifUseCaseType
     private var bag: CancellableBag = CancellableBag()
-    let output = TrendingGifViewModelOtuput()
+    var gifInfoArray: [GifInfo] = [GifInfo]()
     
     init(useCase: TrendingGifUseCaseType = TrendingGifUseCase()) {
         self.useCase = useCase
     }
     
     func transform(_ input: TrendingGifViewModelInput) -> TrendingGifViewModelOtuput {
+        let output = TrendingGifViewModelOtuput()
+        
         input.loadGifInfo.bind { [weak self] in
-            self?.useCase.retrieveGifInfo(failureHandler: { [weak self] error in
-                self?.output.errorDelivered.value = error
+            self?.useCase.retrieveGifInfo(failureHandler: { error in
+                output.errorDelivered.value = error
             },
             successHandler: { [weak self] gifInfoResponse in
-                self?.output.gifInfoDelivered.fire()
+                self?.gifInfoArray = gifInfoResponse.data
+                output.gifInfoDelivered.fire()
             })
         }.store(in: &bag)
         

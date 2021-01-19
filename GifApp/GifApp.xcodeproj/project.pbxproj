@@ -49,6 +49,7 @@
 		A5DA21F925B7031A00B544D4 /* GifInfoResponse+Equtable+Encodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5DA21F825B7031A00B544D4 /* GifInfoResponse+Equtable+Encodable.swift */; };
 		A5DA21FD25B7080900B544D4 /* MockFailureNetworkManagerWithDecodeError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5DA21FC25B7080900B544D4 /* MockFailureNetworkManagerWithDecodeError.swift */; };
 		A5DA220125B70A0A00B544D4 /* MockFailureNetworkManagerWithNetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5DA220025B70A0A00B544D4 /* MockFailureNetworkManagerWithNetworkError.swift */; };
+		A5DA221E25B7149600B544D4 /* CancellableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5DA221D25B7149600B544D4 /* CancellableTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -108,6 +109,7 @@
 		A5DA21F825B7031A00B544D4 /* GifInfoResponse+Equtable+Encodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GifInfoResponse+Equtable+Encodable.swift"; sourceTree = "<group>"; };
 		A5DA21FC25B7080900B544D4 /* MockFailureNetworkManagerWithDecodeError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockFailureNetworkManagerWithDecodeError.swift; sourceTree = "<group>"; };
 		A5DA220025B70A0A00B544D4 /* MockFailureNetworkManagerWithNetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockFailureNetworkManagerWithNetworkError.swift; sourceTree = "<group>"; };
+		A5DA221D25B7149600B544D4 /* CancellableTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CancellableTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -213,6 +215,7 @@
 		A5DA210E25B6AB4300B544D4 /* GifAppTests */ = {
 			isa = PBXGroup;
 			children = (
+				A5DA221C25B7148C00B544D4 /* Observable */,
 				A5DA21C725B6F38A00B544D4 /* Model */,
 				A5DA217D25B6CC9900B544D4 /* Extension */,
 				A5DA215725B6B96E00B544D4 /* Test Double */,
@@ -330,6 +333,14 @@
 				A5DA21E525B700AE00B544D4 /* DummyRequester.swift */,
 			);
 			path = Dummy;
+			sourceTree = "<group>";
+		};
+		A5DA221C25B7148C00B544D4 /* Observable */ = {
+			isa = PBXGroup;
+			children = (
+				A5DA221D25B7149600B544D4 /* CancellableTests.swift */,
+			);
+			path = Observable;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -458,6 +469,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A5DA221E25B7149600B544D4 /* CancellableTests.swift in Sources */,
 				A5DA21CF25B6F50800B544D4 /* UseCaseError+Equatable.swift in Sources */,
 				A5DA216E25B6BF5C00B544D4 /* HTTPMethodTests.swift in Sources */,
 				A5DA21DF25B6FE9C00B544D4 /* MockSuccessNetworkManager.swift in Sources */,

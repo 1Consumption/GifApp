@@ -29,10 +29,12 @@ final class TrendingGifViewModel: ViewModelType {
         let output = TrendingGifViewModelOtuput()
         
         input.loadGifInfo.bind { [weak self] in
-            self?.useCase.retrieveGifInfo(failureHandler: { _ in},
-                                          successHandler: { gifInfoResponse in
-                                            output.gifInfoDelivered.value = gifInfoResponse.data
-                                          })
+            self?.useCase.retrieveGifInfo(failureHandler: { error in
+                output.errorDelivered.value = error
+            },
+            successHandler: { gifInfoResponse in
+                output.gifInfoDelivered.value = gifInfoResponse.data
+            })
         }.store(in: &bag)
         
         return output

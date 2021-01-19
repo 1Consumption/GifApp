@@ -56,6 +56,7 @@
 		A5DA223425B7221500B544D4 /* ViewModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5DA223325B7221500B544D4 /* ViewModelType.swift */; };
 		A5DA223925B7349400B544D4 /* TrendingGifViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5DA223825B7349400B544D4 /* TrendingGifViewModelTests.swift */; };
 		A5DA224025B734C700B544D4 /* MockSuccessTrendingUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5DA223F25B734C600B544D4 /* MockSuccessTrendingUseCase.swift */; };
+		A5DA224725B736CB00B544D4 /* TrendingGifViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5DA224625B736CB00B544D4 /* TrendingGifViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -122,6 +123,7 @@
 		A5DA223325B7221500B544D4 /* ViewModelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelType.swift; sourceTree = "<group>"; };
 		A5DA223825B7349400B544D4 /* TrendingGifViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingGifViewModelTests.swift; sourceTree = "<group>"; };
 		A5DA223F25B734C600B544D4 /* MockSuccessTrendingUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockSuccessTrendingUseCase.swift; sourceTree = "<group>"; };
+		A5DA224625B736CB00B544D4 /* TrendingGifViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingGifViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -153,6 +155,7 @@
 		A51809C425B569AA00E0B589 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				A5DA224525B736BD00B544D4 /* ViewModel */,
 				A5DA21D625B6FDC300B544D4 /* Protocol */,
 				A51809C525B569BE00E0B589 /* GifInfo.swift */,
 				A5DA21BD25B6EDA400B544D4 /* TrendingGifUseCase.swift */,
@@ -385,6 +388,14 @@
 			path = UseCase;
 			sourceTree = "<group>";
 		};
+		A5DA224525B736BD00B544D4 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				A5DA224625B736CB00B544D4 /* TrendingGifViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -504,6 +515,7 @@
 				A5DA214C25B6B63700B544D4 /* NetworkError.swift in Sources */,
 				A5DA222F25B71D7900B544D4 /* Observable.swift in Sources */,
 				A5DA213A25B6AF9700B544D4 /* DefaultRequester.swift in Sources */,
+				A5DA224725B736CB00B544D4 /* TrendingGifViewModel.swift in Sources */,
 				A5DA21AF25B6E28100B544D4 /* EndPoint.swift in Sources */,
 				A57D3A2D25B489F0005C3338 /* SceneDelegate.swift in Sources */,
 				A5DA223425B7221500B544D4 /* ViewModelType.swift in Sources */,

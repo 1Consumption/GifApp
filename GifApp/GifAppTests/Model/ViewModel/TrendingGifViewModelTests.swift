@@ -27,4 +27,19 @@ final class TrendingGifViewModelTests: XCTestCase {
         
         input.loadGifInfo.fire()
     }
+    
+    func testViewModelOutputErrorDelivered() {
+        let expectation = XCTestExpectation(description: "error delivered")
+        defer { wait(for: [expectation], timeout: 1.0) }
+        let useCase = MockFailureTrendingUseCase()
+        let viewModel = TrendingGifViewModel(useCase: useCase)
+        
+        let output = viewModel.transform(input).errorDelivered
+        
+        output.bind { _ in
+            expectation.fulfill()
+        }.store(in: &bag)
+        
+        input.loadGifInfo.fire()
+    }
 }

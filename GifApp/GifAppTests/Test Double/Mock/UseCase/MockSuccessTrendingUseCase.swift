@@ -6,9 +6,9 @@
 //
 
 @testable import GifApp
-import XCTest
+import Foundation
 
-final class MockSuccessTrendingUseCase: TrendingGifUseCaseType {
+struct MockSuccessTrendingUseCase: TrendingGifUseCaseType {
     
     func retrieveGifInfo(failureHandler: @escaping (UseCaseError) -> Void, successHandler: @escaping (GifInfoResponse) -> Void) {
         let model = GifInfoResponse(data: [GifInfo(id: "1",

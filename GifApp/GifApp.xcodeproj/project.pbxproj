@@ -57,6 +57,7 @@
 		A5DA223925B7349400B544D4 /* TrendingGifViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5DA223825B7349400B544D4 /* TrendingGifViewModelTests.swift */; };
 		A5DA224025B734C700B544D4 /* MockSuccessTrendingUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5DA223F25B734C600B544D4 /* MockSuccessTrendingUseCase.swift */; };
 		A5DA224725B736CB00B544D4 /* TrendingGifViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5DA224625B736CB00B544D4 /* TrendingGifViewModel.swift */; };
+		A5DA224B25B73A2F00B544D4 /* MockFailureTrendingUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5DA224A25B73A2F00B544D4 /* MockFailureTrendingUseCase.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -124,6 +125,7 @@
 		A5DA223825B7349400B544D4 /* TrendingGifViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingGifViewModelTests.swift; sourceTree = "<group>"; };
 		A5DA223F25B734C600B544D4 /* MockSuccessTrendingUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockSuccessTrendingUseCase.swift; sourceTree = "<group>"; };
 		A5DA224625B736CB00B544D4 /* TrendingGifViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingGifViewModel.swift; sourceTree = "<group>"; };
+		A5DA224A25B73A2F00B544D4 /* MockFailureTrendingUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockFailureTrendingUseCase.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -384,6 +386,7 @@
 			isa = PBXGroup;
 			children = (
 				A5DA223F25B734C600B544D4 /* MockSuccessTrendingUseCase.swift */,
+				A5DA224A25B73A2F00B544D4 /* MockFailureTrendingUseCase.swift */,
 			);
 			path = UseCase;
 			sourceTree = "<group>";
@@ -541,6 +544,7 @@
 				A5DA211025B6AB4300B544D4 /* DefaultRequesterTests.swift in Sources */,
 				A5DA219B25B6D69E00B544D4 /* MockFailureRequesterWithEmptyData.swift in Sources */,
 				A5DA214025B6B29500B544D4 /* NetworkErrorTests.swift in Sources */,
+				A5DA224B25B73A2F00B544D4 /* MockFailureTrendingUseCase.swift in Sources */,
 				A5DA21C925B6F4F000B544D4 /* UseCaseErrorTests.swift in Sources */,
 				A5DA220125B70A0A00B544D4 /* MockFailureNetworkManagerWithNetworkError.swift in Sources */,
 				A5DA21F925B7031A00B544D4 /* GifInfoResponse+Equtable+Encodable.swift in Sources */,

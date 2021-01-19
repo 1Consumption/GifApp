@@ -22,6 +22,7 @@
 		A5DA213A25B6AF9700B544D4 /* DefaultRequester.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5DA213925B6AF9700B544D4 /* DefaultRequester.swift */; };
 		A5DA214025B6B29500B544D4 /* NetworkErrorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5DA213F25B6B29500B544D4 /* NetworkErrorTests.swift */; };
 		A5DA214C25B6B63700B544D4 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5DA214B25B6B63700B544D4 /* NetworkError.swift */; };
+		A5DA216E25B6BF5C00B544D4 /* HTTPMethodTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5DA216D25B6BF5C00B544D4 /* HTTPMethodTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +55,7 @@
 		A5DA213925B6AF9700B544D4 /* DefaultRequester.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultRequester.swift; sourceTree = "<group>"; };
 		A5DA213F25B6B29500B544D4 /* NetworkErrorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkErrorTests.swift; sourceTree = "<group>"; };
 		A5DA214B25B6B63700B544D4 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
+		A5DA216D25B6BF5C00B544D4 /* HTTPMethodTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPMethodTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -165,6 +167,7 @@
 			children = (
 				A5DA210F25B6AB4300B544D4 /* DefaultRequesterTests.swift */,
 				A5DA213F25B6B29500B544D4 /* NetworkErrorTests.swift */,
+				A5DA216D25B6BF5C00B544D4 /* HTTPMethodTests.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -304,6 +307,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A5DA216E25B6BF5C00B544D4 /* HTTPMethodTests.swift in Sources */,
 				A5DA211025B6AB4300B544D4 /* DefaultRequesterTests.swift in Sources */,
 				A5DA214025B6B29500B544D4 /* NetworkErrorTests.swift in Sources */,
 			);

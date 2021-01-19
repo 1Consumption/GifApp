@@ -13,6 +13,8 @@ extension UseCaseError: Equatable {
         switch (lhs, rhs) {
         case (.decodeError, .decodeError):
             return true
+        case (.networkError(let left), .networkError(let right)):
+            return left == right
         default:
             return false
         }

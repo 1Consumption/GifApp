@@ -48,6 +48,7 @@
 		A5DA21E625B700AE00B544D4 /* DummyRequester.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5DA21E525B700AE00B544D4 /* DummyRequester.swift */; };
 		A5DA21F925B7031A00B544D4 /* GifInfoResponse+Equtable+Encodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5DA21F825B7031A00B544D4 /* GifInfoResponse+Equtable+Encodable.swift */; };
 		A5DA21FD25B7080900B544D4 /* MockFailureWithDecodeErrorNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5DA21FC25B7080900B544D4 /* MockFailureWithDecodeErrorNetworkManager.swift */; };
+		A5DA220125B70A0A00B544D4 /* MockFailureWithNetworkErrorNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5DA220025B70A0A00B544D4 /* MockFailureWithNetworkErrorNetworkManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -106,6 +107,7 @@
 		A5DA21E525B700AE00B544D4 /* DummyRequester.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyRequester.swift; sourceTree = "<group>"; };
 		A5DA21F825B7031A00B544D4 /* GifInfoResponse+Equtable+Encodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GifInfoResponse+Equtable+Encodable.swift"; sourceTree = "<group>"; };
 		A5DA21FC25B7080900B544D4 /* MockFailureWithDecodeErrorNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockFailureWithDecodeErrorNetworkManager.swift; sourceTree = "<group>"; };
+		A5DA220025B70A0A00B544D4 /* MockFailureWithNetworkErrorNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockFailureWithNetworkErrorNetworkManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -317,6 +319,7 @@
 			children = (
 				A5DA21DE25B6FE9C00B544D4 /* MockSuccessNetworkManager.swift */,
 				A5DA21FC25B7080900B544D4 /* MockFailureWithDecodeErrorNetworkManager.swift */,
+				A5DA220025B70A0A00B544D4 /* MockFailureWithNetworkErrorNetworkManager.swift */,
 			);
 			path = NetworkManager;
 			sourceTree = "<group>";
@@ -468,6 +471,7 @@
 				A5DA219B25B6D69E00B544D4 /* MockFailureWithEmptyDataRequester.swift in Sources */,
 				A5DA214025B6B29500B544D4 /* NetworkErrorTests.swift in Sources */,
 				A5DA21C925B6F4F000B544D4 /* UseCaseErrorTests.swift in Sources */,
+				A5DA220125B70A0A00B544D4 /* MockFailureWithNetworkErrorNetworkManager.swift in Sources */,
 				A5DA21F925B7031A00B544D4 /* GifInfoResponse+Equtable+Encodable.swift in Sources */,
 				A5DA218525B6CF3400B544D4 /* MockFailureWithRequestRequester.swift in Sources */,
 				A5DA216025B6BA3500B544D4 /* MockSuccessRequester.swift in Sources */,

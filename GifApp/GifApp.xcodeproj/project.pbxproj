@@ -41,11 +41,13 @@
 		A5DA21BE25B6EDA400B544D4 /* TrendingGifUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5DA21BD25B6EDA400B544D4 /* TrendingGifUseCase.swift */; };
 		A5DA21C425B6F36A00B544D4 /* UseCaseError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5DA21C325B6F36A00B544D4 /* UseCaseError.swift */; };
 		A5DA21C925B6F4F000B544D4 /* UseCaseErrorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5DA21C825B6F4F000B544D4 /* UseCaseErrorTests.swift */; };
+		A5DA21CF25B6F50800B544D4 /* UseCaseError+Equatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5DA21CE25B6F50800B544D4 /* UseCaseError+Equatable.swift */; };
 		A5DA21D325B6FBB700B544D4 /* GifInfoResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5DA21D225B6FBB700B544D4 /* GifInfoResponse.swift */; };
 		A5DA21D825B6FDCC00B544D4 /* RemoteDataDecodeType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5DA21D725B6FDCC00B544D4 /* RemoteDataDecodeType.swift */; };
 		A5DA21DF25B6FE9C00B544D4 /* MockSuccessNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5DA21DE25B6FE9C00B544D4 /* MockSuccessNetworkManager.swift */; };
 		A5DA21E625B700AE00B544D4 /* DummyRequester.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5DA21E525B700AE00B544D4 /* DummyRequester.swift */; };
 		A5DA21F925B7031A00B544D4 /* GifInfoResponse+Equtable+Encodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5DA21F825B7031A00B544D4 /* GifInfoResponse+Equtable+Encodable.swift */; };
+		A5DA21FD25B7080900B544D4 /* MockFailureWithDecodeErrorNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5DA21FC25B7080900B544D4 /* MockFailureWithDecodeErrorNetworkManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -97,11 +99,13 @@
 		A5DA21BD25B6EDA400B544D4 /* TrendingGifUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingGifUseCase.swift; sourceTree = "<group>"; };
 		A5DA21C325B6F36A00B544D4 /* UseCaseError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UseCaseError.swift; sourceTree = "<group>"; };
 		A5DA21C825B6F4F000B544D4 /* UseCaseErrorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UseCaseErrorTests.swift; sourceTree = "<group>"; };
+		A5DA21CE25B6F50800B544D4 /* UseCaseError+Equatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UseCaseError+Equatable.swift"; sourceTree = "<group>"; };
 		A5DA21D225B6FBB700B544D4 /* GifInfoResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GifInfoResponse.swift; sourceTree = "<group>"; };
 		A5DA21D725B6FDCC00B544D4 /* RemoteDataDecodeType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteDataDecodeType.swift; sourceTree = "<group>"; };
 		A5DA21DE25B6FE9C00B544D4 /* MockSuccessNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockSuccessNetworkManager.swift; sourceTree = "<group>"; };
 		A5DA21E525B700AE00B544D4 /* DummyRequester.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyRequester.swift; sourceTree = "<group>"; };
 		A5DA21F825B7031A00B544D4 /* GifInfoResponse+Equtable+Encodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GifInfoResponse+Equtable+Encodable.swift"; sourceTree = "<group>"; };
+		A5DA21FC25B7080900B544D4 /* MockFailureWithDecodeErrorNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockFailureWithDecodeErrorNetworkManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -273,6 +277,7 @@
 			isa = PBXGroup;
 			children = (
 				A5DA217E25B6CCA600B544D4 /* NetworkError+Equatable.swift */,
+				A5DA21CE25B6F50800B544D4 /* UseCaseError+Equatable.swift */,
 				A5DA21F825B7031A00B544D4 /* GifInfoResponse+Equtable+Encodable.swift */,
 			);
 			path = Extension;
@@ -311,6 +316,7 @@
 			isa = PBXGroup;
 			children = (
 				A5DA21DE25B6FE9C00B544D4 /* MockSuccessNetworkManager.swift */,
+				A5DA21FC25B7080900B544D4 /* MockFailureWithDecodeErrorNetworkManager.swift */,
 			);
 			path = NetworkManager;
 			sourceTree = "<group>";
@@ -449,10 +455,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A5DA21CF25B6F50800B544D4 /* UseCaseError+Equatable.swift in Sources */,
 				A5DA216E25B6BF5C00B544D4 /* HTTPMethodTests.swift in Sources */,
 				A5DA21DF25B6FE9C00B544D4 /* MockSuccessNetworkManager.swift in Sources */,
 				A5DA21E625B700AE00B544D4 /* DummyRequester.swift in Sources */,
 				A5DA215425B6B91E00B544D4 /* NetworkManagerTests.swift in Sources */,
+				A5DA21FD25B7080900B544D4 /* MockFailureWithDecodeErrorNetworkManager.swift in Sources */,
 				A5DA218A25B6D27700B544D4 /* MockFailureWithNonHTTPResponseRequester.swift in Sources */,
 				A5DA215A25B6B98F00B544D4 /* MockURLSessionDataTask.swift in Sources */,
 				A5DA217F25B6CCA600B544D4 /* NetworkError+Equatable.swift in Sources */,

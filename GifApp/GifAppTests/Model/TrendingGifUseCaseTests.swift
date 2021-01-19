@@ -34,4 +34,23 @@ final class TrendingGifUseCaseTests: XCTestCase {
                               method: .get,
                               headers: nil)
     }
+    
+    func testRetrieveGifInfoFailureWithDecodeError() {
+        let expectation = XCTestExpectation(description: "failure with decode error")
+        defer { wait(for: [expectation], timeout: 1.0) }
+        
+        let networkManager = MockFailureWithDecodeErrorNetworkManager()
+        let useCase = TrendingGifUseCase(networkManager: networkManager)
+        
+        useCase.retrieveGifInfo(failureHandler: { error in
+            XCTAssertEqual(error, .decodeError)
+            expectation.fulfill()
+        }, successHandler: { _ in
+            XCTFail()
+        })
+        
+        networkManager.verify(url: EndPoint(urlInfomation: .trending).url,
+                              method: .get,
+                              headers: nil)
+    }
 }

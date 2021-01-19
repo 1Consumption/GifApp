@@ -8,7 +8,7 @@
 import UIKit
 
 final class SearchViewController: UIViewController {
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpNavigationBar()
@@ -16,7 +16,7 @@ final class SearchViewController: UIViewController {
         trendingGifViewModelIntput.loadGifInfo.fire()
     }
     
-    @IBOutlet weak var trendingCollectionView: UICollectionView!
+    @IBOutlet weak var trendingGifCollectionView: UICollectionView!
     
     private let trendingGifCollectionViewDataSource: TrendingGifCollectionViewDataSource = TrendingGifCollectionViewDataSource()
     private let trendingGifViewModel: TrendingGifViewModel = TrendingGifViewModel()
@@ -34,13 +34,13 @@ final class SearchViewController: UIViewController {
     }
     
     private func setUpTrandingCollectionView() {
-        trendingCollectionView.register(UINib(nibName: GifCell.identifier, bundle: .main), forCellWithReuseIdentifier: GifCell.identifier)
+        trendingGifCollectionView.register(UINib(nibName: GifCell.identifier, bundle: .main), forCellWithReuseIdentifier: GifCell.identifier)
         trendingGifCollectionViewDataSource.viewModel = trendingGifViewModel
-        trendingCollectionView.dataSource = trendingGifCollectionViewDataSource
-        trendingCollectionView.delegate = self
-        trendingCollectionView.delaysContentTouches = false
-        if let layout = trendingCollectionView?.collectionViewLayout as? PinterestLayout {
-          layout.delegate = self
+        trendingGifCollectionView.dataSource = trendingGifCollectionViewDataSource
+        trendingGifCollectionView.delegate = self
+        trendingGifCollectionView.delaysContentTouches = false
+        if let layout = trendingGifCollectionView?.collectionViewLayout as? PinterestLayout {
+            layout.delegate = self
         }
         bindWithTrendingGifViewModel()
     }
@@ -50,7 +50,7 @@ final class SearchViewController: UIViewController {
         
         output.gifInfoDelivered.bind { gifInfo in
             DispatchQueue.main.async { [weak self] in
-                self?.trendingCollectionView.reloadData()
+                self?.trendingGifCollectionView.reloadData()
             }
         }.store(in: &bag)
     }

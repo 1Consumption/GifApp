@@ -32,7 +32,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="Mtl-2T-4Y9"/>
                     <connections>
-                        <outlet property="trendingCollectionView" destination="Cqc-tm-dOu" id="8XD-HG-fad"/>
+                        <outlet property="trendingGifCollectionView" destination="Cqc-tm-dOu" id="8XD-HG-fad"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

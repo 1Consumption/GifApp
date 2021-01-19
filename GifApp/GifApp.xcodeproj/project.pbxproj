@@ -51,6 +51,7 @@
 		A5DA220125B70A0A00B544D4 /* MockFailureNetworkManagerWithNetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5DA220025B70A0A00B544D4 /* MockFailureNetworkManagerWithNetworkError.swift */; };
 		A5DA221E25B7149600B544D4 /* CancellableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5DA221D25B7149600B544D4 /* CancellableTests.swift */; };
 		A5DA222525B7152D00B544D4 /* Cancellable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5DA222425B7152D00B544D4 /* Cancellable.swift */; };
+		A5DA222B25B71C8000B544D4 /* ObservableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5DA222A25B71C8000B544D4 /* ObservableTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -112,6 +113,7 @@
 		A5DA220025B70A0A00B544D4 /* MockFailureNetworkManagerWithNetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockFailureNetworkManagerWithNetworkError.swift; sourceTree = "<group>"; };
 		A5DA221D25B7149600B544D4 /* CancellableTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CancellableTests.swift; sourceTree = "<group>"; };
 		A5DA222425B7152D00B544D4 /* Cancellable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cancellable.swift; sourceTree = "<group>"; };
+		A5DA222A25B71C8000B544D4 /* ObservableTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObservableTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -342,6 +344,7 @@
 			isa = PBXGroup;
 			children = (
 				A5DA221D25B7149600B544D4 /* CancellableTests.swift */,
+				A5DA222A25B71C8000B544D4 /* ObservableTests.swift */,
 			);
 			path = Observable;
 			sourceTree = "<group>";
@@ -501,6 +504,7 @@
 				A5DA216025B6BA3500B544D4 /* MockSuccessRequester.swift in Sources */,
 				A5DA21B725B6E7A800B544D4 /* TrendingGifUseCaseTests.swift in Sources */,
 				A5DA21A725B6D81200B544D4 /* EndpointTests.swift in Sources */,
+				A5DA222B25B71C8000B544D4 /* ObservableTests.swift in Sources */,
 				A5DA219225B6D56000B544D4 /* MockFailureRequesterWithInvalidHTTPStatusCode.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -18,6 +18,10 @@ final class TrendingGifCollectionViewDataSource: NSObject, UICollectionViewDataS
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: GifCell.identifier, for: indexPath) as? GifCell else { return UICollectionViewCell() }
         
+        guard let model = viewModel?.gifInfoArray[indexPath.item] else { return cell }
+        
+        cell.bind(with: model.images.original.url)
+        
         return cell
     }
     

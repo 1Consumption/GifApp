@@ -50,6 +50,7 @@
 		A5DA21FD25B7080900B544D4 /* MockFailureNetworkManagerWithDecodeError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5DA21FC25B7080900B544D4 /* MockFailureNetworkManagerWithDecodeError.swift */; };
 		A5DA220125B70A0A00B544D4 /* MockFailureNetworkManagerWithNetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5DA220025B70A0A00B544D4 /* MockFailureNetworkManagerWithNetworkError.swift */; };
 		A5DA221E25B7149600B544D4 /* CancellableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5DA221D25B7149600B544D4 /* CancellableTests.swift */; };
+		A5DA222525B7152D00B544D4 /* Cancellable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5DA222425B7152D00B544D4 /* Cancellable.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -110,6 +111,7 @@
 		A5DA21FC25B7080900B544D4 /* MockFailureNetworkManagerWithDecodeError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockFailureNetworkManagerWithDecodeError.swift; sourceTree = "<group>"; };
 		A5DA220025B70A0A00B544D4 /* MockFailureNetworkManagerWithNetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockFailureNetworkManagerWithNetworkError.swift; sourceTree = "<group>"; };
 		A5DA221D25B7149600B544D4 /* CancellableTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CancellableTests.swift; sourceTree = "<group>"; };
+		A5DA222425B7152D00B544D4 /* Cancellable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cancellable.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -197,6 +199,7 @@
 		A5DA20F625B5A10700B544D4 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				A5DA222325B7152000B544D4 /* Observable */,
 				A5DA213125B6AF4500B544D4 /* Network */,
 				A5DA20F725B5A10B00B544D4 /* Layout */,
 				A5DA21AA25B6E24B00B544D4 /* Secret.swift */,
@@ -343,6 +346,14 @@
 			path = Observable;
 			sourceTree = "<group>";
 		};
+		A5DA222325B7152000B544D4 /* Observable */ = {
+			isa = PBXGroup;
+			children = (
+				A5DA222425B7152D00B544D4 /* Cancellable.swift */,
+			);
+			path = Observable;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -454,6 +465,7 @@
 				A5DA213425B6AF5300B544D4 /* RequesterType.swift in Sources */,
 				A5DA21D325B6FBB700B544D4 /* GifInfoResponse.swift in Sources */,
 				A51809D725B5757300E0B589 /* GifCell.swift in Sources */,
+				A5DA222525B7152D00B544D4 /* Cancellable.swift in Sources */,
 				A5DA21BE25B6EDA400B544D4 /* TrendingGifUseCase.swift in Sources */,
 				A51809C625B569BE00E0B589 /* GifInfo.swift in Sources */,
 				A5DA217225B6C02800B544D4 /* HTTPMethod.swift in Sources */,

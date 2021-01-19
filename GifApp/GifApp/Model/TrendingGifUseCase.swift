@@ -7,7 +7,11 @@
 
 import Foundation
 
-final class TrendingGifUseCase: RemoteDataDecodeType {
+protocol TrendingGifUseCaseType {
+    func retrieveGifInfo(failureHandler: @escaping (UseCaseError) -> Void, successHandler: @escaping (GifInfoResponse) -> Void)
+}
+
+final class TrendingGifUseCase: TrendingGifUseCaseType, RemoteDataDecodeType {
     
     typealias T = GifInfoResponse
     

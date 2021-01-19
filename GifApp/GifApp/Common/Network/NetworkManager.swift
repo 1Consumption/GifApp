@@ -38,7 +38,12 @@ final class NetworkManager: NetworkManagerType {
                 return
             }
             
-            completionHandler(.success(data!))
+            guard let data = data else {
+                completionHandler(.failure(.emptyData))
+                return
+            }
+            
+            completionHandler(.success(data))
         }
         
         task.resume()

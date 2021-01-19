@@ -29,6 +29,7 @@
 		A5DA216A25B6BC6700B544D4 /* NetworkManagerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5DA216925B6BC6700B544D4 /* NetworkManagerType.swift */; };
 		A5DA216E25B6BF5C00B544D4 /* HTTPMethodTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5DA216D25B6BF5C00B544D4 /* HTTPMethodTests.swift */; };
 		A5DA217225B6C02800B544D4 /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5DA217125B6C02800B544D4 /* HTTPMethod.swift */; };
+		A5DA217F25B6CCA600B544D4 /* NetworkError+Equatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5DA217E25B6CCA600B544D4 /* NetworkError+Equatable.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,6 +69,7 @@
 		A5DA216925B6BC6700B544D4 /* NetworkManagerType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManagerType.swift; sourceTree = "<group>"; };
 		A5DA216D25B6BF5C00B544D4 /* HTTPMethodTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPMethodTests.swift; sourceTree = "<group>"; };
 		A5DA217125B6C02800B544D4 /* HTTPMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
+		A5DA217E25B6CCA600B544D4 /* NetworkError+Equatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NetworkError+Equatable.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -168,6 +170,7 @@
 		A5DA210E25B6AB4300B544D4 /* GifAppTests */ = {
 			isa = PBXGroup;
 			children = (
+				A5DA217D25B6CC9900B544D4 /* Extension */,
 				A5DA215725B6B96E00B544D4 /* Test Double */,
 				A5DA212625B6ADE100B544D4 /* Network */,
 				A5DA211125B6AB4300B544D4 /* Info.plist */,
@@ -222,6 +225,14 @@
 				A5DA215F25B6BA3500B544D4 /* MockSuccessRequester.swift */,
 			);
 			path = Mock;
+			sourceTree = "<group>";
+		};
+		A5DA217D25B6CC9900B544D4 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				A5DA217E25B6CCA600B544D4 /* NetworkError+Equatable.swift */,
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -347,6 +358,7 @@
 				A5DA216E25B6BF5C00B544D4 /* HTTPMethodTests.swift in Sources */,
 				A5DA215425B6B91E00B544D4 /* NetworkManagerTests.swift in Sources */,
 				A5DA215A25B6B98F00B544D4 /* MockURLSessionDataTask.swift in Sources */,
+				A5DA217F25B6CCA600B544D4 /* NetworkError+Equatable.swift in Sources */,
 				A5DA211025B6AB4300B544D4 /* DefaultRequesterTests.swift in Sources */,
 				A5DA214025B6B29500B544D4 /* NetworkErrorTests.swift in Sources */,
 				A5DA216025B6BA3500B544D4 /* MockSuccessRequester.swift in Sources */,

@@ -22,11 +22,39 @@ final class NetworkManagerTests: XCTestCase {
         let networkManager = NetworkManager(requester: requester)
         
         let _ = networkManager.loadData(with: request.url,
-                                method: HTTPMethod(rawValue: request.httpMethod!)!,
-                                headers: request.allHTTPHeaderFields,
-                                completionHandler: { result in
-                                    expectation.fulfill()
-                                })
+                                        method: HTTPMethod(rawValue: request.httpMethod!)!,
+                                        headers: request.allHTTPHeaderFields,
+                                        completionHandler: { result in
+                                            switch result {
+                                            case .success(_):
+                                                expectation.fulfill()
+                                            case .failure(_):
+                                                XCTFail()
+                                            }
+                                        })
+        
+        requester.verify(request: request)
+    }
+    
+    func testFailureWithEmptyURL() {
+        let expectation = XCTestExpectation(description: "failure with empty url")
+        defer { wait(for: [expectation], timeout: 1.0) }
+        
+        let networkManager = NetworkManager()
+        
+        let _ = networkManager.loadData(with: URL(string: ""),
+                                        method: .get,
+                                        headers: nil,
+                                        completionHandler: { result in
+                                            switch result {
+                                            case .success(_):
+                                                XCTFail()
+                                            case .failure(let error):
+                                                XCTAssertEqual(error, NetworkError.emptyURL)
+                                                expectation.fulfill()
+                                            }
+                                        })
+    }
         
         requester.verify(request: request)
     }

@@ -9,6 +9,7 @@
 import XCTest
 
 final class MockSuccessRequester: RequesterType {
+    
     private var reuqest: URLRequest!
     
     func loadData(with request: URLRequest, completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void) -> URLSessionDataTask {

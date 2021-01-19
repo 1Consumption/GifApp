@@ -171,34 +171,11 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		A51809C225B5676900E0B589 /* Scene */ = {
-			isa = PBXGroup;
-			children = (
-				A51809D425B5756000E0B589 /* SearchView */,
-			);
-			path = Scene;
-			sourceTree = "<group>";
-		};
-		A51809C425B569AA00E0B589 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				A5DA224525B736BD00B544D4 /* ViewModel */,
-				A5DA21D625B6FDC300B544D4 /* Protocol */,
-				A51809C525B569BE00E0B589 /* GifInfo.swift */,
-				A5DA21BD25B6EDA400B544D4 /* TrendingGifUseCase.swift */,
-				A5DA21C325B6F36A00B544D4 /* UseCaseError.swift */,
-				A5DA21D225B6FBB700B544D4 /* GifInfoResponse.swift */,
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
 		A51809D425B5756000E0B589 /* SearchView */ = {
 			isa = PBXGroup;
 			children = (
+				A5E633A925B75A00004331D9 /* Model */,
 				A57D3A2E25B489F0005C3338 /* SearchViewController.swift */,
-				A51809D525B5757300E0B589 /* GifCell.swift */,
-				A51809D625B5757300E0B589 /* GifCell.xib */,
-				A5E633A425B75327004331D9 /* TrendingGifCollectionViewDataSource.swift */,
 			);
 			path = SearchView;
 			sourceTree = "<group>";
@@ -227,8 +204,7 @@
 			isa = PBXGroup;
 			children = (
 				A5DA20F625B5A10700B544D4 /* Common */,
-				A51809C425B569AA00E0B589 /* Model */,
-				A51809C225B5676900E0B589 /* Scene */,
+				A51809D425B5756000E0B589 /* SearchView */,
 				A57D3A3025B489F0005C3338 /* Main.storyboard */,
 				A57D3A3525B489F2005C3338 /* LaunchScreen.storyboard */,
 				A57D3A2A25B489F0005C3338 /* AppDelegate.swift */,
@@ -242,11 +218,14 @@
 		A5DA20F625B5A10700B544D4 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				A5E633B025B75B5F004331D9 /* GifCell */,
+				A5E633AA25B75A4A004331D9 /* Model */,
+				A5DA21D625B6FDC300B544D4 /* Protocol */,
 				A5DA222325B7152000B544D4 /* Observable */,
 				A5DA213125B6AF4500B544D4 /* Network */,
 				A5DA20F725B5A10B00B544D4 /* Layout */,
 				A5DA21AA25B6E24B00B544D4 /* Secret.swift */,
-				A5DA223325B7221500B544D4 /* ViewModelType.swift */,
+				A5DA21C325B6F36A00B544D4 /* UseCaseError.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -262,11 +241,9 @@
 		A5DA210E25B6AB4300B544D4 /* GifAppTests */ = {
 			isa = PBXGroup;
 			children = (
-				A5DA221C25B7148C00B544D4 /* Observable */,
-				A5DA21C725B6F38A00B544D4 /* Model */,
-				A5DA217D25B6CC9900B544D4 /* Extension */,
+				A5E633AD25B75ADA004331D9 /* Common */,
+				A5E633AE25B75AE1004331D9 /* SearchView */,
 				A5DA215725B6B96E00B544D4 /* Test Double */,
-				A5DA212625B6ADE100B544D4 /* Network */,
 				A5DA211125B6AB4300B544D4 /* Info.plist */,
 			);
 			path = GifAppTests;
@@ -351,8 +328,7 @@
 		A5DA21C725B6F38A00B544D4 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				A5DA223725B7347900B544D4 /* ViewModel */,
-				A5DA21B625B6E7A800B544D4 /* TrendingGifUseCaseTests.swift */,
+				A5DA224E25B73FEB00B544D4 /* GifCellViewModelTests.swift */,
 				A5DA21C825B6F4F000B544D4 /* UseCaseErrorTests.swift */,
 			);
 			path = Model;
@@ -361,6 +337,7 @@
 		A5DA21D625B6FDC300B544D4 /* Protocol */ = {
 			isa = PBXGroup;
 			children = (
+				A5DA223325B7221500B544D4 /* ViewModelType.swift */,
 				A5DA21D725B6FDCC00B544D4 /* RemoteDataDecodeType.swift */,
 			);
 			path = Protocol;
@@ -402,15 +379,6 @@
 			path = Observable;
 			sourceTree = "<group>";
 		};
-		A5DA223725B7347900B544D4 /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-				A5DA223825B7349400B544D4 /* TrendingGifViewModelTests.swift */,
-				A5DA224E25B73FEB00B544D4 /* GifCellViewModelTests.swift */,
-			);
-			path = ViewModel;
-			sourceTree = "<group>";
-		};
 		A5DA223E25B734B800B544D4 /* UseCase */ = {
 			isa = PBXGroup;
 			children = (
@@ -424,9 +392,65 @@
 			isa = PBXGroup;
 			children = (
 				A5DA224625B736CB00B544D4 /* TrendingGifViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		A5E633A925B75A00004331D9 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				A5DA224525B736BD00B544D4 /* ViewModel */,
+				A5E633A425B75327004331D9 /* TrendingGifCollectionViewDataSource.swift */,
+				A5DA21BD25B6EDA400B544D4 /* TrendingGifUseCase.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		A5E633AA25B75A4A004331D9 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				A51809C525B569BE00E0B589 /* GifInfo.swift */,
+				A5DA21D225B6FBB700B544D4 /* GifInfoResponse.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		A5E633AD25B75ADA004331D9 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				A5DA21C725B6F38A00B544D4 /* Model */,
+				A5DA217D25B6CC9900B544D4 /* Extension */,
+				A5DA212625B6ADE100B544D4 /* Network */,
+				A5DA221C25B7148C00B544D4 /* Observable */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		A5E633AE25B75AE1004331D9 /* SearchView */ = {
+			isa = PBXGroup;
+			children = (
+				A5DA21B625B6E7A800B544D4 /* TrendingGifUseCaseTests.swift */,
+				A5DA223825B7349400B544D4 /* TrendingGifViewModelTests.swift */,
+			);
+			path = SearchView;
+			sourceTree = "<group>";
+		};
+		A5E633AF25B75B42004331D9 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
 				A5E633A025B74B1E004331D9 /* GifCellViewModel.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		A5E633B025B75B5F004331D9 /* GifCell */ = {
+			isa = PBXGroup;
+			children = (
+				A5E633AF25B75B42004331D9 /* ViewModel */,
+				A51809D525B5757300E0B589 /* GifCell.swift */,
+				A51809D625B5757300E0B589 /* GifCell.xib */,
+			);
+			path = GifCell;
 			sourceTree = "<group>";
 		};
 		E547CABD70E5292742019946 /* Pods */ = {

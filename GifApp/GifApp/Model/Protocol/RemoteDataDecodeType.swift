@@ -33,8 +33,8 @@ extension RemoteDataDecodeType {
                 }
                 
                 break
-            case .failure(_):
-                break
+            case .failure(let error):
+                failureHandler(.networkError(with: error))
             }
         }
         

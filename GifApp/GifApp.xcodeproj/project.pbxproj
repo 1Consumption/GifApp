@@ -37,6 +37,8 @@
 		A5DA21A725B6D81200B544D4 /* EndpointTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5DA21A625B6D81200B544D4 /* EndpointTests.swift */; };
 		A5DA21AB25B6E24B00B544D4 /* Secret.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5DA21AA25B6E24B00B544D4 /* Secret.swift */; };
 		A5DA21AF25B6E28100B544D4 /* EndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5DA21AE25B6E28100B544D4 /* EndPoint.swift */; };
+		A5DA21C425B6F36A00B544D4 /* UseCaseError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5DA21C325B6F36A00B544D4 /* UseCaseError.swift */; };
+		A5DA21C925B6F4F000B544D4 /* UseCaseErrorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5DA21C825B6F4F000B544D4 /* UseCaseErrorTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -84,6 +86,8 @@
 		A5DA21A625B6D81200B544D4 /* EndpointTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndpointTests.swift; sourceTree = "<group>"; };
 		A5DA21AA25B6E24B00B544D4 /* Secret.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Secret.swift; sourceTree = "<group>"; };
 		A5DA21AE25B6E28100B544D4 /* EndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPoint.swift; sourceTree = "<group>"; };
+		A5DA21C325B6F36A00B544D4 /* UseCaseError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UseCaseError.swift; sourceTree = "<group>"; };
+		A5DA21C825B6F4F000B544D4 /* UseCaseErrorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UseCaseErrorTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,6 +120,7 @@
 			isa = PBXGroup;
 			children = (
 				A51809C525B569BE00E0B589 /* GifInfo.swift */,
+				A5DA21C325B6F36A00B544D4 /* UseCaseError.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -185,6 +190,7 @@
 		A5DA210E25B6AB4300B544D4 /* GifAppTests */ = {
 			isa = PBXGroup;
 			children = (
+				A5DA21C725B6F38A00B544D4 /* Model */,
 				A5DA217D25B6CC9900B544D4 /* Extension */,
 				A5DA215725B6B96E00B544D4 /* Test Double */,
 				A5DA212625B6ADE100B544D4 /* Network */,
@@ -262,6 +268,14 @@
 				A5DA218425B6CF3400B544D4 /* MockFailureWithRequestRequester.swift */,
 			);
 			path = Requester;
+			sourceTree = "<group>";
+		};
+		A5DA21C725B6F38A00B544D4 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				A5DA21C825B6F4F000B544D4 /* UseCaseErrorTests.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -365,6 +379,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A5DA21C425B6F36A00B544D4 /* UseCaseError.swift in Sources */,
 				A5DA216A25B6BC6700B544D4 /* NetworkManagerType.swift in Sources */,
 				A5DA20F925B5A11C00B544D4 /* PinterestLayout.swift in Sources */,
 				A57D3A2F25B489F0005C3338 /* SearchViewController.swift in Sources */,
@@ -394,6 +409,7 @@
 				A5DA211025B6AB4300B544D4 /* DefaultRequesterTests.swift in Sources */,
 				A5DA219B25B6D69E00B544D4 /* MockFailureWithEmptyDataRequester.swift in Sources */,
 				A5DA214025B6B29500B544D4 /* NetworkErrorTests.swift in Sources */,
+				A5DA21C925B6F4F000B544D4 /* UseCaseErrorTests.swift in Sources */,
 				A5DA218525B6CF3400B544D4 /* MockFailureWithRequestRequester.swift in Sources */,
 				A5DA216025B6BA3500B544D4 /* MockSuccessRequester.swift in Sources */,
 				A5DA21A725B6D81200B544D4 /* EndpointTests.swift in Sources */,

@@ -20,4 +20,17 @@ final class CancellableTests: XCTestCase {
         
         cancellable.cancel()
     }
+    
+    func testDeinit() {
+        let expectation = XCTestExpectation(description: "cancel")
+        defer { wait(for: [expectation], timeout: 1.0) }
+        
+        var cancellable: Cancellable? = Cancellable {
+            expectation.fulfill()
+        }
+        
+        XCTAssertNotNil(cancellable)
+        
+        cancellable = nil
+    }
 }

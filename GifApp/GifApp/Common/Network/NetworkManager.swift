@@ -23,6 +23,11 @@ final class NetworkManager: NetworkManagerType {
         let urlRequest = makeURLRequest(with: url, method: method, headers: headers)
         
         let task = requester.loadData(with: urlRequest) { data, response, error in
+            guard error == nil else {
+                completionHandler(.failure(.requestError(description: error!.localizedDescription)))
+                return
+            }
+            
             completionHandler(.success(data!))
         }
         

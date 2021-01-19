@@ -13,9 +13,7 @@ final class Observable<T> {
     
     var value: T {
         didSet {
-            observers.values.forEach {
-                $0(value)
-            }
+            notify()
         }
     }
     private var observers: [UUID: Handler] = [UUID: Handler]()
@@ -33,5 +31,15 @@ final class Observable<T> {
         }
         
         return cancellable
+    }
+    
+    func fire() where T == Void {
+        notify()
+    }
+    
+    private func notify() {
+        observers.values.forEach {
+            $0(value)
+        }
     }
 }

@@ -36,6 +36,7 @@
 		A5DA219B25B6D69E00B544D4 /* MockFailureWithEmptyDataRequester.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5DA219A25B6D69E00B544D4 /* MockFailureWithEmptyDataRequester.swift */; };
 		A5DA21A725B6D81200B544D4 /* EndpointTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5DA21A625B6D81200B544D4 /* EndpointTests.swift */; };
 		A5DA21AB25B6E24B00B544D4 /* Secret.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5DA21AA25B6E24B00B544D4 /* Secret.swift */; };
+		A5DA21AF25B6E28100B544D4 /* EndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5DA21AE25B6E28100B544D4 /* EndPoint.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -82,6 +83,7 @@
 		A5DA219A25B6D69E00B544D4 /* MockFailureWithEmptyDataRequester.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockFailureWithEmptyDataRequester.swift; sourceTree = "<group>"; };
 		A5DA21A625B6D81200B544D4 /* EndpointTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndpointTests.swift; sourceTree = "<group>"; };
 		A5DA21AA25B6E24B00B544D4 /* Secret.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Secret.swift; sourceTree = "<group>"; };
+		A5DA21AE25B6E28100B544D4 /* EndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPoint.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -208,6 +210,7 @@
 			children = (
 				A5DA213225B6AF4900B544D4 /* Protocol */,
 				A5DA213925B6AF9700B544D4 /* DefaultRequester.swift */,
+				A5DA21AE25B6E28100B544D4 /* EndPoint.swift */,
 				A5DA214B25B6B63700B544D4 /* NetworkError.swift */,
 				A5DA216525B6BC5F00B544D4 /* NetworkManager.swift */,
 				A5DA217125B6C02800B544D4 /* HTTPMethod.swift */,
@@ -374,6 +377,7 @@
 				A5DA21AB25B6E24B00B544D4 /* Secret.swift in Sources */,
 				A5DA214C25B6B63700B544D4 /* NetworkError.swift in Sources */,
 				A5DA213A25B6AF9700B544D4 /* DefaultRequester.swift in Sources */,
+				A5DA21AF25B6E28100B544D4 /* EndPoint.swift in Sources */,
 				A57D3A2D25B489F0005C3338 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

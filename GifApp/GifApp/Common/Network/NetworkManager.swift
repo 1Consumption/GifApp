@@ -10,13 +10,17 @@ import Foundation
 final class NetworkManager: NetworkManagerType {
     private(set) var requester: RequesterType
     
-    init(requester: RequesterType) {
+    init(requester: RequesterType = DefaultRequester()) {
         self.requester = requester
     }
     
     func loadData(with url: URL?, method: HTTPMethod, headers: [String: String]?, completionHandler: @escaping (Result<Data, NetworkError>) -> Void) -> URLSessionDataTask? {
+        guard let url = url else {
+            completionHandler(.failure(.emptyURL))
+            return nil
+        }
         
-        let urlRequest = makeURLRequest(with: url!, method: method, headers: headers)
+        let urlRequest = makeURLRequest(with: url, method: method, headers: headers)
         
         let task = requester.loadData(with: urlRequest) { data, response, error in
             completionHandler(.success(data!))

@@ -17,7 +17,7 @@
 		A57D3A3425B489F2005C3338 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A57D3A3325B489F2005C3338 /* Assets.xcassets */; };
 		A57D3A3725B489F2005C3338 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A57D3A3525B489F2005C3338 /* LaunchScreen.storyboard */; };
 		A5DA20F925B5A11C00B544D4 /* PinterestLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5DA20F825B5A11C00B544D4 /* PinterestLayout.swift */; };
-		A5DA211025B6AB4300B544D4 /* GifAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5DA210F25B6AB4300B544D4 /* GifAppTests.swift */; };
+		A5DA211025B6AB4300B544D4 /* DefaultRequesterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5DA210F25B6AB4300B544D4 /* DefaultRequesterTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,7 +44,7 @@
 		A57D3A3825B489F2005C3338 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A5DA20F825B5A11C00B544D4 /* PinterestLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinterestLayout.swift; sourceTree = "<group>"; };
 		A5DA210D25B6AB4300B544D4 /* GifAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GifAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		A5DA210F25B6AB4300B544D4 /* GifAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GifAppTests.swift; sourceTree = "<group>"; };
+		A5DA210F25B6AB4300B544D4 /* DefaultRequesterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultRequesterTests.swift; sourceTree = "<group>"; };
 		A5DA211125B6AB4300B544D4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -145,10 +145,18 @@
 		A5DA210E25B6AB4300B544D4 /* GifAppTests */ = {
 			isa = PBXGroup;
 			children = (
-				A5DA210F25B6AB4300B544D4 /* GifAppTests.swift */,
+				A5DA212625B6ADE100B544D4 /* Network */,
 				A5DA211125B6AB4300B544D4 /* Info.plist */,
 			);
 			path = GifAppTests;
+			sourceTree = "<group>";
+		};
+		A5DA212625B6ADE100B544D4 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				A5DA210F25B6AB4300B544D4 /* DefaultRequesterTests.swift */,
+			);
+			path = Network;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -265,7 +273,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A5DA211025B6AB4300B544D4 /* GifAppTests.swift in Sources */,
+				A5DA211025B6AB4300B544D4 /* DefaultRequesterTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -460,7 +468,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 735P3R8MUU;
 				INFOPLIST_FILE = GifAppTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -481,7 +489,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 735P3R8MUU;
 				INFOPLIST_FILE = GifAppTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

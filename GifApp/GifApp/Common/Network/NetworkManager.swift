@@ -28,6 +28,11 @@ final class NetworkManager: NetworkManagerType {
                 return
             }
             
+            guard let httpResponse = response as? HTTPURLResponse else {
+                completionHandler(.failure(.nonHTTPResponseError))
+                return
+            }
+            
             completionHandler(.success(data!))
         }
         

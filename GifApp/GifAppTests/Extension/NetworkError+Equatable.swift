@@ -15,6 +15,8 @@ extension NetworkError: Equatable {
             return true
         case (.requestError(description: _), .requestError(description: _)):
             return true
+        case (.nonHTTPResponseError, .nonHTTPResponseError):
+            return true
         default:
             return false
         }

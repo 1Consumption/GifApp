@@ -79,4 +79,28 @@ final class NetworkManagerTests: XCTestCase {
         
         requester.verify(request: request)
     }
+    
+    func testFailureWithNonHTTPResponseError() {
+        let expectation = XCTestExpectation(description: "failure with non HTTP response error")
+        defer { wait(for: [expectation], timeout: 1.0) }
+        
+        let request = URLRequest(url: URL(string: "test")!)
+        let requester = MockFailureWithNonHTTPResponseErrorRequester()
+        let networkManager = NetworkManager(requester: requester)
+        
+        let _ = networkManager.loadData(with: request.url,
+                                        method: HTTPMethod(rawValue: request.httpMethod!)!,
+                                        headers: nil,
+                                        completionHandler: { result in
+                                            switch result {
+                                            case .success(_):
+                                                XCTFail()
+                                            case .failure(let error):
+                                                XCTAssertEqual(error, NetworkError.nonHTTPResponseError)
+                                                expectation.fulfill()
+                                            }
+                                        })
+        
+        requester.verify(request: request)
+    }
 }

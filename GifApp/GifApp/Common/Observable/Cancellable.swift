@@ -7,7 +7,7 @@
 
 import Foundation
 
-//typealias CancellableBag = Set<Cancellable>
+typealias CancellableBag = Set<Cancellable?>
 
 final class Cancellable {
     
@@ -16,12 +16,26 @@ final class Cancellable {
     init(_ handler: @escaping () -> Void) {
         self.handler = handler
     }
+
+    deinit {
+        cancel()
+    }
     
     func cancel() {
         handler()
     }
     
-    deinit {
-        cancel()
+    func store(in bag: inout CancellableBag) {
+        bag.insert(self)
+    }
+}
+
+extension Cancellable: Hashable {
+    static func == (lhs: Cancellable, rhs: Cancellable) -> Bool {
+        return ObjectIdentifier(lhs) == ObjectIdentifier(rhs)
+    }
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(ObjectIdentifier(self))
     }
 }

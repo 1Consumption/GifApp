@@ -46,4 +46,23 @@ final class ObservableTests: XCTestCase {
         observable.fire()
         observable.fire()
     }
+    
+    func testMutlipleBind() {
+        let expectation = XCTestExpectation(description: "mutiple bind")
+        expectation.expectedFulfillmentCount = 4
+        defer { wait(for: [expectation], timeout: 1.0) }
+        
+        let observable = Observable<Void>(value: ())
+        
+        observable.bind {
+            expectation.fulfill()
+        }.store(in: &bag)
+        
+        observable.bind {
+            expectation.fulfill()
+        }.store(in: &bag)
+        
+        observable.fire()
+        observable.fire()
+    }
 }

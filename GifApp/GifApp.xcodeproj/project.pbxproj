@@ -34,6 +34,8 @@
 		A5DA218A25B6D27700B544D4 /* MockFailureWithNonHTTPResponseRequester.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5DA218925B6D27700B544D4 /* MockFailureWithNonHTTPResponseRequester.swift */; };
 		A5DA219225B6D56000B544D4 /* MockFailureWithInvalidHTTPStatusCodeRequester.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5DA219125B6D56000B544D4 /* MockFailureWithInvalidHTTPStatusCodeRequester.swift */; };
 		A5DA219B25B6D69E00B544D4 /* MockFailureWithEmptyDataRequester.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5DA219A25B6D69E00B544D4 /* MockFailureWithEmptyDataRequester.swift */; };
+		A5DA21A725B6D81200B544D4 /* EndpointTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5DA21A625B6D81200B544D4 /* EndpointTests.swift */; };
+		A5DA21AB25B6E24B00B544D4 /* Secret.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5DA21AA25B6E24B00B544D4 /* Secret.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -78,6 +80,8 @@
 		A5DA218925B6D27700B544D4 /* MockFailureWithNonHTTPResponseRequester.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockFailureWithNonHTTPResponseRequester.swift; sourceTree = "<group>"; };
 		A5DA219125B6D56000B544D4 /* MockFailureWithInvalidHTTPStatusCodeRequester.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockFailureWithInvalidHTTPStatusCodeRequester.swift; sourceTree = "<group>"; };
 		A5DA219A25B6D69E00B544D4 /* MockFailureWithEmptyDataRequester.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockFailureWithEmptyDataRequester.swift; sourceTree = "<group>"; };
+		A5DA21A625B6D81200B544D4 /* EndpointTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndpointTests.swift; sourceTree = "<group>"; };
+		A5DA21AA25B6E24B00B544D4 /* Secret.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Secret.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -163,6 +167,7 @@
 			children = (
 				A5DA213125B6AF4500B544D4 /* Network */,
 				A5DA20F725B5A10B00B544D4 /* Layout */,
+				A5DA21AA25B6E24B00B544D4 /* Secret.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -193,6 +198,7 @@
 				A5DA213F25B6B29500B544D4 /* NetworkErrorTests.swift */,
 				A5DA215325B6B91E00B544D4 /* NetworkManagerTests.swift */,
 				A5DA216D25B6BF5C00B544D4 /* HTTPMethodTests.swift */,
+				A5DA21A625B6D81200B544D4 /* EndpointTests.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -365,6 +371,7 @@
 				A51809D725B5757300E0B589 /* GifCell.swift in Sources */,
 				A51809C625B569BE00E0B589 /* GifInfo.swift in Sources */,
 				A5DA217225B6C02800B544D4 /* HTTPMethod.swift in Sources */,
+				A5DA21AB25B6E24B00B544D4 /* Secret.swift in Sources */,
 				A5DA214C25B6B63700B544D4 /* NetworkError.swift in Sources */,
 				A5DA213A25B6AF9700B544D4 /* DefaultRequester.swift in Sources */,
 				A57D3A2D25B489F0005C3338 /* SceneDelegate.swift in Sources */,
@@ -385,6 +392,7 @@
 				A5DA214025B6B29500B544D4 /* NetworkErrorTests.swift in Sources */,
 				A5DA218525B6CF3400B544D4 /* MockFailureWithRequestRequester.swift in Sources */,
 				A5DA216025B6BA3500B544D4 /* MockSuccessRequester.swift in Sources */,
+				A5DA21A725B6D81200B544D4 /* EndpointTests.swift in Sources */,
 				A5DA219225B6D56000B544D4 /* MockFailureWithInvalidHTTPStatusCodeRequester.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

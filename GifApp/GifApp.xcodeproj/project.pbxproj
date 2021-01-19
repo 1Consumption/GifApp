@@ -38,10 +38,14 @@
 		A5DA21AB25B6E24B00B544D4 /* Secret.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5DA21AA25B6E24B00B544D4 /* Secret.swift */; };
 		A5DA21AF25B6E28100B544D4 /* EndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5DA21AE25B6E28100B544D4 /* EndPoint.swift */; };
 		A5DA21B725B6E7A800B544D4 /* TrendingGifUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5DA21B625B6E7A800B544D4 /* TrendingGifUseCaseTests.swift */; };
+		A5DA21BE25B6EDA400B544D4 /* TrendingGifUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5DA21BD25B6EDA400B544D4 /* TrendingGifUseCase.swift */; };
 		A5DA21C425B6F36A00B544D4 /* UseCaseError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5DA21C325B6F36A00B544D4 /* UseCaseError.swift */; };
 		A5DA21C925B6F4F000B544D4 /* UseCaseErrorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5DA21C825B6F4F000B544D4 /* UseCaseErrorTests.swift */; };
+		A5DA21D325B6FBB700B544D4 /* GifInfoResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5DA21D225B6FBB700B544D4 /* GifInfoResponse.swift */; };
+		A5DA21D825B6FDCC00B544D4 /* RemoteDataDecodeType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5DA21D725B6FDCC00B544D4 /* RemoteDataDecodeType.swift */; };
 		A5DA21DF25B6FE9C00B544D4 /* MockSuccessNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5DA21DE25B6FE9C00B544D4 /* MockSuccessNetworkManager.swift */; };
 		A5DA21E625B700AE00B544D4 /* DummyRequester.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5DA21E525B700AE00B544D4 /* DummyRequester.swift */; };
+		A5DA21F925B7031A00B544D4 /* GifInfoResponse+Equtable+Encodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5DA21F825B7031A00B544D4 /* GifInfoResponse+Equtable+Encodable.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -90,10 +94,14 @@
 		A5DA21AA25B6E24B00B544D4 /* Secret.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Secret.swift; sourceTree = "<group>"; };
 		A5DA21AE25B6E28100B544D4 /* EndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPoint.swift; sourceTree = "<group>"; };
 		A5DA21B625B6E7A800B544D4 /* TrendingGifUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingGifUseCaseTests.swift; sourceTree = "<group>"; };
+		A5DA21BD25B6EDA400B544D4 /* TrendingGifUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingGifUseCase.swift; sourceTree = "<group>"; };
 		A5DA21C325B6F36A00B544D4 /* UseCaseError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UseCaseError.swift; sourceTree = "<group>"; };
 		A5DA21C825B6F4F000B544D4 /* UseCaseErrorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UseCaseErrorTests.swift; sourceTree = "<group>"; };
+		A5DA21D225B6FBB700B544D4 /* GifInfoResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GifInfoResponse.swift; sourceTree = "<group>"; };
+		A5DA21D725B6FDCC00B544D4 /* RemoteDataDecodeType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteDataDecodeType.swift; sourceTree = "<group>"; };
 		A5DA21DE25B6FE9C00B544D4 /* MockSuccessNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockSuccessNetworkManager.swift; sourceTree = "<group>"; };
 		A5DA21E525B700AE00B544D4 /* DummyRequester.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyRequester.swift; sourceTree = "<group>"; };
+		A5DA21F825B7031A00B544D4 /* GifInfoResponse+Equtable+Encodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GifInfoResponse+Equtable+Encodable.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,8 +133,11 @@
 		A51809C425B569AA00E0B589 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				A5DA21D625B6FDC300B544D4 /* Protocol */,
 				A51809C525B569BE00E0B589 /* GifInfo.swift */,
+				A5DA21BD25B6EDA400B544D4 /* TrendingGifUseCase.swift */,
 				A5DA21C325B6F36A00B544D4 /* UseCaseError.swift */,
+				A5DA21D225B6FBB700B544D4 /* GifInfoResponse.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -262,6 +273,7 @@
 			isa = PBXGroup;
 			children = (
 				A5DA217E25B6CCA600B544D4 /* NetworkError+Equatable.swift */,
+				A5DA21F825B7031A00B544D4 /* GifInfoResponse+Equtable+Encodable.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -285,6 +297,14 @@
 				A5DA21C825B6F4F000B544D4 /* UseCaseErrorTests.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		A5DA21D625B6FDC300B544D4 /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				A5DA21D725B6FDCC00B544D4 /* RemoteDataDecodeType.swift */,
+			);
+			path = Protocol;
 			sourceTree = "<group>";
 		};
 		A5DA21DD25B6FE8A00B544D4 /* NetworkManager */ = {
@@ -405,13 +425,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				A5DA21C425B6F36A00B544D4 /* UseCaseError.swift in Sources */,
+				A5DA21D825B6FDCC00B544D4 /* RemoteDataDecodeType.swift in Sources */,
 				A5DA216A25B6BC6700B544D4 /* NetworkManagerType.swift in Sources */,
 				A5DA20F925B5A11C00B544D4 /* PinterestLayout.swift in Sources */,
 				A57D3A2F25B489F0005C3338 /* SearchViewController.swift in Sources */,
 				A5DA216625B6BC5F00B544D4 /* NetworkManager.swift in Sources */,
 				A57D3A2B25B489F0005C3338 /* AppDelegate.swift in Sources */,
 				A5DA213425B6AF5300B544D4 /* RequesterType.swift in Sources */,
+				A5DA21D325B6FBB700B544D4 /* GifInfoResponse.swift in Sources */,
 				A51809D725B5757300E0B589 /* GifCell.swift in Sources */,
+				A5DA21BE25B6EDA400B544D4 /* TrendingGifUseCase.swift in Sources */,
 				A51809C625B569BE00E0B589 /* GifInfo.swift in Sources */,
 				A5DA217225B6C02800B544D4 /* HTTPMethod.swift in Sources */,
 				A5DA21AB25B6E24B00B544D4 /* Secret.swift in Sources */,
@@ -437,6 +460,7 @@
 				A5DA219B25B6D69E00B544D4 /* MockFailureWithEmptyDataRequester.swift in Sources */,
 				A5DA214025B6B29500B544D4 /* NetworkErrorTests.swift in Sources */,
 				A5DA21C925B6F4F000B544D4 /* UseCaseErrorTests.swift in Sources */,
+				A5DA21F925B7031A00B544D4 /* GifInfoResponse+Equtable+Encodable.swift in Sources */,
 				A5DA218525B6CF3400B544D4 /* MockFailureWithRequestRequester.swift in Sources */,
 				A5DA216025B6BA3500B544D4 /* MockSuccessRequester.swift in Sources */,
 				A5DA21B725B6E7A800B544D4 /* TrendingGifUseCaseTests.swift in Sources */,

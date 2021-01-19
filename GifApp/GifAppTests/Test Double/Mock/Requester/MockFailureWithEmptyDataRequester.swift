@@ -1,5 +1,5 @@
 //
-//  MockFailureWithInvalidHTTPStatusCodeErrorRequester.swift
+//  MockFailureWithEmptyDataRequester.swift
 //  GifAppTests
 //
 //  Created by 신한섭 on 2021/01/19.
@@ -8,8 +8,8 @@
 @testable import GifApp
 import XCTest
 
-final class MockFailureWithInvalidHTTPStatusCodeErrorRequester: RequesterType {
-    
+final class MockFailureWithEmptyDataRequester: RequesterType {
+
     private var reuqest: URLRequest!
     
     func loadData(with request: URLRequest, completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void) -> URLSessionDataTask {
@@ -17,7 +17,7 @@ final class MockFailureWithInvalidHTTPStatusCodeErrorRequester: RequesterType {
         
         return MockURLSessionDataTask {
             completionHandler(nil, HTTPURLResponse(url: request.url!,
-                                                   statusCode: 300,
+                                                   statusCode: 200,
                                                    httpVersion: nil,
                                                    headerFields: request.allHTTPHeaderFields), nil)
         }

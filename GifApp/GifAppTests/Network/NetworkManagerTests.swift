@@ -61,7 +61,7 @@ final class NetworkManagerTests: XCTestCase {
         defer { wait(for: [expectation], timeout: 1.0) }
         
         let request = URLRequest(url: URL(string: "test")!)
-        let requester = MockFailureWithRequestErrorRequester()
+        let requester = MockFailureWithRequestRequester()
         let networkManager = NetworkManager(requester: requester)
         
         let _ = networkManager.loadData(with: request.url,
@@ -85,7 +85,7 @@ final class NetworkManagerTests: XCTestCase {
         defer { wait(for: [expectation], timeout: 1.0) }
         
         let request = URLRequest(url: URL(string: "test")!)
-        let requester = MockFailureWithNonHTTPResponseErrorRequester()
+        let requester = MockFailureWithNonHTTPResponseRequester()
         let networkManager = NetworkManager(requester: requester)
         
         let _ = networkManager.loadData(with: request.url,
@@ -109,7 +109,7 @@ final class NetworkManagerTests: XCTestCase {
         defer { wait(for: [expectation], timeout: 1.0) }
         
         let request = URLRequest(url: URL(string: "test")!)
-        let requester = MockFailureWithInvalidHTTPStatusCodeErrorRequester()
+        let requester = MockFailureWithInvalidHTTPStatusCodeRequester()
         let networkManager = NetworkManager(requester: requester)
         
         let _ = networkManager.loadData(with: request.url,
@@ -121,6 +121,30 @@ final class NetworkManagerTests: XCTestCase {
                                                 XCTFail()
                                             case .failure(let error):
                                                 XCTAssertEqual(error, NetworkError.invalidHTTPStatusCode(with: 300))
+                                                expectation.fulfill()
+                                            }
+                                        })
+        
+        requester.verify(request: request)
+    }
+    
+    func testFailureWithEmptyDataError() {
+        let expectation = XCTestExpectation(description: "failure with non HTTP response error")
+        defer { wait(for: [expectation], timeout: 1.0) }
+        
+        let request = URLRequest(url: URL(string: "test")!)
+        let requester = MockFailureWithEmptyDataRequester()
+        let networkManager = NetworkManager(requester: requester)
+        
+        let _ = networkManager.loadData(with: request.url,
+                                        method: HTTPMethod(rawValue: request.httpMethod!)!,
+                                        headers: nil,
+                                        completionHandler: { result in
+                                            switch result {
+                                            case .success(_):
+                                                XCTFail()
+                                            case .failure(let error):
+                                                XCTAssertEqual(error, NetworkError.emptyData)
                                                 expectation.fulfill()
                                             }
                                         })

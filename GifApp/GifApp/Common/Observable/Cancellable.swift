@@ -20,4 +20,8 @@ final class Cancellable {
     func cancel() {
         handler()
     }
+    
+    deinit {
+        cancel()
+    }
 }

@@ -8,6 +8,7 @@
 import Foundation
 
 final class NetworkManager: NetworkManagerType {
+    
     private(set) var requester: RequesterType
     
     init(requester: RequesterType = DefaultRequester()) {

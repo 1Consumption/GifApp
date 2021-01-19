@@ -8,6 +8,7 @@
 import Foundation
 
 protocol NetworkManagerType {
+    
     var requester: RequesterType { get }
     
     func loadData(with url: URL?, method: HTTPMethod, headers: [String: String]?, completionHandler: @escaping (Result<Data, NetworkError>) -> Void) -> URLSessionDataTask?

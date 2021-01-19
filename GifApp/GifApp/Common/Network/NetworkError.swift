@@ -8,6 +8,7 @@
 import Foundation
 
 enum NetworkError: Error {
+    
     case emptyURL
     case requestError(description: String)
     case nonHTTPResponseError

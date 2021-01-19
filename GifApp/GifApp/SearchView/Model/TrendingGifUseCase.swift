@@ -8,6 +8,7 @@
 import Foundation
 
 protocol TrendingGifUseCaseType {
+    
     func retrieveGifInfo(failureHandler: @escaping (UseCaseError) -> Void, successHandler: @escaping (GifInfoResponse) -> Void)
 }
 

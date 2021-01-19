@@ -8,6 +8,7 @@
 import Foundation
 
 final class DefaultRequester: RequesterType {
+    
     func loadData(with request: URLRequest, completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void) -> URLSessionDataTask {
         return URLSession.shared.dataTask(with: request, completionHandler: completionHandler)
     }

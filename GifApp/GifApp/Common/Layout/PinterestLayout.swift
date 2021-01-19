@@ -8,6 +8,7 @@
 import UIKit
 
 protocol PinterestLayoutDelegate: class {
+    
   func collectionView(_ collectionView: UICollectionView, heightForPhotoAtIndexPath indexPath: IndexPath) -> CGSize
 }
 
@@ -34,6 +35,7 @@ final class PinterestLayout: UICollectionViewLayout {
   }
   
   override func prepare() {
+    super.prepare()
     cache.removeAll()
     contentHeight = 0
     guard cache.isEmpty, let collectionView = collectionView else { return }

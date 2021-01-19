@@ -8,6 +8,13 @@
 import UIKit
 
 final class SearchViewController: UIViewController {
+        
+    @IBOutlet weak var trendingGifCollectionView: UICollectionView!
+    
+    private let trendingGifCollectionViewDataSource: TrendingGifCollectionViewDataSource = TrendingGifCollectionViewDataSource()
+    private let trendingGifViewModel: TrendingGifViewModel = TrendingGifViewModel()
+    private let trendingGifViewModelIntput: TrendingGifViewModelInput = TrendingGifViewModelInput()
+    private var bag: CancellableBag = CancellableBag()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -15,13 +22,6 @@ final class SearchViewController: UIViewController {
         setUpTrandingCollectionView()
         trendingGifViewModelIntput.loadGifInfo.fire()
     }
-    
-    @IBOutlet weak var trendingGifCollectionView: UICollectionView!
-    
-    private let trendingGifCollectionViewDataSource: TrendingGifCollectionViewDataSource = TrendingGifCollectionViewDataSource()
-    private let trendingGifViewModel: TrendingGifViewModel = TrendingGifViewModel()
-    private let trendingGifViewModelIntput: TrendingGifViewModelInput = TrendingGifViewModelInput()
-    private var bag: CancellableBag = CancellableBag()
     
     private func setUpNavigationBar() {
         navigationController?.navigationBar.barStyle = .black
@@ -57,6 +57,7 @@ final class SearchViewController: UIViewController {
 }
 
 extension SearchViewController: UICollectionViewDelegateFlowLayout {
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let itemSize = (collectionView.frame.width) / 2
         
@@ -77,6 +78,7 @@ extension SearchViewController: UICollectionViewDelegateFlowLayout {
 }
 
 extension SearchViewController: PinterestLayoutDelegate {
+    
     func collectionView(_ collectionView: UICollectionView, heightForPhotoAtIndexPath indexPath: IndexPath) -> CGSize {
         guard let dataSource = collectionView.dataSource as? TrendingGifCollectionViewDataSource else { return .zero }
         guard let strWidth = dataSource.gifInfo(of: indexPath.item)?.images.original.width,

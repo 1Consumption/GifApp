@@ -10,10 +10,12 @@ import SwiftGifOrigin
 import Foundation
 
 struct GifCellViewModelInput {
+    
     let loadGif: Observable<Void> = Observable<Void>(value: ())
 }
 
 struct GifCellViewModelOutput {
+    
     let gifDelivered: Observable<UIImage?> = Observable<UIImage?>(value: nil)
 }
 

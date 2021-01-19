@@ -8,10 +8,12 @@
 import Foundation
 
 struct TrendingGifViewModelInput {
+    
     let loadGifInfo: Observable<Void> = Observable<Void>(value: ())
 }
 
 struct TrendingGifViewModelOtuput {
+    
     let gifInfoDelivered: Observable<Void> = Observable<Void>(value: ())
     let errorDelivered: Observable<UseCaseError?> = Observable<UseCaseError?>(value: nil)
 }

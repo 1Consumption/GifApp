@@ -8,5 +8,6 @@
 import Foundation
 
 protocol RequesterType {
+    
     func loadData(with request: URLRequest, completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void) -> URLSessionDataTask
 }

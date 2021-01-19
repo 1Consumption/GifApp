@@ -20,6 +20,7 @@
 		A5DA211025B6AB4300B544D4 /* DefaultRequesterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5DA210F25B6AB4300B544D4 /* DefaultRequesterTests.swift */; };
 		A5DA213425B6AF5300B544D4 /* RequesterType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5DA213325B6AF5300B544D4 /* RequesterType.swift */; };
 		A5DA213A25B6AF9700B544D4 /* DefaultRequester.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5DA213925B6AF9700B544D4 /* DefaultRequester.swift */; };
+		A5DA214025B6B29500B544D4 /* NetworkErrorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5DA213F25B6B29500B544D4 /* NetworkErrorTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +51,7 @@
 		A5DA211125B6AB4300B544D4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A5DA213325B6AF5300B544D4 /* RequesterType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequesterType.swift; sourceTree = "<group>"; };
 		A5DA213925B6AF9700B544D4 /* DefaultRequester.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultRequester.swift; sourceTree = "<group>"; };
+		A5DA213F25B6B29500B544D4 /* NetworkErrorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkErrorTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -160,6 +162,7 @@
 			isa = PBXGroup;
 			children = (
 				A5DA210F25B6AB4300B544D4 /* DefaultRequesterTests.swift */,
+				A5DA213F25B6B29500B544D4 /* NetworkErrorTests.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -298,6 +301,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A5DA211025B6AB4300B544D4 /* DefaultRequesterTests.swift in Sources */,
+				A5DA214025B6B29500B544D4 /* NetworkErrorTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -52,6 +52,7 @@
 		A5DA221E25B7149600B544D4 /* CancellableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5DA221D25B7149600B544D4 /* CancellableTests.swift */; };
 		A5DA222525B7152D00B544D4 /* Cancellable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5DA222425B7152D00B544D4 /* Cancellable.swift */; };
 		A5DA222B25B71C8000B544D4 /* ObservableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5DA222A25B71C8000B544D4 /* ObservableTests.swift */; };
+		A5DA222F25B71D7900B544D4 /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5DA222E25B71D7900B544D4 /* Observable.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -114,6 +115,7 @@
 		A5DA221D25B7149600B544D4 /* CancellableTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CancellableTests.swift; sourceTree = "<group>"; };
 		A5DA222425B7152D00B544D4 /* Cancellable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cancellable.swift; sourceTree = "<group>"; };
 		A5DA222A25B71C8000B544D4 /* ObservableTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObservableTests.swift; sourceTree = "<group>"; };
+		A5DA222E25B71D7900B544D4 /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -353,6 +355,7 @@
 			isa = PBXGroup;
 			children = (
 				A5DA222425B7152D00B544D4 /* Cancellable.swift */,
+				A5DA222E25B71D7900B544D4 /* Observable.swift */,
 			);
 			path = Observable;
 			sourceTree = "<group>";
@@ -474,6 +477,7 @@
 				A5DA217225B6C02800B544D4 /* HTTPMethod.swift in Sources */,
 				A5DA21AB25B6E24B00B544D4 /* Secret.swift in Sources */,
 				A5DA214C25B6B63700B544D4 /* NetworkError.swift in Sources */,
+				A5DA222F25B71D7900B544D4 /* Observable.swift in Sources */,
 				A5DA213A25B6AF9700B544D4 /* DefaultRequester.swift in Sources */,
 				A5DA21AF25B6E28100B544D4 /* EndPoint.swift in Sources */,
 				A57D3A2D25B489F0005C3338 /* SceneDelegate.swift in Sources */,

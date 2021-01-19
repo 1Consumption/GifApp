@@ -21,6 +21,7 @@
 		A5DA213425B6AF5300B544D4 /* RequesterType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5DA213325B6AF5300B544D4 /* RequesterType.swift */; };
 		A5DA213A25B6AF9700B544D4 /* DefaultRequester.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5DA213925B6AF9700B544D4 /* DefaultRequester.swift */; };
 		A5DA214025B6B29500B544D4 /* NetworkErrorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5DA213F25B6B29500B544D4 /* NetworkErrorTests.swift */; };
+		A5DA214C25B6B63700B544D4 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5DA214B25B6B63700B544D4 /* NetworkError.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +53,7 @@
 		A5DA213325B6AF5300B544D4 /* RequesterType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequesterType.swift; sourceTree = "<group>"; };
 		A5DA213925B6AF9700B544D4 /* DefaultRequester.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultRequester.swift; sourceTree = "<group>"; };
 		A5DA213F25B6B29500B544D4 /* NetworkErrorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkErrorTests.swift; sourceTree = "<group>"; };
+		A5DA214B25B6B63700B544D4 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -172,6 +174,7 @@
 			children = (
 				A5DA213225B6AF4900B544D4 /* Protocol */,
 				A5DA213925B6AF9700B544D4 /* DefaultRequester.swift */,
+				A5DA214B25B6B63700B544D4 /* NetworkError.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -291,6 +294,7 @@
 				A5DA213425B6AF5300B544D4 /* RequesterType.swift in Sources */,
 				A51809D725B5757300E0B589 /* GifCell.swift in Sources */,
 				A51809C625B569BE00E0B589 /* GifInfo.swift in Sources */,
+				A5DA214C25B6B63700B544D4 /* NetworkError.swift in Sources */,
 				A5DA213A25B6AF9700B544D4 /* DefaultRequester.swift in Sources */,
 				A57D3A2D25B489F0005C3338 /* SceneDelegate.swift in Sources */,
 			);

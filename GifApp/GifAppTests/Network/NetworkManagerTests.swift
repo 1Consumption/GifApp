@@ -103,4 +103,28 @@ final class NetworkManagerTests: XCTestCase {
         
         requester.verify(request: request)
     }
+    
+    func testFailureWithInvalidHTTPStatusCodeError() {
+        let expectation = XCTestExpectation(description: "failure with non HTTP response error")
+        defer { wait(for: [expectation], timeout: 1.0) }
+        
+        let request = URLRequest(url: URL(string: "test")!)
+        let requester = MockFailureWithInvalidHTTPStatusCodeErrorRequester()
+        let networkManager = NetworkManager(requester: requester)
+        
+        let _ = networkManager.loadData(with: request.url,
+                                        method: HTTPMethod(rawValue: request.httpMethod!)!,
+                                        headers: nil,
+                                        completionHandler: { result in
+                                            switch result {
+                                            case .success(_):
+                                                XCTFail()
+                                            case .failure(let error):
+                                                XCTAssertEqual(error, NetworkError.invalidHTTPStatusCode(with: 300))
+                                                expectation.fulfill()
+                                            }
+                                        })
+        
+        requester.verify(request: request)
+    }
 }

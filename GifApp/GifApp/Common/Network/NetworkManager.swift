@@ -33,6 +33,11 @@ final class NetworkManager: NetworkManagerType {
                 return
             }
             
+            guard (200...299) ~= httpResponse.statusCode else {
+                completionHandler(.failure(.invalidHTTPStatusCode(with: httpResponse.statusCode)))
+                return
+            }
+            
             completionHandler(.success(data!))
         }
         

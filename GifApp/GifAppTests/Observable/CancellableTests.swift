@@ -10,6 +10,8 @@ import XCTest
 
 final class CancellableTests: XCTestCase {
     
+    private var bag: CancellableBag = CancellableBag()
+    
     func testCancel() {
         let expectation = XCTestExpectation(description: "cancel")
         defer { wait(for: [expectation], timeout: 1.0) }
@@ -22,7 +24,7 @@ final class CancellableTests: XCTestCase {
     }
     
     func testDeinit() {
-        let expectation = XCTestExpectation(description: "cancel")
+        let expectation = XCTestExpectation(description: "deinit")
         defer { wait(for: [expectation], timeout: 1.0) }
         
         var cancellable: Cancellable? = Cancellable {
@@ -32,5 +34,20 @@ final class CancellableTests: XCTestCase {
         XCTAssertNotNil(cancellable)
         
         cancellable = nil
+    }
+    
+    func testStore() {
+        let expectation = XCTestExpectation(description: "store deinit")
+        defer { wait(for: [expectation], timeout: 1.0) }
+        
+        var cancellable: Cancellable? = Cancellable {
+            expectation.fulfill()
+        }
+        
+        cancellable?.store(in: &bag)
+        
+        cancellable = nil
+        
+        bag.removeAll()
     }
 }

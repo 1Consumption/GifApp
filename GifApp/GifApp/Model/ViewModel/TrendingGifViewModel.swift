@@ -41,4 +41,9 @@ final class TrendingGifViewModel: ViewModelType {
         
         return output
     }
+    
+    func gifInfo(of index: Int) -> GifInfo? {
+        guard gifInfoArray.count > index else { return nil }
+        return gifInfoArray[index]
+    }
 }

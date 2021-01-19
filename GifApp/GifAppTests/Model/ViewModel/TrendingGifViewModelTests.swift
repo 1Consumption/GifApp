@@ -42,4 +42,21 @@ final class TrendingGifViewModelTests: XCTestCase {
         
         input.loadGifInfo.fire()
     }
+    
+    func testGifInfoOfIndex() {
+        let expectation = XCTestExpectation(description: "gifInfo of Index")
+        defer { wait(for: [expectation], timeout: 1.0) }
+        let useCase = MockSuccessTrendingUseCase()
+        let viewModel = TrendingGifViewModel(useCase: useCase)
+        
+        let output = viewModel.transform(input).gifInfoDelivered
+        
+        output.bind { _ in
+            XCTAssertNotNil(viewModel.gifInfo(of: 0))
+            XCTAssertNil(viewModel.gifInfo(of: 1))
+            expectation.fulfill()
+        }.store(in: &bag)
+        
+        input.loadGifInfo.fire()
+    }
 }

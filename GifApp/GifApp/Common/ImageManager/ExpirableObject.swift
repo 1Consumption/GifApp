@@ -21,6 +21,6 @@ final class ExpirableObject<T> {
     }
     
     func resetExpireTime(_ expireTime: ExpireTime) {
-        
+        expectedExpireTime = Date(timeIntervalSinceNow: expireTime.timeInterval)
     }
 }

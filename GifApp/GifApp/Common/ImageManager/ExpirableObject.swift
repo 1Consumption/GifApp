@@ -12,7 +12,7 @@ final class ExpirableObject<T> {
     private var expectedExpireTime: Date
     let value: T
     var isExpired: Bool {
-        return true
+        return Date() > expectedExpireTime
     }
     
     init(value: T, expireTime: ExpireTime) {

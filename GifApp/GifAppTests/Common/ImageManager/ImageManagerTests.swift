@@ -33,7 +33,7 @@ final class ImageManagerTests: XCTestCase {
     func testRetrieveImageFromCache() {
         let expectation = XCTestExpectation(description: "image from cache")
         expectation.expectedFulfillmentCount = 2
-        defer { wait(for: [expectation], timeout: 1.0) }
+        defer { wait(for: [expectation], timeout: 2.0) }
         
         let image = UIImage(named: "heart")
         let data = image!.pngData()!
@@ -48,6 +48,8 @@ final class ImageManagerTests: XCTestCase {
                                             XCTAssertNotNil($0)
                                             expectation.fulfill()
                                            })
+        
+        sleep(1)
         
         let _ = imageManager.retrieveImage(from: "test",
                                            failureHandler: { _ in XCTFail() },
@@ -143,5 +145,24 @@ final class ImageManagerTests: XCTestCase {
                                            })
         
         networkManager.verify(url: URL(string: "test"), method: .get, headers: nil)
+    }
+    
+    func testCancellabel() {
+        let expectation = XCTestExpectation(description: "failure")
+        expectation.expectedFulfillmentCount = 1
+        defer { wait(for: [expectation], timeout: 1.0) }
+        
+        let imageManager = ImageManager()
+        
+        let cancellable: Cancellable? = imageManager.retrieveImage(from: "www.google.com",
+                                           failureHandler: {
+                                            XCTAssertEqual($0, .requestError(description: ""))
+                                            expectation.fulfill()
+                                           },
+                                           imageHandler: { _ in
+                                            XCTFail()
+                                           })
+        
+        cancellable?.cancel()
     }
 }

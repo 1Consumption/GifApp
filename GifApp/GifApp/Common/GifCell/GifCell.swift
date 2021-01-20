@@ -43,4 +43,11 @@ final class GifCell: UICollectionViewCell {
     @objc private func buttonDoubleTapped(_ sender: UITapGestureRecognizer) {
         print("double tapped")
     }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        gifCellViewModel = nil
+        bag.removeAll()
+        gifImageView.image = nil
+    }
 }

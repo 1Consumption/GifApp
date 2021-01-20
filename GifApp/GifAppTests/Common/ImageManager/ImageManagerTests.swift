@@ -21,7 +21,7 @@ final class ImageManagerTests: XCTestCase {
         let imageManager = ImageManager(networkManager: networkManager)
         
         let _ = imageManager.retrieveImage(from: "test",
-                                           failureHandler: { _ in XCTFail() },
+                                           failureHandler: { XCTFail() },
                                            imageHandler: {
                                             XCTAssertNotNil($0)
                                             expectation.fulfill()
@@ -43,7 +43,7 @@ final class ImageManagerTests: XCTestCase {
         let imageManager = ImageManager(networkManager: networkManager)
         
         let _ = imageManager.retrieveImage(from: "test",
-                                           failureHandler: { _ in XCTFail() },
+                                           failureHandler: { XCTFail() },
                                            imageHandler: {
                                             XCTAssertNotNil($0)
                                             expectation.fulfill()
@@ -52,7 +52,7 @@ final class ImageManagerTests: XCTestCase {
         sleep(1)
         
         let _ = imageManager.retrieveImage(from: "test",
-                                           failureHandler: { _ in XCTFail() },
+                                           failureHandler: { XCTFail() },
                                            imageHandler: {
                                             XCTAssertNotNil($0)
                                             expectation.fulfill()
@@ -74,7 +74,7 @@ final class ImageManagerTests: XCTestCase {
         let imageManager = ImageManager(networkManager: networkManager, expireTime: .second(1))
         
         let _ = imageManager.retrieveImage(from: "test",
-                                           failureHandler: { _ in XCTFail() },
+                                           failureHandler: { XCTFail() },
                                            imageHandler: {
                                             XCTAssertNotNil($0)
                                             expectation.fulfill()
@@ -83,7 +83,7 @@ final class ImageManagerTests: XCTestCase {
         sleep(2)
         
         let _ = imageManager.retrieveImage(from: "test",
-                                           failureHandler: { _ in XCTFail() },
+                                           failureHandler: { XCTFail() },
                                            imageHandler: {
                                             XCTAssertNotNil($0)
                                             expectation.fulfill()
@@ -105,7 +105,7 @@ final class ImageManagerTests: XCTestCase {
         let imageManager = ImageManager(networkManager: networkManager, expireTime: .second(1))
         
         let _ = imageManager.retrieveImage(from: "test",
-                                           failureHandler: { _ in XCTFail() },
+                                           failureHandler: { XCTFail() },
                                            imageHandler: {
                                             XCTAssertNotNil($0)
                                             expectation.fulfill()
@@ -117,7 +117,7 @@ final class ImageManagerTests: XCTestCase {
                                         object: nil)
         
         let _ = imageManager.retrieveImage(from: "test",
-                                           failureHandler: { _ in XCTFail() },
+                                           failureHandler: { XCTFail() },
                                            imageHandler: {
                                             XCTAssertNotNil($0)
                                             expectation.fulfill()
@@ -137,7 +137,6 @@ final class ImageManagerTests: XCTestCase {
         
         let _ = imageManager.retrieveImage(from: "test",
                                            failureHandler: {
-                                            XCTAssertNotNil($0)
                                             expectation.fulfill()
                                            },
                                            imageHandler: { _ in
@@ -156,7 +155,6 @@ final class ImageManagerTests: XCTestCase {
         
         let cancellable: Cancellable? = imageManager.retrieveImage(from: "www.google.com",
                                            failureHandler: {
-                                            XCTAssertEqual($0, .requestError(description: ""))
                                             expectation.fulfill()
                                            },
                                            imageHandler: { _ in

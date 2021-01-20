@@ -13,7 +13,7 @@ final class GifCellViewModelTests: XCTestCase {
     private let input: GifCellViewModelInput = GifCellViewModelInput()
     private var bag: CancellableBag = CancellableBag()
     
-    func testViewModelOutputGifInfoDelivered() {
+    func testViewModelOutputGifDelivered() {
         let expectation = XCTestExpectation(description: "gif delivered")
         defer { wait(for: [expectation], timeout: 1.0) }
         
@@ -46,5 +46,23 @@ final class GifCellViewModelTests: XCTestCase {
         viewModel = nil
         
         wait(for: [expectation], timeout: 1.0)
+    }
+    
+    func testViewModelOutputErrorDelivered() {
+        let expectation = XCTestExpectation(description: "error delivered")
+        defer { wait(for: [expectation], timeout: 1.0) }
+        
+        let imageManager = MockFailureImageManager()
+        let viewModel = GifCellViewModel(gifURL: "test", imageManager: imageManager)
+        
+        let output = viewModel.transform(input).errorDelivered
+        
+        output.bind {
+            expectation.fulfill()
+        }.store(in: &bag)
+        
+        input.loadGif.fire()
+        
+        imageManager.verify(url: "test")
     }
 }

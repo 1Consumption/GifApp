@@ -65,6 +65,7 @@
 		A5E633C125B803CE004331D9 /* ExpireTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5E633C025B803CE004331D9 /* ExpireTime.swift */; };
 		A5E633C925B80487004331D9 /* ExpireTimeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5E633C825B80487004331D9 /* ExpireTimeTests.swift */; };
 		A5E633CD25B80594004331D9 /* ExpirableObjectTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5E633CC25B80594004331D9 /* ExpirableObjectTests.swift */; };
+		A5E633D125B80777004331D9 /* ExpirableObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5E633D025B80777004331D9 /* ExpirableObject.swift */; };
 		DA2BE1AE056B19407238202F /* Pods_GifApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8D4AACC13E978A4F7E664C7 /* Pods_GifApp.framework */; };
 /* End PBXBuildFile section */
 
@@ -144,6 +145,7 @@
 		A5E633C025B803CE004331D9 /* ExpireTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpireTime.swift; sourceTree = "<group>"; };
 		A5E633C825B80487004331D9 /* ExpireTimeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpireTimeTests.swift; sourceTree = "<group>"; };
 		A5E633CC25B80594004331D9 /* ExpirableObjectTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpirableObjectTests.swift; sourceTree = "<group>"; };
+		A5E633D025B80777004331D9 /* ExpirableObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpirableObject.swift; sourceTree = "<group>"; };
 		A8D4AACC13E978A4F7E664C7 /* Pods_GifApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GifApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF4F0147AB02ED0D8EEF3DBD /* Pods-GifApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GifApp.release.xcconfig"; path = "Target Support Files/Pods-GifApp/Pods-GifApp.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -474,6 +476,7 @@
 			isa = PBXGroup;
 			children = (
 				A5E633C025B803CE004331D9 /* ExpireTime.swift */,
+				A5E633D025B80777004331D9 /* ExpirableObject.swift */,
 			);
 			path = ImageManager;
 			sourceTree = "<group>";
@@ -678,6 +681,7 @@
 				A5DA222F25B71D7900B544D4 /* Observable.swift in Sources */,
 				A5DA213A25B6AF9700B544D4 /* DefaultRequester.swift in Sources */,
 				A5DA224725B736CB00B544D4 /* TrendingGifViewModel.swift in Sources */,
+				A5E633D125B80777004331D9 /* ExpirableObject.swift in Sources */,
 				A5DA21AF25B6E28100B544D4 /* EndPoint.swift in Sources */,
 				A5E633C125B803CE004331D9 /* ExpireTime.swift in Sources */,
 				A57D3A2D25B489F0005C3338 /* SceneDelegate.swift in Sources */,

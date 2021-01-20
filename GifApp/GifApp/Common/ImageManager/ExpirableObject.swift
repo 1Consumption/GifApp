@@ -6,3 +6,21 @@
 //
 
 import Foundation
+
+final class ExpirableObject<T> {
+    
+    private var expectedExpireTime: Date
+    let value: T
+    var isExpired: Bool {
+        return true
+    }
+    
+    init(value: T, expireTime: ExpireTime) {
+        self.value = value
+        expectedExpireTime = Date(timeIntervalSinceNow: expireTime.timeInterval)
+    }
+    
+    func resetExpireTime(_ expireTime: ExpireTime) {
+        
+    }
+}

@@ -13,6 +13,7 @@ final class GifCell: UICollectionViewCell {
 
     @IBOutlet weak var favoriteImageView: UIImageView!
     @IBOutlet weak var gifImageView: UIImageView!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     private var gifCellViewModel: GifCellViewModel?
     private let gifCellViewModelInput: GifCellViewModelInput = GifCellViewModelInput()
@@ -29,11 +30,18 @@ final class GifCell: UICollectionViewCell {
     func bind(with url: String) {
         gifCellViewModel = GifCellViewModel(gifURL: url)
         
-        let output = gifCellViewModel?.transform(gifCellViewModelInput).gifDelivered
+        let output = gifCellViewModel?.transform(gifCellViewModelInput)
         
-        output?.bind { image in
+        output?.gifDelivered.bind { image in
             DispatchQueue.main.async { [weak self] in
                 self?.gifImageView.image = image
+                self?.activityIndicator.stopAnimating()
+            }
+        }.store(in: &bag)
+        
+        output?.errorDelivered.bind {
+            DispatchQueue.main.async { [weak self] in
+                self?.activityIndicator.stopAnimating()
             }
         }.store(in: &bag)
         
@@ -49,5 +57,6 @@ final class GifCell: UICollectionViewCell {
         gifCellViewModel = nil
         bag.removeAll()
         gifImageView.image = nil
+        activityIndicator.startAnimating()
     }
 }

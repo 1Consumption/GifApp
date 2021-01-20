@@ -14,6 +14,7 @@
 		A571A0E425B84DBE00526A49 /* ImageRequesterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A571A0E325B84DBE00526A49 /* ImageRequesterTests.swift */; };
 		A571A0E825B84DFF00526A49 /* ImageRequester.swift in Sources */ = {isa = PBXBuildFile; fileRef = A571A0E725B84DFF00526A49 /* ImageRequester.swift */; };
 		A571A0EE25B84E8000526A49 /* ImageManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A571A0ED25B84E8000526A49 /* ImageManagerTests.swift */; };
+		A571A0F225B8692700526A49 /* ImageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A571A0F125B8692700526A49 /* ImageManager.swift */; };
 		A57D3A2B25B489F0005C3338 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A57D3A2A25B489F0005C3338 /* AppDelegate.swift */; };
 		A57D3A2D25B489F0005C3338 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A57D3A2C25B489F0005C3338 /* SceneDelegate.swift */; };
 		A57D3A2F25B489F0005C3338 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A57D3A2E25B489F0005C3338 /* SearchViewController.swift */; };
@@ -95,6 +96,7 @@
 		A571A0E325B84DBE00526A49 /* ImageRequesterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageRequesterTests.swift; sourceTree = "<group>"; };
 		A571A0E725B84DFF00526A49 /* ImageRequester.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageRequester.swift; sourceTree = "<group>"; };
 		A571A0ED25B84E8000526A49 /* ImageManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageManagerTests.swift; sourceTree = "<group>"; };
+		A571A0F125B8692700526A49 /* ImageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageManager.swift; sourceTree = "<group>"; };
 		A57D3A2725B489F0005C3338 /* GifApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GifApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A57D3A2A25B489F0005C3338 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A57D3A2C25B489F0005C3338 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -492,6 +494,7 @@
 				A5E633C025B803CE004331D9 /* ExpireTime.swift */,
 				A5E633D025B80777004331D9 /* ExpirableObject.swift */,
 				A5E633DA25B8111A004331D9 /* MemoryCacheStorage.swift */,
+				A571A0F125B8692700526A49 /* ImageManager.swift */,
 			);
 			path = ImageManager;
 			sourceTree = "<group>";
@@ -682,6 +685,7 @@
 				A57D3A2F25B489F0005C3338 /* SearchViewController.swift in Sources */,
 				A5DA216625B6BC5F00B544D4 /* NetworkManager.swift in Sources */,
 				A5E633A125B74B1E004331D9 /* GifCellViewModel.swift in Sources */,
+				A571A0F225B8692700526A49 /* ImageManager.swift in Sources */,
 				A5E633A525B75327004331D9 /* TrendingGifCollectionViewDataSource.swift in Sources */,
 				A57D3A2B25B489F0005C3338 /* AppDelegate.swift in Sources */,
 				A5DA213425B6AF5300B544D4 /* RequesterType.swift in Sources */,

@@ -28,7 +28,11 @@ final class MemoryCacheStorage<T> {
     }
     
     func remove(for key: String) {
+        lock.lock()
+        defer { lock.unlock() }
         
+        keys.remove(key)
+        cache.removeObject(forKey: key as NSString)
     }
     
     func object(for key: String) -> T? {

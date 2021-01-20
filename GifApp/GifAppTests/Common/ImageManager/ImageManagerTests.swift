@@ -100,7 +100,7 @@ final class ImageManagerTests: XCTestCase {
         
         let networkManager = MockSuccessNetworkManager(data: data)
         
-        let imageManager = ImageManager(networkManager: networkManager)
+        let imageManager = ImageManager(networkManager: networkManager, expireTime: .second(1))
         
         let _ = imageManager.retrieveImage(from: "test",
                                            failureHandler: { _ in XCTFail() },

@@ -16,6 +16,10 @@ final class ImageManager {
     init(networkManager: NetworkManagerType = NetworkManager(requester: ImageRequester()), expireTime: ExpireTime = .minute(1)) {
         self.networkManager = networkManager
         self.memoryStorage = MemoryCacheStorage<UIImage>(expireTime: expireTime)
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(cleanUpExpired),
+                                               name: UIApplication.didReceiveMemoryWarningNotification,
+                                               object: nil)
     }
     
     func retrieveImage(from url: String, failureHandler: @escaping (NetworkError) -> Void, imageHandler: @escaping (UIImage?) -> Void) {
@@ -45,5 +49,9 @@ final class ImageManager {
                                         break
                                     }
                                 })
+    }
+    
+    @objc private func cleanUpExpired() {
+        memoryStorage.removeExpireAll()
     }
 }

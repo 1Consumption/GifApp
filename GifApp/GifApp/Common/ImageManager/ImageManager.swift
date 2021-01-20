@@ -20,21 +20,30 @@ final class ImageManager {
     
     func retrieveImage(from url: String, failureHandler: @escaping (NetworkError) -> Void, imageHandler: @escaping (UIImage?) -> Void) {
         if memoryStorage.isCached(url) {
-            imageHandler(memoryStorage.object(for: url))
+            guard let image = memoryStorage.object(for: url) else {
+                loadImage(from: url, imageHandler: imageHandler)
+                return
+            }
+            
+            imageHandler(image)
         } else {
-            networkManager.loadData(with: URL(string: url),
-                                    method: .get,
-                                    headers: nil,
-                                    completionHandler: { [weak self] result in
-                                        switch result {
-                                        case .success(let data):
-                                            let gifImage = UIImage.gif(data: data)
-                                            imageHandler(gifImage)
-                                            self?.memoryStorage.insert(gifImage, for: url)
-                                        case .failure(_):
-                                            break
-                                        }
-                                    })
+            loadImage(from: url, imageHandler: imageHandler)
         }
+    }
+    
+    private func loadImage(from url: String, imageHandler: @escaping (UIImage?) -> Void) {
+        networkManager.loadData(with: URL(string: url),
+                                method: .get,
+                                headers: nil,
+                                completionHandler: { [weak self] result in
+                                    switch result {
+                                    case .success(let data):
+                                        let gifImage = UIImage.gif(data: data)
+                                        imageHandler(gifImage)
+                                        self?.memoryStorage.insert(gifImage, for: url)
+                                    case .failure(_):
+                                        break
+                                    }
+                                })
     }
 }

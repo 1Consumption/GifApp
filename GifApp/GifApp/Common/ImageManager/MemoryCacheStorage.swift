@@ -50,6 +50,13 @@ final class MemoryCacheStorage<T> {
     }
     
     func removeExpireAll() {
+        lock.lock()
+        defer { lock.unlock() }
         
+        keys.forEach { key in
+            guard cache.object(forKey: key as NSString)?.isExpired == true else { return }
+            cache.removeObject(forKey: key as NSString)
+            keys.remove(key)
+        }
     }
 }

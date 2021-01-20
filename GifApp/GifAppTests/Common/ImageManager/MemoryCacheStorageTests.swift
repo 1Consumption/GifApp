@@ -71,7 +71,7 @@ final class MemoryCacheStorageTests: XCTestCase {
         
         let _ = memoryCacheStorage.object(for: "key1")
         
-        sleep(2)
+        sleep(1)
         
         XCTAssertNotNil(memoryCacheStorage.object(for: "key1"))
         XCTAssertNil(memoryCacheStorage.object(for: "key2"))

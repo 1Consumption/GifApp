@@ -8,7 +8,11 @@
 import SwiftGifOrigin
 import UIKit
 
-final class ImageManager {
+protocol ImageManagerType {
+    func retrieveImage(from url: String, failureHandler: @escaping (NetworkError) -> Void, imageHandler: @escaping (UIImage?) -> Void) -> Cancellable?
+}
+
+final class ImageManager: ImageManagerType {
     
     static let shared: ImageManager = ImageManager()
     

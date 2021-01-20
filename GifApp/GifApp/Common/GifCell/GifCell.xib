@@ -17,7 +17,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="179" height="190"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bfd-2C-kKq">
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bfd-2C-kKq">
                         <rect key="frame" x="0.0" y="0.0" width="179" height="190"/>
                     </imageView>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="4fg-QC-fcI">
@@ -27,6 +27,9 @@
                             <constraint firstAttribute="width" constant="40" id="h2B-Os-9yr"/>
                         </constraints>
                     </imageView>
+                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="trv-nM-fet">
+                        <rect key="frame" x="71" y="76.5" width="37" height="37"/>
+                    </activityIndicatorView>
                 </subviews>
             </view>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
@@ -34,12 +37,15 @@
                 <constraint firstItem="bfd-2C-kKq" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="0sd-N1-eOG"/>
                 <constraint firstAttribute="bottom" secondItem="bfd-2C-kKq" secondAttribute="bottom" id="7Il-Dn-aoQ"/>
                 <constraint firstAttribute="trailing" secondItem="bfd-2C-kKq" secondAttribute="trailing" id="HkV-QT-iIl"/>
+                <constraint firstItem="trv-nM-fet" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="NMh-h3-LG0"/>
                 <constraint firstItem="bfd-2C-kKq" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="ZMJ-N5-0Cv"/>
+                <constraint firstItem="trv-nM-fet" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="eoE-68-XI5"/>
                 <constraint firstItem="4fg-QC-fcI" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="t4d-Vj-cey"/>
                 <constraint firstItem="4fg-QC-fcI" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="uBN-UF-cyJ"/>
             </constraints>
             <size key="customSize" width="179" height="190"/>
             <connections>
+                <outlet property="activityIndicator" destination="trv-nM-fet" id="pMs-x5-d97"/>
                 <outlet property="favoriteImageView" destination="4fg-QC-fcI" id="gsK-fF-iHZ"/>
                 <outlet property="gifImageView" destination="bfd-2C-kKq" id="sBH-rH-kXM"/>
             </connections>

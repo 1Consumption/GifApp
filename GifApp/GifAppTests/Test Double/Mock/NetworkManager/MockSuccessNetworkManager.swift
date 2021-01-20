@@ -16,6 +16,7 @@ final class MockSuccessNetworkManager: NetworkManagerType {
     private var url: URL?
     private var method: HTTPMethod?
     private var headers: [String: String]?
+    private var callCount: Int = 0
     
     init(data: Data) {
         self.data = data
@@ -26,14 +27,16 @@ final class MockSuccessNetworkManager: NetworkManagerType {
         self.url = url
         self.method = method
         self.headers = headers
+        callCount += 1
         
         completionHandler(.success(data))
         return nil
     }
     
-    func verify(url: URL?, method: HTTPMethod, headers: [String: String]?) {
+    func verify(url: URL?, method: HTTPMethod?, headers: [String: String]?, callCount: Int = 1) {
         XCTAssertEqual(self.url, url)
         XCTAssertEqual(self.method, method)
         XCTAssertEqual(self.headers, headers)
+        XCTAssertEqual(self.callCount, callCount)
     }
 }

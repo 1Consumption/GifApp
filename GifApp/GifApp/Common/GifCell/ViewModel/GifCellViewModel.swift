@@ -17,25 +17,29 @@ struct GifCellViewModelInput {
 struct GifCellViewModelOutput {
     
     let gifDelivered: Observable<UIImage?> = Observable<UIImage?>(value: nil)
+    let errorDelivered: Observable<Void> = Observable<Void>(value: ())
 }
 
 final class GifCellViewModel: ViewModelType {
     
     private var bag: CancellableBag = CancellableBag()
     private var gifURL: String
+    private var request: Cancellable?
+    private let imageManager: ImageManagerType
     
-    init(gifURL: String) {
+    init(gifURL: String, imageManager: ImageManagerType = ImageManager.shared) {
         self.gifURL = gifURL
+        self.imageManager = imageManager
     }
     
     func transform(_ input: GifCellViewModelInput) -> GifCellViewModelOutput {
         let output = GifCellViewModelOutput()
         
-        input.loadGif.bind {
-            DispatchQueue.global().async { [weak self] in
-                let data = try! Data(contentsOf: URL(string: self!.gifURL)!)
-                output.gifDelivered.value = UIImage.gif(data: data)
-            }
+        input.loadGif.bind { [weak self] in
+            guard let url = self?.gifURL else { return }
+            self?.request = self?.imageManager.retrieveImage(from: url,
+                                              failureHandler: { output.errorDelivered.fire() },
+                                              imageHandler: { output.gifDelivered.value = $0 })
         }.store(in: &bag)
         
         return output

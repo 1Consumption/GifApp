@@ -9,7 +9,7 @@ import SwiftGifOrigin
 import UIKit
 
 protocol ImageManagerType {
-    func retrieveImage(from url: String, failureHandler: @escaping (NetworkError) -> Void, imageHandler: @escaping (UIImage?) -> Void) -> Cancellable?
+    func retrieveImage(from url: String, failureHandler: @escaping () -> Void, imageHandler: @escaping (UIImage?) -> Void) -> Cancellable?
 }
 
 final class ImageManager: ImageManagerType {
@@ -29,7 +29,7 @@ final class ImageManager: ImageManagerType {
                                                object: nil)
     }
     
-    func retrieveImage(from url: String, failureHandler: @escaping (NetworkError) -> Void, imageHandler: @escaping (UIImage?) -> Void) -> Cancellable? {
+    func retrieveImage(from url: String, failureHandler: @escaping () -> Void, imageHandler: @escaping (UIImage?) -> Void) -> Cancellable? {
         guard memoryStorage.isCached(url) else {
             return loadImage(from: url, fairureHandler: failureHandler, imageHandler: imageHandler)
         }
@@ -43,7 +43,7 @@ final class ImageManager: ImageManagerType {
         return nil
     }
     
-    private func loadImage(from url: String, fairureHandler: @escaping (NetworkError) -> Void, imageHandler: @escaping (UIImage?) -> Void) -> Cancellable {
+    private func loadImage(from url: String, fairureHandler: @escaping () -> Void, imageHandler: @escaping (UIImage?) -> Void) -> Cancellable {
         let task = networkManager.loadData(with: URL(string: url),
                                            method: .get,
                                            headers: nil,
@@ -55,8 +55,8 @@ final class ImageManager: ImageManagerType {
                                                     imageHandler(gifImage)
                                                     self?.memoryStorage.insert(gifImage, for: url)
                                                 }
-                                            case .failure(let error):
-                                                fairureHandler(error)
+                                            case .failure(_):
+                                                fairureHandler()
                                             }
                                            })
         

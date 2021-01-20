@@ -17,6 +17,7 @@ struct GifCellViewModelInput {
 struct GifCellViewModelOutput {
     
     let gifDelivered: Observable<UIImage?> = Observable<UIImage?>(value: nil)
+    let errorDelivered: Observable<Void> = Observable<Void>(value: ())
 }
 
 final class GifCellViewModel: ViewModelType {
@@ -37,10 +38,8 @@ final class GifCellViewModel: ViewModelType {
         input.loadGif.bind { [weak self] in
             guard let url = self?.gifURL else { return }
             self?.request = self?.imageManager.retrieveImage(from: url,
-                                              failureHandler: { print($0) },
-                                              imageHandler: {
-                                                output.gifDelivered.value = $0
-                                              })
+                                              failureHandler: { output.errorDelivered.fire() },
+                                              imageHandler: { output.gifDelivered.value = $0 })
         }.store(in: &bag)
         
         return output

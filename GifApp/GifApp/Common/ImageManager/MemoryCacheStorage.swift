@@ -36,10 +36,16 @@ final class MemoryCacheStorage<T> {
     }
     
     func object(for key: String) -> T? {
-        return nil
+        lock.lock()
+        defer { lock.unlock() }
+        
+        return cache.object(forKey: key as NSString)?.value
     }
     
     func isCached(_ key: String) -> Bool {
+        lock.lock()
+        defer { lock.unlock() }
+        
         return keys.contains(key)
     }
     

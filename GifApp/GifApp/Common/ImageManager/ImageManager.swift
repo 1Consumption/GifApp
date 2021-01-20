@@ -25,17 +25,17 @@ final class ImageManager {
     func retrieveImage(from url: String, failureHandler: @escaping (NetworkError) -> Void, imageHandler: @escaping (UIImage?) -> Void) {
         if memoryStorage.isCached(url) {
             guard let image = memoryStorage.object(for: url) else {
-                loadImage(from: url, imageHandler: imageHandler)
+                loadImage(from: url, fairureHandler: failureHandler, imageHandler: imageHandler)
                 return
             }
             
             imageHandler(image)
         } else {
-            loadImage(from: url, imageHandler: imageHandler)
+            loadImage(from: url, fairureHandler: failureHandler, imageHandler: imageHandler)
         }
     }
     
-    private func loadImage(from url: String, imageHandler: @escaping (UIImage?) -> Void) {
+    private func loadImage(from url: String, fairureHandler: @escaping (NetworkError) -> Void, imageHandler: @escaping (UIImage?) -> Void) {
         networkManager.loadData(with: URL(string: url),
                                 method: .get,
                                 headers: nil,
@@ -45,8 +45,8 @@ final class ImageManager {
                                         let gifImage = UIImage.gif(data: data)
                                         imageHandler(gifImage)
                                         self?.memoryStorage.insert(gifImage, for: url)
-                                    case .failure(_):
-                                        break
+                                    case .failure(let error):
+                                        fairureHandler(error)
                                     }
                                 })
     }

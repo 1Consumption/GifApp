@@ -32,6 +32,7 @@ final class ImageManagerTests: XCTestCase {
     
     func testRetrieveImageFromCache() {
         let expectation = XCTestExpectation(description: "image from cache")
+        expectation.expectedFulfillmentCount = 2
         defer { wait(for: [expectation], timeout: 1.0) }
         
         let image = UIImage(named: "heart")

@@ -10,7 +10,7 @@ import UIKit
 final class MemoryCacheStorage<T> {
     
     private var keys: Set<String> = Set<String>()
-    private let cache: NSCache<NSString, ExpirableObject<T>> = NSCache<NSString, ExpirableObject<T>>()
+    private let cache: NSCache<NSString, ExpirableObject<T?>> = NSCache<NSString, ExpirableObject<T?>>()
     private let lock: NSRecursiveLock = NSRecursiveLock()
     private let expireTime: ExpireTime
     
@@ -19,7 +19,7 @@ final class MemoryCacheStorage<T> {
         self.expireTime = expireTime
     }
     
-    func insert(_ obejct: T, for key: String) {
+    func insert(_ obejct: T?, for key: String) {
         lock.lock()
         defer { lock.unlock() }
         

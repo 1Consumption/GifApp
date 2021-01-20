@@ -13,6 +13,7 @@
 		A51809D825B5757300E0B589 /* GifCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A51809D625B5757300E0B589 /* GifCell.xib */; };
 		A571A0E425B84DBE00526A49 /* ImageRequesterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A571A0E325B84DBE00526A49 /* ImageRequesterTests.swift */; };
 		A571A0E825B84DFF00526A49 /* ImageRequester.swift in Sources */ = {isa = PBXBuildFile; fileRef = A571A0E725B84DFF00526A49 /* ImageRequester.swift */; };
+		A571A0EE25B84E8000526A49 /* ImageManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A571A0ED25B84E8000526A49 /* ImageManagerTests.swift */; };
 		A57D3A2B25B489F0005C3338 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A57D3A2A25B489F0005C3338 /* AppDelegate.swift */; };
 		A57D3A2D25B489F0005C3338 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A57D3A2C25B489F0005C3338 /* SceneDelegate.swift */; };
 		A57D3A2F25B489F0005C3338 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A57D3A2E25B489F0005C3338 /* SearchViewController.swift */; };
@@ -93,6 +94,7 @@
 		A51809D625B5757300E0B589 /* GifCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GifCell.xib; sourceTree = "<group>"; };
 		A571A0E325B84DBE00526A49 /* ImageRequesterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageRequesterTests.swift; sourceTree = "<group>"; };
 		A571A0E725B84DFF00526A49 /* ImageRequester.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageRequester.swift; sourceTree = "<group>"; };
+		A571A0ED25B84E8000526A49 /* ImageManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageManagerTests.swift; sourceTree = "<group>"; };
 		A57D3A2725B489F0005C3338 /* GifApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GifApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A57D3A2A25B489F0005C3338 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A57D3A2C25B489F0005C3338 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -479,6 +481,7 @@
 				A5E633CC25B80594004331D9 /* ExpirableObjectTests.swift */,
 				A5E633C825B80487004331D9 /* ExpireTimeTests.swift */,
 				A5E633D625B80920004331D9 /* MemoryCacheStorageTests.swift */,
+				A571A0ED25B84E8000526A49 /* ImageManagerTests.swift */,
 			);
 			path = ImageManager;
 			sourceTree = "<group>";
@@ -709,6 +712,7 @@
 			files = (
 				A571A0E425B84DBE00526A49 /* ImageRequesterTests.swift in Sources */,
 				A5DA221E25B7149600B544D4 /* CancellableTests.swift in Sources */,
+				A571A0EE25B84E8000526A49 /* ImageManagerTests.swift in Sources */,
 				A5DA21CF25B6F50800B544D4 /* UseCaseError+Equatable.swift in Sources */,
 				A5DA223925B7349400B544D4 /* TrendingGifViewModelTests.swift in Sources */,
 				A5DA216E25B6BF5C00B544D4 /* HTTPMethodTests.swift in Sources */,

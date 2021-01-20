@@ -11,7 +11,7 @@ import XCTest
 final class MemoryCacheStorageTests: XCTestCase {
 
     func testInsert() {
-        let memoryCacheStorage = MemoryCacheStorage<Data>()
+        let memoryCacheStorage = MemoryCacheStorage<Data>(expireTime: .minute(1))
         
         memoryCacheStorage.insert(Data([1, 2, 3]), for: "key1")
         memoryCacheStorage.insert(Data([2, 3, 4]), for: "key2")
@@ -21,7 +21,7 @@ final class MemoryCacheStorageTests: XCTestCase {
     }
     
     func testRemove() {
-        let memoryCacheStorage = MemoryCacheStorage<Data>()
+        let memoryCacheStorage = MemoryCacheStorage<Data>(expireTime: .minute(1))
         
         memoryCacheStorage.insert(Data([1, 2, 3]), for: "key1")
         memoryCacheStorage.insert(Data([2, 3, 4]), for: "key2")
@@ -33,7 +33,7 @@ final class MemoryCacheStorageTests: XCTestCase {
     }
     
     func testObject() {
-        let memoryCacheStorage = MemoryCacheStorage<Data>()
+        let memoryCacheStorage = MemoryCacheStorage<Data>(expireTime: .minute(1))
         
         memoryCacheStorage.insert(Data([1, 2, 3]), for: "key1")
         

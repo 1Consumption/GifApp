@@ -14,7 +14,7 @@ final class MemoryCacheStorage<T> {
     private let lock: NSRecursiveLock = NSRecursiveLock()
     private let expireTime: ExpireTime
     
-    init(size: Int = 0, expireTime: ExpireTime = .minute(1)) {
+    init(size: Int = 0, expireTime: ExpireTime) {
         cache.totalCostLimit = size
         self.expireTime = expireTime
     }

@@ -81,7 +81,7 @@ final class SearchViewModelTests: XCTestCase {
     func testSearchFired() {
         let expectation = XCTestExpectation(description: " delivered")
         
-        let useCase = MockSuccessAutoCompleteUseCase()
+        let useCase = DummyAutoCompleteUseCase()
         let viewModel = SearchViewModel(useCase: useCase)
         
         let output = viewModel.transform(input).searchFired
@@ -92,8 +92,6 @@ final class SearchViewModelTests: XCTestCase {
         }.store(in: &bag)
         
         input.searchFire.value = "test"
-        
-        useCase.verify(keyword: "test")
         
         wait(for: [expectation], timeout: 1.0)
     }

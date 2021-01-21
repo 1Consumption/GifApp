@@ -11,7 +11,7 @@ struct SearchViewModelInput {
     
     let isEditing: Observable<String> = Observable<String>(value: "")
     let textFieldChanged: Debounce<String> = Debounce<String>(value: "", wait: 0.5)
-    let searchFire: Observable<String> = Observable<String>(value: "")
+    let searchFire: Observable<String?> = Observable<String?>(value: nil)
 }
 
 struct SearchViewModelOutput {
@@ -49,6 +49,11 @@ final class SearchViewModel: ViewModelType {
                                             output.autoCompleteDelivered.fire()
                                          })
         }.store(in: &bag)
+        
+        input.searchFire.bind {
+            output.searchFired.value = $0
+        }.store(in: &bag)
+        
         return output
     }
 }

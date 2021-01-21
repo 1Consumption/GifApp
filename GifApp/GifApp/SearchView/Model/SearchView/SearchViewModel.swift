@@ -41,7 +41,9 @@ final class SearchViewModel: ViewModelType {
         
         input.textFieldChanged.bind { [weak self] in
             self?.useCase.retrieveAutoComplete(keyword: $0,
-                                         failureHandler: { _ in },
+                                         failureHandler: {
+                                            output.errorDelivered.value = $0
+                                         },
                                          successHandler: { [weak self] response in
                                             self?.autoCompletes = response.data
                                             output.autoCompleteDelivered.fire()

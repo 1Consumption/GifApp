@@ -9,7 +9,7 @@
 import XCTest
 
 final class SearchViewModelTests: XCTestCase {
-
+    
     private let input: SearchViewModelInput = SearchViewModelInput()
     private var bag: CancellableBag = CancellableBag()
     
@@ -47,7 +47,7 @@ final class SearchViewModelTests: XCTestCase {
         let output = viewModel.transform(input).autoCompleteDelivered
         
         output.bind {
-            XCTAssertEqual($0, [IndexPath(row: 0, section: 0)])
+            useCase.verify(keyword: "test")
             expectation.fulfill()
         }.store(in: &bag)
         
@@ -56,9 +56,7 @@ final class SearchViewModelTests: XCTestCase {
         input.textFieldChanged.value = "tes"
         input.textFieldChanged.value = "test"
         
-        useCase.verify(keyword: "test")
-        
-        wait(for: [expectation], timeout: 1.0)
+        wait(for: [expectation], timeout: 2.0)
     }
     
     func testErrorDelivered() {

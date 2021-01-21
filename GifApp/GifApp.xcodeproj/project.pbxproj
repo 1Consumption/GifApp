@@ -24,6 +24,7 @@
 		A57D3A3225B489F0005C3338 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A57D3A3025B489F0005C3338 /* Main.storyboard */; };
 		A57D3A3425B489F2005C3338 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A57D3A3325B489F2005C3338 /* Assets.xcassets */; };
 		A57D3A3725B489F2005C3338 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A57D3A3525B489F2005C3338 /* LaunchScreen.storyboard */; };
+		A5947A2825B9F06500EBF9FD /* AutoComplete.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5947A2725B9F06500EBF9FD /* AutoComplete.swift */; };
 		A5A22FBE25B899740098D80F /* MockFailureImageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A22FBD25B899740098D80F /* MockFailureImageManager.swift */; };
 		A5D2902625B9C31000041ED8 /* PaddingTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D2902525B9C31000041ED8 /* PaddingTextField.swift */; };
 		A5D2902C25B9C55000041ED8 /* AutoCompleteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D2902B25B9C55000041ED8 /* AutoCompleteTableViewCell.swift */; };
@@ -114,6 +115,7 @@
 		A57D3A3325B489F2005C3338 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A57D3A3625B489F2005C3338 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A57D3A3825B489F2005C3338 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A5947A2725B9F06500EBF9FD /* AutoComplete.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoComplete.swift; sourceTree = "<group>"; };
 		A5A22FBD25B899740098D80F /* MockFailureImageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockFailureImageManager.swift; sourceTree = "<group>"; };
 		A5D2902525B9C31000041ED8 /* PaddingTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddingTextField.swift; sourceTree = "<group>"; };
 		A5D2902B25B9C55000041ED8 /* AutoCompleteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoCompleteTableViewCell.swift; sourceTree = "<group>"; };
@@ -255,6 +257,24 @@
 				A57D3A3825B489F2005C3338 /* Info.plist */,
 			);
 			path = GifApp;
+			sourceTree = "<group>";
+		};
+		A5947A2525B9F04400EBF9FD /* TrendingCollectionView */ = {
+			isa = PBXGroup;
+			children = (
+				A5DA224525B736BD00B544D4 /* ViewModel */,
+				A5E633A425B75327004331D9 /* TrendingGifCollectionViewDataSource.swift */,
+				A5DA21BD25B6EDA400B544D4 /* TrendingGifUseCase.swift */,
+			);
+			path = TrendingCollectionView;
+			sourceTree = "<group>";
+		};
+		A5947A2625B9F05700EBF9FD /* SearchView */ = {
+			isa = PBXGroup;
+			children = (
+				A5947A2725B9F06500EBF9FD /* AutoComplete.swift */,
+			);
+			path = SearchView;
 			sourceTree = "<group>";
 		};
 		A5D2902425B9C2F300041ED8 /* CustomView */ = {
@@ -456,9 +476,8 @@
 		A5E633A925B75A00004331D9 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				A5DA224525B736BD00B544D4 /* ViewModel */,
-				A5E633A425B75327004331D9 /* TrendingGifCollectionViewDataSource.swift */,
-				A5DA21BD25B6EDA400B544D4 /* TrendingGifUseCase.swift */,
+				A5947A2625B9F05700EBF9FD /* SearchView */,
+				A5947A2525B9F04400EBF9FD /* TrendingCollectionView */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -734,6 +753,7 @@
 				A5D2902625B9C31000041ED8 /* PaddingTextField.swift in Sources */,
 				A571A0E825B84DFF00526A49 /* ImageRequester.swift in Sources */,
 				A5D2902C25B9C55000041ED8 /* AutoCompleteTableViewCell.swift in Sources */,
+				A5947A2825B9F06500EBF9FD /* AutoComplete.swift in Sources */,
 				A5DA222F25B71D7900B544D4 /* Observable.swift in Sources */,
 				A5DA213A25B6AF9700B544D4 /* DefaultRequester.swift in Sources */,
 				A5DA224725B736CB00B544D4 /* TrendingGifViewModel.swift in Sources */,

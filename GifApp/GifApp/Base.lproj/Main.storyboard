@@ -55,21 +55,71 @@
                                     </button>
                                 </subviews>
                             </stackView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="2rP-0B-Edr">
+                                <rect key="frame" x="0.0" y="128" width="414" height="734"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="AutoCompleteTableViewCell" id="V1X-Ae-J4W" customClass="AutoCompleteTableViewCell" customModule="GifApp" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="40.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="V1X-Ae-J4W" id="xUo-S4-2j0">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="40.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="qWs-V7-6eH">
+                                                    <rect key="frame" x="10" y="10" width="394" height="20.5"/>
+                                                    <subviews>
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="magnifyingglass" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="0zW-2R-IPo">
+                                                            <rect key="frame" x="0.0" y="1" width="20.5" height="18.5"/>
+                                                            <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" secondItem="0zW-2R-IPo" secondAttribute="height" multiplier="1:1" id="qx4-VL-WTu"/>
+                                                            </constraints>
+                                                        </imageView>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="autoComplete" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cgv-FL-cIL">
+                                                            <rect key="frame" x="25.5" y="0.0" width="368.5" height="20.5"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                </stackView>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="qWs-V7-6eH" secondAttribute="bottom" constant="10" id="9W3-F4-Y27"/>
+                                                <constraint firstAttribute="trailing" secondItem="qWs-V7-6eH" secondAttribute="trailing" constant="10" id="Nvv-Bs-Qdn"/>
+                                                <constraint firstItem="qWs-V7-6eH" firstAttribute="leading" secondItem="xUo-S4-2j0" secondAttribute="leading" constant="10" id="W1m-AG-D6n"/>
+                                                <constraint firstItem="qWs-V7-6eH" firstAttribute="top" secondItem="xUo-S4-2j0" secondAttribute="top" constant="10" id="hyw-XT-ADu"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <connections>
+                                            <outlet property="wordLabel" destination="cgv-FL-cIL" id="kSD-hF-Ibp"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="rMO-bd-1Hh" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="0C0-7S-NdI"/>
+                            <constraint firstItem="2rP-0B-Edr" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="7h6-xb-gGn"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="2rP-0B-Edr" secondAttribute="bottom" id="Xcd-vc-MF3"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Cqc-tm-dOu" secondAttribute="trailing" id="e63-td-E8I"/>
                             <constraint firstItem="Cqc-tm-dOu" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="h5s-0O-u1N"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="rMO-bd-1Hh" secondAttribute="trailing" id="ikB-uU-x68"/>
+                            <constraint firstItem="2rP-0B-Edr" firstAttribute="top" secondItem="rMO-bd-1Hh" secondAttribute="bottom" id="pys-Gq-wKE"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Cqc-tm-dOu" secondAttribute="bottom" id="rQK-f4-m7R"/>
                             <constraint firstItem="Cqc-tm-dOu" firstAttribute="top" secondItem="rMO-bd-1Hh" secondAttribute="bottom" id="t6T-7f-q42"/>
                             <constraint firstItem="rMO-bd-1Hh" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="uks-bP-C3n"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="2rP-0B-Edr" secondAttribute="trailing" id="xNF-Jh-zuV"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Mtl-2T-4Y9"/>
                     <connections>
+                        <outlet property="autoCompleteTableView" destination="2rP-0B-Edr" id="xNY-db-TK2"/>
                         <outlet property="trendingGifCollectionView" destination="Cqc-tm-dOu" id="8XD-HG-fad"/>
                     </connections>
                 </viewController>

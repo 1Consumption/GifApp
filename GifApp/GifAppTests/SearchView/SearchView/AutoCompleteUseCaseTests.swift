@@ -19,14 +19,14 @@ final class AutoCompleteUseCaseTests: XCTestCase {
         let networkManager = MockSuccessNetworkManager(data: data)
         let useCase = AutoCompleteUseCase(networkManager: networkManager)
         
-        useCase.retrieveAutoComplete(failureHandler: { _ in
+        useCase.retrieveAutoComplete(keyword: "test", failureHandler: { _ in
             XCTFail()
         }, successHandler: {
             XCTAssertEqual(model, $0)
             expectation.fulfill()
         })
         
-        networkManager.verify(url: EndPoint(urlInfomation: .autoComplete).url,
+        networkManager.verify(url: EndPoint(urlInfomation: .autoComplete(keyword: "test")).url,
                               method: .get,
                               headers: nil)
     }
@@ -38,14 +38,14 @@ final class AutoCompleteUseCaseTests: XCTestCase {
         let networkManager = MockFailureNetworkManagerWithDecodeError()
         let useCase = AutoCompleteUseCase(networkManager: networkManager)
         
-        useCase.retrieveAutoComplete(failureHandler: { error in
+        useCase.retrieveAutoComplete(keyword: "test", failureHandler: { error in
             XCTAssertEqual(error, .decodeError)
             expectation.fulfill()
         }, successHandler: { _ in
             XCTFail()
         })
         
-        networkManager.verify(url: EndPoint(urlInfomation: .autoComplete).url,
+        networkManager.verify(url: EndPoint(urlInfomation: .autoComplete(keyword: "test")).url,
                               method: .get,
                               headers: nil)
     }
@@ -57,14 +57,14 @@ final class AutoCompleteUseCaseTests: XCTestCase {
         let networkManager = MockFailureNetworkManagerWithNetworkError()
         let useCase = AutoCompleteUseCase(networkManager: networkManager)
         
-        useCase.retrieveAutoComplete(failureHandler: { error in
+        useCase.retrieveAutoComplete(keyword: "test", failureHandler: { error in
             XCTAssertEqual(error, .networkError(with: .emptyData))
             expectation.fulfill()
         }, successHandler: { _ in
             XCTFail()
         })
         
-        networkManager.verify(url: EndPoint(urlInfomation: .autoComplete).url,
+        networkManager.verify(url: EndPoint(urlInfomation: .autoComplete(keyword: "test")).url,
                               method: .get,
                               headers: nil)
     }

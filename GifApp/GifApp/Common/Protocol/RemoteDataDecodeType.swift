@@ -13,11 +13,13 @@ protocol RemoteDataDecodeType {
     
     var networkManager: NetworkManagerType { get }
     
+    @discardableResult
     func retrieveModel(with url: URL?, method: HTTPMethod, headers: [String: String]?, failureHandler: @escaping (UseCaseError) -> Void, successHandler: @escaping (T) -> Void) -> URLSessionDataTask?
 }
 
 extension RemoteDataDecodeType {
     
+    @discardableResult
     func retrieveModel(with url: URL?, method: HTTPMethod, headers: [String: String]?, failureHandler: @escaping (UseCaseError) -> Void, successHandler: @escaping (T) -> Void) -> URLSessionDataTask? {
         let task = networkManager.loadData(with: url, method: method, headers: headers) { result in
             switch result {

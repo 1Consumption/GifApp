@@ -27,6 +27,7 @@
 		A5947A2825B9F06500EBF9FD /* AutoComplete.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5947A2725B9F06500EBF9FD /* AutoComplete.swift */; };
 		A5947A2E25B9F0F500EBF9FD /* AutoCompleteUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5947A2D25B9F0F500EBF9FD /* AutoCompleteUseCaseTests.swift */; };
 		A5947A3425B9F17F00EBF9FD /* AutoComplete+Equtable+Encodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5947A3325B9F17F00EBF9FD /* AutoComplete+Equtable+Encodable.swift */; };
+		A5947A3A25B9F24F00EBF9FD /* AutoCompleteUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5947A3925B9F24F00EBF9FD /* AutoCompleteUseCase.swift */; };
 		A5A22FBE25B899740098D80F /* MockFailureImageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A22FBD25B899740098D80F /* MockFailureImageManager.swift */; };
 		A5D2902625B9C31000041ED8 /* PaddingTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D2902525B9C31000041ED8 /* PaddingTextField.swift */; };
 		A5D2902C25B9C55000041ED8 /* AutoCompleteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D2902B25B9C55000041ED8 /* AutoCompleteTableViewCell.swift */; };
@@ -120,6 +121,7 @@
 		A5947A2725B9F06500EBF9FD /* AutoComplete.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoComplete.swift; sourceTree = "<group>"; };
 		A5947A2D25B9F0F500EBF9FD /* AutoCompleteUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoCompleteUseCaseTests.swift; sourceTree = "<group>"; };
 		A5947A3325B9F17F00EBF9FD /* AutoComplete+Equtable+Encodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AutoComplete+Equtable+Encodable.swift"; sourceTree = "<group>"; };
+		A5947A3925B9F24F00EBF9FD /* AutoCompleteUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoCompleteUseCase.swift; sourceTree = "<group>"; };
 		A5A22FBD25B899740098D80F /* MockFailureImageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockFailureImageManager.swift; sourceTree = "<group>"; };
 		A5D2902525B9C31000041ED8 /* PaddingTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddingTextField.swift; sourceTree = "<group>"; };
 		A5D2902B25B9C55000041ED8 /* AutoCompleteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoCompleteTableViewCell.swift; sourceTree = "<group>"; };
@@ -277,6 +279,7 @@
 			isa = PBXGroup;
 			children = (
 				A5947A2725B9F06500EBF9FD /* AutoComplete.swift */,
+				A5947A3925B9F24F00EBF9FD /* AutoCompleteUseCase.swift */,
 			);
 			path = SearchView;
 			sourceTree = "<group>";
@@ -762,6 +765,7 @@
 				A5E633A125B74B1E004331D9 /* GifCellViewModel.swift in Sources */,
 				A571A0F225B8692700526A49 /* ImageManager.swift in Sources */,
 				A5E633A525B75327004331D9 /* TrendingGifCollectionViewDataSource.swift in Sources */,
+				A5947A3A25B9F24F00EBF9FD /* AutoCompleteUseCase.swift in Sources */,
 				A57D3A2B25B489F0005C3338 /* AppDelegate.swift in Sources */,
 				A5DA213425B6AF5300B544D4 /* RequesterType.swift in Sources */,
 				A5DA21D325B6FBB700B544D4 /* GifInfoResponse.swift in Sources */,

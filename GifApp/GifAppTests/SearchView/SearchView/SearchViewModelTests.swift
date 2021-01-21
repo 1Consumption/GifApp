@@ -15,18 +15,25 @@ final class SearchViewModelTests: XCTestCase {
     
     func testEditingStateChanged() {
         let expectation = XCTestExpectation(description: "editing state changed")
+        expectation.expectedFulfillmentCount = 2
         
         let useCase = DummyAutoCompleteUseCase()
         let viewModel = SearchViewModel(useCase: useCase)
         
-        let output = viewModel.transform(input).editingStateChanged
+        let output = viewModel.transform(input).searchTextFieldIsEmpty
+        
+        var value = ""
         
         output.bind {
-            XCTAssertTrue($0)
+            XCTAssertEqual($0, value.isEmpty)
             expectation.fulfill()
         }.store(in: &bag)
         
-        input.isEditing.value = true
+        value = "1"
+        input.isEditing.value = value
+        
+        value = ""
+        input.isEditing.value = value
         
         wait(for: [expectation], timeout: 1.0)
     }

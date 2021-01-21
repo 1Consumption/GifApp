@@ -8,6 +8,7 @@
 import Foundation
 
 protocol AutoCompleteUseCaseType {
+    
     func retrieveAutoComplete(keyword: String, failureHandler: @escaping (UseCaseError) -> Void, successHandler: @escaping (AutoCompleteResponse) -> Void)
 }
 

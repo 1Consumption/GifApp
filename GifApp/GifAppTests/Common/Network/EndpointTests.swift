@@ -12,5 +12,6 @@ final class EndpointTests: XCTestCase {
     
     func testURL() {
         XCTAssertEqual(EndPoint(urlInfomation: .trending).url?.absoluteString, "https://api.giphy.com/v1/gifs/trending?api_key=\(Secret.APIKey)")
+        XCTAssertEqual(EndPoint(urlInfomation: .autoComplete(keyword: "test")).url?.absoluteString, "https://api.giphy.com/v1/gifs/search/tags?api_key=CQj1AH9PiBcygeVLjkzbR1qvzrnm9GYH&q=test")
     }
 }

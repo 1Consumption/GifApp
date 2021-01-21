@@ -18,7 +18,7 @@ struct EndPoint {
         components.scheme = scheme
         components.host = host
         components.path = "/v1/gifs" + urlInfomation.path
-        components.queryItems = [URLQueryItem(name: "api_key", value: Secret.APIKey)]
+        components.queryItems = urlInfomation.queryStinrg
         
         return components.url
     }
@@ -29,11 +29,25 @@ struct EndPoint {
     
     enum URLInfomation {
         case trending
+        case autoComplete(keyword: String)
         
         var path: String {
             switch self {
             case .trending:
                 return "/trending"
+            case .autoComplete(_):
+                return "/search/tags"
+            }
+        }
+        
+        var queryStinrg: [URLQueryItem] {
+            var result = [URLQueryItem(name: "api_key", value: Secret.APIKey)]
+            switch self {
+            case .trending:
+                return result
+            case .autoComplete(let keyword):
+                result.append(URLQueryItem(name: "q", value: keyword))
+                return result
             }
         }
     }

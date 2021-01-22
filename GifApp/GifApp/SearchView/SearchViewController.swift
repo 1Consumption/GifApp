@@ -16,6 +16,7 @@ final class SearchViewController: UIViewController {
     private let trendingGifCollectionViewDataSource: TrendingGifCollectionViewDataSource = TrendingGifCollectionViewDataSource()
     private let trendingGifViewModel: TrendingGifViewModel = TrendingGifViewModel()
     private let trendingGifViewModelIntput: TrendingGifViewModelInput = TrendingGifViewModelInput()
+    private let autoCompleteTableViewDataSource: AutoCompleteTableViewDataSource = AutoCompleteTableViewDataSource()
     private let searchViewModel: SearchViewModel = SearchViewModel()
     private let searchViewModelInput: SearchViewModelInput = SearchViewModelInput()
     private var bag: CancellableBag = CancellableBag()
@@ -62,7 +63,8 @@ final class SearchViewController: UIViewController {
     }
     
     private func setUpAutoCompleteTableView() {
-        autoCompleteTableView.dataSource = self
+        autoCompleteTableViewDataSource.viewModel = searchViewModel
+        autoCompleteTableView.dataSource = autoCompleteTableViewDataSource
         bindWithSearchViewModel()
     }
     
@@ -120,21 +122,5 @@ extension SearchViewController: PinterestLayoutDelegate {
         else { return .zero }
         
         return CGSize(width: width, height: height)
-    }
-}
-
-extension SearchViewController: UITableViewDataSource {
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return searchViewModel.autoCompletes.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: AutoCompleteTableViewCell.identifier) as? AutoCompleteTableViewCell else { return UITableViewCell() }
-        
-        cell.wordLabel.text = searchViewModel.autoCompletes[indexPath.row].name
-        cell.selectionStyle = .none
-        
-        return cell
     }
 }

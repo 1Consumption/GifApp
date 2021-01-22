@@ -249,6 +249,9 @@
                             <constraint firstItem="QVC-Ak-CbO" firstAttribute="leading" secondItem="1Hu-17-Tsa" secondAttribute="leading" id="wuq-TZ-rbb"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="searchResultCollectionView" destination="1wV-ha-Umv" id="Wwn-XE-90I"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ymb-yA-X7B" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

@@ -11,7 +11,7 @@ import XCTest
 final class AutoCompleteUseCaseTests: XCTestCase {
 
     func testRetrieveAutoCompleteSuccess() {
-        let expectation = XCTestExpectation(description: "retrieve gifInfo success")
+        let expectation = XCTestExpectation(description: "retrieve autoComplete success")
         defer { wait(for: [expectation], timeout: 1.0) }
         
         let model = AutoCompleteResponse(data: [AutoComplete(name: "test")])

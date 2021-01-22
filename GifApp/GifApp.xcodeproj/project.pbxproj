@@ -35,6 +35,7 @@
 		A5947A5225BA016400EBF9FD /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5947A5125BA016400EBF9FD /* SearchViewModel.swift */; };
 		A5947A5625BA89F900EBF9FD /* AutoCompleteTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5947A5525BA89F900EBF9FD /* AutoCompleteTableViewDataSource.swift */; };
 		A5947A5B25BA957300EBF9FD /* SearchResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5947A5A25BA957300EBF9FD /* SearchResultViewController.swift */; };
+		A5947A6625BAAFBD00EBF9FD /* SearchResultUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5947A6525BAAFBD00EBF9FD /* SearchResultUseCaseTests.swift */; };
 		A5A22FBE25B899740098D80F /* MockFailureImageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A22FBD25B899740098D80F /* MockFailureImageManager.swift */; };
 		A5D2902625B9C31000041ED8 /* PaddingTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D2902525B9C31000041ED8 /* PaddingTextField.swift */; };
 		A5D2902C25B9C55000041ED8 /* AutoCompleteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D2902B25B9C55000041ED8 /* AutoCompleteTableViewCell.swift */; };
@@ -136,6 +137,7 @@
 		A5947A5125BA016400EBF9FD /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 		A5947A5525BA89F900EBF9FD /* AutoCompleteTableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoCompleteTableViewDataSource.swift; sourceTree = "<group>"; };
 		A5947A5A25BA957300EBF9FD /* SearchResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultViewController.swift; sourceTree = "<group>"; };
+		A5947A6525BAAFBD00EBF9FD /* SearchResultUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultUseCaseTests.swift; sourceTree = "<group>"; };
 		A5A22FBD25B899740098D80F /* MockFailureImageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockFailureImageManager.swift; sourceTree = "<group>"; };
 		A5D2902525B9C31000041ED8 /* PaddingTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddingTextField.swift; sourceTree = "<group>"; };
 		A5D2902B25B9C55000041ED8 /* AutoCompleteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoCompleteTableViewCell.swift; sourceTree = "<group>"; };
@@ -345,6 +347,14 @@
 			path = SearchResultView;
 			sourceTree = "<group>";
 		};
+		A5947A6425BAAF9500EBF9FD /* SearchResultView */ = {
+			isa = PBXGroup;
+			children = (
+				A5947A6525BAAFBD00EBF9FD /* SearchResultUseCaseTests.swift */,
+			);
+			path = SearchResultView;
+			sourceTree = "<group>";
+		};
 		A5D2902425B9C2F300041ED8 /* CustomView */ = {
 			isa = PBXGroup;
 			children = (
@@ -383,6 +393,7 @@
 			children = (
 				A5DA217D25B6CC9900B544D4 /* Extension */,
 				A5E633AD25B75ADA004331D9 /* Common */,
+				A5947A6425BAAF9500EBF9FD /* SearchResultView */,
 				A5E633AE25B75AE1004331D9 /* SearchView */,
 				A5DA215725B6B96E00B544D4 /* Test Double */,
 				A5DA211125B6AB4300B544D4 /* Info.plist */,
@@ -880,6 +891,7 @@
 				A5947A4E25B9FABF00EBF9FD /* DummyAutoCompleteUseCase.swift in Sources */,
 				A571A0F625B8899D00526A49 /* MockSuccessImageManager.swift in Sources */,
 				A5E633C925B80487004331D9 /* ExpireTimeTests.swift in Sources */,
+				A5947A6625BAAFBD00EBF9FD /* SearchResultUseCaseTests.swift in Sources */,
 				A5DA216025B6BA3500B544D4 /* MockSuccessRequester.swift in Sources */,
 				A5DA21B725B6E7A800B544D4 /* TrendingGifUseCaseTests.swift in Sources */,
 				A5DA21A725B6D81200B544D4 /* EndpointTests.swift in Sources */,

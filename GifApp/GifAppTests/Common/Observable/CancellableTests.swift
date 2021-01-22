@@ -26,7 +26,6 @@ final class CancellableTests: XCTestCase {
     func testDeinit() {
         let expectation = XCTestExpectation(description: "deinit")
         defer { wait(for: [expectation], timeout: 1.0) }
-        
         var cancellable: Cancellable? = Cancellable {
             expectation.fulfill()
         }
@@ -39,7 +38,6 @@ final class CancellableTests: XCTestCase {
     func testStore() {
         let expectation = XCTestExpectation(description: "store deinit")
         defer { wait(for: [expectation], timeout: 1.0) }
-        
         var cancellable: Cancellable? = Cancellable {
             expectation.fulfill()
         }

@@ -9,6 +9,7 @@
 import XCTest
 
 final class HTTPMethodTests: XCTestCase {
+    
     func testHTTPMethods() {
         XCTAssertEqual(HTTPMethod.get.rawValue, "GET")
     }

@@ -26,13 +26,12 @@ final class TrendingGifUseCaseTests: XCTestCase {
         useCase.retrieveGifInfo(failureHandler: { _ in
             XCTFail()
         }, successHandler: {
+            networkManager.verify(url: EndPoint(urlInfomation: .trending).url,
+                                  method: .get,
+                                  headers: nil)
             XCTAssertEqual(model, $0)
             expectation.fulfill()
         })
-        
-        networkManager.verify(url: EndPoint(urlInfomation: .trending).url,
-                              method: .get,
-                              headers: nil)
     }
     
     func testRetrieveGifInfoFailureWithDecodeError() {
@@ -43,15 +42,14 @@ final class TrendingGifUseCaseTests: XCTestCase {
         let useCase = TrendingGifUseCase(networkManager: networkManager)
         
         useCase.retrieveGifInfo(failureHandler: { error in
+            networkManager.verify(url: EndPoint(urlInfomation: .trending).url,
+                                  method: .get,
+                                  headers: nil)
             XCTAssertEqual(error, .decodeError)
             expectation.fulfill()
         }, successHandler: { _ in
             XCTFail()
         })
-        
-        networkManager.verify(url: EndPoint(urlInfomation: .trending).url,
-                              method: .get,
-                              headers: nil)
     }
     
     func testRetrieveGifInfoFailureWithNetworkError() {
@@ -62,14 +60,13 @@ final class TrendingGifUseCaseTests: XCTestCase {
         let useCase = TrendingGifUseCase(networkManager: networkManager)
         
         useCase.retrieveGifInfo(failureHandler: { error in
+            networkManager.verify(url: EndPoint(urlInfomation: .trending).url,
+                                  method: .get,
+                                  headers: nil)
             XCTAssertEqual(error, .networkError(with: .emptyData))
             expectation.fulfill()
         }, successHandler: { _ in
             XCTFail()
         })
-        
-        networkManager.verify(url: EndPoint(urlInfomation: .trending).url,
-                              method: .get,
-                              headers: nil)
     }
 }

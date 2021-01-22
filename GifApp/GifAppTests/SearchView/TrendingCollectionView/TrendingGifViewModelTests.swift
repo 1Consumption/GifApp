@@ -12,12 +12,14 @@ final class TrendingGifViewModelTests: XCTestCase {
     
     private let input: TrendingGifViewModelInput = TrendingGifViewModelInput()
     private var bag: CancellableBag = CancellableBag()
+    private var viewModel: TrendingGifViewModel!
     
     func testViewModelOutputGifInfoDelivered() {
         let expectation = XCTestExpectation(description: "gifInfo delivered")
         defer { wait(for: [expectation], timeout: 1.0) }
+        
         let useCase = MockSuccessTrendingUseCase()
-        let viewModel = TrendingGifViewModel(useCase: useCase)
+        viewModel = TrendingGifViewModel(useCase: useCase)
         
         let output = viewModel.transform(input).gifInfoDelivered
         
@@ -31,8 +33,9 @@ final class TrendingGifViewModelTests: XCTestCase {
     func testViewModelOutputErrorDelivered() {
         let expectation = XCTestExpectation(description: "error delivered")
         defer { wait(for: [expectation], timeout: 1.0) }
+        
         let useCase = MockFailureTrendingUseCase()
-        let viewModel = TrendingGifViewModel(useCase: useCase)
+        viewModel = TrendingGifViewModel(useCase: useCase)
         
         let output = viewModel.transform(input).errorDelivered
         
@@ -46,14 +49,15 @@ final class TrendingGifViewModelTests: XCTestCase {
     func testGifInfoOfIndex() {
         let expectation = XCTestExpectation(description: "gifInfo of Index")
         defer { wait(for: [expectation], timeout: 1.0) }
+        
         let useCase = MockSuccessTrendingUseCase()
-        let viewModel = TrendingGifViewModel(useCase: useCase)
+        viewModel = TrendingGifViewModel(useCase: useCase)
         
         let output = viewModel.transform(input).gifInfoDelivered
         
         output.bind { _ in
-            XCTAssertNotNil(viewModel.gifInfo(of: 0))
-            XCTAssertNil(viewModel.gifInfo(of: 1))
+            XCTAssertNotNil(self.viewModel.gifInfo(of: 0))
+            XCTAssertNil(self.viewModel.gifInfo(of: 1))
             expectation.fulfill()
         }.store(in: &bag)
         

@@ -8,7 +8,7 @@
 @testable import GifApp
 import Foundation
 
-struct DummyAutoCompleteUseCase: AutoCompleteUseCaseType {
+final class DummyAutoCompleteUseCase: AutoCompleteUseCaseType {
     
     func retrieveAutoComplete(keyword: String, failureHandler: @escaping (UseCaseError) -> Void, successHandler: @escaping (AutoCompleteResponse) -> Void) {
     }

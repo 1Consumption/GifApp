@@ -16,7 +16,7 @@ final class SearchViewController: UIViewController {
         searchViewModelInput.searchFire.value = searchTextField.text
     }
     
-    private let trendingGifCollectionViewDataSource: TrendingGifCollectionViewDataSource = TrendingGifCollectionViewDataSource()
+    private let trendingGifCollectionViewDataSource: GifCollectionViewDataSource = GifCollectionViewDataSource()
     private let trendingGifViewModel: TrendingGifViewModel = TrendingGifViewModel()
     private let trendingGifViewModelIntput: TrendingGifViewModelInput = TrendingGifViewModelInput()
     private let autoCompleteTableViewDataSource: AutoCompleteTableViewDataSource = AutoCompleteTableViewDataSource()
@@ -28,8 +28,7 @@ final class SearchViewController: UIViewController {
         super.viewDidLoad()
         setUpNavigationBar()
         setUpTrandingCollectionView()
-        setUpAutoCompleteTableView()
-        searchTextField.addTarget(self, action: #selector(textFieldEditChanged(_:)), for: .editingChanged)
+        setUpSearchView()
         trendingGifViewModelIntput.loadGifInfo.fire()
     }
     
@@ -66,10 +65,12 @@ final class SearchViewController: UIViewController {
         }.store(in: &bag)
     }
     
-    private func setUpAutoCompleteTableView() {
+    private func setUpSearchView() {
         autoCompleteTableViewDataSource.viewModel = searchViewModel
         autoCompleteTableView.dataSource = autoCompleteTableViewDataSource
         autoCompleteTableView.delegate = self
+        searchTextField.addTarget(self, action: #selector(textFieldEditChanged(_:)), for: .editingChanged)
+        searchTextField.delegate = self
         bindWithSearchViewModel()
     }
     
@@ -121,7 +122,7 @@ extension SearchViewController: PinterestLayoutDelegate {
     }
     
     func collectionView(_ collectionView: UICollectionView, heightForPhotoAtIndexPath indexPath: IndexPath) -> CGSize {
-        guard let dataSource = collectionView.dataSource as? TrendingGifCollectionViewDataSource else { return .zero }
+        guard let dataSource = collectionView.dataSource as? GifCollectionViewDataSource else { return .zero }
         guard let strWidth = dataSource.gifInfo(of: indexPath.item)?.images.original.width,
               let strHeight = dataSource.gifInfo(of: indexPath.item)?.images.original.height,
               let width = Double(strWidth),
@@ -137,5 +138,13 @@ extension SearchViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let dataSouce = tableView.dataSource as? AutoCompleteTableViewDataSource else { return }
         searchViewModelInput.searchFire.value = dataSouce.keyword(of: indexPath.item)
+    }
+}
+
+extension SearchViewController: UITextFieldDelegate {
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        searchViewModelInput.searchFire.value = textField.text
+        return true
     }
 }

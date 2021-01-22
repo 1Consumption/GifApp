@@ -12,7 +12,7 @@ protocol AutoCompleteUseCaseType {
     func retrieveAutoComplete(keyword: String, failureHandler: @escaping (UseCaseError) -> Void, successHandler: @escaping (AutoCompleteResponse) -> Void)
 }
 
-struct AutoCompleteUseCase: RemoteDataDecodeType, AutoCompleteUseCaseType {
+final class AutoCompleteUseCase: RemoteDataDecodeType, AutoCompleteUseCaseType {
 
     typealias T = AutoCompleteResponse
     

@@ -34,7 +34,9 @@ final class SearchResultViewModel: ViewModelType {
         input.nextPageRequest.bind { [weak self] in
             guard let keyword = $0 else { return }
             self?.useCase.retrieveGifInfo(keyword: keyword,
-                                          failureHandler: { _ in },
+                                          failureHandler: {
+                                            output.errorDelivered.value = $0
+                                          },
                                           successHandler: { [weak self] response in
                                             guard let count = self?.searchResults.count else { return }
                                             

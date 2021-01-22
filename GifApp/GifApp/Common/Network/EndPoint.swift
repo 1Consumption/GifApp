@@ -30,6 +30,7 @@ struct EndPoint {
     enum URLInfomation {
         case trending
         case autoComplete(keyword: String)
+        case search(keyword: String, offset: Int)
         
         var path: String {
             switch self {
@@ -37,6 +38,8 @@ struct EndPoint {
                 return "/trending"
             case .autoComplete(_):
                 return "/search/tags"
+            case .search(_, _):
+                return "/search"
             }
         }
         
@@ -47,6 +50,10 @@ struct EndPoint {
                 return result
             case .autoComplete(let keyword):
                 result.append(URLQueryItem(name: "q", value: keyword))
+                return result
+            case .search(let keyword, let offset):
+                result.append(URLQueryItem(name: "q", value: keyword))
+                result.append(URLQueryItem(name: "offset", value: "\(offset)"))
                 return result
             }
         }

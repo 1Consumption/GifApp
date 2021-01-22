@@ -55,7 +55,7 @@
                                     </button>
                                 </subviews>
                             </stackView>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="2rP-0B-Edr">
+                            <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="2rP-0B-Edr">
                                 <rect key="frame" x="0.0" y="128" width="414" height="734"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
@@ -120,6 +120,7 @@
                     <navigationItem key="navigationItem" id="Mtl-2T-4Y9"/>
                     <connections>
                         <outlet property="autoCompleteTableView" destination="2rP-0B-Edr" id="xNY-db-TK2"/>
+                        <outlet property="searchTextField" destination="1qU-ja-LSC" id="itP-td-7cs"/>
                         <outlet property="trendingGifCollectionView" destination="Cqc-tm-dOu" id="8XD-HG-fad"/>
                     </connections>
                 </viewController>
@@ -148,7 +149,7 @@
     </scenes>
     <designables>
         <designable name="1qU-ja-LSC">
-            <size key="intrinsicContentSize" width="89.5" height="22"/>
+            <size key="intrinsicContentSize" width="79.5" height="22"/>
         </designable>
     </designables>
     <resources>

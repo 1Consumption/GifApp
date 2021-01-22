@@ -9,7 +9,7 @@ import Foundation
 
 struct SearchViewModelInput {
     
-    let isEditing: Observable<String> = Observable<String>(value: "")
+    let isEditing: Observable<String?> = Observable<String?>(value: nil)
     let textFieldChanged: Debounce<String> = Debounce<String>(value: "", wait: 0.5)
     let searchFire: Observable<String?> = Observable<String?>(value: nil)
 }
@@ -28,7 +28,7 @@ final class SearchViewModel: ViewModelType {
     private var bag: CancellableBag = CancellableBag()
     private(set) var autoCompletes: [AutoComplete] = []
     
-    init(useCase: AutoCompleteUseCaseType) {
+    init(useCase: AutoCompleteUseCaseType = AutoCompleteUseCase()) {
         self.useCase = useCase
     }
  
@@ -36,7 +36,8 @@ final class SearchViewModel: ViewModelType {
         let output = SearchViewModelOutput()
         
         input.isEditing.bind {
-            output.searchTextFieldIsEmpty.value = $0.isEmpty
+            guard let text = $0 else { return }
+            output.searchTextFieldIsEmpty.value = text.isEmpty
         }.store(in: &bag)
         
         input.textFieldChanged.bind { [weak self] in

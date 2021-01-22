@@ -11,10 +11,13 @@ final class SearchViewController: UIViewController {
         
     @IBOutlet weak var trendingGifCollectionView: UICollectionView!
     @IBOutlet weak var autoCompleteTableView: UITableView!
+    @IBOutlet weak var searchTextField: PaddingTextField!
     
     private let trendingGifCollectionViewDataSource: TrendingGifCollectionViewDataSource = TrendingGifCollectionViewDataSource()
     private let trendingGifViewModel: TrendingGifViewModel = TrendingGifViewModel()
     private let trendingGifViewModelIntput: TrendingGifViewModelInput = TrendingGifViewModelInput()
+    private let searchViewModel: SearchViewModel = SearchViewModel()
+    private let searchViewModelInput: SearchViewModelInput = SearchViewModelInput()
     private var bag: CancellableBag = CancellableBag()
     
     override func viewDidLoad() {
@@ -22,6 +25,7 @@ final class SearchViewController: UIViewController {
         setUpNavigationBar()
         setUpTrandingCollectionView()
         setUpAutoCompleteTableView()
+        searchTextField.addTarget(self, action: #selector(textFieldEditChanged(_:)), for: .editingChanged)
         trendingGifViewModelIntput.loadGifInfo.fire()
     }
     
@@ -59,6 +63,21 @@ final class SearchViewController: UIViewController {
     
     private func setUpAutoCompleteTableView() {
         autoCompleteTableView.dataSource = self
+        bindWithSearchViewModel()
+    }
+    
+    private func bindWithSearchViewModel() {
+        let output = searchViewModel.transform(searchViewModelInput)
+        
+        output.searchTextFieldIsEmpty.bind { searchTextFieldIsEmpty in
+            DispatchQueue.main.async { [weak self] in
+                self?.autoCompleteTableView.isHidden = searchTextFieldIsEmpty
+            }
+        }.store(in: &bag)
+    }
+    
+    @objc private func textFieldEditChanged(_ textField: UITextField) {
+        searchViewModelInput.isEditing.value = textField.text
     }
 }
 

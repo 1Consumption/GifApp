@@ -18,7 +18,7 @@ struct AutoCompleteUseCase: RemoteDataDecodeType, AutoCompleteUseCaseType {
     
     var networkManager: NetworkManagerType
     
-    init(networkManager: NetworkManagerType) {
+    init(networkManager: NetworkManagerType = NetworkManager()) {
         self.networkManager = networkManager
     }
     

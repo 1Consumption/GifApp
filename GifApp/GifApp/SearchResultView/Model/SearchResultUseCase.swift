@@ -12,7 +12,7 @@ protocol SearchResultUseCaseType {
     func retrieveGifInfo(keyword: String, failureHandler: @escaping (UseCaseError) -> Void, successHandler: @escaping (GifInfoResponse) -> Void)
 }
 
-final class SearchResultUseCase: RemoteDataDecodeType {
+final class SearchResultUseCase: RemoteDataDecodeType, SearchResultUseCaseType {
     
     typealias T = GifInfoResponse
     

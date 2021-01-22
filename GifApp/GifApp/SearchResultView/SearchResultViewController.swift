@@ -70,6 +70,7 @@ final class SearchResultViewController: UIViewController {
         autoCompleteTableView.dataSource = autoCompleteTableViewDataSource
         autoCompleteTableView.delegate = self
         searchTextField.addTarget(self, action: #selector(textFieldEditChanged(_:)), for: .editingChanged)
+        searchTextField.delegate = self
         bindWithSearchViewModel()
     }
     
@@ -149,3 +150,10 @@ extension SearchResultViewController: UITableViewDelegate {
     }
 }
 
+extension SearchResultViewController: UITextFieldDelegate {
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        searchViewModelInput.searchFire.value = textField.text
+        return true
+    }
+}

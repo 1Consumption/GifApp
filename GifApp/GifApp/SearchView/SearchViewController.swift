@@ -29,7 +29,6 @@ final class SearchViewController: UIViewController {
         setUpNavigationBar()
         setUpTrandingCollectionView()
         setUpSearchView()
-        searchTextField.addTarget(self, action: #selector(textFieldEditChanged(_:)), for: .editingChanged)
         trendingGifViewModelIntput.loadGifInfo.fire()
     }
     
@@ -70,6 +69,8 @@ final class SearchViewController: UIViewController {
         autoCompleteTableViewDataSource.viewModel = searchViewModel
         autoCompleteTableView.dataSource = autoCompleteTableViewDataSource
         autoCompleteTableView.delegate = self
+        searchTextField.addTarget(self, action: #selector(textFieldEditChanged(_:)), for: .editingChanged)
+        searchTextField.delegate = self
         bindWithSearchViewModel()
     }
     
@@ -137,5 +138,13 @@ extension SearchViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let dataSouce = tableView.dataSource as? AutoCompleteTableViewDataSource else { return }
         searchViewModelInput.searchFire.value = dataSouce.keyword(of: indexPath.item)
+    }
+}
+
+extension SearchViewController: UITextFieldDelegate {
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        searchViewModelInput.searchFire.value = textField.text
+        return true
     }
 }

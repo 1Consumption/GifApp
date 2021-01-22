@@ -10,20 +10,31 @@ import UIKit
 final class SearchViewController: UIViewController {
         
     @IBOutlet weak var trendingGifCollectionView: UICollectionView!
+    @IBOutlet weak var autoCompleteTableView: UITableView!
+    @IBOutlet weak var searchTextField: PaddingTextField!
+    @IBAction func searchButtonTouched(_ sender: Any) {
+        searchViewModelInput.searchFire.value = searchTextField.text
+    }
     
     private let trendingGifCollectionViewDataSource: TrendingGifCollectionViewDataSource = TrendingGifCollectionViewDataSource()
     private let trendingGifViewModel: TrendingGifViewModel = TrendingGifViewModel()
     private let trendingGifViewModelIntput: TrendingGifViewModelInput = TrendingGifViewModelInput()
+    private let autoCompleteTableViewDataSource: AutoCompleteTableViewDataSource = AutoCompleteTableViewDataSource()
+    private let searchViewModel: SearchViewModel = SearchViewModel()
+    private let searchViewModelInput: SearchViewModelInput = SearchViewModelInput()
     private var bag: CancellableBag = CancellableBag()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpNavigationBar()
         setUpTrandingCollectionView()
+        setUpAutoCompleteTableView()
+        searchTextField.addTarget(self, action: #selector(textFieldEditChanged(_:)), for: .editingChanged)
         trendingGifViewModelIntput.loadGifInfo.fire()
     }
     
     private func setUpNavigationBar() {
+        navigationItem.backButtonTitle = ""
         navigationController?.navigationBar.barStyle = .black
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         navigationController?.navigationBar.shadowImage = UIImage()
@@ -54,6 +65,40 @@ final class SearchViewController: UIViewController {
             }
         }.store(in: &bag)
     }
+    
+    private func setUpAutoCompleteTableView() {
+        autoCompleteTableViewDataSource.viewModel = searchViewModel
+        autoCompleteTableView.dataSource = autoCompleteTableViewDataSource
+        autoCompleteTableView.delegate = self
+        bindWithSearchViewModel()
+    }
+    
+    private func bindWithSearchViewModel() {
+        let output = searchViewModel.transform(searchViewModelInput)
+        
+        output.searchTextFieldIsEmpty.bind { searchTextFieldIsEmpty in
+            DispatchQueue.main.async { [weak self] in
+                self?.autoCompleteTableView.isHidden = searchTextFieldIsEmpty
+            }
+        }.store(in: &bag)
+        
+        output.autoCompleteDelivered.bind {
+            DispatchQueue.main.async { [weak self] in
+                self?.autoCompleteTableView.reloadData()
+            }
+        }.store(in: &bag)
+        
+        output.searchFired.bind { [weak self] in
+            guard let searchResultViewController = self?.storyboard?.instantiateViewController(withIdentifier: SearchResultViewController.identifier) as? SearchResultViewController else { return }
+            searchResultViewController.keyword = $0
+            self?.navigationController?.pushViewController(searchResultViewController, animated: true)
+        }.store(in: &bag)
+    }
+    
+    @objc private func textFieldEditChanged(_ textField: UITextField) {
+        searchViewModelInput.isEditing.value = textField.text
+        searchViewModelInput.textFieldChanged.value = textField.text
+    }
 }
 
 extension SearchViewController: UICollectionViewDelegateFlowLayout {
@@ -67,17 +112,13 @@ extension SearchViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print(indexPath)
     }
-    
-    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        let lastItem = collectionView.numberOfItems(inSection: 0) - 1
-    
-        guard lastItem < indexPath.item + 1 else { return }
-        
-        print("will display last cell")
-    }
 }
 
 extension SearchViewController: PinterestLayoutDelegate {
+    
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        view.endEditing(true)
+    }
     
     func collectionView(_ collectionView: UICollectionView, heightForPhotoAtIndexPath indexPath: IndexPath) -> CGSize {
         guard let dataSource = collectionView.dataSource as? TrendingGifCollectionViewDataSource else { return .zero }
@@ -88,5 +129,13 @@ extension SearchViewController: PinterestLayoutDelegate {
         else { return .zero }
         
         return CGSize(width: width, height: height)
+    }
+}
+
+extension SearchViewController: UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let dataSouce = tableView.dataSource as? AutoCompleteTableViewDataSource else { return }
+        searchViewModelInput.searchFire.value = dataSouce.keyword(of: indexPath.item)
     }
 }

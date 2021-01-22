@@ -20,7 +20,7 @@ final class TrendingGifCollectionViewDataSource: NSObject, UICollectionViewDataS
         
         guard let model = viewModel?.gifInfoArray[indexPath.item] else { return cell }
         
-        cell.bind(with: model.images.original.url)
+        cell.bind(with: model.images.fixedWidth.url)
         
         return cell
     }

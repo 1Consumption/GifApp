@@ -10,7 +10,7 @@ import Foundation
 struct SearchViewModelInput {
     
     let isEditing: Observable<String?> = Observable<String?>(value: nil)
-    let textFieldChanged: Debounce<String> = Debounce<String>(value: "", wait: 0.5)
+    let textFieldChanged: Debounce<String?> = Debounce<String?>(value: nil, wait: 0.5)
     let searchFire: Observable<String?> = Observable<String?>(value: nil)
 }
 
@@ -41,7 +41,8 @@ final class SearchViewModel: ViewModelType {
         }.store(in: &bag)
         
         input.textFieldChanged.bind { [weak self] in
-            self?.useCase.retrieveAutoComplete(keyword: $0,
+            guard let text = $0 else { return }
+            self?.useCase.retrieveAutoComplete(keyword: text,
                                          failureHandler: {
                                             output.errorDelivered.value = $0
                                          },

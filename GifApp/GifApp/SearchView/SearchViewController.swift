@@ -74,10 +74,17 @@ final class SearchViewController: UIViewController {
                 self?.autoCompleteTableView.isHidden = searchTextFieldIsEmpty
             }
         }.store(in: &bag)
+        
+        output.autoCompleteDelivered.bind {
+            DispatchQueue.main.async { [weak self] in
+                self?.autoCompleteTableView.reloadData()
+            }
+        }.store(in: &bag)
     }
     
     @objc private func textFieldEditChanged(_ textField: UITextField) {
         searchViewModelInput.isEditing.value = textField.text
+        searchViewModelInput.textFieldChanged.value = textField.text
     }
 }
 
@@ -119,13 +126,13 @@ extension SearchViewController: PinterestLayoutDelegate {
 extension SearchViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 20
+        return searchViewModel.autoCompletes.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: AutoCompleteTableViewCell.identifier) as? AutoCompleteTableViewCell else { return UITableViewCell() }
         
-        cell.wordLabel.text = "\(indexPath.row) cell"
+        cell.wordLabel.text = searchViewModel.autoCompletes[indexPath.row].name
         cell.selectionStyle = .none
         
         return cell

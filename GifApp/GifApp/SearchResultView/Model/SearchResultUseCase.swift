@@ -46,10 +46,9 @@ final class SearchResultUseCase: RemoteDataDecodeType, SearchResultUseCaseType {
                       failureHandler: failureHandler,
                       successHandler: { [weak self] response in
                         let pagination = response.pagination
-                        self?.isEndOfPage = (pagination.offset + 1) * pagination.count >= pagination.totalCount
-                        self?.offset = pagination.offset + 1
+                        self?.isEndOfPage = pagination.offset + pagination.count >= pagination.totalCount
+                        self?.offset = pagination.offset + pagination.count
                         self?.isLoading = false
-                        
                         successHandler(response)
                       })
     }

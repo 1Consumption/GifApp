@@ -17,9 +17,11 @@ final class MockSuccessNetworkManager: NetworkManagerType {
     private var method: HTTPMethod?
     private var headers: [String: String]?
     private var callCount: Int = 0
+    private var delay: DispatchTime
     
-    init(data: Data) {
+    init(data: Data, delay: DispatchTime = .now()) {
         self.data = data
+        self.delay = delay
         requester = DummyRequester()
     }
     
@@ -29,7 +31,10 @@ final class MockSuccessNetworkManager: NetworkManagerType {
         self.headers = headers
         callCount += 1
         
-        completionHandler(.success(data))
+        DispatchQueue.global().asyncAfter(deadline: delay) {
+            completionHandler(.success(self.data))
+        }
+        
         return nil
     }
     

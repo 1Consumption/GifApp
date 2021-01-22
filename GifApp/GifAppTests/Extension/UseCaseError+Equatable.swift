@@ -17,6 +17,8 @@ extension UseCaseError: Equatable {
             return left == right
         case (.endOfPage, .endOfPage):
             return true
+        case (.duplicatedRequest, .duplicatedRequest):
+            return true
         default:
             return false
         }

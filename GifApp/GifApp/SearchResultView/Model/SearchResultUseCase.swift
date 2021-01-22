@@ -19,12 +19,20 @@ final class SearchResultUseCase: RemoteDataDecodeType {
     var networkManager: NetworkManagerType
     private var offset: Int = 0
     private var isEndOfPage: Bool = false
+    private var isLoading: Bool = false
     
     init(networkManager: NetworkManagerType = NetworkManager()) {
         self.networkManager = networkManager
     }
     
     func retrieveGifInfo(keyword: String, failureHandler: @escaping (UseCaseError) -> Void, successHandler: @escaping (T) -> Void) {
+        guard !isLoading else {
+            failureHandler(.duplicatedRequest)
+            return
+        }
+        
+        isLoading = true
+        
         guard !isEndOfPage else {
             failureHandler(.endOfPage)
             return
@@ -40,6 +48,8 @@ final class SearchResultUseCase: RemoteDataDecodeType {
                         let pagination = response.pagination
                         self?.isEndOfPage = (pagination.offset + 1) * pagination.count >= pagination.totalCount
                         self?.offset = pagination.offset + 1
+                        self?.isLoading = false
+                        
                         successHandler(response)
                       })
     }

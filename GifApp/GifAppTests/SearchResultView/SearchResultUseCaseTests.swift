@@ -118,6 +118,42 @@ final class SearchResultUseCaseTests: XCTestCase {
     }
     
     func testDuplicateRequest() {
-        // 중복 요청 방지
+        let expectation = XCTestExpectation(description: "retrieve gifInfo success")
+        
+        let model = GifInfoResponse(data: [GifInfo(id: "1",
+                                                   username: "test",
+                                                   source: "test",
+                                                   images: GifImages(original: GifImage(height: "", width: "", url: ""), fixedWidth: GifImage(height: "", width: "", url: "")))],
+                                    pagination: Pagination(totalCount: 0, count: 0, offset: 0))
+        let data = try! JSONEncoder().encode(model)
+        let networkManager = MockSuccessNetworkManager(data: data, delay: .now() + 1)
+        let useCase = SearchResultUseCase(networkManager: networkManager)
+        
+        useCase.retrieveGifInfo(keyword: "test", failureHandler: { _ in
+            XCTFail()
+        }, successHandler: {
+            XCTAssertEqual(model, $0)
+            expectation.fulfill()
+        })
+        
+        useCase.retrieveGifInfo(keyword: "test", failureHandler: {
+            XCTAssertEqual($0, .duplicatedRequest)
+        }, successHandler: {
+            XCTAssertEqual(model, $0)
+            expectation.fulfill()
+        })
+        
+        useCase.retrieveGifInfo(keyword: "test", failureHandler: {
+            XCTAssertEqual($0, .duplicatedRequest)
+        }, successHandler: {
+            XCTAssertEqual(model, $0)
+            expectation.fulfill()
+        })
+        
+        networkManager.verify(url: EndPoint(urlInfomation: .search(keyword: "test", offset: 0)).url,
+                              method: .get,
+                              headers: nil)
+        
+        wait(for: [expectation], timeout: 3.0)
     }
 }

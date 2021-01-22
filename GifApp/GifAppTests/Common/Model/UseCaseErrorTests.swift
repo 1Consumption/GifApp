@@ -18,5 +18,6 @@ final class UseCaseErrorTests: XCTestCase {
         XCTAssertEqual(UseCaseError.networkError(with: .invalidHTTPStatusCode(with: 300)).message, "invalid HTTP status code: 300")
         XCTAssertEqual(UseCaseError.networkError(with: .emptyData).message, "empty data")
         XCTAssertEqual(UseCaseError.endOfPage.message, "end of page")
+        XCTAssertEqual(UseCaseError.duplicatedRequest.message, "duplicated request")
     }
 }

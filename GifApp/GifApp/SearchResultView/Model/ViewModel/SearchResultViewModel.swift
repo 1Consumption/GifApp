@@ -49,6 +49,10 @@ final class SearchResultViewModel: ViewModelType {
                                           })
         }.store(in: &bag)
         
+        input.showDetail.bind {
+            output.showDetailFired.value = $0
+        }.store(in: &bag)
+        
         return output
     }
 }

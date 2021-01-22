@@ -44,6 +44,11 @@
                 <constraint firstItem="4fg-QC-fcI" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="uBN-UF-cyJ"/>
             </constraints>
             <size key="customSize" width="179" height="190"/>
+            <userDefinedRuntimeAttributes>
+                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                    <integer key="value" value="5"/>
+                </userDefinedRuntimeAttribute>
+            </userDefinedRuntimeAttributes>
             <connections>
                 <outlet property="activityIndicator" destination="trv-nM-fet" id="pMs-x5-d97"/>
                 <outlet property="favoriteImageView" destination="4fg-QC-fcI" id="gsK-fF-iHZ"/>

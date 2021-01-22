@@ -9,9 +9,11 @@
 import XCTest
 
 final class MemoryCacheStorageTests: XCTestCase {
-
+    
+    private var memoryCacheStorage: MemoryCacheStorage<Data>!
+    
     func testInsert() {
-        let memoryCacheStorage = MemoryCacheStorage<Data>(expireTime: .minute(1))
+        memoryCacheStorage = MemoryCacheStorage<Data>(expireTime: .minute(1))
         
         memoryCacheStorage.insert(Data([1, 2, 3]), for: "key1")
         memoryCacheStorage.insert(Data([2, 3, 4]), for: "key2")
@@ -21,7 +23,7 @@ final class MemoryCacheStorageTests: XCTestCase {
     }
     
     func testRemove() {
-        let memoryCacheStorage = MemoryCacheStorage<Data>(expireTime: .minute(1))
+        memoryCacheStorage = MemoryCacheStorage<Data>(expireTime: .minute(1))
         
         memoryCacheStorage.insert(Data([1, 2, 3]), for: "key1")
         memoryCacheStorage.insert(Data([2, 3, 4]), for: "key2")
@@ -33,7 +35,7 @@ final class MemoryCacheStorageTests: XCTestCase {
     }
     
     func testObject() {
-        let memoryCacheStorage = MemoryCacheStorage<Data>(expireTime: .minute(1))
+        memoryCacheStorage = MemoryCacheStorage<Data>(expireTime: .minute(1))
         
         memoryCacheStorage.insert(Data([1, 2, 3]), for: "key1")
         
@@ -41,39 +43,46 @@ final class MemoryCacheStorageTests: XCTestCase {
     }
     
     func testRemoveExpiredAll() {
-        let memoryCacheStorage = MemoryCacheStorage<Data>(expireTime: .second(2))
+        let expectation = XCTestExpectation(description: "remove expire all")
+        defer { wait(for: [expectation], timeout: 6.0) }
+        
+        memoryCacheStorage = MemoryCacheStorage<Data>(expireTime: .second(2))
         
         memoryCacheStorage.insert(Data([1, 2, 3]), for: "key1")
         memoryCacheStorage.insert(Data([2, 3, 4]), for: "key2")
         
-        sleep(2)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            self.memoryCacheStorage.insert(Data([3, 4, 5]), for: "key3")
+            self.memoryCacheStorage.insert(Data([5, 6, 7]), for: "key4")
+        }
         
-        memoryCacheStorage.insert(Data([3, 4, 5]), for: "key3")
-        memoryCacheStorage.insert(Data([5, 6, 7]), for: "key4")
-        
-        sleep(1)
-        
-        memoryCacheStorage.removeExpireAll()
-        
-        XCTAssertFalse(memoryCacheStorage.isCached("key1"))
-        XCTAssertFalse(memoryCacheStorage.isCached("key2"))
-        XCTAssertTrue(memoryCacheStorage.isCached("key3"))
-        XCTAssertTrue(memoryCacheStorage.isCached("key4"))
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+            self.memoryCacheStorage.removeExpireAll()
+            XCTAssertFalse(self.memoryCacheStorage.isCached("key1"))
+            XCTAssertFalse(self.memoryCacheStorage.isCached("key2"))
+            XCTAssertTrue(self.memoryCacheStorage.isCached("key3"))
+            XCTAssertTrue(self.memoryCacheStorage.isCached("key4"))
+            expectation.fulfill()
+        }
     }
     
     func testReferenceExpiredObject() {
-        let memoryCacheStorage = MemoryCacheStorage<Data>(expireTime: .second(2))
+        let expectation = XCTestExpectation(description: "reference expired object")
+        defer { wait(for: [expectation], timeout: 4.0) }
+        
+        memoryCacheStorage = MemoryCacheStorage<Data>(expireTime: .second(2))
         
         memoryCacheStorage.insert(Data([1, 2, 3]), for: "key1")
         memoryCacheStorage.insert(Data([2, 3, 4]), for: "key2")
         
-        sleep(1)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            let _ = self.memoryCacheStorage.object(for: "key1")
+        }
         
-        let _ = memoryCacheStorage.object(for: "key1")
-        
-        sleep(1)
-        
-        XCTAssertNotNil(memoryCacheStorage.object(for: "key1"))
-        XCTAssertNil(memoryCacheStorage.object(for: "key2"))
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            XCTAssertNotNil(self.memoryCacheStorage.object(for: "key1"))
+            XCTAssertNil(self.memoryCacheStorage.object(for: "key2"))
+            expectation.fulfill()
+        }
     }
 }

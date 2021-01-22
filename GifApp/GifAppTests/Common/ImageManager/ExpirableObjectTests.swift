@@ -16,26 +16,34 @@ final class ExpirableObjectTests: XCTestCase {
         
         XCTAssertEqual(expirableObject.value, data)
     }
-
+    
     func testIsExpired() {
+        let expectation = XCTestExpectation(description: "isExpired")
+        defer { wait(for: [expectation], timeout: 3.0) }
+        
         let expirableObject1 = ExpirableObject(value: Data(), expireTime: .second(1))
         let expirableObject2 = ExpirableObject(value: Data(), expireTime: .second(3))
         
-        sleep(2)
-        
-        XCTAssertTrue(expirableObject1.isExpired)
-        XCTAssertFalse(expirableObject2.isExpired)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            XCTAssertTrue(expirableObject1.isExpired)
+            XCTAssertFalse(expirableObject2.isExpired)
+            expectation.fulfill()
+        }
     }
     
     func testResetExpireTime() {
+        let expectation = XCTestExpectation(description: "isExpired")
+        defer { wait(for: [expectation], timeout: 5.0) }
+        
         let expirableObject = ExpirableObject(value: Data(), expireTime: .second(3))
         
-        sleep(2)
-    
-        expirableObject.resetExpireTime(.second(3))
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            expirableObject.resetExpireTime(.second(3))
+        }
         
-        sleep(2)
-        
-        XCTAssertFalse(expirableObject.isExpired)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 4) {
+            XCTAssertFalse(expirableObject.isExpired)
+            expectation.fulfill()
+        }
     }
 }

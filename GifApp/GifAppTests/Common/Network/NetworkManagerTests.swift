@@ -12,6 +12,8 @@ final class NetworkManagerTests: XCTestCase {
     //    RequestType을 채택한 변수를 프로퍼티로 가짐
     //    Result<Data, NetworkError>을 completionHandler로 전달하는 메소드 제공
     
+    private var networkManager: NetworkManager!
+    
     func testSuccess() {
         let expectation = XCTestExpectation(description: "success")
         defer { wait(for: [expectation], timeout: 1.0) }
@@ -19,7 +21,7 @@ final class NetworkManagerTests: XCTestCase {
         var request = URLRequest(url: URL(string: "test")!)
         request.addValue("test", forHTTPHeaderField: "test")
         let requester = MockSuccessRequester()
-        let networkManager = NetworkManager(requester: requester)
+        networkManager = NetworkManager(requester: requester)
         
         let _ = networkManager.loadData(with: request.url,
                                         method: HTTPMethod(rawValue: request.httpMethod!)!,
@@ -27,20 +29,19 @@ final class NetworkManagerTests: XCTestCase {
                                         completionHandler: { result in
                                             switch result {
                                             case .success(_):
+                                                requester.verify(request: request)
                                                 expectation.fulfill()
                                             case .failure(_):
                                                 XCTFail()
                                             }
                                         })
-        
-        requester.verify(request: request)
     }
     
     func testFailureWithEmptyURL() {
         let expectation = XCTestExpectation(description: "failure with empty url")
         defer { wait(for: [expectation], timeout: 1.0) }
         
-        let networkManager = NetworkManager()
+        networkManager = NetworkManager()
         
         let _ = networkManager.loadData(with: URL(string: ""),
                                         method: .get,
@@ -62,7 +63,7 @@ final class NetworkManagerTests: XCTestCase {
         
         let request = URLRequest(url: URL(string: "test")!)
         let requester = MockFailureRequesterWithRequestError()
-        let networkManager = NetworkManager(requester: requester)
+        networkManager = NetworkManager(requester: requester)
         
         let _ = networkManager.loadData(with: request.url,
                                         method: HTTPMethod(rawValue: request.httpMethod!)!,
@@ -73,11 +74,10 @@ final class NetworkManagerTests: XCTestCase {
                                                 XCTFail()
                                             case .failure(let error):
                                                 XCTAssertEqual(error, NetworkError.requestError(description: "error"))
+                                                requester.verify(request: request)
                                                 expectation.fulfill()
                                             }
                                         })
-        
-        requester.verify(request: request)
     }
     
     func testFailureWithNonHTTPResponseError() {
@@ -86,7 +86,7 @@ final class NetworkManagerTests: XCTestCase {
         
         let request = URLRequest(url: URL(string: "test")!)
         let requester = MockFailureRequesterWithNonHTTPResponse()
-        let networkManager = NetworkManager(requester: requester)
+        networkManager = NetworkManager(requester: requester)
         
         let _ = networkManager.loadData(with: request.url,
                                         method: HTTPMethod(rawValue: request.httpMethod!)!,
@@ -96,12 +96,11 @@ final class NetworkManagerTests: XCTestCase {
                                             case .success(_):
                                                 XCTFail()
                                             case .failure(let error):
+                                                requester.verify(request: request)
                                                 XCTAssertEqual(error, NetworkError.nonHTTPResponseError)
                                                 expectation.fulfill()
                                             }
                                         })
-        
-        requester.verify(request: request)
     }
     
     func testFailureWithInvalidHTTPStatusCodeError() {
@@ -110,7 +109,7 @@ final class NetworkManagerTests: XCTestCase {
         
         let request = URLRequest(url: URL(string: "test")!)
         let requester = MockFailureRequesterWithInvalidHTTPStatusCode()
-        let networkManager = NetworkManager(requester: requester)
+        networkManager = NetworkManager(requester: requester)
         
         let _ = networkManager.loadData(with: request.url,
                                         method: HTTPMethod(rawValue: request.httpMethod!)!,
@@ -120,12 +119,11 @@ final class NetworkManagerTests: XCTestCase {
                                             case .success(_):
                                                 XCTFail()
                                             case .failure(let error):
+                                                requester.verify(request: request)
                                                 XCTAssertEqual(error, NetworkError.invalidHTTPStatusCode(with: 300))
                                                 expectation.fulfill()
                                             }
                                         })
-        
-        requester.verify(request: request)
     }
     
     func testFailureWithEmptyDataError() {
@@ -134,7 +132,7 @@ final class NetworkManagerTests: XCTestCase {
         
         let request = URLRequest(url: URL(string: "test")!)
         let requester = MockFailureRequesterWithEmptyData()
-        let networkManager = NetworkManager(requester: requester)
+        networkManager = NetworkManager(requester: requester)
         
         let _ = networkManager.loadData(with: request.url,
                                         method: HTTPMethod(rawValue: request.httpMethod!)!,
@@ -144,11 +142,10 @@ final class NetworkManagerTests: XCTestCase {
                                             case .success(_):
                                                 XCTFail()
                                             case .failure(let error):
+                                                requester.verify(request: request)
                                                 XCTAssertEqual(error, NetworkError.emptyData)
                                                 expectation.fulfill()
                                             }
                                         })
-        
-        requester.verify(request: request)
     }
 }

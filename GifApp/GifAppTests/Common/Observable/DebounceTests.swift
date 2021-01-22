@@ -11,12 +11,15 @@ import XCTest
 final class DebounceTests: XCTestCase {
     
     private var bag: CancellableBag = CancellableBag()
+    private var debounce: Debounce<Int>!
+    private var debounceVoid: Debounce<Void>!
     
     func testBind() {
         let expectation = XCTestExpectation(description: "bind")
+        defer { wait(for: [expectation], timeout: 2.0) }
         expectation.expectedFulfillmentCount = 2
         
-        let debounce = Debounce<Int>(value: 0, wait: 0.3)
+        debounce = Debounce<Int>(value: 0, wait: 0.3)
         
         var value = 0
         
@@ -36,36 +39,32 @@ final class DebounceTests: XCTestCase {
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
             value = 4
-            debounce.value = value
+            self.debounce.value = value
             
             value = 5
-            debounce.value = value
+            self.debounce.value = value
         })
-        
-        
-        wait(for: [expectation], timeout: 2.0)
     }
     
     func testFire() {
         let expectation = XCTestExpectation(description: "fire")
+        defer { wait(for: [expectation], timeout: 2.0) }
         expectation.expectedFulfillmentCount = 2
         
-        let debounce = Debounce<Void>(value: (), wait: 0.3)
+        debounceVoid = Debounce<Void>(value: (), wait: 0.3)
         
-        debounce.bind {
+        debounceVoid.bind {
             expectation.fulfill()
         }.store(in: &bag)
         
-        debounce.fire()
-        debounce.fire()
-        debounce.fire()
-        debounce.fire()
-        debounce.fire()
+        debounceVoid.fire()
+        debounceVoid.fire()
+        debounceVoid.fire()
+        debounceVoid.fire()
+        debounceVoid.fire()
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
-            debounce.fire()
+            self.debounceVoid.fire()
         })
-        
-        wait(for: [expectation], timeout: 2.0)
     }
 }

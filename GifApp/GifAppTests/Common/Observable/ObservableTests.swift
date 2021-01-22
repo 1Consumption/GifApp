@@ -14,8 +14,8 @@ final class ObservableTests: XCTestCase {
     
     func testBind() {
         let expectation = XCTestExpectation(description: "bind")
-        expectation.expectedFulfillmentCount = 2
         defer { wait(for: [expectation], timeout: 1.0) }
+        expectation.expectedFulfillmentCount = 2
         
         let observable = Observable<Int>(value: 0)
         
@@ -34,8 +34,8 @@ final class ObservableTests: XCTestCase {
     
     func testFire() {
         let expectation = XCTestExpectation(description: "fire")
-        expectation.expectedFulfillmentCount = 2
         defer { wait(for: [expectation], timeout: 1.0) }
+        expectation.expectedFulfillmentCount = 2
         
         let observable = Observable<Void>(value: ())
         
@@ -49,8 +49,8 @@ final class ObservableTests: XCTestCase {
     
     func testMutlipleBind() {
         let expectation = XCTestExpectation(description: "mutiple bind")
-        expectation.expectedFulfillmentCount = 4
         defer { wait(for: [expectation], timeout: 1.0) }
+        expectation.expectedFulfillmentCount = 4
         
         let observable = Observable<Void>(value: ())
         

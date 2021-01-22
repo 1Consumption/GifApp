@@ -50,7 +50,7 @@ final class ImageManager: ImageManagerType {
                                            completionHandler: { [weak self] result in
                                             switch result {
                                             case .success(let data):
-                                                self?.imageQueue.async {
+                                                self?.imageQueue.async { [weak self] in
                                                     let gifImage = UIImage.gif(data: data)
                                                     imageHandler(gifImage)
                                                     self?.memoryStorage.insert(gifImage, for: url)

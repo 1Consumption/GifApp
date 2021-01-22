@@ -12,40 +12,38 @@ final class GifCellViewModelTests: XCTestCase {
  
     private let input: GifCellViewModelInput = GifCellViewModelInput()
     private var bag: CancellableBag = CancellableBag()
+    private var viewModel: GifCellViewModel!
     
     func testViewModelOutputGifDelivered() {
         let expectation = XCTestExpectation(description: "gif delivered")
         defer { wait(for: [expectation], timeout: 1.0) }
         
-        
         let imageManager = MockSuccessImageManager()
-        let viewModel = GifCellViewModel(gifURL: "test", imageManager: imageManager)
+        viewModel = GifCellViewModel(gifURL: "test", imageManager: imageManager)
         
         let output = viewModel.transform(input).gifDelivered
         
         output.bind { _ in
+            imageManager.verify(url: "test")
             expectation.fulfill()
         }.store(in: &bag)
         
         input.loadGif.fire()
-        
-        imageManager.verify(url: "test")
     }
     
     func testViewModelCancellable() {
         let expectation = XCTestExpectation(description: "cancelled")
+        defer { wait(for: [expectation], timeout: 1.0) }
         
         let imageManager = MockSuccessCancellableImageManager { expectation.fulfill() }
         
-        var viewModel: GifCellViewModel? = GifCellViewModel(gifURL: "test", imageManager: imageManager)
+        viewModel = GifCellViewModel(gifURL: "test", imageManager: imageManager)
         
         let _ = viewModel?.transform(input)
         
         input.loadGif.fire()
         
         viewModel = nil
-        
-        wait(for: [expectation], timeout: 1.0)
     }
     
     func testViewModelOutputErrorDelivered() {
@@ -53,16 +51,15 @@ final class GifCellViewModelTests: XCTestCase {
         defer { wait(for: [expectation], timeout: 1.0) }
         
         let imageManager = MockFailureImageManager()
-        let viewModel = GifCellViewModel(gifURL: "test", imageManager: imageManager)
+        viewModel = GifCellViewModel(gifURL: "test", imageManager: imageManager)
         
         let output = viewModel.transform(input).errorDelivered
         
         output.bind {
+            imageManager.verify(url: "test")
             expectation.fulfill()
         }.store(in: &bag)
         
         input.loadGif.fire()
-        
-        imageManager.verify(url: "test")
     }
 }

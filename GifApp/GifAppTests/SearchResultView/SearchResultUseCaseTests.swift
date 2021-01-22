@@ -12,6 +12,7 @@ final class SearchResultUseCaseTests: XCTestCase {
 
     func testRetrieveGifInfoSuccess() {
         let expectation = XCTestExpectation(description: "retrieve gifInfo success")
+        defer { wait(for: [expectation], timeout: 1.0) }
         
         let model = GifInfoResponse(data: [GifInfo(id: "1",
                                                    username: "test",
@@ -26,18 +27,16 @@ final class SearchResultUseCaseTests: XCTestCase {
             XCTFail()
         }, successHandler: {
             XCTAssertEqual(model, $0)
+            networkManager.verify(url: EndPoint(urlInfomation: .search(keyword: "test", offset: 0)).url,
+                                  method: .get,
+                                  headers: nil)
             expectation.fulfill()
         })
-        
-        networkManager.verify(url: EndPoint(urlInfomation: .search(keyword: "test", offset: 0)).url,
-                              method: .get,
-                              headers: nil)
-        
-        wait(for: [expectation], timeout: 1.0)
     }
     
     func testRetrieveGifInfoFailureWithEndOfPageError() {
         let expectation = XCTestExpectation(description: "failure with end of page error")
+        defer { wait(for: [expectation], timeout: 2.0) }
         expectation.expectedFulfillmentCount = 2
         
         let model = GifInfoResponse(data: [GifInfo(id: "1",
@@ -64,61 +63,55 @@ final class SearchResultUseCaseTests: XCTestCase {
             networkManager.data = data
             useCase.retrieveGifInfo(keyword: "test", failureHandler: {
                 XCTAssertEqual($0, UseCaseError.endOfPage)
+                networkManager.verify(url: EndPoint(urlInfomation: .search(keyword: "test", offset: 0)).url,
+                                      method: .get,
+                                      headers: nil)
                 expectation.fulfill()
             }, successHandler: { _ in
                 XCTFail()
             })
         })
-        
-        wait(for: [expectation], timeout: 2.0)
-        
-        networkManager.verify(url: EndPoint(urlInfomation: .search(keyword: "test", offset: 0)).url,
-                              method: .get,
-                              headers: nil)
     }
     
     func testRetrieveGifInfoFailureWithDecodeError() {
         let expectation = XCTestExpectation(description: "failure with decode error")
+        defer { wait(for: [expectation], timeout: 1.0) }
         
         let networkManager = MockFailureNetworkManagerWithDecodeError()
         let useCase = SearchResultUseCase(networkManager: networkManager)
         
         useCase.retrieveGifInfo(keyword: "test", failureHandler: { error in
+            networkManager.verify(url: EndPoint(urlInfomation: .search(keyword: "test", offset: 0)).url,
+                                  method: .get,
+                                  headers: nil)
             XCTAssertEqual(error, .decodeError)
             expectation.fulfill()
         }, successHandler: { _ in
             XCTFail()
         })
-        
-        networkManager.verify(url: EndPoint(urlInfomation: .search(keyword: "test", offset: 0)).url,
-                              method: .get,
-                              headers: nil)
-        
-        wait(for: [expectation], timeout: 1.0)
     }
     
     func testRetrieveGifInfoFailureWithNetworkError() {
         let expectation = XCTestExpectation(description: "failure with network error")
+        defer { wait(for: [expectation], timeout: 1.0) }
         
         let networkManager = MockFailureNetworkManagerWithNetworkError()
         let useCase = SearchResultUseCase(networkManager: networkManager)
         
         useCase.retrieveGifInfo(keyword: "test", failureHandler: { error in
+            networkManager.verify(url: EndPoint(urlInfomation: .search(keyword: "test", offset: 0)).url,
+                                  method: .get,
+                                  headers: nil)
             XCTAssertEqual(error, .networkError(with: .emptyData))
             expectation.fulfill()
         }, successHandler: { _ in
             XCTFail()
         })
-        
-        networkManager.verify(url: EndPoint(urlInfomation: .search(keyword: "test", offset: 0)).url,
-                              method: .get,
-                              headers: nil)
-        
-        wait(for: [expectation], timeout: 1.0)
     }
     
     func testDuplicateRequest() {
         let expectation = XCTestExpectation(description: "retrieve gifInfo success")
+        defer { wait(for: [expectation], timeout: 3.0) }
         
         let model = GifInfoResponse(data: [GifInfo(id: "1",
                                                    username: "test",
@@ -132,28 +125,23 @@ final class SearchResultUseCaseTests: XCTestCase {
         useCase.retrieveGifInfo(keyword: "test", failureHandler: { _ in
             XCTFail()
         }, successHandler: {
+            networkManager.verify(url: EndPoint(urlInfomation: .search(keyword: "test", offset: 0)).url,
+                                  method: .get,
+                                  headers: nil)
             XCTAssertEqual(model, $0)
             expectation.fulfill()
         })
         
         useCase.retrieveGifInfo(keyword: "test", failureHandler: {
             XCTAssertEqual($0, .duplicatedRequest)
-        }, successHandler: {
-            XCTAssertEqual(model, $0)
-            expectation.fulfill()
+        }, successHandler: { _ in
+            XCTFail()
         })
         
         useCase.retrieveGifInfo(keyword: "test", failureHandler: {
             XCTAssertEqual($0, .duplicatedRequest)
-        }, successHandler: {
-            XCTAssertEqual(model, $0)
-            expectation.fulfill()
+        }, successHandler: { _ in
+            XCTFail()
         })
-        
-        networkManager.verify(url: EndPoint(urlInfomation: .search(keyword: "test", offset: 0)).url,
-                              method: .get,
-                              headers: nil)
-        
-        wait(for: [expectation], timeout: 3.0)
     }
 }

@@ -18,11 +18,11 @@ struct TrendingGifViewModelOtuput {
     let errorDelivered: Observable<UseCaseError?> = Observable<UseCaseError?>(value: nil)
 }
 
-final class TrendingGifViewModel: ViewModelType {
+final class TrendingGifViewModel: ViewModelType, GifManagerType {
     
     private let useCase: TrendingGifUseCaseType
     private var bag: CancellableBag = CancellableBag()
-    var gifInfoArray: [GifInfo] = [GifInfo]()
+    private(set) var gifInfoArray: [GifInfo] = [GifInfo]()
     
     init(useCase: TrendingGifUseCaseType = TrendingGifUseCase()) {
         self.useCase = useCase
@@ -42,10 +42,5 @@ final class TrendingGifViewModel: ViewModelType {
         }.store(in: &bag)
         
         return output
-    }
-    
-    func gifInfo(of index: Int) -> GifInfo? {
-        guard gifInfoArray.count > index else { return nil }
-        return gifInfoArray[index]
     }
 }

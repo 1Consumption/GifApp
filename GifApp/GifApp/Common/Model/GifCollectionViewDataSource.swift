@@ -1,5 +1,5 @@
 //
-//  TrendingGifCollectionViewDataSource.swift
+//  GifCollectionViewDataSource.swift
 //  GifApp
 //
 //  Created by 신한섭 on 2021/01/20.
@@ -7,9 +7,9 @@
 
 import UIKit
 
-final class TrendingGifCollectionViewDataSource: NSObject, UICollectionViewDataSource {
+final class GifCollectionViewDataSource: NSObject, UICollectionViewDataSource {
     
-    var viewModel: TrendingGifViewModel?
+    var viewModel: GifManagerType?
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return viewModel?.gifInfoArray.count ?? 0

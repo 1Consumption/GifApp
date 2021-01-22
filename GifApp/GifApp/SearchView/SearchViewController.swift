@@ -16,7 +16,7 @@ final class SearchViewController: UIViewController {
         searchViewModelInput.searchFire.value = searchTextField.text
     }
     
-    private let trendingGifCollectionViewDataSource: TrendingGifCollectionViewDataSource = TrendingGifCollectionViewDataSource()
+    private let trendingGifCollectionViewDataSource: GifCollectionViewDataSource = GifCollectionViewDataSource()
     private let trendingGifViewModel: TrendingGifViewModel = TrendingGifViewModel()
     private let trendingGifViewModelIntput: TrendingGifViewModelInput = TrendingGifViewModelInput()
     private let autoCompleteTableViewDataSource: AutoCompleteTableViewDataSource = AutoCompleteTableViewDataSource()
@@ -121,7 +121,7 @@ extension SearchViewController: PinterestLayoutDelegate {
     }
     
     func collectionView(_ collectionView: UICollectionView, heightForPhotoAtIndexPath indexPath: IndexPath) -> CGSize {
-        guard let dataSource = collectionView.dataSource as? TrendingGifCollectionViewDataSource else { return .zero }
+        guard let dataSource = collectionView.dataSource as? GifCollectionViewDataSource else { return .zero }
         guard let strWidth = dataSource.gifInfo(of: indexPath.item)?.images.original.width,
               let strHeight = dataSource.gifInfo(of: indexPath.item)?.images.original.height,
               let width = Double(strWidth),

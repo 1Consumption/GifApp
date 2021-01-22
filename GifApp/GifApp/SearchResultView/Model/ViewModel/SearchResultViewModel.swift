@@ -18,11 +18,11 @@ struct SearchResultViewModelOutput {
     let showDetailFired: Observable<String> = Observable<String>(value: "")
 }
 
-final class SearchResultViewModel: ViewModelType {
+final class SearchResultViewModel: ViewModelType, GifManagerType {
     
     private let useCase: SearchResultUseCaseType
     private var bag: CancellableBag = CancellableBag()
-    private(set) var searchResults: [GifInfo] = []
+    private(set) var gifInfoArray: [GifInfo] = []
     
     init(useCase: SearchResultUseCaseType = SearchResultUseCase()) {
         self.useCase = useCase
@@ -38,14 +38,14 @@ final class SearchResultViewModel: ViewModelType {
                                             output.errorDelivered.value = $0
                                           },
                                           successHandler: { [weak self] response in
-                                            guard let count = self?.searchResults.count else { return }
+                                            guard let count = self?.gifInfoArray.count else { return }
                                             
                                             let startIndex = count
                                             let endIndex = startIndex + response.data.count
                                             
                                             output.nextPageDelivered.value = (startIndex..<endIndex).map { IndexPath(row: $0, section: 0) }
                                             
-                                            self?.searchResults.append(contentsOf: response.data)
+                                            self?.gifInfoArray.append(contentsOf: response.data)
                                           })
         }.store(in: &bag)
         

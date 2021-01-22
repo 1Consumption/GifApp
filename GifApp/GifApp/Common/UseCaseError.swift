@@ -11,6 +11,7 @@ enum UseCaseError: Error {
     
     case networkError(with: NetworkError)
     case decodeError
+    case endOfPage
     
     var message: String {
         switch self {
@@ -18,6 +19,8 @@ enum UseCaseError: Error {
             return error.message
         case .decodeError:
             return "decode error"
+        case .endOfPage:
+            return "end of page"
         }
     }
 }

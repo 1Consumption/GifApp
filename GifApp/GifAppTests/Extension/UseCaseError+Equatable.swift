@@ -15,6 +15,8 @@ extension UseCaseError: Equatable {
             return true
         case (.networkError(let left), .networkError(let right)):
             return left == right
+        case (.endOfPage, .endOfPage):
+            return true
         default:
             return false
         }

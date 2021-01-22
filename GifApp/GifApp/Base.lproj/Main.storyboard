@@ -176,7 +176,7 @@
                                             <preferredSymbolConfiguration key="preferredSymbolConfiguration" weight="bold"/>
                                         </state>
                                         <connections>
-                                            <action selector="searchButtonTouched:" destination="BYZ-38-t0r" eventType="touchUpInside" id="HVH-xx-xE3"/>
+                                            <action selector="searchButtonTouched:" destination="giW-Wl-m0S" eventType="touchUpInside" id="DK8-DF-KdS"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -250,7 +250,9 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="autoCompleteTableView" destination="QVC-Ak-CbO" id="irK-jb-qAg"/>
                         <outlet property="searchResultCollectionView" destination="1wV-ha-Umv" id="Wwn-XE-90I"/>
+                        <outlet property="searchTextField" destination="2PX-pS-rDv" id="jOt-eo-cjg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ymb-yA-X7B" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

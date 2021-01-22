@@ -28,7 +28,7 @@ final class SearchViewController: UIViewController {
         super.viewDidLoad()
         setUpNavigationBar()
         setUpTrandingCollectionView()
-        setUpAutoCompleteTableView()
+        setUpSearchView()
         searchTextField.addTarget(self, action: #selector(textFieldEditChanged(_:)), for: .editingChanged)
         trendingGifViewModelIntput.loadGifInfo.fire()
     }
@@ -66,7 +66,7 @@ final class SearchViewController: UIViewController {
         }.store(in: &bag)
     }
     
-    private func setUpAutoCompleteTableView() {
+    private func setUpSearchView() {
         autoCompleteTableViewDataSource.viewModel = searchViewModel
         autoCompleteTableView.dataSource = autoCompleteTableViewDataSource
         autoCompleteTableView.delegate = self

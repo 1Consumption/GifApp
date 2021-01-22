@@ -10,6 +10,11 @@ import UIKit
 final class SearchResultViewController: UIViewController {
     
     @IBOutlet weak var searchResultCollectionView: UICollectionView!
+    @IBOutlet weak var autoCompleteTableView: UITableView!
+    @IBOutlet weak var searchTextField: PaddingTextField!
+    @IBAction func searchButtonTouched(_ sender: Any) {
+        searchViewModelInput.searchFire.value = searchTextField.text
+    }
     
     static let identifier: String = "SearchResultViewController"
     var keyword: String?
@@ -18,12 +23,16 @@ final class SearchResultViewController: UIViewController {
     private let searchResultViewModel: SearchResultViewModel = SearchResultViewModel()
     private let searchResultViewModelInput: SearchResultViewModelInput = SearchResultViewModelInput()
     private let searchResultCollectionViewDataSource: GifCollectionViewDataSource = GifCollectionViewDataSource()
+    private let searchViewModel: SearchViewModel = SearchViewModel()
+    private let searchViewModelInput: SearchViewModelInput = SearchViewModelInput()
+    private let autoCompleteTableViewDataSource: AutoCompleteTableViewDataSource = AutoCompleteTableViewDataSource()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = keyword
         navigationItem.backButtonTitle = ""
         setUpSearchResultCollectionView()
+        setUpSearchView()
         searchResultViewModelInput.nextPageRequest.value = keyword
     }
     
@@ -54,6 +63,41 @@ final class SearchResultViewController: UIViewController {
             
             self?.navigationController?.pushViewController(detailViewController, animated: true)
         }.store(in: &bag)
+    }
+    
+    private func setUpSearchView() {
+        autoCompleteTableViewDataSource.viewModel = searchViewModel
+        autoCompleteTableView.dataSource = autoCompleteTableViewDataSource
+        autoCompleteTableView.delegate = self
+        searchTextField.addTarget(self, action: #selector(textFieldEditChanged(_:)), for: .editingChanged)
+        bindWithSearchViewModel()
+    }
+    
+    private func bindWithSearchViewModel() {
+        let output = searchViewModel.transform(searchViewModelInput)
+        
+        output.searchTextFieldIsEmpty.bind { searchTextFieldIsEmpty in
+            DispatchQueue.main.async { [weak self] in
+                self?.autoCompleteTableView.isHidden = searchTextFieldIsEmpty
+            }
+        }.store(in: &bag)
+        
+        output.autoCompleteDelivered.bind {
+            DispatchQueue.main.async { [weak self] in
+                self?.autoCompleteTableView.reloadData()
+            }
+        }.store(in: &bag)
+        
+        output.searchFired.bind { [weak self] in
+            guard let searchResultViewController = self?.storyboard?.instantiateViewController(withIdentifier: SearchResultViewController.identifier) as? SearchResultViewController else { return }
+            searchResultViewController.keyword = $0
+            self?.navigationController?.pushViewController(searchResultViewController, animated: true)
+        }.store(in: &bag)
+    }
+    
+    @objc private func textFieldEditChanged(_ textField: UITextField) {
+        searchViewModelInput.isEditing.value = textField.text
+        searchViewModelInput.textFieldChanged.value = textField.text
     }
 }
 
@@ -96,3 +140,12 @@ extension SearchResultViewController: PinterestLayoutDelegate {
         searchResultViewModelInput.nextPageRequest.value = keyword
     }
 }
+
+extension SearchResultViewController: UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let dataSouce = tableView.dataSource as? AutoCompleteTableViewDataSource else { return }
+        searchViewModelInput.searchFire.value = dataSouce.keyword(of: indexPath.item)
+    }
+}
+

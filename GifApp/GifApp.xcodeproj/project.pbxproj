@@ -44,6 +44,7 @@
 		A5947A8A25BAE2AE00EBF9FD /* SearchResultViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5947A8925BAE2AD00EBF9FD /* SearchResultViewModel.swift */; };
 		A5A22FBE25B899740098D80F /* MockFailureImageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A22FBD25B899740098D80F /* MockFailureImageManager.swift */; };
 		A5A3B94325BAFB0000389243 /* GifManagerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A3B94225BAFB0000389243 /* GifManagerType.swift */; };
+		A5A3B94A25BB1F8500389243 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A3B94925BB1F8500389243 /* DetailViewController.swift */; };
 		A5D2902625B9C31000041ED8 /* PaddingTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D2902525B9C31000041ED8 /* PaddingTextField.swift */; };
 		A5D2902C25B9C55000041ED8 /* AutoCompleteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D2902B25B9C55000041ED8 /* AutoCompleteTableViewCell.swift */; };
 		A5DA20F925B5A11C00B544D4 /* PinterestLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5DA20F825B5A11C00B544D4 /* PinterestLayout.swift */; };
@@ -153,6 +154,7 @@
 		A5947A8925BAE2AD00EBF9FD /* SearchResultViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultViewModel.swift; sourceTree = "<group>"; };
 		A5A22FBD25B899740098D80F /* MockFailureImageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockFailureImageManager.swift; sourceTree = "<group>"; };
 		A5A3B94225BAFB0000389243 /* GifManagerType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GifManagerType.swift; sourceTree = "<group>"; };
+		A5A3B94925BB1F8500389243 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		A5D2902525B9C31000041ED8 /* PaddingTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddingTextField.swift; sourceTree = "<group>"; };
 		A5D2902B25B9C55000041ED8 /* AutoCompleteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoCompleteTableViewCell.swift; sourceTree = "<group>"; };
 		A5DA20F825B5A11C00B544D4 /* PinterestLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinterestLayout.swift; sourceTree = "<group>"; };
@@ -283,6 +285,7 @@
 		A57D3A2925B489F0005C3338 /* GifApp */ = {
 			isa = PBXGroup;
 			children = (
+				A5A3B94825BB1F5A00389243 /* DetailView */,
 				A5DA20F625B5A10700B544D4 /* Common */,
 				A51809D425B5756000E0B589 /* SearchView */,
 				A5947A5925BA954C00EBF9FD /* SearchResultView */,
@@ -394,6 +397,14 @@
 				A5947A8925BAE2AD00EBF9FD /* SearchResultViewModel.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		A5A3B94825BB1F5A00389243 /* DetailView */ = {
+			isa = PBXGroup;
+			children = (
+				A5A3B94925BB1F8500389243 /* DetailViewController.swift */,
+			);
+			path = DetailView;
 			sourceTree = "<group>";
 		};
 		A5D2902425B9C2F300041ED8 /* CustomView */ = {
@@ -867,6 +878,7 @@
 				A57D3A2F25B489F0005C3338 /* SearchViewController.swift in Sources */,
 				A5DA216625B6BC5F00B544D4 /* NetworkManager.swift in Sources */,
 				A5E633A125B74B1E004331D9 /* GifCellViewModel.swift in Sources */,
+				A5A3B94A25BB1F8500389243 /* DetailViewController.swift in Sources */,
 				A571A0F225B8692700526A49 /* ImageManager.swift in Sources */,
 				A5E633A525B75327004331D9 /* GifCollectionViewDataSource.swift in Sources */,
 				A5947A3A25B9F24F00EBF9FD /* AutoCompleteUseCase.swift in Sources */,

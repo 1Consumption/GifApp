@@ -257,6 +257,21 @@
             </objects>
             <point key="canvasLocation" x="1691" y="94"/>
         </scene>
+        <!--Detail View Controller-->
+        <scene sceneID="2WN-oQ-mBp">
+            <objects>
+                <viewController storyboardIdentifier="DetailViewController" id="d3o-7G-kKY" customClass="DetailViewController" customModule="GifApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="XrU-W6-5MY">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="QIz-nl-r9v"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tnk-pp-hMw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2406" y="94"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="zrb-8L-POp">
             <objects>
@@ -278,10 +293,10 @@
     </scenes>
     <designables>
         <designable name="1qU-ja-LSC">
-            <size key="intrinsicContentSize" width="79.5" height="22"/>
+            <size key="intrinsicContentSize" width="89.5" height="22"/>
         </designable>
         <designable name="2PX-pS-rDv">
-            <size key="intrinsicContentSize" width="79.5" height="22"/>
+            <size key="intrinsicContentSize" width="89.5" height="22"/>
         </designable>
     </designables>
     <resources>

@@ -47,6 +47,13 @@ final class SearchResultViewController: UIViewController {
                 self?.searchResultCollectionView.insertItems(at: range)
             }
         }.store(in: &bag)
+        
+        output.showDetailFired.bind { [weak self] in
+            guard let detailViewController = self?.storyboard?.instantiateViewController(withIdentifier: DetailViewController.identifier) as? DetailViewController else { return }
+            detailViewController.id = $0
+            
+            self?.navigationController?.pushViewController(detailViewController, animated: true)
+        }.store(in: &bag)
     }
 }
 
@@ -59,7 +66,8 @@ extension SearchResultViewController: UICollectionViewDelegateFlowLayout {
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print(indexPath)
+        guard let datasource = collectionView.dataSource as? GifCollectionViewDataSource else { return }
+        searchResultViewModelInput.showDetail.value = datasource.gifInfo(of: indexPath.item)?.id
     }
 }
 

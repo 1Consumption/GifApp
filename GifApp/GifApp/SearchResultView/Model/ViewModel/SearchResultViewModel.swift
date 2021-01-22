@@ -9,7 +9,7 @@ import Foundation
 
 struct SearchResultViewModelInput {
     let nextPageRequest: Observable<String?> = Observable<String?>(value: nil)
-    let showDetail: Observable<String> = Observable<String>(value: "")
+    let showDetail: Observable<String?> = Observable<String?>(value: nil)
 }
 
 struct SearchResultViewModelOutput {
@@ -50,7 +50,8 @@ final class SearchResultViewModel: ViewModelType, GifManagerType {
         }.store(in: &bag)
         
         input.showDetail.bind {
-            output.showDetailFired.value = $0
+            guard let id = $0 else { return }
+            output.showDetailFired.value = id
         }.store(in: &bag)
         
         return output

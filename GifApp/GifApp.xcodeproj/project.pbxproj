@@ -37,6 +37,10 @@
 		A5947A5B25BA957300EBF9FD /* SearchResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5947A5A25BA957300EBF9FD /* SearchResultViewController.swift */; };
 		A5947A6625BAAFBD00EBF9FD /* SearchResultUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5947A6525BAAFBD00EBF9FD /* SearchResultUseCaseTests.swift */; };
 		A5947A6D25BAB34E00EBF9FD /* SearchResultUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5947A6C25BAB34E00EBF9FD /* SearchResultUseCase.swift */; };
+		A5947A7625BACA9700EBF9FD /* SearchResultViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5947A7525BACA9700EBF9FD /* SearchResultViewModelTests.swift */; };
+		A5947A7B25BACC8100EBF9FD /* MockSuccessSearchResultUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5947A7A25BACC8100EBF9FD /* MockSuccessSearchResultUseCase.swift */; };
+		A5947A8125BACCB900EBF9FD /* MockFailureSearchResultUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5947A8025BACCB900EBF9FD /* MockFailureSearchResultUseCase.swift */; };
+		A5947A8525BAE0B800EBF9FD /* DummySearchResultUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5947A8425BAE0B800EBF9FD /* DummySearchResultUseCase.swift */; };
 		A5A22FBE25B899740098D80F /* MockFailureImageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A22FBD25B899740098D80F /* MockFailureImageManager.swift */; };
 		A5D2902625B9C31000041ED8 /* PaddingTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D2902525B9C31000041ED8 /* PaddingTextField.swift */; };
 		A5D2902C25B9C55000041ED8 /* AutoCompleteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D2902B25B9C55000041ED8 /* AutoCompleteTableViewCell.swift */; };
@@ -140,6 +144,10 @@
 		A5947A5A25BA957300EBF9FD /* SearchResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultViewController.swift; sourceTree = "<group>"; };
 		A5947A6525BAAFBD00EBF9FD /* SearchResultUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultUseCaseTests.swift; sourceTree = "<group>"; };
 		A5947A6C25BAB34E00EBF9FD /* SearchResultUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultUseCase.swift; sourceTree = "<group>"; };
+		A5947A7525BACA9700EBF9FD /* SearchResultViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultViewModelTests.swift; sourceTree = "<group>"; };
+		A5947A7A25BACC8100EBF9FD /* MockSuccessSearchResultUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockSuccessSearchResultUseCase.swift; sourceTree = "<group>"; };
+		A5947A8025BACCB900EBF9FD /* MockFailureSearchResultUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockFailureSearchResultUseCase.swift; sourceTree = "<group>"; };
+		A5947A8425BAE0B800EBF9FD /* DummySearchResultUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummySearchResultUseCase.swift; sourceTree = "<group>"; };
 		A5A22FBD25B899740098D80F /* MockFailureImageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockFailureImageManager.swift; sourceTree = "<group>"; };
 		A5D2902525B9C31000041ED8 /* PaddingTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddingTextField.swift; sourceTree = "<group>"; };
 		A5D2902B25B9C55000041ED8 /* AutoCompleteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoCompleteTableViewCell.swift; sourceTree = "<group>"; };
@@ -354,6 +362,7 @@
 			isa = PBXGroup;
 			children = (
 				A5947A6525BAAFBD00EBF9FD /* SearchResultUseCaseTests.swift */,
+				A5947A7525BACA9700EBF9FD /* SearchResultViewModelTests.swift */,
 			);
 			path = SearchResultView;
 			sourceTree = "<group>";
@@ -364,6 +373,15 @@
 				A5947A6C25BAB34E00EBF9FD /* SearchResultUseCase.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		A5947A7925BACC7400EBF9FD /* SearchResultUsecase */ = {
+			isa = PBXGroup;
+			children = (
+				A5947A7A25BACC8100EBF9FD /* MockSuccessSearchResultUseCase.swift */,
+				A5947A8025BACCB900EBF9FD /* MockFailureSearchResultUseCase.swift */,
+			);
+			path = SearchResultUsecase;
 			sourceTree = "<group>";
 		};
 		A5D2902425B9C2F300041ED8 /* CustomView */ = {
@@ -525,6 +543,7 @@
 			children = (
 				A5DA21E525B700AE00B544D4 /* DummyRequester.swift */,
 				A5947A4D25B9FABF00EBF9FD /* DummyAutoCompleteUseCase.swift */,
+				A5947A8425BAE0B800EBF9FD /* DummySearchResultUseCase.swift */,
 			);
 			path = Dummy;
 			sourceTree = "<group>";
@@ -552,6 +571,7 @@
 		A5DA223E25B734B800B544D4 /* UseCase */ = {
 			isa = PBXGroup;
 			children = (
+				A5947A7925BACC7400EBF9FD /* SearchResultUsecase */,
 				A5947A4225B9F8F500EBF9FD /* AutoCompleteUsecase */,
 				A5947A4125B9F8E600EBF9FD /* TrendingUseCase */,
 			);
@@ -879,12 +899,14 @@
 				A5DA224025B734C700B544D4 /* MockSuccessTrendingUseCase.swift in Sources */,
 				A5DA21DF25B6FE9C00B544D4 /* MockSuccessNetworkManager.swift in Sources */,
 				A5DA21E625B700AE00B544D4 /* DummyRequester.swift in Sources */,
+				A5947A8125BACCB900EBF9FD /* MockFailureSearchResultUseCase.swift in Sources */,
 				A5DA215425B6B91E00B544D4 /* NetworkManagerTests.swift in Sources */,
 				A5DA21FD25B7080900B544D4 /* MockFailureNetworkManagerWithDecodeError.swift in Sources */,
 				A5DA218A25B6D27700B544D4 /* MockFailureRequesterWithNonHTTPResponse.swift in Sources */,
 				A5DA215A25B6B98F00B544D4 /* MockURLSessionDataTask.swift in Sources */,
 				A5048B0525B9CD410005CB42 /* DebounceTests.swift in Sources */,
 				A5DA217F25B6CCA600B544D4 /* NetworkError+Equatable.swift in Sources */,
+				A5947A7B25BACC8100EBF9FD /* MockSuccessSearchResultUseCase.swift in Sources */,
 				A5947A4A25B9F99600EBF9FD /* MockFailureAutoCompleteUseCase.swift in Sources */,
 				A5DA211025B6AB4300B544D4 /* DefaultRequesterTests.swift in Sources */,
 				A5E633D725B80920004331D9 /* MemoryCacheStorageTests.swift in Sources */,
@@ -892,10 +914,12 @@
 				A5DA214025B6B29500B544D4 /* NetworkErrorTests.swift in Sources */,
 				A5947A3E25B9F81A00EBF9FD /* SearchViewModelTests.swift in Sources */,
 				A5DA224B25B73A2F00B544D4 /* MockFailureTrendingUseCase.swift in Sources */,
+				A5947A7625BACA9700EBF9FD /* SearchResultViewModelTests.swift in Sources */,
 				A5DA21C925B6F4F000B544D4 /* UseCaseErrorTests.swift in Sources */,
 				A5DA220125B70A0A00B544D4 /* MockFailureNetworkManagerWithNetworkError.swift in Sources */,
 				A5DA21F925B7031A00B544D4 /* GifInfoResponse+Equtable+Encodable.swift in Sources */,
 				A5E633CD25B80594004331D9 /* ExpirableObjectTests.swift in Sources */,
+				A5947A8525BAE0B800EBF9FD /* DummySearchResultUseCase.swift in Sources */,
 				A5947A4425B9F91000EBF9FD /* MockSuccessAutoCompleteUseCase.swift in Sources */,
 				A5DA224F25B73FEB00B544D4 /* GifCellViewModelTests.swift in Sources */,
 				A5DA218525B6CF3400B544D4 /* MockFailureRequesterWithRequestError.swift in Sources */,

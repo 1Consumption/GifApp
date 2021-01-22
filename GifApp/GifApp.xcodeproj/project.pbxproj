@@ -34,6 +34,7 @@
 		A5947A4E25B9FABF00EBF9FD /* DummyAutoCompleteUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5947A4D25B9FABF00EBF9FD /* DummyAutoCompleteUseCase.swift */; };
 		A5947A5225BA016400EBF9FD /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5947A5125BA016400EBF9FD /* SearchViewModel.swift */; };
 		A5947A5625BA89F900EBF9FD /* AutoCompleteTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5947A5525BA89F900EBF9FD /* AutoCompleteTableViewDataSource.swift */; };
+		A5947A5B25BA957300EBF9FD /* SearchResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5947A5A25BA957300EBF9FD /* SearchResultViewController.swift */; };
 		A5A22FBE25B899740098D80F /* MockFailureImageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A22FBD25B899740098D80F /* MockFailureImageManager.swift */; };
 		A5D2902625B9C31000041ED8 /* PaddingTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D2902525B9C31000041ED8 /* PaddingTextField.swift */; };
 		A5D2902C25B9C55000041ED8 /* AutoCompleteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D2902B25B9C55000041ED8 /* AutoCompleteTableViewCell.swift */; };
@@ -134,6 +135,7 @@
 		A5947A4D25B9FABF00EBF9FD /* DummyAutoCompleteUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyAutoCompleteUseCase.swift; sourceTree = "<group>"; };
 		A5947A5125BA016400EBF9FD /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 		A5947A5525BA89F900EBF9FD /* AutoCompleteTableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoCompleteTableViewDataSource.swift; sourceTree = "<group>"; };
+		A5947A5A25BA957300EBF9FD /* SearchResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultViewController.swift; sourceTree = "<group>"; };
 		A5A22FBD25B899740098D80F /* MockFailureImageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockFailureImageManager.swift; sourceTree = "<group>"; };
 		A5D2902525B9C31000041ED8 /* PaddingTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddingTextField.swift; sourceTree = "<group>"; };
 		A5D2902B25B9C55000041ED8 /* AutoCompleteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoCompleteTableViewCell.swift; sourceTree = "<group>"; };
@@ -267,6 +269,7 @@
 			children = (
 				A5DA20F625B5A10700B544D4 /* Common */,
 				A51809D425B5756000E0B589 /* SearchView */,
+				A5947A5925BA954C00EBF9FD /* SearchResultView */,
 				A57D3A3025B489F0005C3338 /* Main.storyboard */,
 				A57D3A3525B489F2005C3338 /* LaunchScreen.storyboard */,
 				A57D3A2A25B489F0005C3338 /* AppDelegate.swift */,
@@ -332,6 +335,14 @@
 				A5947A4925B9F99600EBF9FD /* MockFailureAutoCompleteUseCase.swift */,
 			);
 			path = AutoCompleteUsecase;
+			sourceTree = "<group>";
+		};
+		A5947A5925BA954C00EBF9FD /* SearchResultView */ = {
+			isa = PBXGroup;
+			children = (
+				A5947A5A25BA957300EBF9FD /* SearchResultViewController.swift */,
+			);
+			path = SearchResultView;
 			sourceTree = "<group>";
 		};
 		A5D2902425B9C2F300041ED8 /* CustomView */ = {
@@ -793,6 +804,7 @@
 				A5947A5625BA89F900EBF9FD /* AutoCompleteTableViewDataSource.swift in Sources */,
 				A5DA21C425B6F36A00B544D4 /* UseCaseError.swift in Sources */,
 				A5947A5225BA016400EBF9FD /* SearchViewModel.swift in Sources */,
+				A5947A5B25BA957300EBF9FD /* SearchResultViewController.swift in Sources */,
 				A5DA21D825B6FDCC00B544D4 /* RemoteDataDecodeType.swift in Sources */,
 				A5DA216A25B6BC6700B544D4 /* NetworkManagerType.swift in Sources */,
 				A5DA20F925B5A11C00B544D4 /* PinterestLayout.swift in Sources */,

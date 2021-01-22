@@ -58,4 +58,9 @@ final class SearchViewModel: ViewModelType {
         
         return output
     }
+    
+    func keyword(of index: Int) -> String? {
+        guard autoCompletes.count > index else { return nil }
+        return autoCompletes[index].name
+    }
 }

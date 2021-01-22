@@ -23,4 +23,8 @@ final class AutoCompleteTableViewDataSource: NSObject, UITableViewDataSource {
         
         return cell
     }
+    
+    func keyword(of index: Int) -> String? {
+        return viewModel.keyword(of: index)
+    }
 }

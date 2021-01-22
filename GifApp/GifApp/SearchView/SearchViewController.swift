@@ -12,6 +12,9 @@ final class SearchViewController: UIViewController {
     @IBOutlet weak var trendingGifCollectionView: UICollectionView!
     @IBOutlet weak var autoCompleteTableView: UITableView!
     @IBOutlet weak var searchTextField: PaddingTextField!
+    @IBAction func searchButtonTouched(_ sender: Any) {
+        searchViewModelInput.searchFire.value = searchTextField.text
+    }
     
     private let trendingGifCollectionViewDataSource: TrendingGifCollectionViewDataSource = TrendingGifCollectionViewDataSource()
     private let trendingGifViewModel: TrendingGifViewModel = TrendingGifViewModel()
@@ -31,6 +34,7 @@ final class SearchViewController: UIViewController {
     }
     
     private func setUpNavigationBar() {
+        navigationItem.backButtonTitle = ""
         navigationController?.navigationBar.barStyle = .black
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         navigationController?.navigationBar.shadowImage = UIImage()
@@ -65,6 +69,7 @@ final class SearchViewController: UIViewController {
     private func setUpAutoCompleteTableView() {
         autoCompleteTableViewDataSource.viewModel = searchViewModel
         autoCompleteTableView.dataSource = autoCompleteTableViewDataSource
+        autoCompleteTableView.delegate = self
         bindWithSearchViewModel()
     }
     
@@ -81,6 +86,12 @@ final class SearchViewController: UIViewController {
             DispatchQueue.main.async { [weak self] in
                 self?.autoCompleteTableView.reloadData()
             }
+        }.store(in: &bag)
+        
+        output.searchFired.bind { [weak self] in
+            guard let searchResultViewController = self?.storyboard?.instantiateViewController(withIdentifier: SearchResultViewController.identifier) as? SearchResultViewController else { return }
+            searchResultViewController.keyword = $0
+            self?.navigationController?.pushViewController(searchResultViewController, animated: true)
         }.store(in: &bag)
     }
     
@@ -101,17 +112,13 @@ extension SearchViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print(indexPath)
     }
-    
-    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        let lastItem = collectionView.numberOfItems(inSection: 0) - 1
-    
-        guard lastItem < indexPath.item + 1 else { return }
-        
-        print("will display last cell")
-    }
 }
 
 extension SearchViewController: PinterestLayoutDelegate {
+    
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        view.endEditing(true)
+    }
     
     func collectionView(_ collectionView: UICollectionView, heightForPhotoAtIndexPath indexPath: IndexPath) -> CGSize {
         guard let dataSource = collectionView.dataSource as? TrendingGifCollectionViewDataSource else { return .zero }
@@ -122,5 +129,13 @@ extension SearchViewController: PinterestLayoutDelegate {
         else { return .zero }
         
         return CGSize(width: width, height: height)
+    }
+}
+
+extension SearchViewController: UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let dataSouce = tableView.dataSource as? AutoCompleteTableViewDataSource else { return }
+        searchViewModelInput.searchFire.value = dataSouce.keyword(of: indexPath.item)
     }
 }

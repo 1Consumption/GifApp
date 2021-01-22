@@ -79,7 +79,7 @@ final class SearchViewModelTests: XCTestCase {
     }
     
     func testSearchFired() {
-        let expectation = XCTestExpectation(description: " delivered")
+        let expectation = XCTestExpectation(description: "search fired")
         
         let useCase = DummyAutoCompleteUseCase()
         let viewModel = SearchViewModel(useCase: useCase)
@@ -94,5 +94,25 @@ final class SearchViewModelTests: XCTestCase {
         input.searchFire.value = "test"
         
         wait(for: [expectation], timeout: 1.0)
+    }
+    
+    func testKeyword() {
+        let expectation = XCTestExpectation(description: "keyword")
+        
+        let useCase = MockSuccessAutoCompleteUseCase()
+        let viewModel = SearchViewModel(useCase: useCase)
+        
+        let output = viewModel.transform(input).autoCompleteDelivered
+        
+        output.bind {
+            expectation.fulfill()
+        }.store(in: &bag)
+        
+        input.textFieldChanged.value = "test"
+        
+        wait(for: [expectation], timeout: 1.0)
+        
+        XCTAssertNotNil(viewModel.keyword(of: 0))
+        XCTAssertNil(viewModel.keyword(of: 1))
     }
 }

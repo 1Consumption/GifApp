@@ -12,23 +12,35 @@ protocol SearchResultUseCaseType {
     func retrieveGifInfo(keyword: String, failureHandler: @escaping (UseCaseError) -> Void, successHandler: @escaping (GifInfoResponse) -> Void)
 }
 
-struct SearchResultUseCase: RemoteDataDecodeType {
+final class SearchResultUseCase: RemoteDataDecodeType {
     
     typealias T = GifInfoResponse
     
     var networkManager: NetworkManagerType
+    private var offset: Int = 0
+    private var isEndOfPage: Bool = false
     
     init(networkManager: NetworkManagerType = NetworkManager()) {
         self.networkManager = networkManager
     }
     
     func retrieveGifInfo(keyword: String, failureHandler: @escaping (UseCaseError) -> Void, successHandler: @escaping (T) -> Void) {
-        let url = EndPoint(urlInfomation: .search(keyword: keyword, offset: 0)).url
+        guard !isEndOfPage else {
+            failureHandler(.endOfPage)
+            return
+        }
         
+        let url = EndPoint(urlInfomation: .search(keyword: keyword, offset: offset)).url
+
         retrieveModel(with: url,
                       method: .get,
                       headers: nil,
                       failureHandler: failureHandler,
-                      successHandler: successHandler)
+                      successHandler: { [weak self] response in
+                        let pagination = response.pagination
+                        self?.isEndOfPage = (pagination.offset + 1) * pagination.count >= pagination.totalCount
+                        self?.offset = pagination.offset + 1
+                        successHandler(response)
+                      })
     }
 }

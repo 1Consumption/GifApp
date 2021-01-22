@@ -11,7 +11,7 @@ import XCTest
 final class MockSuccessNetworkManager: NetworkManagerType {
     
     var requester: RequesterType
-    private var data: Data
+    var data: Data
     
     private var url: URL?
     private var method: HTTPMethod?

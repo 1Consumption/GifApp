@@ -13,6 +13,7 @@
 		A51809C625B569BE00E0B589 /* GifInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51809C525B569BE00E0B589 /* GifInfo.swift */; };
 		A51809D725B5757300E0B589 /* GifCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51809D525B5757300E0B589 /* GifCell.swift */; };
 		A51809D825B5757300E0B589 /* GifCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A51809D625B5757300E0B589 /* GifCell.xib */; };
+		A571316925BBFC2300D22E63 /* DiskStorageTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A571316825BBFC2200D22E63 /* DiskStorageTests.swift */; };
 		A571A0E425B84DBE00526A49 /* ImageRequesterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A571A0E325B84DBE00526A49 /* ImageRequesterTests.swift */; };
 		A571A0E825B84DFF00526A49 /* ImageRequester.swift in Sources */ = {isa = PBXBuildFile; fileRef = A571A0E725B84DFF00526A49 /* ImageRequester.swift */; };
 		A571A0EE25B84E8000526A49 /* ImageManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A571A0ED25B84E8000526A49 /* ImageManagerTests.swift */; };
@@ -121,6 +122,7 @@
 		A51809C525B569BE00E0B589 /* GifInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GifInfo.swift; sourceTree = "<group>"; };
 		A51809D525B5757300E0B589 /* GifCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GifCell.swift; sourceTree = "<group>"; };
 		A51809D625B5757300E0B589 /* GifCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GifCell.xib; sourceTree = "<group>"; };
+		A571316825BBFC2200D22E63 /* DiskStorageTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiskStorageTests.swift; sourceTree = "<group>"; };
 		A571A0E325B84DBE00526A49 /* ImageRequesterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageRequesterTests.swift; sourceTree = "<group>"; };
 		A571A0E725B84DFF00526A49 /* ImageRequester.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageRequester.swift; sourceTree = "<group>"; };
 		A571A0ED25B84E8000526A49 /* ImageManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageManagerTests.swift; sourceTree = "<group>"; };
@@ -285,8 +287,8 @@
 		A57D3A2925B489F0005C3338 /* GifApp */ = {
 			isa = PBXGroup;
 			children = (
-				A5A3B94825BB1F5A00389243 /* DetailView */,
 				A5DA20F625B5A10700B544D4 /* Common */,
+				A5A3B94825BB1F5A00389243 /* DetailView */,
 				A51809D425B5756000E0B589 /* SearchView */,
 				A5947A5925BA954C00EBF9FD /* SearchResultView */,
 				A57D3A3025B489F0005C3338 /* Main.storyboard */,
@@ -674,6 +676,7 @@
 				A5E633C825B80487004331D9 /* ExpireTimeTests.swift */,
 				A5E633D625B80920004331D9 /* MemoryCacheStorageTests.swift */,
 				A571A0ED25B84E8000526A49 /* ImageManagerTests.swift */,
+				A571316825BBFC2200D22E63 /* DiskStorageTests.swift */,
 			);
 			path = ImageManager;
 			sourceTree = "<group>";
@@ -960,6 +963,7 @@
 				A5DA21B725B6E7A800B544D4 /* TrendingGifUseCaseTests.swift in Sources */,
 				A5DA21A725B6D81200B544D4 /* EndpointTests.swift in Sources */,
 				A5DA222B25B71C8000B544D4 /* ObservableTests.swift in Sources */,
+				A571316925BBFC2300D22E63 /* DiskStorageTests.swift in Sources */,
 				A5DA219225B6D56000B544D4 /* MockFailureRequesterWithInvalidHTTPStatusCode.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

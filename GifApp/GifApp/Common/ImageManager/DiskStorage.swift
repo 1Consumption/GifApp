@@ -36,11 +36,10 @@ final class DiskStorage {
         
         do {
             try value.write(to: url)
+            stored.insert(key)
         } catch {
             throw DiskStorageError.storeError(path: url.path)
         }
-        
-        stored.insert(key)
     }
     
     func isStored(_ key: String) -> Bool {
@@ -58,10 +57,10 @@ final class DiskStorage {
         
         do {
             try fileManager.removeItem(at: url)
+            stored.remove(key)
         } catch {
             throw DiskStorageError.removeError(path: url.path)
         }
-        stored.remove(key)
     }
     
     private func createDirectory(with url: URL) throws {

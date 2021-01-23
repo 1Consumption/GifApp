@@ -55,12 +55,27 @@ final class DiskStorageTests: XCTestCase {
         try! diskStorage.store(data2, for: key2)
         
         diskStorage = try! DiskStorage(fileManager: fileManager, directoryName: "test")
-
+        
         XCTAssertTrue(diskStorage.isStored(key1))
         XCTAssertTrue(diskStorage.isStored(key2))
     }
     
+    func testRemoveError() {
+        let data = Data([1, 2, 3, 4])
+        let key = "key"
+        
+        try! diskStorage.store(data, for: key)
+        
+        try! diskStorage.remove(for: key)
+        do {
+            try diskStorage.remove(for: key)
+        } catch {
+            let path = document.appendingPathComponent("test").appendingPathComponent(key).path
+            XCTAssertEqual(DiskStorageError.removeError(path: path), error as! DiskStorageError)
+        }
+    }
+    
     override func tearDownWithError() throws {
-        try! fileManager.removeItem(atPath: document.appendingPathComponent("test").path)
+        try? fileManager.removeItem(atPath: document.appendingPathComponent("test").path)
     }
 }

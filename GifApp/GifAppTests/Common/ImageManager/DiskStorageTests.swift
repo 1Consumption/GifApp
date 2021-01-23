@@ -16,7 +16,7 @@ final class DiskStorageTests: XCTestCase {
     
     override func setUpWithError() throws {
         document = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first!
-        diskStorage = DiskStorage(fileManager: fileManager, directoryName: "test")
+        diskStorage = try! DiskStorage(fileManager: fileManager, directoryName: "test")
     }
     
     func testCreateDirSuccess() {

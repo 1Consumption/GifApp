@@ -12,6 +12,7 @@ enum DiskStorageError: Error {
     case canNotFoundDocumentDirectory
     case canNotCreateStorageDirectory
     case storeError(path: String)
+    case removeError(path: String)
 }
 
 final class DiskStorage {
@@ -57,7 +58,14 @@ final class DiskStorage {
     }
     
     func remove(for key: String) throws {
+        let url = directory.appendingPathComponent(key)
         
+        do {
+            try fileManager.removeItem(at: url)
+        } catch {
+            throw DiskStorageError.removeError(path: url.path)
+        }
+        stored.remove(key)
     }
     
     func itemList() -> [String] {

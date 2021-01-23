@@ -46,6 +46,8 @@ final class DiskStorageTests: XCTestCase {
     }
     
     func testItemList() {
+        let expectation = XCTestExpectation(description: "item list")
+        defer { wait(for: [expectation], timeout: 2.0) }
         let data1 = Data([1, 2, 3, 4])
         let data2 = Data([2, 3, 4, 5])
         let key1 = "key1"
@@ -56,8 +58,11 @@ final class DiskStorageTests: XCTestCase {
         
         diskStorage = try! DiskStorage(fileManager: fileManager, directoryName: "test")
         
-        XCTAssertTrue(diskStorage.isStored(key1))
-        XCTAssertTrue(diskStorage.isStored(key2))
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
+            XCTAssertTrue(self.diskStorage.isStored(key1))
+            XCTAssertTrue(self.diskStorage.isStored(key2))
+            expectation.fulfill()
+        })
     }
     
     func testRemoveError() {

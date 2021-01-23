@@ -21,6 +21,7 @@ final class DiskStorage {
     private let fileManager: FileManager
     private let directory: URL
     private var stored: Set<String> = Set<String>()
+    private let diskQueue: DispatchQueue = DispatchQueue(label: "com.diskQueue")
     
     init(fileManager: FileManager = .default, directoryName: String) throws {
         guard let documentDirectory = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first else { throw DiskStorageError.canNotFoundDocumentDirectory }
@@ -28,7 +29,7 @@ final class DiskStorage {
         self.directory = documentDirectory.appendingPathComponent(directoryName)
         
         try createDirectory(with: self.directory)
-        try loadItemList()
+        loadItemList()
     }
     
     func store(_ value: Data, for key: String) throws {
@@ -73,12 +74,15 @@ final class DiskStorage {
         }
     }
     
-    private func loadItemList() throws {
-        do {
-            let items = try fileManager.contentsOfDirectory(atPath: directory.path)
-            items.forEach { stored.insert($0) }
-        } catch {
-            throw DiskStorageError.itemListError(path: directory.path)
+    private func loadItemList() {
+        diskQueue.async {
+            do {
+                let items = try self.fileManager.contentsOfDirectory(atPath: self.directory.path)
+                items.forEach { self.stored.insert($0) }
+            } catch {
+                debugPrint(error.localizedDescription)
+                debugPrint(#function)
+            }
         }
     }
 }

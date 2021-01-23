@@ -54,10 +54,10 @@ final class DiskStorageTests: XCTestCase {
         try! diskStorage.store(data1, for: key1)
         try! diskStorage.store(data2, for: key2)
         
-        let itemList = diskStorage.itemList()
-        
-        XCTAssertTrue(itemList.contains(key1))
-        XCTAssertTrue(itemList.contains(key2))
+        diskStorage = try! DiskStorage(fileManager: fileManager, directoryName: "test")
+
+        XCTAssertTrue(diskStorage.isStored(key1))
+        XCTAssertTrue(diskStorage.isStored(key2))
     }
     
     override func tearDownWithError() throws {

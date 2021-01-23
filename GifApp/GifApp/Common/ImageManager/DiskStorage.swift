@@ -13,6 +13,7 @@ enum DiskStorageError: Error {
     case canNotCreateStorageDirectory
     case storeError(path: String)
     case removeError(path: String)
+    case itemListError(path: String)
 }
 
 final class DiskStorage {
@@ -26,13 +27,8 @@ final class DiskStorage {
         self.fileManager = fileManager
         self.directory = documentDirectory.appendingPathComponent(directoryName)
         
-        guard !fileManager.fileExists(atPath: directory.path) else { return }
-        
-        do {
-            try fileManager.createDirectory(at: directory, withIntermediateDirectories: true, attributes: nil)
-        } catch {
-            throw DiskStorageError.canNotCreateStorageDirectory
-        }
+        try createDirectory(with: self.directory)
+        try loadItemList()
     }
     
     func store(_ value: Data, for key: String) throws {
@@ -68,7 +64,22 @@ final class DiskStorage {
         stored.remove(key)
     }
     
-    func itemList() -> [String] {
-        return []
+    private func createDirectory(with url: URL) throws {
+        guard !fileManager.fileExists(atPath: url.path) else { return }
+        
+        do {
+            try fileManager.createDirectory(at: url, withIntermediateDirectories: true, attributes: nil)
+        } catch {
+            throw DiskStorageError.canNotCreateStorageDirectory
+        }
+    }
+    
+    private func loadItemList() throws {
+        do {
+            let items = try fileManager.contentsOfDirectory(atPath: directory.path)
+            items.forEach { stored.insert($0) }
+        } catch {
+            throw DiskStorageError.itemListError(path: directory.path)
+        }
     }
 }

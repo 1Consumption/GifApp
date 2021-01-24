@@ -34,8 +34,18 @@ final class ImageManager: ImageManagerType {
     
     func retrieveImage(from url: String, failureHandler: @escaping () -> Void, imageHandler: @escaping (UIImage?) -> Void) -> Cancellable? {
         if memoryStorage.isCached(url) {
-            let image = memoryStorage.object(for: url)
-            imageHandler(image)
+            if let image = memoryStorage.object(for: url) {
+                imageHandler(image)
+            } else {
+                if diskStorage?.isStored(url) == true {
+                    guard let data = diskStorage?.data(for: url) else { return nil }
+                    let image = UIImage.gif(data: data)
+                    memoryStorage.insert(image, for: url)
+                    imageHandler(image)
+                } else {
+                    return loadImage(from: url, fairureHandler: failureHandler, imageHandler: imageHandler)
+                }
+            }
         } else if diskStorage?.isStored(url) == true {
             guard let data = diskStorage?.data(for: url) else { return nil }
             let image = UIImage.gif(data: data)

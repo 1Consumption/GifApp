@@ -10,9 +10,11 @@
 		1AC0DFE47C5E9D44E91AA416 /* Pods_GifAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38F6959E4386668D910C3136 /* Pods_GifAppTests.framework */; };
 		A5048B0525B9CD410005CB42 /* DebounceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5048B0425B9CD410005CB42 /* DebounceTests.swift */; };
 		A5048B0925B9D03D0005CB42 /* Debounce.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5048B0825B9D03D0005CB42 /* Debounce.swift */; };
+		A505439825BDBD890041DF94 /* FavoriteManagerError+Equatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A505439725BDBD890041DF94 /* FavoriteManagerError+Equatable.swift */; };
 		A51809C625B569BE00E0B589 /* GifInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51809C525B569BE00E0B589 /* GifInfo.swift */; };
 		A51809D725B5757300E0B589 /* GifCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51809D525B5757300E0B589 /* GifCell.swift */; };
 		A51809D825B5757300E0B589 /* GifCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A51809D625B5757300E0B589 /* GifCell.xib */; };
+		A524DA6125BDB05200226AF9 /* FavoriteManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A524DA6025BDB05200226AF9 /* FavoriteManagerTests.swift */; };
 		A571316925BBFC2300D22E63 /* DiskStorageTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A571316825BBFC2200D22E63 /* DiskStorageTests.swift */; };
 		A571316D25BC0BC600D22E63 /* DiskStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A571316C25BC0BC600D22E63 /* DiskStorage.swift */; };
 		A571317125BC19D300D22E63 /* DiskStorageError+Equatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A571317025BC19D300D22E63 /* DiskStorageError+Equatable.swift */; };
@@ -127,9 +129,11 @@
 		94CC51EF00F3DC461E1A3DFA /* Pods-GifAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GifAppTests.debug.xcconfig"; path = "Target Support Files/Pods-GifAppTests/Pods-GifAppTests.debug.xcconfig"; sourceTree = "<group>"; };
 		A5048B0425B9CD410005CB42 /* DebounceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebounceTests.swift; sourceTree = "<group>"; };
 		A5048B0825B9D03D0005CB42 /* Debounce.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Debounce.swift; sourceTree = "<group>"; };
+		A505439725BDBD890041DF94 /* FavoriteManagerError+Equatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FavoriteManagerError+Equatable.swift"; sourceTree = "<group>"; };
 		A51809C525B569BE00E0B589 /* GifInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GifInfo.swift; sourceTree = "<group>"; };
 		A51809D525B5757300E0B589 /* GifCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GifCell.swift; sourceTree = "<group>"; };
 		A51809D625B5757300E0B589 /* GifCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GifCell.xib; sourceTree = "<group>"; };
+		A524DA6025BDB05200226AF9 /* FavoriteManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteManagerTests.swift; sourceTree = "<group>"; };
 		A571316825BBFC2200D22E63 /* DiskStorageTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiskStorageTests.swift; sourceTree = "<group>"; };
 		A571316C25BC0BC600D22E63 /* DiskStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiskStorage.swift; sourceTree = "<group>"; };
 		A571317025BC19D300D22E63 /* DiskStorageError+Equatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DiskStorageError+Equatable.swift"; sourceTree = "<group>"; };
@@ -554,6 +558,7 @@
 				A5DA21F825B7031A00B544D4 /* GifInfoResponse+Equtable+Encodable.swift */,
 				A5947A3325B9F17F00EBF9FD /* AutoComplete+Equtable+Encodable.swift */,
 				A571317025BC19D300D22E63 /* DiskStorageError+Equatable.swift */,
+				A505439725BDBD890041DF94 /* FavoriteManagerError+Equatable.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -575,6 +580,7 @@
 			children = (
 				A5DA224E25B73FEB00B544D4 /* GifCellViewModelTests.swift */,
 				A5DA21C825B6F4F000B544D4 /* UseCaseErrorTests.swift */,
+				A524DA6025BDB05200226AF9 /* FavoriteManagerTests.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1001,6 +1007,7 @@
 				A5D28E6D25BD52D2000A010C /* StubFileManager.swift in Sources */,
 				A5947A4425B9F91000EBF9FD /* MockSuccessAutoCompleteUseCase.swift in Sources */,
 				A5DA224F25B73FEB00B544D4 /* GifCellViewModelTests.swift in Sources */,
+				A524DA6125BDB05200226AF9 /* FavoriteManagerTests.swift in Sources */,
 				A5DA218525B6CF3400B544D4 /* MockFailureRequesterWithRequestError.swift in Sources */,
 				A5A22FBE25B899740098D80F /* MockFailureImageManager.swift in Sources */,
 				A5947A4E25B9FABF00EBF9FD /* DummyAutoCompleteUseCase.swift in Sources */,
@@ -1009,6 +1016,7 @@
 				A5947A6625BAAFBD00EBF9FD /* SearchResultUseCaseTests.swift in Sources */,
 				A5DA216025B6BA3500B544D4 /* MockSuccessRequester.swift in Sources */,
 				A5DA21B725B6E7A800B544D4 /* TrendingGifUseCaseTests.swift in Sources */,
+				A505439825BDBD890041DF94 /* FavoriteManagerError+Equatable.swift in Sources */,
 				A5DA21A725B6D81200B544D4 /* EndpointTests.swift in Sources */,
 				A5DA222B25B71C8000B544D4 /* ObservableTests.swift in Sources */,
 				A571316925BBFC2300D22E63 /* DiskStorageTests.swift in Sources */,

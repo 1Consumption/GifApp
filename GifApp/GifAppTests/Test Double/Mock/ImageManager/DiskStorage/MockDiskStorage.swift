@@ -22,6 +22,9 @@ final class MockDiskStorage: DiskStorageType {
     private var dataKey: String?
     private var dataCallCount: Int = 0
     
+    private var removeKey: String?
+    private var removeCallCount: Int = 0
+    
     func store(_ value: Data, for key: String) throws {
         storeCallCount += 1
         storeKey = key
@@ -41,7 +44,11 @@ final class MockDiskStorage: DiskStorageType {
         return storage[key]
     }
     
-    func remove(for key: String) throws { }
+    func remove(for key: String) throws {
+        removeKey = key
+        removeCallCount += 1
+        storage[key] = nil
+    }
     
     func verifyStore(value: Data, key: String, callCount: Int = 1) {
         XCTAssertEqual(storeValue, value)
@@ -57,6 +64,11 @@ final class MockDiskStorage: DiskStorageType {
     func verifyData(key: String, callCount: Int = 1) {
         XCTAssertEqual(dataKey, key)
         XCTAssertEqual(dataCallCount, callCount)
+    }
+    
+    func verifyRemove(key: String, callCount: Int = 1) {
+        XCTAssertEqual(removeKey, key)
+        XCTAssertEqual(removeCallCount, callCount)
     }
 }
 
@@ -81,7 +93,6 @@ final class MockDiskStorageThrowDirectoryError: DiskStorageType {
 
 final class MockDiskStorageThrowStoreError: DiskStorageType {
     
-    private var storage: [String: Data] = [String: Data]()
     private var storeValue: Data?
     private var storeKey: String?
     private var storeCallCount: Int = 0
@@ -107,5 +118,32 @@ final class MockDiskStorageThrowStoreError: DiskStorageType {
         XCTAssertEqual(storeValue, value)
         XCTAssertEqual(storeKey, key)
         XCTAssertEqual(storeCallCount, callCount)
+    }
+}
+
+final class MockDiskStorageThrowRemoveError: DiskStorageType {
+    
+    private var removeKey: String?
+    private var removeCallCount: Int = 0
+    
+    func store(_ value: Data, for key: String) throws { }
+    
+    func isStored(_ key: String) -> Bool {
+        return true
+    }
+    
+    func data(for key: String) -> Data? {
+        return nil
+    }
+    
+    func remove(for key: String) throws {
+        removeKey = key
+        removeCallCount += 1
+        throw DiskStorageError.removeError(path: key)
+    }
+    
+    func verifyRemove(value: Data, key: String, callCount: Int = 1) {
+        XCTAssertEqual(removeKey, key)
+        XCTAssertEqual(removeCallCount, callCount)
     }
 }

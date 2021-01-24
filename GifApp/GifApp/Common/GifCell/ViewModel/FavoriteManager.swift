@@ -10,6 +10,7 @@ import Foundation
 enum FavoriteManagerError: Error {
     case diskStorageError(DiskStorageError)
     case encodeError
+    case unknownError(Error)
 }
 
 final class FavoriteManager {
@@ -22,7 +23,7 @@ final class FavoriteManager {
     
     func changeFavoriteState(with gifInfo: GifInfo, failureHandler: @escaping (FavoriteManagerError) -> Void, successHandler: @escaping (Bool) -> Void) {
         if diskStorage?.isStored(gifInfo.id) == true {
-            
+            remove(with: gifInfo, failureHandler: failureHandler, successHandler: successHandler)
         } else {
             store(with: gifInfo, failureHandler: failureHandler, successHandler: successHandler)
         }
@@ -38,6 +39,17 @@ final class FavoriteManager {
             failureHandler(.diskStorageError(error))
         } catch {
             failureHandler(.encodeError)
+        }
+    }
+    
+    func remove(with gifInfo: GifInfo, failureHandler: @escaping (FavoriteManagerError) -> Void, successHandler: @escaping (Bool) -> Void) {
+        do {
+            try diskStorage?.remove(for: gifInfo.id)
+            successHandler(false)
+        } catch let error as DiskStorageError {
+            failureHandler(.diskStorageError(error))
+        } catch {
+            failureHandler(.unknownError(error))
         }
     }
 }

@@ -27,8 +27,9 @@ final class MockSuccessFavoriteManager: FavoriteManagerType {
         }
     }
     
-    func verify(gifInfo: GifInfo, callCount: Int = 1) {
+    func verify(gifInfo: GifInfo, storageCount: Int, callCount: Int = 1) {
         XCTAssertEqual(self.gifInfo, gifInfo)
+        XCTAssertEqual(self.store.count, storageCount)
         XCTAssertEqual(self.callCount, callCount)
     }
 }

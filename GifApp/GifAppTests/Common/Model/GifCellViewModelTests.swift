@@ -75,11 +75,10 @@ final class GifCellViewModelTests: XCTestCase {
         let favoriteManager = MockSuccessFavoriteManager()
         viewModel = GifCellViewModel(gifInfo: gifInfo, favoriteManager: favoriteManager)
         
-        let output = viewModel.transform(input).favoriteStateDelivered
+        let output = viewModel.transform(input).favoriteConfirm
         
         output.bind {
-            XCTAssertTrue($0)
-            favoriteManager.verify(gifInfo: self.gifInfo)
+            favoriteManager.verify(gifInfo: self.gifInfo, storageCount: 1)
             expectation.fulfill()
         }.store(in: &bag)
         
@@ -95,11 +94,10 @@ final class GifCellViewModelTests: XCTestCase {
         
         viewModel = GifCellViewModel(gifInfo: gifInfo, favoriteManager: favoriteManager)
         
-        let output = viewModel.transform(input).favoriteStateDelivered
+        let output = viewModel.transform(input).favoriteCanceled
         
         output.bind {
-            XCTAssertFalse($0)
-            favoriteManager.verify(gifInfo: self.gifInfo, callCount: 2)
+            favoriteManager.verify(gifInfo: self.gifInfo, storageCount: 0, callCount: 2)
             expectation.fulfill()
         }.store(in: &bag)
         

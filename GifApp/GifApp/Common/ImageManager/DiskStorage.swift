@@ -9,11 +9,11 @@ import Foundation
 
 final class DiskStorage {
     
-    private let fileManager: FileManager
+    private let fileManager: FileManagerType
     private let directory: URL
     private let diskQueue: DispatchQueue = DispatchQueue(label: "com.diskQueue")
     
-    init(fileManager: FileManager = .default, directoryName: String) throws {
+    init(fileManager: FileManagerType = FileManager.default, directoryName: String) throws {
         guard let documentDirectory = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first else { throw DiskStorageError.canNotFoundDocumentDirectory }
         self.fileManager = fileManager
         self.directory = documentDirectory.appendingPathComponent(directoryName)

@@ -21,12 +21,12 @@ struct GifCellViewModelOutput {
 final class GifCellViewModel: ViewModelType {
     
     private var bag: CancellableBag = CancellableBag()
-    private var gifURL: String
+    private var gifInfo: GifInfo
     private var request: Cancellable?
     private let imageManager: ImageManagerType
     
-    init(gifURL: String, imageManager: ImageManagerType = ImageManager.shared) {
-        self.gifURL = gifURL
+    init(gifInfo: GifInfo, imageManager: ImageManagerType = ImageManager.shared) {
+        self.gifInfo = gifInfo
         self.imageManager = imageManager
     }
     
@@ -34,7 +34,7 @@ final class GifCellViewModel: ViewModelType {
         let output = GifCellViewModelOutput()
         
         input.loadGif.bind { [weak self] in
-            guard let url = self?.gifURL else { return }
+            guard let url = self?.gifInfo.images.fixedWidth.url else { return }
             self?.request = self?.imageManager.retrieveImage(from: url,
                                                              failureHandler: { output.errorDelivered.fire() },
                                                              dataHandler: {

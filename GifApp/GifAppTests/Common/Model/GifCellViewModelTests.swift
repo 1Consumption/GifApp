@@ -11,6 +11,11 @@ import XCTest
 final class GifCellViewModelTests: XCTestCase {
  
     private let input: GifCellViewModelInput = GifCellViewModelInput()
+    private let gifInfo: GifInfo = GifInfo(id: "1",
+                                           username: "",
+                                           source: "",
+                                           images: GifImages(original: GifImage(height: "", width: "", url: ""),
+                                                             fixedWidth: GifImage(height: "", width: "", url: "test")))
     private var bag: CancellableBag = CancellableBag()
     private var viewModel: GifCellViewModel!
     
@@ -18,8 +23,9 @@ final class GifCellViewModelTests: XCTestCase {
         let expectation = XCTestExpectation(description: "gif delivered")
         defer { wait(for: [expectation], timeout: 1.0) }
         
+        
         let imageManager = MockSuccessImageManager()
-        viewModel = GifCellViewModel(gifURL: "test", imageManager: imageManager)
+        viewModel = GifCellViewModel(gifInfo: gifInfo, imageManager: imageManager)
         
         let output = viewModel.transform(input).gifDelivered
         
@@ -37,7 +43,7 @@ final class GifCellViewModelTests: XCTestCase {
         
         let imageManager = MockSuccessCancellableImageManager { expectation.fulfill() }
         
-        viewModel = GifCellViewModel(gifURL: "test", imageManager: imageManager)
+        viewModel = GifCellViewModel(gifInfo: gifInfo, imageManager: imageManager)
         
         let _ = viewModel?.transform(input)
         
@@ -51,7 +57,7 @@ final class GifCellViewModelTests: XCTestCase {
         defer { wait(for: [expectation], timeout: 1.0) }
         
         let imageManager = MockFailureImageManager()
-        viewModel = GifCellViewModel(gifURL: "test", imageManager: imageManager)
+        viewModel = GifCellViewModel(gifInfo: gifInfo, imageManager: imageManager)
         
         let output = viewModel.transform(input).errorDelivered
         

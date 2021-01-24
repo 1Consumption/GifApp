@@ -28,8 +28,8 @@ final class GifCell: UICollectionViewCell {
         addGestureRecognizer(tapGesture)
     }
     
-    func bind(with url: String) {
-        gifCellViewModel = GifCellViewModel(gifURL: url)
+    func bind(with gifInfo: GifInfo) {
+        gifCellViewModel = GifCellViewModel(gifInfo: gifInfo)
         
         let output = gifCellViewModel?.transform(gifCellViewModelInput)
         

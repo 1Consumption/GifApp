@@ -18,9 +18,9 @@ final class GifCollectionViewDataSource: NSObject, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: GifCell.identifier, for: indexPath) as? GifCell else { return UICollectionViewCell() }
         
-        guard let model = viewModel?.gifInfoArray[indexPath.item] else { return cell }
+        guard let gifInfo = viewModel?.gifInfoArray[indexPath.item] else { return cell }
         
-        cell.bind(with: model.images.fixedWidth.url)
+        cell.bind(with: gifInfo)
         
         return cell
     }

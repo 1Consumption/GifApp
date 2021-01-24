@@ -56,7 +56,7 @@ final class ImageManagerTests: XCTestCase {
                                            failureHandler: { XCTFail() },
                                            imageHandler: {
                                             XCTAssertNotNil($0)
-                                            diskStorage.verifyIsStored(key: "test", callCount: 2)
+                                            diskStorage.verifyIsStored(key: "test")
                                             diskStorage.verifyStore(value: self.data, key: "test")
                                             diskStorage.verifyData(key: "test")
                                             expectation.fulfill()

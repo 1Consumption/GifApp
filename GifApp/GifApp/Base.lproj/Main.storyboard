@@ -293,6 +293,22 @@
             </objects>
             <point key="canvasLocation" x="989.85507246376824" y="93.75"/>
         </scene>
+        <!--Favorite-->
+        <scene sceneID="YKU-2v-Fe3">
+            <objects>
+                <viewController id="ggj-bb-Mzq" customClass="FavoriteViewController" customModule="GifApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="n7j-HT-q1R">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="CiR-Rw-glX"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Favorite" image="heart.circle" catalog="system" selectedImage="heart.circle.fill" id="7nB-fF-7Wa"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mnI-lc-WSU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="990" y="828"/>
+        </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="yhe-Se-Em3">
             <objects>
@@ -304,6 +320,7 @@
                     </tabBar>
                     <connections>
                         <segue destination="mMl-iO-iEZ" kind="relationship" relationship="viewControllers" id="2zs-3C-p5d"/>
+                        <segue destination="ggj-bb-Mzq" kind="relationship" relationship="viewControllers" id="87a-2T-fLO"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rzL-mo-82Q" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -320,9 +337,14 @@
         </designable>
     </designables>
     <resources>
+        <image name="heart.circle" catalog="system" width="128" height="121"/>
+        <image name="heart.circle.fill" catalog="system" width="128" height="121"/>
         <image name="magnifyingglass" catalog="system" width="128" height="115"/>
         <image name="magnifyingglass.circle" catalog="system" width="128" height="121"/>
         <image name="magnifyingglass.circle.fill" catalog="system" width="128" height="121"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
         <systemColor name="systemPurpleColor">
             <color red="0.68627450980392157" green="0.32156862745098042" blue="0.87058823529411766" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>

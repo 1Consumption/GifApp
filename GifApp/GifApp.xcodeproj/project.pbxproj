@@ -54,6 +54,7 @@
 		A5A22FBE25B899740098D80F /* MockFailureImageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A22FBD25B899740098D80F /* MockFailureImageManager.swift */; };
 		A5A3B94325BAFB0000389243 /* GifManagerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A3B94225BAFB0000389243 /* GifManagerType.swift */; };
 		A5A3B94A25BB1F8500389243 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A3B94925BB1F8500389243 /* DetailViewController.swift */; };
+		A5A4C69C25BDEF600079BD8E /* FavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A4C69B25BDEF600079BD8E /* FavoriteViewController.swift */; };
 		A5D28E4925BD476A000A010C /* DiskStorageError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D28E4825BD476A000A010C /* DiskStorageError.swift */; };
 		A5D28E4D25BD484F000A010C /* DiskStorageErrorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D28E4C25BD484F000A010C /* DiskStorageErrorTests.swift */; };
 		A5D28E5925BD5188000A010C /* FileManagerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D28E5025BD511B000A010C /* FileManagerType.swift */; };
@@ -179,6 +180,7 @@
 		A5A22FBD25B899740098D80F /* MockFailureImageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockFailureImageManager.swift; sourceTree = "<group>"; };
 		A5A3B94225BAFB0000389243 /* GifManagerType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GifManagerType.swift; sourceTree = "<group>"; };
 		A5A3B94925BB1F8500389243 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		A5A4C69B25BDEF600079BD8E /* FavoriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewController.swift; sourceTree = "<group>"; };
 		A5D28E4825BD476A000A010C /* DiskStorageError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiskStorageError.swift; sourceTree = "<group>"; };
 		A5D28E4C25BD484F000A010C /* DiskStorageErrorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiskStorageErrorTests.swift; sourceTree = "<group>"; };
 		A5D28E5025BD511B000A010C /* FileManagerType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileManagerType.swift; sourceTree = "<group>"; };
@@ -327,6 +329,7 @@
 			children = (
 				A5DA20F625B5A10700B544D4 /* Common */,
 				A5A3B94825BB1F5A00389243 /* DetailView */,
+				A5A4C69A25BDEF390079BD8E /* FavoriteView */,
 				A51809D425B5756000E0B589 /* SearchView */,
 				A5947A5925BA954C00EBF9FD /* SearchResultView */,
 				A57D3A3025B489F0005C3338 /* Main.storyboard */,
@@ -445,6 +448,14 @@
 				A5A3B94925BB1F8500389243 /* DetailViewController.swift */,
 			);
 			path = DetailView;
+			sourceTree = "<group>";
+		};
+		A5A4C69A25BDEF390079BD8E /* FavoriteView */ = {
+			isa = PBXGroup;
+			children = (
+				A5A4C69B25BDEF600079BD8E /* FavoriteViewController.swift */,
+			);
+			path = FavoriteView;
 			sourceTree = "<group>";
 		};
 		A5D28E6B25BD52C2000A010C /* Stub */ = {
@@ -977,6 +988,7 @@
 				A5E633D125B80777004331D9 /* ExpirableObject.swift in Sources */,
 				A5DA21AF25B6E28100B544D4 /* EndPoint.swift in Sources */,
 				A5E633C125B803CE004331D9 /* ExpireTime.swift in Sources */,
+				A5A4C69C25BDEF600079BD8E /* FavoriteViewController.swift in Sources */,
 				A5947A8A25BAE2AE00EBF9FD /* SearchResultViewModel.swift in Sources */,
 				A5E633DB25B8111A004331D9 /* MemoryCacheStorage.swift in Sources */,
 				A5048B0925B9D03D0005CB42 /* Debounce.swift in Sources */,

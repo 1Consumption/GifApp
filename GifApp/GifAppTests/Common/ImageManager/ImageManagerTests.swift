@@ -11,12 +11,10 @@ import XCTest
 final class ImageManagerTests: XCTestCase {
     
     private var imageManager: ImageManager!
-    private var image: UIImage!
     private var data: Data!
     
     override func setUpWithError() throws {
-        image = UIImage(named: "heart")
-        data = image!.pngData()!
+        data = UIImage(named: "heart")!.pngData()!
     }
     
     func testRetrieveImageFromNetwork() {
@@ -29,7 +27,7 @@ final class ImageManagerTests: XCTestCase {
         
         let _ = imageManager.retrieveImage(from: "test",
                                            failureHandler: { XCTFail() },
-                                           imageHandler: {
+                                           dataHandler: {
                                             XCTAssertNotNil($0)
                                             networkManager.verify(url: URL(string: "test"),
                                                                   method: .get,
@@ -54,7 +52,7 @@ final class ImageManagerTests: XCTestCase {
         
         let _ = imageManager.retrieveImage(from: "test",
                                            failureHandler: { XCTFail() },
-                                           imageHandler: {
+                                           dataHandler: {
                                             XCTAssertNotNil($0)
                                             diskStorage.verifyIsStored(key: "test")
                                             diskStorage.verifyStore(value: self.data, key: "test")
@@ -77,7 +75,7 @@ final class ImageManagerTests: XCTestCase {
         
         let _ = imageManager.retrieveImage(from: "test",
                                            failureHandler: { XCTFail() },
-                                           imageHandler: {
+                                           dataHandler: {
                                             XCTAssertNotNil($0)
                                             expectation.fulfill()
                                            })
@@ -85,9 +83,9 @@ final class ImageManagerTests: XCTestCase {
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
             let _ = self.imageManager.retrieveImage(from: "test",
                                                failureHandler: { XCTFail() },
-                                               imageHandler: {
+                                               dataHandler: {
                                                 XCTAssertNotNil($0)
-                                                diskStorage.verifyIsStored(key: "test", callCount: 1)
+                                                diskStorage.verifyIsStored(key: "test")
                                                 diskStorage.verifyStore(value: self.data, key: "test")
                                                 diskStorage.verifyData(key: "test")
                                                 expectation.fulfill()
@@ -109,7 +107,7 @@ final class ImageManagerTests: XCTestCase {
         
         let _ = imageManager.retrieveImage(from: "test",
                                            failureHandler: { XCTFail() },
-                                           imageHandler: {
+                                           dataHandler: {
                                             XCTAssertNotNil($0)
                                             expectation.fulfill()
                                            })
@@ -117,7 +115,7 @@ final class ImageManagerTests: XCTestCase {
         DispatchQueue.main.asyncAfter(deadline: .now() + 2, execute: {
             let _ = self.imageManager.retrieveImage(from: "test",
                                                failureHandler: { XCTFail() },
-                                               imageHandler: {
+                                               dataHandler: {
                                                 XCTAssertNotNil($0)
                                                 diskStorage.verifyIsStored(key: "test", callCount: 2)
                                                 diskStorage.verifyStore(value: self.data, key: "test")
@@ -140,7 +138,7 @@ final class ImageManagerTests: XCTestCase {
         
         let _ = imageManager.retrieveImage(from: "test",
                                            failureHandler: { XCTFail() },
-                                           imageHandler: {
+                                           dataHandler: {
                                             XCTAssertNotNil($0)
                                             expectation.fulfill()
                                            })
@@ -151,7 +149,7 @@ final class ImageManagerTests: XCTestCase {
             
             let _ = self.imageManager.retrieveImage(from: "test",
                                                failureHandler: { XCTFail() },
-                                               imageHandler: {
+                                               dataHandler: {
                                                 XCTAssertNotNil($0)
                                                 diskStorage.verifyIsStored(key: "test", callCount: 2)
                                                 diskStorage.verifyStore(value: self.data, key: "test")
@@ -176,7 +174,7 @@ final class ImageManagerTests: XCTestCase {
                                                                   headers: nil)
                                             expectation.fulfill()
                                            },
-                                           imageHandler: { _ in
+                                           dataHandler: { _ in
                                             XCTFail()
                                            })
     }
@@ -192,7 +190,7 @@ final class ImageManagerTests: XCTestCase {
                                            failureHandler: {
                                             expectation.fulfill()
                                            },
-                                           imageHandler: { _ in
+                                           dataHandler: { _ in
                                             XCTFail()
                                            })
         
@@ -210,7 +208,7 @@ final class ImageManagerTests: XCTestCase {
         
         let _ = imageManager.retrieveImage(from: "test",
                                            failureHandler: { XCTFail() },
-                                           imageHandler: {
+                                           dataHandler: {
                                             XCTAssertNotNil($0)
                                             networkManager.verify(url: URL(string: "test"),
                                                                   method: .get,

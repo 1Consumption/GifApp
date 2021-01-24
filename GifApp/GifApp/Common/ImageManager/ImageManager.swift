@@ -37,6 +37,7 @@ final class ImageManager: ImageManagerType {
         } else if diskStorage?.isStored(url) == true {
             diskQueue.async { [weak self] in
                 guard let data = self?.diskStorage?.data(for: url) else { return }
+                self?.memoryStorage.insert(data, for: url)
                 dataHandler(data)
             }
         } else {

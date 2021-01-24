@@ -15,13 +15,11 @@ extension DiskStorageError: Equatable {
         switch (lhs, rhs) {
         case (.canNotFoundDocumentDirectory, .canNotCreateStorageDirectory):
             return true
-        case (.canNotCreateStorageDirectory, .canNotCreateStorageDirectory):
-            return true
+        case (.canNotCreateStorageDirectory(let left), .canNotCreateStorageDirectory(let right)):
+            return left == right
         case (.storeError(let left), .storeError(let right)):
             return left == right
         case (.removeError(let left), .removeError(let right)):
-            return left == right
-        case (.itemListError(let left), .itemListError(let right)):
             return left == right
         default:
             return false

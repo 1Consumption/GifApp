@@ -48,6 +48,8 @@
 		A5A22FBE25B899740098D80F /* MockFailureImageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A22FBD25B899740098D80F /* MockFailureImageManager.swift */; };
 		A5A3B94325BAFB0000389243 /* GifManagerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A3B94225BAFB0000389243 /* GifManagerType.swift */; };
 		A5A3B94A25BB1F8500389243 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A3B94925BB1F8500389243 /* DetailViewController.swift */; };
+		A5D28E4925BD476A000A010C /* DiskStorageError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D28E4825BD476A000A010C /* DiskStorageError.swift */; };
+		A5D28E4D25BD484F000A010C /* DiskStorageErrorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D28E4C25BD484F000A010C /* DiskStorageErrorTests.swift */; };
 		A5D2902625B9C31000041ED8 /* PaddingTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D2902525B9C31000041ED8 /* PaddingTextField.swift */; };
 		A5D2902C25B9C55000041ED8 /* AutoCompleteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D2902B25B9C55000041ED8 /* AutoCompleteTableViewCell.swift */; };
 		A5DA20F925B5A11C00B544D4 /* PinterestLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5DA20F825B5A11C00B544D4 /* PinterestLayout.swift */; };
@@ -161,6 +163,8 @@
 		A5A22FBD25B899740098D80F /* MockFailureImageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockFailureImageManager.swift; sourceTree = "<group>"; };
 		A5A3B94225BAFB0000389243 /* GifManagerType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GifManagerType.swift; sourceTree = "<group>"; };
 		A5A3B94925BB1F8500389243 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		A5D28E4825BD476A000A010C /* DiskStorageError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiskStorageError.swift; sourceTree = "<group>"; };
+		A5D28E4C25BD484F000A010C /* DiskStorageErrorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiskStorageErrorTests.swift; sourceTree = "<group>"; };
 		A5D2902525B9C31000041ED8 /* PaddingTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddingTextField.swift; sourceTree = "<group>"; };
 		A5D2902B25B9C55000041ED8 /* AutoCompleteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoCompleteTableViewCell.swift; sourceTree = "<group>"; };
 		A5DA20F825B5A11C00B544D4 /* PinterestLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinterestLayout.swift; sourceTree = "<group>"; };
@@ -682,6 +686,7 @@
 				A5E633D625B80920004331D9 /* MemoryCacheStorageTests.swift */,
 				A571A0ED25B84E8000526A49 /* ImageManagerTests.swift */,
 				A571316825BBFC2200D22E63 /* DiskStorageTests.swift */,
+				A5D28E4C25BD484F000A010C /* DiskStorageErrorTests.swift */,
 			);
 			path = ImageManager;
 			sourceTree = "<group>";
@@ -694,6 +699,7 @@
 				A5E633DA25B8111A004331D9 /* MemoryCacheStorage.swift */,
 				A571A0F125B8692700526A49 /* ImageManager.swift */,
 				A571316C25BC0BC600D22E63 /* DiskStorage.swift */,
+				A5D28E4825BD476A000A010C /* DiskStorageError.swift */,
 			);
 			path = ImageManager;
 			sourceTree = "<group>";
@@ -878,6 +884,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A5947A5625BA89F900EBF9FD /* AutoCompleteTableViewDataSource.swift in Sources */,
+				A5D28E4925BD476A000A010C /* DiskStorageError.swift in Sources */,
 				A5DA21C425B6F36A00B544D4 /* UseCaseError.swift in Sources */,
 				A5947A5225BA016400EBF9FD /* SearchViewModel.swift in Sources */,
 				A5947A5B25BA957300EBF9FD /* SearchResultViewController.swift in Sources */,
@@ -945,6 +952,7 @@
 				A5048B0525B9CD410005CB42 /* DebounceTests.swift in Sources */,
 				A5DA217F25B6CCA600B544D4 /* NetworkError+Equatable.swift in Sources */,
 				A5947A7B25BACC8100EBF9FD /* MockSuccessSearchResultUseCase.swift in Sources */,
+				A5D28E4D25BD484F000A010C /* DiskStorageErrorTests.swift in Sources */,
 				A5947A4A25B9F99600EBF9FD /* MockFailureAutoCompleteUseCase.swift in Sources */,
 				A5DA211025B6AB4300B544D4 /* DefaultRequesterTests.swift in Sources */,
 				A5E633D725B80920004331D9 /* MemoryCacheStorageTests.swift in Sources */,

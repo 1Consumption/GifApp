@@ -46,11 +46,19 @@ final class GifCell: UICollectionViewCell {
             }
         }.store(in: &bag)
         
+        output?.favoriteConfirm.bind { [weak self] in
+            self?.favoriteImageView.favorite()
+        }.store(in: &bag)
+        
+        output?.favoriteCanceled.bind { [weak self] in
+            self?.favoriteImageView.favoriteCancel()
+        }.store(in: &bag)
+        
         gifCellViewModelInput.loadGif.fire()
     }
     
     @objc private func buttonDoubleTapped(_ sender: UITapGestureRecognizer) {
-        print("double tapped")
+        gifCellViewModelInput.favoriteStateShouldChange.fire()
     }
     
     override func prepareForReuse() {

@@ -13,7 +13,11 @@ enum FavoriteManagerError: Error {
     case unknownError(Error)
 }
 
-final class FavoriteManager {
+protocol FavoriteManagerType {
+    func changeFavoriteState(with gifInfo: GifInfo, failureHandler: @escaping (FavoriteManagerError) -> Void, successHandler: @escaping (Bool) -> Void)
+}
+
+final class FavoriteManager: FavoriteManagerType {
     
     private var diskStorage: DiskStorageType?
     

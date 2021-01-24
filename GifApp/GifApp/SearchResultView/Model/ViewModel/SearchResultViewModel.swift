@@ -43,9 +43,9 @@ final class SearchResultViewModel: ViewModelType, GifManagerType {
                                             let startIndex = count
                                             let endIndex = startIndex + response.data.count
                                             
-                                            output.nextPageDelivered.value = (startIndex..<endIndex).map { IndexPath(row: $0, section: 0) }
-                                            
                                             self?.gifInfoArray.append(contentsOf: response.data)
+                                            
+                                            output.nextPageDelivered.value = (startIndex..<endIndex).map { IndexPath(row: $0, section: 0) }
                                           })
         }.store(in: &bag)
         

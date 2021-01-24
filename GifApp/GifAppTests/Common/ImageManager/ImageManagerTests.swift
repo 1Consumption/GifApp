@@ -132,9 +132,11 @@ final class ImageManagerTests: XCTestCase {
         defer { wait(for: [expectation], timeout: 5.0) }
         expectation.expectedFulfillmentCount = 2
         
-        let networkManager = MockSuccessNetworkManager(data: data)
+        let networkManager = DummyNetworkManager()
+        let diskStorage = MockDiskStorage()
+        imageManager = ImageManager(networkManager: networkManager, expireTime: .second(1), diskStorage: diskStorage)
         
-        imageManager = ImageManager(networkManager: networkManager, expireTime: .second(1))
+        try! diskStorage.store(data, for: "test")
         
         let _ = imageManager.retrieveImage(from: "test",
                                            failureHandler: { XCTFail() },
@@ -151,9 +153,9 @@ final class ImageManagerTests: XCTestCase {
                                                failureHandler: { XCTFail() },
                                                imageHandler: {
                                                 XCTAssertNotNil($0)
-                                                networkManager.verify(url: URL(string: "test"),
-                                                                      method: .get,
-                                                                      headers: nil, callCount: 2)
+                                                diskStorage.verifyIsStored(key: "test", callCount: 2)
+                                                diskStorage.verifyStore(value: self.data, key: "test")
+                                                diskStorage.verifyData(key: "test", callCount: 2)
                                                 expectation.fulfill()
                                                })
         })

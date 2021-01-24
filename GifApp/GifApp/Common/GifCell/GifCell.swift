@@ -5,6 +5,7 @@
 //  Created by 신한섭 on 2021/01/18.
 //
 
+import Gifu
 import UIKit
 
 final class GifCell: UICollectionViewCell {
@@ -12,7 +13,7 @@ final class GifCell: UICollectionViewCell {
     static let identifier: String = "GifCell"
 
     @IBOutlet weak var favoriteImageView: UIImageView!
-    @IBOutlet weak var gifImageView: UIImageView!
+    @IBOutlet weak var gifImageView: GIFImageView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     private var gifCellViewModel: GifCellViewModel?
@@ -32,9 +33,9 @@ final class GifCell: UICollectionViewCell {
         
         let output = gifCellViewModel?.transform(gifCellViewModelInput)
         
-        output?.gifDelivered.bind { image in
+        output?.gifDelivered.bind { data in
             DispatchQueue.main.async { [weak self] in
-                self?.gifImageView.image = image
+                self?.gifImageView.animate(withGIFData: data)
                 self?.activityIndicator.stopAnimating()
             }
         }.store(in: &bag)
@@ -54,9 +55,10 @@ final class GifCell: UICollectionViewCell {
     
     override func prepareForReuse() {
         super.prepareForReuse()
+        gifImageView.stopAnimatingGIF()
+        gifImageView.image = nil
         gifCellViewModel = nil
         bag.removeAll()
-        gifImageView.image = nil
         activityIndicator.startAnimating()
     }
 }

@@ -5,11 +5,10 @@
 //  Created by 신한섭 on 2021/01/20.
 //
 
-import SwiftGifOrigin
 import UIKit
 
 protocol ImageManagerType {
-    func retrieveImage(from url: String, failureHandler: @escaping () -> Void, imageHandler: @escaping (UIImage?) -> Void) -> Cancellable?
+    func retrieveImage(from url: String, failureHandler: @escaping () -> Void, dataHandler: @escaping (Data?) -> Void) -> Cancellable?
 }
 
 final class ImageManager: ImageManagerType {
@@ -17,13 +16,13 @@ final class ImageManager: ImageManagerType {
     static let shared: ImageManager = ImageManager()
     
     private let networkManager: NetworkManagerType
-    private let memoryStorage: MemoryCacheStorage<UIImage>
+    private let memoryStorage: MemoryCacheStorage<Data>
     private var diskStorage: DiskStorageType?
     private let diskQueue: DispatchQueue = DispatchQueue(label: "com.diskQueue", attributes: .concurrent)
     
     init(networkManager: NetworkManagerType = NetworkManager(requester: ImageRequester()), expireTime: ExpireTime = .minute(1), diskStorage: DiskStorageType? = try? DiskStorage(directoryName: "imageFolder")) {
         self.networkManager = networkManager
-        self.memoryStorage = MemoryCacheStorage<UIImage>(expireTime: expireTime)
+        self.memoryStorage = MemoryCacheStorage<Data>(expireTime: expireTime)
         self.diskStorage = diskStorage
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(cleanUpExpired),
@@ -31,25 +30,23 @@ final class ImageManager: ImageManagerType {
                                                object: nil)
     }
     
-    func retrieveImage(from url: String, failureHandler: @escaping () -> Void, imageHandler: @escaping (UIImage?) -> Void) -> Cancellable? {
+    func retrieveImage(from url: String, failureHandler: @escaping () -> Void, dataHandler: @escaping (Data?) -> Void) -> Cancellable? {
         if memoryStorage.isCached(url) {
-            let image = memoryStorage.object(for: url)
-            imageHandler(image)
+            let data = memoryStorage.object(for: url)
+            dataHandler(data)
         } else if diskStorage?.isStored(url) == true {
             diskQueue.async { [weak self] in
                 guard let data = self?.diskStorage?.data(for: url) else { return }
-                let image = UIImage.gif(data: data)
-                self?.memoryStorage.insert(image, for: url)
-                imageHandler(image)
+                dataHandler(data)
             }
         } else {
-            return loadImage(from: url, fairureHandler: failureHandler, imageHandler: imageHandler)
+            return loadImage(from: url, fairureHandler: failureHandler, imageHandler: dataHandler)
         }
         
         return nil
     }
     
-    private func loadImage(from url: String, fairureHandler: @escaping () -> Void, imageHandler: @escaping (UIImage?) -> Void) -> Cancellable {
+    private func loadImage(from url: String, fairureHandler: @escaping () -> Void, imageHandler: @escaping (Data?) -> Void) -> Cancellable {
         let task = networkManager.loadData(with: URL(string: url),
                                            method: .get,
                                            headers: nil,
@@ -66,9 +63,8 @@ final class ImageManager: ImageManagerType {
                                                     }
                                                 }
                                                 
-                                                let gifImage = UIImage.gif(data: data)
-                                                self?.memoryStorage.insert(gifImage, for: url)
-                                                imageHandler(gifImage)
+                                                self?.memoryStorage.insert(data, for: url)
+                                                imageHandler(data)
                                             case .failure(_):
                                                 fairureHandler()
                                             }

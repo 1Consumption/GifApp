@@ -44,7 +44,6 @@ final class MemoryCacheStorage<T> {
             remove(for: key)
             return nil
         }
-        
         object?.resetExpireTime(expireTime)
         
         return object?.value
@@ -53,6 +52,12 @@ final class MemoryCacheStorage<T> {
     func isCached(_ key: String) -> Bool {
         lock.lock()
         defer { lock.unlock() }
+        
+        let object = cache.object(forKey: key as NSString)
+        guard object?.isExpired == false else  {
+            remove(for: key)
+            return false
+        }
         
         return keys.contains(key)
     }

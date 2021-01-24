@@ -13,6 +13,9 @@
 		A51809C625B569BE00E0B589 /* GifInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51809C525B569BE00E0B589 /* GifInfo.swift */; };
 		A51809D725B5757300E0B589 /* GifCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51809D525B5757300E0B589 /* GifCell.swift */; };
 		A51809D825B5757300E0B589 /* GifCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A51809D625B5757300E0B589 /* GifCell.xib */; };
+		A571316925BBFC2300D22E63 /* DiskStorageTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A571316825BBFC2200D22E63 /* DiskStorageTests.swift */; };
+		A571316D25BC0BC600D22E63 /* DiskStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A571316C25BC0BC600D22E63 /* DiskStorage.swift */; };
+		A571317125BC19D300D22E63 /* DiskStorageError+Equatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A571317025BC19D300D22E63 /* DiskStorageError+Equatable.swift */; };
 		A571A0E425B84DBE00526A49 /* ImageRequesterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A571A0E325B84DBE00526A49 /* ImageRequesterTests.swift */; };
 		A571A0E825B84DFF00526A49 /* ImageRequester.swift in Sources */ = {isa = PBXBuildFile; fileRef = A571A0E725B84DFF00526A49 /* ImageRequester.swift */; };
 		A571A0EE25B84E8000526A49 /* ImageManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A571A0ED25B84E8000526A49 /* ImageManagerTests.swift */; };
@@ -45,6 +48,12 @@
 		A5A22FBE25B899740098D80F /* MockFailureImageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A22FBD25B899740098D80F /* MockFailureImageManager.swift */; };
 		A5A3B94325BAFB0000389243 /* GifManagerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A3B94225BAFB0000389243 /* GifManagerType.swift */; };
 		A5A3B94A25BB1F8500389243 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A3B94925BB1F8500389243 /* DetailViewController.swift */; };
+		A5D28E4925BD476A000A010C /* DiskStorageError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D28E4825BD476A000A010C /* DiskStorageError.swift */; };
+		A5D28E4D25BD484F000A010C /* DiskStorageErrorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D28E4C25BD484F000A010C /* DiskStorageErrorTests.swift */; };
+		A5D28E5925BD5188000A010C /* FileManagerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D28E5025BD511B000A010C /* FileManagerType.swift */; };
+		A5D28E6D25BD52D2000A010C /* StubFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D28E6C25BD52D2000A010C /* StubFileManager.swift */; };
+		A5D28E7825BD5E7E000A010C /* MockDiskStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D28E7725BD5E7E000A010C /* MockDiskStorage.swift */; };
+		A5D28E7E25BD658D000A010C /* DummyNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D28E7D25BD658D000A010C /* DummyNetworkManager.swift */; };
 		A5D2902625B9C31000041ED8 /* PaddingTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D2902525B9C31000041ED8 /* PaddingTextField.swift */; };
 		A5D2902C25B9C55000041ED8 /* AutoCompleteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D2902B25B9C55000041ED8 /* AutoCompleteTableViewCell.swift */; };
 		A5DA20F925B5A11C00B544D4 /* PinterestLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5DA20F825B5A11C00B544D4 /* PinterestLayout.swift */; };
@@ -121,6 +130,9 @@
 		A51809C525B569BE00E0B589 /* GifInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GifInfo.swift; sourceTree = "<group>"; };
 		A51809D525B5757300E0B589 /* GifCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GifCell.swift; sourceTree = "<group>"; };
 		A51809D625B5757300E0B589 /* GifCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GifCell.xib; sourceTree = "<group>"; };
+		A571316825BBFC2200D22E63 /* DiskStorageTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiskStorageTests.swift; sourceTree = "<group>"; };
+		A571316C25BC0BC600D22E63 /* DiskStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiskStorage.swift; sourceTree = "<group>"; };
+		A571317025BC19D300D22E63 /* DiskStorageError+Equatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DiskStorageError+Equatable.swift"; sourceTree = "<group>"; };
 		A571A0E325B84DBE00526A49 /* ImageRequesterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageRequesterTests.swift; sourceTree = "<group>"; };
 		A571A0E725B84DFF00526A49 /* ImageRequester.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageRequester.swift; sourceTree = "<group>"; };
 		A571A0ED25B84E8000526A49 /* ImageManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageManagerTests.swift; sourceTree = "<group>"; };
@@ -155,6 +167,12 @@
 		A5A22FBD25B899740098D80F /* MockFailureImageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockFailureImageManager.swift; sourceTree = "<group>"; };
 		A5A3B94225BAFB0000389243 /* GifManagerType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GifManagerType.swift; sourceTree = "<group>"; };
 		A5A3B94925BB1F8500389243 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		A5D28E4825BD476A000A010C /* DiskStorageError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiskStorageError.swift; sourceTree = "<group>"; };
+		A5D28E4C25BD484F000A010C /* DiskStorageErrorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiskStorageErrorTests.swift; sourceTree = "<group>"; };
+		A5D28E5025BD511B000A010C /* FileManagerType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileManagerType.swift; sourceTree = "<group>"; };
+		A5D28E6C25BD52D2000A010C /* StubFileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubFileManager.swift; sourceTree = "<group>"; };
+		A5D28E7725BD5E7E000A010C /* MockDiskStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockDiskStorage.swift; sourceTree = "<group>"; };
+		A5D28E7D25BD658D000A010C /* DummyNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyNetworkManager.swift; sourceTree = "<group>"; };
 		A5D2902525B9C31000041ED8 /* PaddingTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddingTextField.swift; sourceTree = "<group>"; };
 		A5D2902B25B9C55000041ED8 /* AutoCompleteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoCompleteTableViewCell.swift; sourceTree = "<group>"; };
 		A5DA20F825B5A11C00B544D4 /* PinterestLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinterestLayout.swift; sourceTree = "<group>"; };
@@ -256,6 +274,7 @@
 		A5365CB125B88B3D00936522 /* ImageManager */ = {
 			isa = PBXGroup;
 			children = (
+				A5D28E7625BD5E6A000A010C /* DiskStorage */,
 				A571A0F525B8899D00526A49 /* MockSuccessImageManager.swift */,
 				A5A22FBD25B899740098D80F /* MockFailureImageManager.swift */,
 			);
@@ -285,8 +304,8 @@
 		A57D3A2925B489F0005C3338 /* GifApp */ = {
 			isa = PBXGroup;
 			children = (
-				A5A3B94825BB1F5A00389243 /* DetailView */,
 				A5DA20F625B5A10700B544D4 /* Common */,
+				A5A3B94825BB1F5A00389243 /* DetailView */,
 				A51809D425B5756000E0B589 /* SearchView */,
 				A5947A5925BA954C00EBF9FD /* SearchResultView */,
 				A57D3A3025B489F0005C3338 /* Main.storyboard */,
@@ -407,6 +426,22 @@
 			path = DetailView;
 			sourceTree = "<group>";
 		};
+		A5D28E6B25BD52C2000A010C /* Stub */ = {
+			isa = PBXGroup;
+			children = (
+				A5D28E6C25BD52D2000A010C /* StubFileManager.swift */,
+			);
+			path = Stub;
+			sourceTree = "<group>";
+		};
+		A5D28E7625BD5E6A000A010C /* DiskStorage */ = {
+			isa = PBXGroup;
+			children = (
+				A5D28E7725BD5E7E000A010C /* MockDiskStorage.swift */,
+			);
+			path = DiskStorage;
+			sourceTree = "<group>";
+		};
 		A5D2902425B9C2F300041ED8 /* CustomView */ = {
 			isa = PBXGroup;
 			children = (
@@ -492,6 +527,7 @@
 		A5DA215725B6B96E00B544D4 /* Test Double */ = {
 			isa = PBXGroup;
 			children = (
+				A5D28E6B25BD52C2000A010C /* Stub */,
 				A5DA21E425B700A600B544D4 /* Dummy */,
 				A5DA215825B6B97C00B544D4 /* Mock */,
 			);
@@ -517,6 +553,7 @@
 				A5DA21CE25B6F50800B544D4 /* UseCaseError+Equatable.swift */,
 				A5DA21F825B7031A00B544D4 /* GifInfoResponse+Equtable+Encodable.swift */,
 				A5947A3325B9F17F00EBF9FD /* AutoComplete+Equtable+Encodable.swift */,
+				A571317025BC19D300D22E63 /* DiskStorageError+Equatable.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -567,6 +604,7 @@
 				A5DA21E525B700AE00B544D4 /* DummyRequester.swift */,
 				A5947A4D25B9FABF00EBF9FD /* DummyAutoCompleteUseCase.swift */,
 				A5947A8425BAE0B800EBF9FD /* DummySearchResultUseCase.swift */,
+				A5D28E7D25BD658D000A010C /* DummyNetworkManager.swift */,
 			);
 			path = Dummy;
 			sourceTree = "<group>";
@@ -674,6 +712,8 @@
 				A5E633C825B80487004331D9 /* ExpireTimeTests.swift */,
 				A5E633D625B80920004331D9 /* MemoryCacheStorageTests.swift */,
 				A571A0ED25B84E8000526A49 /* ImageManagerTests.swift */,
+				A571316825BBFC2200D22E63 /* DiskStorageTests.swift */,
+				A5D28E4C25BD484F000A010C /* DiskStorageErrorTests.swift */,
 			);
 			path = ImageManager;
 			sourceTree = "<group>";
@@ -685,6 +725,9 @@
 				A5E633D025B80777004331D9 /* ExpirableObject.swift */,
 				A5E633DA25B8111A004331D9 /* MemoryCacheStorage.swift */,
 				A571A0F125B8692700526A49 /* ImageManager.swift */,
+				A571316C25BC0BC600D22E63 /* DiskStorage.swift */,
+				A5D28E4825BD476A000A010C /* DiskStorageError.swift */,
+				A5D28E5025BD511B000A010C /* FileManagerType.swift */,
 			);
 			path = ImageManager;
 			sourceTree = "<group>";
@@ -869,6 +912,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A5947A5625BA89F900EBF9FD /* AutoCompleteTableViewDataSource.swift in Sources */,
+				A5D28E4925BD476A000A010C /* DiskStorageError.swift in Sources */,
 				A5DA21C425B6F36A00B544D4 /* UseCaseError.swift in Sources */,
 				A5947A5225BA016400EBF9FD /* SearchViewModel.swift in Sources */,
 				A5947A5B25BA957300EBF9FD /* SearchResultViewController.swift in Sources */,
@@ -876,6 +920,7 @@
 				A5DA216A25B6BC6700B544D4 /* NetworkManagerType.swift in Sources */,
 				A5DA20F925B5A11C00B544D4 /* PinterestLayout.swift in Sources */,
 				A57D3A2F25B489F0005C3338 /* SearchViewController.swift in Sources */,
+				A571316D25BC0BC600D22E63 /* DiskStorage.swift in Sources */,
 				A5DA216625B6BC5F00B544D4 /* NetworkManager.swift in Sources */,
 				A5E633A125B74B1E004331D9 /* GifCellViewModel.swift in Sources */,
 				A5A3B94A25BB1F8500389243 /* DetailViewController.swift in Sources */,
@@ -907,6 +952,7 @@
 				A5947A8A25BAE2AE00EBF9FD /* SearchResultViewModel.swift in Sources */,
 				A5E633DB25B8111A004331D9 /* MemoryCacheStorage.swift in Sources */,
 				A5048B0925B9D03D0005CB42 /* Debounce.swift in Sources */,
+				A5D28E5925BD5188000A010C /* FileManagerType.swift in Sources */,
 				A57D3A2D25B489F0005C3338 /* SceneDelegate.swift in Sources */,
 				A5DA223425B7221500B544D4 /* ViewModelType.swift in Sources */,
 			);
@@ -935,8 +981,10 @@
 				A5048B0525B9CD410005CB42 /* DebounceTests.swift in Sources */,
 				A5DA217F25B6CCA600B544D4 /* NetworkError+Equatable.swift in Sources */,
 				A5947A7B25BACC8100EBF9FD /* MockSuccessSearchResultUseCase.swift in Sources */,
+				A5D28E4D25BD484F000A010C /* DiskStorageErrorTests.swift in Sources */,
 				A5947A4A25B9F99600EBF9FD /* MockFailureAutoCompleteUseCase.swift in Sources */,
 				A5DA211025B6AB4300B544D4 /* DefaultRequesterTests.swift in Sources */,
+				A5D28E7825BD5E7E000A010C /* MockDiskStorage.swift in Sources */,
 				A5E633D725B80920004331D9 /* MemoryCacheStorageTests.swift in Sources */,
 				A5DA219B25B6D69E00B544D4 /* MockFailureRequesterWithEmptyData.swift in Sources */,
 				A5DA214025B6B29500B544D4 /* NetworkErrorTests.swift in Sources */,
@@ -946,8 +994,11 @@
 				A5DA21C925B6F4F000B544D4 /* UseCaseErrorTests.swift in Sources */,
 				A5DA220125B70A0A00B544D4 /* MockFailureNetworkManagerWithNetworkError.swift in Sources */,
 				A5DA21F925B7031A00B544D4 /* GifInfoResponse+Equtable+Encodable.swift in Sources */,
+				A571317125BC19D300D22E63 /* DiskStorageError+Equatable.swift in Sources */,
 				A5E633CD25B80594004331D9 /* ExpirableObjectTests.swift in Sources */,
 				A5947A8525BAE0B800EBF9FD /* DummySearchResultUseCase.swift in Sources */,
+				A5D28E7E25BD658D000A010C /* DummyNetworkManager.swift in Sources */,
+				A5D28E6D25BD52D2000A010C /* StubFileManager.swift in Sources */,
 				A5947A4425B9F91000EBF9FD /* MockSuccessAutoCompleteUseCase.swift in Sources */,
 				A5DA224F25B73FEB00B544D4 /* GifCellViewModelTests.swift in Sources */,
 				A5DA218525B6CF3400B544D4 /* MockFailureRequesterWithRequestError.swift in Sources */,
@@ -960,6 +1011,7 @@
 				A5DA21B725B6E7A800B544D4 /* TrendingGifUseCaseTests.swift in Sources */,
 				A5DA21A725B6D81200B544D4 /* EndpointTests.swift in Sources */,
 				A5DA222B25B71C8000B544D4 /* ObservableTests.swift in Sources */,
+				A571316925BBFC2300D22E63 /* DiskStorageTests.swift in Sources */,
 				A5DA219225B6D56000B544D4 /* MockFailureRequesterWithInvalidHTTPStatusCode.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

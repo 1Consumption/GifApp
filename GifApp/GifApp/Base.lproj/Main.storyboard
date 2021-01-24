@@ -293,7 +293,7 @@
             </objects>
             <point key="canvasLocation" x="989.85507246376824" y="93.75"/>
         </scene>
-        <!--Favorite-->
+        <!--Favorite View Controller-->
         <scene sceneID="YKU-2v-Fe3">
             <objects>
                 <viewController id="ggj-bb-Mzq" customClass="FavoriteViewController" customModule="GifApp" customModuleProvider="target" sceneMemberID="viewController">
@@ -301,13 +301,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="CiR-Rw-glX"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Favorite" image="heart.circle" catalog="system" selectedImage="heart.circle.fill" id="7nB-fF-7Wa"/>
+                    <navigationItem key="navigationItem" id="9uo-Bb-ik1"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mnI-lc-WSU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="990" y="828"/>
+            <point key="canvasLocation" x="1900.0000000000002" y="827.67857142857144"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="yhe-Se-Em3">
@@ -315,17 +315,37 @@
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="6Ok-Kn-vew" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="xoc-nf-47a">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
                         <segue destination="mMl-iO-iEZ" kind="relationship" relationship="viewControllers" id="2zs-3C-p5d"/>
-                        <segue destination="ggj-bb-Mzq" kind="relationship" relationship="viewControllers" id="87a-2T-fLO"/>
+                        <segue destination="F5a-4b-DtM" kind="relationship" relationship="viewControllers" id="87a-2T-fLO"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rzL-mo-82Q" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="79.710144927536234" y="93.75"/>
+        </scene>
+        <!--Favorite-->
+        <scene sceneID="wkt-Ej-XE0">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="F5a-4b-DtM" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Favorite" image="heart.circle" catalog="system" selectedImage="heart.circle.fill" id="7nB-fF-7Wa"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="zmY-Vt-hnG">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="ggj-bb-Mzq" kind="relationship" relationship="rootViewController" id="yqa-3v-Rrk"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tsV-If-vK8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="989.85507246376824" y="827.67857142857144"/>
         </scene>
     </scenes>
     <designables>
@@ -342,9 +362,6 @@
         <image name="magnifyingglass" catalog="system" width="128" height="115"/>
         <image name="magnifyingglass.circle" catalog="system" width="128" height="121"/>
         <image name="magnifyingglass.circle.fill" catalog="system" width="128" height="121"/>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
         <systemColor name="systemPurpleColor">
             <color red="0.68627450980392157" green="0.32156862745098042" blue="0.87058823529411766" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>

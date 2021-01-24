@@ -166,7 +166,8 @@ final class ImageManagerTests: XCTestCase {
         defer { wait(for: [expectation], timeout: 1.0) }
         let networkManager = MockFailureNetworkManagerWithNetworkError()
         
-        imageManager = ImageManager(networkManager: networkManager)
+        let diskStorage = MockDiskStorage()
+        imageManager = ImageManager(networkManager: networkManager, diskStorage: diskStorage)
         
         let _ = imageManager.retrieveImage(from: "test",
                                            failureHandler: {
@@ -184,7 +185,8 @@ final class ImageManagerTests: XCTestCase {
         let expectation = XCTestExpectation(description: "failure")
         defer { wait(for: [expectation], timeout: 1.0) }
         
-        imageManager = ImageManager()
+        let diskStorage = MockDiskStorage()
+        imageManager = ImageManager(diskStorage: diskStorage)
         
         let cancellable: Cancellable? = imageManager.retrieveImage(from: "www.google.com",
                                            failureHandler: {

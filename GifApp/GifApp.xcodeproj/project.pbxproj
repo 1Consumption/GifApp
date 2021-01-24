@@ -10,6 +10,7 @@
 		1AC0DFE47C5E9D44E91AA416 /* Pods_GifAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38F6959E4386668D910C3136 /* Pods_GifAppTests.framework */; };
 		A5048B0525B9CD410005CB42 /* DebounceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5048B0425B9CD410005CB42 /* DebounceTests.swift */; };
 		A5048B0925B9D03D0005CB42 /* Debounce.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5048B0825B9D03D0005CB42 /* Debounce.swift */; };
+		A505439425BDB9320041DF94 /* FavoriteManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A505439325BDB9320041DF94 /* FavoriteManager.swift */; };
 		A505439825BDBD890041DF94 /* FavoriteManagerError+Equatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A505439725BDBD890041DF94 /* FavoriteManagerError+Equatable.swift */; };
 		A51809C625B569BE00E0B589 /* GifInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51809C525B569BE00E0B589 /* GifInfo.swift */; };
 		A51809D725B5757300E0B589 /* GifCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51809D525B5757300E0B589 /* GifCell.swift */; };
@@ -129,6 +130,7 @@
 		94CC51EF00F3DC461E1A3DFA /* Pods-GifAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GifAppTests.debug.xcconfig"; path = "Target Support Files/Pods-GifAppTests/Pods-GifAppTests.debug.xcconfig"; sourceTree = "<group>"; };
 		A5048B0425B9CD410005CB42 /* DebounceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebounceTests.swift; sourceTree = "<group>"; };
 		A5048B0825B9D03D0005CB42 /* Debounce.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Debounce.swift; sourceTree = "<group>"; };
+		A505439325BDB9320041DF94 /* FavoriteManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteManager.swift; sourceTree = "<group>"; };
 		A505439725BDBD890041DF94 /* FavoriteManagerError+Equatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FavoriteManagerError+Equatable.swift"; sourceTree = "<group>"; };
 		A51809C525B569BE00E0B589 /* GifInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GifInfo.swift; sourceTree = "<group>"; };
 		A51809D525B5757300E0B589 /* GifCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GifCell.swift; sourceTree = "<group>"; };
@@ -697,6 +699,7 @@
 			isa = PBXGroup;
 			children = (
 				A5E633A025B74B1E004331D9 /* GifCellViewModel.swift */,
+				A505439325BDB9320041DF94 /* FavoriteManager.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -947,6 +950,7 @@
 				A5D2902625B9C31000041ED8 /* PaddingTextField.swift in Sources */,
 				A571A0E825B84DFF00526A49 /* ImageRequester.swift in Sources */,
 				A5A3B94325BAFB0000389243 /* GifManagerType.swift in Sources */,
+				A505439425BDB9320041DF94 /* FavoriteManager.swift in Sources */,
 				A5D2902C25B9C55000041ED8 /* AutoCompleteTableViewCell.swift in Sources */,
 				A5947A2825B9F06500EBF9FD /* AutoComplete.swift in Sources */,
 				A5DA222F25B71D7900B544D4 /* Observable.swift in Sources */,

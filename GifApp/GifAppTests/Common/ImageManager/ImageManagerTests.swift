@@ -11,16 +11,21 @@ import XCTest
 final class ImageManagerTests: XCTestCase {
     
     private var imageManager: ImageManager!
+    private var image: UIImage!
+    private var data: Data!
+    
+    override func setUpWithError() throws {
+        image = UIImage(named: "heart")
+        data = image!.pngData()!
+    }
     
     func testRetrieveImageFromNetwork() {
         let expectation = XCTestExpectation(description: "image from network")
         defer { wait(for: [expectation], timeout: 1.0) }
         
-        let image = UIImage(named: "heart")
-        let data = image!.pngData()!
-        
         let networkManager = MockSuccessNetworkManager(data: data)
-        imageManager = ImageManager(networkManager: networkManager)
+        let diskStorage = MockDiskStorage()
+        imageManager = ImageManager(networkManager: networkManager, diskStorage: diskStorage)
         
         let _ = imageManager.retrieveImage(from: "test",
                                            failureHandler: { XCTFail() },
@@ -29,21 +34,46 @@ final class ImageManagerTests: XCTestCase {
                                             networkManager.verify(url: URL(string: "test"),
                                                                   method: .get,
                                                                   headers: nil)
+                                            diskStorage.verifyIsStored(key: "test")
+                                            diskStorage.verifyStore(value: self.data, key: "test")
                                             expectation.fulfill()
                                            })
     }
     
-    func testRetrieveImageFromCache() {
-        let expectation = XCTestExpectation(description: "image from cache")
+    func testRetrieveImageWhenRestart() {
+        let expectation = XCTestExpectation(description: "image when restart")
+        expectation.expectedFulfillmentCount = 1
+        defer { wait(for: [expectation], timeout: 3.0) }
+        
+        let networkManager = DummyNetworkManager()
+        let diskStorage = MockDiskStorage()
+        
+        imageManager = ImageManager(networkManager: networkManager, diskStorage: diskStorage)
+        
+        try! diskStorage.store(data, for: "test")
+        
+        let _ = imageManager.retrieveImage(from: "test",
+                                           failureHandler: { XCTFail() },
+                                           imageHandler: {
+                                            XCTAssertNotNil($0)
+                                            diskStorage.verifyIsStored(key: "test", callCount: 2)
+                                            diskStorage.verifyStore(value: self.data, key: "test")
+                                            diskStorage.verifyData(key: "test")
+                                            expectation.fulfill()
+                                           })
+    }
+    
+    func testRetrieveImageFromMemoryCache() {
+        let expectation = XCTestExpectation(description: "image from memory cache")
         expectation.expectedFulfillmentCount = 2
         defer { wait(for: [expectation], timeout: 3.0) }
         
-        let image = UIImage(named: "heart")
-        let data = image!.pngData()!
+        let networkManager = DummyNetworkManager()
+        let diskStorage = MockDiskStorage()
         
-        let networkManager = MockSuccessNetworkManager(data: data)
+        imageManager = ImageManager(networkManager: networkManager, diskStorage: diskStorage)
         
-        imageManager = ImageManager(networkManager: networkManager)
+        try! diskStorage.store(data, for: "test")
         
         let _ = imageManager.retrieveImage(from: "test",
                                            failureHandler: { XCTFail() },
@@ -57,9 +87,9 @@ final class ImageManagerTests: XCTestCase {
                                                failureHandler: { XCTFail() },
                                                imageHandler: {
                                                 XCTAssertNotNil($0)
-                                                networkManager.verify(url: URL(string: "test"),
-                                                                      method: .get,
-                                                                      headers: nil)
+                                                diskStorage.verifyIsStored(key: "test", callCount: 1)
+                                                diskStorage.verifyStore(value: self.data, key: "test")
+                                                diskStorage.verifyData(key: "test")
                                                 expectation.fulfill()
                                                })
         }
@@ -70,12 +100,12 @@ final class ImageManagerTests: XCTestCase {
         expectation.expectedFulfillmentCount = 2
         defer { wait(for: [expectation], timeout: 3.0) }
         
-        let image = UIImage(named: "heart")
-        let data = image!.pngData()!
+        let networkManager = DummyNetworkManager()
+        let diskStorage = MockDiskStorage()
         
-        let networkManager = MockSuccessNetworkManager(data: data)
+        imageManager = ImageManager(networkManager: networkManager, expireTime: .second(1), diskStorage: diskStorage)
         
-        imageManager = ImageManager(networkManager: networkManager, expireTime: .second(1))
+        try! diskStorage.store(data, for: "test")
         
         let _ = imageManager.retrieveImage(from: "test",
                                            failureHandler: { XCTFail() },
@@ -89,10 +119,9 @@ final class ImageManagerTests: XCTestCase {
                                                failureHandler: { XCTFail() },
                                                imageHandler: {
                                                 XCTAssertNotNil($0)
-                                                networkManager.verify(url: URL(string: "test"),
-                                                                      method: .get,
-                                                                      headers: nil,
-                                                                      callCount: 2)
+                                                diskStorage.verifyIsStored(key: "test", callCount: 2)
+                                                diskStorage.verifyStore(value: self.data, key: "test")
+                                                diskStorage.verifyData(key: "test")
                                                 expectation.fulfill()
                                                })
         })
@@ -102,9 +131,6 @@ final class ImageManagerTests: XCTestCase {
         let expectation = XCTestExpectation(description: "memory warning")
         defer { wait(for: [expectation], timeout: 5.0) }
         expectation.expectedFulfillmentCount = 2
-        
-        let image = UIImage(named: "heart")
-        let data = image!.pngData()!
         
         let networkManager = MockSuccessNetworkManager(data: data)
         
@@ -167,5 +193,26 @@ final class ImageManagerTests: XCTestCase {
                                            })
         
         cancellable?.cancel()
+    }
+    
+    func testImageManagerStoreError() {
+        let expectation = XCTestExpectation(description: "store error")
+        defer { wait(for: [expectation], timeout: 1.0) }
+        
+        let networkManager = MockSuccessNetworkManager(data: data)
+        let diskStorage = MockDiskStorageThrowStoreError()
+        
+        imageManager = ImageManager(networkManager: networkManager, diskStorage: diskStorage)
+        
+        let _ = imageManager.retrieveImage(from: "test",
+                                           failureHandler: { XCTFail() },
+                                           imageHandler: {
+                                            XCTAssertNotNil($0)
+                                            networkManager.verify(url: URL(string: "test"),
+                                                                  method: .get,
+                                                                  headers: nil)
+                                            diskStorage.verifyStore(value: self.data, key: "test")
+                                            expectation.fulfill()
+                                           })
     }
 }

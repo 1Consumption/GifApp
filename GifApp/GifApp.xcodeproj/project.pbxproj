@@ -52,6 +52,8 @@
 		A5D28E4D25BD484F000A010C /* DiskStorageErrorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D28E4C25BD484F000A010C /* DiskStorageErrorTests.swift */; };
 		A5D28E5925BD5188000A010C /* FileManagerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D28E5025BD511B000A010C /* FileManagerType.swift */; };
 		A5D28E6D25BD52D2000A010C /* StubFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D28E6C25BD52D2000A010C /* StubFileManager.swift */; };
+		A5D28E7825BD5E7E000A010C /* MockDiskStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D28E7725BD5E7E000A010C /* MockDiskStorage.swift */; };
+		A5D28E7E25BD658D000A010C /* DummyNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D28E7D25BD658D000A010C /* DummyNetworkManager.swift */; };
 		A5D2902625B9C31000041ED8 /* PaddingTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D2902525B9C31000041ED8 /* PaddingTextField.swift */; };
 		A5D2902C25B9C55000041ED8 /* AutoCompleteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D2902B25B9C55000041ED8 /* AutoCompleteTableViewCell.swift */; };
 		A5DA20F925B5A11C00B544D4 /* PinterestLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5DA20F825B5A11C00B544D4 /* PinterestLayout.swift */; };
@@ -169,6 +171,8 @@
 		A5D28E4C25BD484F000A010C /* DiskStorageErrorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiskStorageErrorTests.swift; sourceTree = "<group>"; };
 		A5D28E5025BD511B000A010C /* FileManagerType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileManagerType.swift; sourceTree = "<group>"; };
 		A5D28E6C25BD52D2000A010C /* StubFileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubFileManager.swift; sourceTree = "<group>"; };
+		A5D28E7725BD5E7E000A010C /* MockDiskStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockDiskStorage.swift; sourceTree = "<group>"; };
+		A5D28E7D25BD658D000A010C /* DummyNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyNetworkManager.swift; sourceTree = "<group>"; };
 		A5D2902525B9C31000041ED8 /* PaddingTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddingTextField.swift; sourceTree = "<group>"; };
 		A5D2902B25B9C55000041ED8 /* AutoCompleteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoCompleteTableViewCell.swift; sourceTree = "<group>"; };
 		A5DA20F825B5A11C00B544D4 /* PinterestLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinterestLayout.swift; sourceTree = "<group>"; };
@@ -270,6 +274,7 @@
 		A5365CB125B88B3D00936522 /* ImageManager */ = {
 			isa = PBXGroup;
 			children = (
+				A5D28E7625BD5E6A000A010C /* DiskStorage */,
 				A571A0F525B8899D00526A49 /* MockSuccessImageManager.swift */,
 				A5A22FBD25B899740098D80F /* MockFailureImageManager.swift */,
 			);
@@ -427,6 +432,14 @@
 				A5D28E6C25BD52D2000A010C /* StubFileManager.swift */,
 			);
 			path = Stub;
+			sourceTree = "<group>";
+		};
+		A5D28E7625BD5E6A000A010C /* DiskStorage */ = {
+			isa = PBXGroup;
+			children = (
+				A5D28E7725BD5E7E000A010C /* MockDiskStorage.swift */,
+			);
+			path = DiskStorage;
 			sourceTree = "<group>";
 		};
 		A5D2902425B9C2F300041ED8 /* CustomView */ = {
@@ -591,6 +604,7 @@
 				A5DA21E525B700AE00B544D4 /* DummyRequester.swift */,
 				A5947A4D25B9FABF00EBF9FD /* DummyAutoCompleteUseCase.swift */,
 				A5947A8425BAE0B800EBF9FD /* DummySearchResultUseCase.swift */,
+				A5D28E7D25BD658D000A010C /* DummyNetworkManager.swift */,
 			);
 			path = Dummy;
 			sourceTree = "<group>";
@@ -970,6 +984,7 @@
 				A5D28E4D25BD484F000A010C /* DiskStorageErrorTests.swift in Sources */,
 				A5947A4A25B9F99600EBF9FD /* MockFailureAutoCompleteUseCase.swift in Sources */,
 				A5DA211025B6AB4300B544D4 /* DefaultRequesterTests.swift in Sources */,
+				A5D28E7825BD5E7E000A010C /* MockDiskStorage.swift in Sources */,
 				A5E633D725B80920004331D9 /* MemoryCacheStorageTests.swift in Sources */,
 				A5DA219B25B6D69E00B544D4 /* MockFailureRequesterWithEmptyData.swift in Sources */,
 				A5DA214025B6B29500B544D4 /* NetworkErrorTests.swift in Sources */,
@@ -982,6 +997,7 @@
 				A571317125BC19D300D22E63 /* DiskStorageError+Equatable.swift in Sources */,
 				A5E633CD25B80594004331D9 /* ExpirableObjectTests.swift in Sources */,
 				A5947A8525BAE0B800EBF9FD /* DummySearchResultUseCase.swift in Sources */,
+				A5D28E7E25BD658D000A010C /* DummyNetworkManager.swift in Sources */,
 				A5D28E6D25BD52D2000A010C /* StubFileManager.swift in Sources */,
 				A5947A4425B9F91000EBF9FD /* MockSuccessAutoCompleteUseCase.swift in Sources */,
 				A5DA224F25B73FEB00B544D4 /* GifCellViewModelTests.swift in Sources */,

@@ -7,7 +7,14 @@
 
 import Foundation
 
-final class DiskStorage {
+protocol DiskStorageType {
+    func store(_ value: Data, for key: String) throws
+    func isStored(_ key: String) -> Bool
+    func data(for key: String) -> Data?
+    func remove(for key: String) throws
+}
+
+final class DiskStorage: DiskStorageType {
     
     private let fileManager: FileManagerType
     private let directory: URL

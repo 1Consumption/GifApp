@@ -21,5 +21,23 @@ final class FavoriteManager {
     }
     
     func changeFavoriteState(with gifInfo: GifInfo, failureHandler: @escaping (FavoriteManagerError) -> Void, successHandler: @escaping (Bool) -> Void) {
+        if diskStorage?.isStored(gifInfo.id) == true {
+            
+        } else {
+            store(with: gifInfo, failureHandler: failureHandler, successHandler: successHandler)
+        }
+    }
+    
+    func store(with gifInfo: GifInfo, failureHandler: @escaping (FavoriteManagerError) -> Void, successHandler: @escaping (Bool) -> Void) {
+        do {
+            let encoder = JSONEncoder()
+            let data = try encoder.encode(gifInfo)
+            try diskStorage?.store(data, for: gifInfo.id)
+            successHandler(true)
+        } catch let error as DiskStorageError {
+            failureHandler(.diskStorageError(error))
+        } catch {
+            failureHandler(.encodeError)
+        }
     }
 }

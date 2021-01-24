@@ -10,9 +10,15 @@
 		1AC0DFE47C5E9D44E91AA416 /* Pods_GifAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38F6959E4386668D910C3136 /* Pods_GifAppTests.framework */; };
 		A5048B0525B9CD410005CB42 /* DebounceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5048B0425B9CD410005CB42 /* DebounceTests.swift */; };
 		A5048B0925B9D03D0005CB42 /* Debounce.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5048B0825B9D03D0005CB42 /* Debounce.swift */; };
+		A505439425BDB9320041DF94 /* FavoriteManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A505439325BDB9320041DF94 /* FavoriteManager.swift */; };
+		A505439825BDBD890041DF94 /* FavoriteManagerError+Equatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A505439725BDBD890041DF94 /* FavoriteManagerError+Equatable.swift */; };
+		A505439C25BDC5390041DF94 /* FavoriteImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A505439B25BDC5390041DF94 /* FavoriteImageView.swift */; };
+		A50543A625BDD4C00041DF94 /* MockSuccessFavoriteManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A50543A525BDD4C00041DF94 /* MockSuccessFavoriteManager.swift */; };
+		A50543B425BDD7B00041DF94 /* MockFailureFavoriteManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A50543B325BDD7B00041DF94 /* MockFailureFavoriteManager.swift */; };
 		A51809C625B569BE00E0B589 /* GifInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51809C525B569BE00E0B589 /* GifInfo.swift */; };
 		A51809D725B5757300E0B589 /* GifCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51809D525B5757300E0B589 /* GifCell.swift */; };
 		A51809D825B5757300E0B589 /* GifCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A51809D625B5757300E0B589 /* GifCell.xib */; };
+		A524DA6125BDB05200226AF9 /* FavoriteManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A524DA6025BDB05200226AF9 /* FavoriteManagerTests.swift */; };
 		A571316925BBFC2300D22E63 /* DiskStorageTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A571316825BBFC2200D22E63 /* DiskStorageTests.swift */; };
 		A571316D25BC0BC600D22E63 /* DiskStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A571316C25BC0BC600D22E63 /* DiskStorage.swift */; };
 		A571317125BC19D300D22E63 /* DiskStorageError+Equatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A571317025BC19D300D22E63 /* DiskStorageError+Equatable.swift */; };
@@ -127,9 +133,15 @@
 		94CC51EF00F3DC461E1A3DFA /* Pods-GifAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GifAppTests.debug.xcconfig"; path = "Target Support Files/Pods-GifAppTests/Pods-GifAppTests.debug.xcconfig"; sourceTree = "<group>"; };
 		A5048B0425B9CD410005CB42 /* DebounceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebounceTests.swift; sourceTree = "<group>"; };
 		A5048B0825B9D03D0005CB42 /* Debounce.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Debounce.swift; sourceTree = "<group>"; };
+		A505439325BDB9320041DF94 /* FavoriteManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteManager.swift; sourceTree = "<group>"; };
+		A505439725BDBD890041DF94 /* FavoriteManagerError+Equatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FavoriteManagerError+Equatable.swift"; sourceTree = "<group>"; };
+		A505439B25BDC5390041DF94 /* FavoriteImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteImageView.swift; sourceTree = "<group>"; };
+		A50543A525BDD4C00041DF94 /* MockSuccessFavoriteManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockSuccessFavoriteManager.swift; sourceTree = "<group>"; };
+		A50543B325BDD7B00041DF94 /* MockFailureFavoriteManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockFailureFavoriteManager.swift; sourceTree = "<group>"; };
 		A51809C525B569BE00E0B589 /* GifInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GifInfo.swift; sourceTree = "<group>"; };
 		A51809D525B5757300E0B589 /* GifCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GifCell.swift; sourceTree = "<group>"; };
 		A51809D625B5757300E0B589 /* GifCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GifCell.xib; sourceTree = "<group>"; };
+		A524DA6025BDB05200226AF9 /* FavoriteManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteManagerTests.swift; sourceTree = "<group>"; };
 		A571316825BBFC2200D22E63 /* DiskStorageTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiskStorageTests.swift; sourceTree = "<group>"; };
 		A571316C25BC0BC600D22E63 /* DiskStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiskStorage.swift; sourceTree = "<group>"; };
 		A571317025BC19D300D22E63 /* DiskStorageError+Equatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DiskStorageError+Equatable.swift"; sourceTree = "<group>"; };
@@ -259,6 +271,15 @@
 				38F6959E4386668D910C3136 /* Pods_GifAppTests.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A50543A425BDD4A70041DF94 /* FavoriteManager */ = {
+			isa = PBXGroup;
+			children = (
+				A50543A525BDD4C00041DF94 /* MockSuccessFavoriteManager.swift */,
+				A50543B325BDD7B00041DF94 /* MockFailureFavoriteManager.swift */,
+			);
+			path = FavoriteManager;
 			sourceTree = "<group>";
 		};
 		A51809D425B5756000E0B589 /* SearchView */ = {
@@ -446,6 +467,7 @@
 			isa = PBXGroup;
 			children = (
 				A5D2902525B9C31000041ED8 /* PaddingTextField.swift */,
+				A505439B25BDC5390041DF94 /* FavoriteImageView.swift */,
 			);
 			path = CustomView;
 			sourceTree = "<group>";
@@ -537,6 +559,7 @@
 		A5DA215825B6B97C00B544D4 /* Mock */ = {
 			isa = PBXGroup;
 			children = (
+				A50543A425BDD4A70041DF94 /* FavoriteManager */,
 				A5365CB125B88B3D00936522 /* ImageManager */,
 				A5DA223E25B734B800B544D4 /* UseCase */,
 				A5DA21DD25B6FE8A00B544D4 /* NetworkManager */,
@@ -554,6 +577,7 @@
 				A5DA21F825B7031A00B544D4 /* GifInfoResponse+Equtable+Encodable.swift */,
 				A5947A3325B9F17F00EBF9FD /* AutoComplete+Equtable+Encodable.swift */,
 				A571317025BC19D300D22E63 /* DiskStorageError+Equatable.swift */,
+				A505439725BDBD890041DF94 /* FavoriteManagerError+Equatable.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -575,6 +599,7 @@
 			children = (
 				A5DA224E25B73FEB00B544D4 /* GifCellViewModelTests.swift */,
 				A5DA21C825B6F4F000B544D4 /* UseCaseErrorTests.swift */,
+				A524DA6025BDB05200226AF9 /* FavoriteManagerTests.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -691,6 +716,7 @@
 			isa = PBXGroup;
 			children = (
 				A5E633A025B74B1E004331D9 /* GifCellViewModel.swift */,
+				A505439325BDB9320041DF94 /* FavoriteManager.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -929,6 +955,7 @@
 				A5947A3A25B9F24F00EBF9FD /* AutoCompleteUseCase.swift in Sources */,
 				A57D3A2B25B489F0005C3338 /* AppDelegate.swift in Sources */,
 				A5947A6D25BAB34E00EBF9FD /* SearchResultUseCase.swift in Sources */,
+				A505439C25BDC5390041DF94 /* FavoriteImageView.swift in Sources */,
 				A5DA213425B6AF5300B544D4 /* RequesterType.swift in Sources */,
 				A5DA21D325B6FBB700B544D4 /* GifInfoResponse.swift in Sources */,
 				A51809D725B5757300E0B589 /* GifCell.swift in Sources */,
@@ -941,6 +968,7 @@
 				A5D2902625B9C31000041ED8 /* PaddingTextField.swift in Sources */,
 				A571A0E825B84DFF00526A49 /* ImageRequester.swift in Sources */,
 				A5A3B94325BAFB0000389243 /* GifManagerType.swift in Sources */,
+				A505439425BDB9320041DF94 /* FavoriteManager.swift in Sources */,
 				A5D2902C25B9C55000041ED8 /* AutoCompleteTableViewCell.swift in Sources */,
 				A5947A2825B9F06500EBF9FD /* AutoComplete.swift in Sources */,
 				A5DA222F25B71D7900B544D4 /* Observable.swift in Sources */,
@@ -999,8 +1027,10 @@
 				A5947A8525BAE0B800EBF9FD /* DummySearchResultUseCase.swift in Sources */,
 				A5D28E7E25BD658D000A010C /* DummyNetworkManager.swift in Sources */,
 				A5D28E6D25BD52D2000A010C /* StubFileManager.swift in Sources */,
+				A50543A625BDD4C00041DF94 /* MockSuccessFavoriteManager.swift in Sources */,
 				A5947A4425B9F91000EBF9FD /* MockSuccessAutoCompleteUseCase.swift in Sources */,
 				A5DA224F25B73FEB00B544D4 /* GifCellViewModelTests.swift in Sources */,
+				A524DA6125BDB05200226AF9 /* FavoriteManagerTests.swift in Sources */,
 				A5DA218525B6CF3400B544D4 /* MockFailureRequesterWithRequestError.swift in Sources */,
 				A5A22FBE25B899740098D80F /* MockFailureImageManager.swift in Sources */,
 				A5947A4E25B9FABF00EBF9FD /* DummyAutoCompleteUseCase.swift in Sources */,
@@ -1009,8 +1039,10 @@
 				A5947A6625BAAFBD00EBF9FD /* SearchResultUseCaseTests.swift in Sources */,
 				A5DA216025B6BA3500B544D4 /* MockSuccessRequester.swift in Sources */,
 				A5DA21B725B6E7A800B544D4 /* TrendingGifUseCaseTests.swift in Sources */,
+				A505439825BDBD890041DF94 /* FavoriteManagerError+Equatable.swift in Sources */,
 				A5DA21A725B6D81200B544D4 /* EndpointTests.swift in Sources */,
 				A5DA222B25B71C8000B544D4 /* ObservableTests.swift in Sources */,
+				A50543B425BDD7B00041DF94 /* MockFailureFavoriteManager.swift in Sources */,
 				A571316925BBFC2300D22E63 /* DiskStorageTests.swift in Sources */,
 				A5DA219225B6D56000B544D4 /* MockFailureRequesterWithInvalidHTTPStatusCode.swift in Sources */,
 			);

@@ -4,7 +4,7 @@ platform :ios, '13.0'
 target 'GifApp' do
   # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!
-  pod 'SwiftGifOrigin', '~> 1.7.0'
+  pod 'Gifu'
   # Pods for GifApp
 
   target 'GifAppTests' do

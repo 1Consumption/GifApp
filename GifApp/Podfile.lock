@@ -1,16 +1,16 @@
 PODS:
-  - SwiftGifOrigin (1.7.0)
+  - Gifu (3.3)
 
 DEPENDENCIES:
-  - SwiftGifOrigin (~> 1.7.0)
+  - Gifu
 
 SPEC REPOS:
   trunk:
-    - SwiftGifOrigin
+    - Gifu
 
 SPEC CHECKSUMS:
-  SwiftGifOrigin: fbd6cf37afcfcf97a5c3db996ddc0492e5c5c145
+  Gifu: 97c2a3c3865fbc834ab13f797e2e8e7729a1853c
 
-PODFILE CHECKSUM: c6c31a49fc1df5c4b6e69e26c9f94211da2e6feb
+PODFILE CHECKSUM: 526e2acf5729b29ed954ad4ebde24fdfb9f27cf5
 
 COCOAPODS: 1.10.0

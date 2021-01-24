@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct GifInfo: Decodable {
+struct GifInfo: Codable {
     
     let id: String
     let username: String
@@ -15,13 +15,13 @@ struct GifInfo: Decodable {
     let images : GifImages
 }
 
-struct GifImages: Decodable {
+struct GifImages: Codable {
     
     let original: GifImage
     let fixedWidth: GifImage
 }
 
-struct GifImage: Decodable {
+struct GifImage: Codable {
     
     let height: String
     let width: String

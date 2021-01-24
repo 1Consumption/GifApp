@@ -18,11 +18,10 @@ final class ImageManager: ImageManagerType {
     
     private let networkManager: NetworkManagerType
     private let memoryStorage: MemoryCacheStorage<UIImage>
-    private let imageQueue: DispatchQueue = DispatchQueue(label: "com.imageQueue", attributes: .concurrent)
     private var diskStorage: DiskStorageType?
     private let diskQueue: DispatchQueue = DispatchQueue(label: "com.diskQueue", attributes: .concurrent)
     
-    init(networkManager: NetworkManagerType = NetworkManager(requester: ImageRequester()), expireTime: ExpireTime = .minute(1), diskStorage: DiskStorageType? = try? DiskStorage(directoryName: "Image Fodler")) {
+    init(networkManager: NetworkManagerType = NetworkManager(requester: ImageRequester()), expireTime: ExpireTime = .minute(1), diskStorage: DiskStorageType? = try? DiskStorage(directoryName: "imageFolder")) {
         self.networkManager = networkManager
         self.memoryStorage = MemoryCacheStorage<UIImage>(expireTime: expireTime)
         self.diskStorage = diskStorage
@@ -34,33 +33,18 @@ final class ImageManager: ImageManagerType {
     
     func retrieveImage(from url: String, failureHandler: @escaping () -> Void, imageHandler: @escaping (UIImage?) -> Void) -> Cancellable? {
         if memoryStorage.isCached(url) {
-            if let image = memoryStorage.object(for: url) {
-                imageHandler(image)
-            } else {
-                if diskStorage?.isStored(url) == true {
-                    guard let data = diskStorage?.data(for: url) else { return nil }
-                    let image = UIImage.gif(data: data)
-                    memoryStorage.insert(image, for: url)
-                    imageHandler(image)
-                } else {
-                    return loadImage(from: url, fairureHandler: failureHandler, imageHandler: imageHandler)
-                }
-            }
-        } else if diskStorage?.isStored(url) == true {
-            guard let data = diskStorage?.data(for: url) else { return nil }
-            let image = UIImage.gif(data: data)
-            memoryStorage.insert(image, for: url)
+            let image = memoryStorage.object(for: url)
             imageHandler(image)
+        } else if diskStorage?.isStored(url) == true {
+            diskQueue.async { [weak self] in
+                guard let data = self?.diskStorage?.data(for: url) else { return }
+                let image = UIImage.gif(data: data)
+                self?.memoryStorage.insert(image, for: url)
+                imageHandler(image)
+            }
         } else {
             return loadImage(from: url, fairureHandler: failureHandler, imageHandler: imageHandler)
         }
-//        guard memoryStorage.isCached(url) else {
-//            return loadImage(from: url, fairureHandler: failureHandler, imageHandler: imageHandler)
-//        }
-//
-//        guard let image = memoryStorage.object(for: url) else {
-//            return loadImage(from: url, fairureHandler: failureHandler, imageHandler: imageHandler)
-//        }
         
         return nil
     }
@@ -75,20 +59,16 @@ final class ImageManager: ImageManagerType {
                                                 self?.diskQueue.async { [weak self] in
                                                     do {
                                                         try self?.diskStorage?.store(data, for: url)
+                                                    } catch let error as DiskStorageError {
+                                                        print(error.message)
                                                     } catch {
-                                                        if let diskError = error as? DiskStorageError {
-                                                            print(diskError.message)
-                                                        } else {
-                                                            print(error.localizedDescription)
-                                                        }
+                                                        print(error.localizedDescription)
                                                     }
                                                 }
                                                 
-                                                self?.imageQueue.async { [weak self] in
-                                                    let gifImage = UIImage.gif(data: data)
-                                                    imageHandler(gifImage)
-                                                    self?.memoryStorage.insert(gifImage, for: url)
-                                                }
+                                                let gifImage = UIImage.gif(data: data)
+                                                self?.memoryStorage.insert(gifImage, for: url)
+                                                imageHandler(gifImage)
                                             case .failure(_):
                                                 fairureHandler()
                                             }

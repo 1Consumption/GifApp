@@ -300,10 +300,32 @@
                     <view key="view" contentMode="scaleToFill" id="n7j-HT-q1R">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="pPt-Ch-qjF">
+                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Awd-7y-Bbn">
+                                    <size key="itemSize" width="128" height="128"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells/>
+                            </collectionView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="CiR-Rw-glX"/>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="pPt-Ch-qjF" firstAttribute="top" secondItem="CiR-Rw-glX" secondAttribute="top" id="082-Dx-FV9"/>
+                            <constraint firstItem="CiR-Rw-glX" firstAttribute="bottom" secondItem="pPt-Ch-qjF" secondAttribute="bottom" id="C9v-qe-kYJ"/>
+                            <constraint firstItem="pPt-Ch-qjF" firstAttribute="leading" secondItem="CiR-Rw-glX" secondAttribute="leading" id="evO-Pb-Yjj"/>
+                            <constraint firstItem="CiR-Rw-glX" firstAttribute="trailing" secondItem="pPt-Ch-qjF" secondAttribute="trailing" id="i2b-zF-43K"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="9uo-Bb-ik1"/>
+                    <connections>
+                        <outlet property="favoriteCollectionView" destination="pPt-Ch-qjF" id="gWm-Ty-LTH"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mnI-lc-WSU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

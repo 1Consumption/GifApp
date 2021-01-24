@@ -9,9 +9,12 @@ import UIKit
 
 final class FavoriteViewController: UIViewController {
 
+    @IBOutlet weak var favoriteCollectionView: UICollectionView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpNavigationBar()
+        setUpFavoriteCollectionView()
     }
     
     private func setUpNavigationBar() {
@@ -23,5 +26,20 @@ final class FavoriteViewController: UIViewController {
         let textAttributes = [NSAttributedString.Key.foregroundColor : UIColor.white]
         navigationController?.navigationBar.titleTextAttributes = textAttributes
         navigationItem.title = "Favorite"
+    }
+    
+    private func setUpFavoriteCollectionView() {
+        favoriteCollectionView.register(UINib(nibName: GifCell.identifier, bundle: .main), forCellWithReuseIdentifier: GifCell.identifier)
+        favoriteCollectionView.delaysContentTouches = false
+        if let layout = favoriteCollectionView?.collectionViewLayout as? PinterestLayout {
+            layout.delegate = self
+        }
+    }
+}
+
+extension FavoriteViewController: PinterestLayoutDelegate {
+    
+    func collectionView(_ collectionView: UICollectionView, heightForPhotoAtIndexPath indexPath: IndexPath) -> CGSize {
+        return .zero
     }
 }

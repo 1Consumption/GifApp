@@ -104,12 +104,6 @@ final class SearchResultViewController: UIViewController {
 
 extension SearchResultViewController: UICollectionViewDelegateFlowLayout {
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let itemSize = (collectionView.frame.width) / 2
-        
-        return CGSize(width: itemSize, height: itemSize)
-    }
-    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let datasource = collectionView.dataSource as? GifCollectionViewDataSource else { return }
         searchResultViewModelInput.showDetail.value = datasource.gifInfo(of: indexPath.item)?.id

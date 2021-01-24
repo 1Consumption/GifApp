@@ -13,7 +13,7 @@ extension DiskStorageError: Equatable {
     public static func == (lhs: Self, rhs: Self) -> Bool {
         
         switch (lhs, rhs) {
-        case (.canNotFoundDocumentDirectory, .canNotCreateStorageDirectory):
+        case (.canNotFoundDocumentDirectory, .canNotFoundDocumentDirectory):
             return true
         case (.canNotCreateStorageDirectory(let left), .canNotCreateStorageDirectory(let right)):
             return left == right

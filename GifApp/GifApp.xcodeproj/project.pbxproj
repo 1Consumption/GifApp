@@ -51,6 +51,7 @@
 		A5D28E4925BD476A000A010C /* DiskStorageError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D28E4825BD476A000A010C /* DiskStorageError.swift */; };
 		A5D28E4D25BD484F000A010C /* DiskStorageErrorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D28E4C25BD484F000A010C /* DiskStorageErrorTests.swift */; };
 		A5D28E5925BD5188000A010C /* FileManagerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D28E5025BD511B000A010C /* FileManagerType.swift */; };
+		A5D28E6D25BD52D2000A010C /* StubFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D28E6C25BD52D2000A010C /* StubFileManager.swift */; };
 		A5D2902625B9C31000041ED8 /* PaddingTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D2902525B9C31000041ED8 /* PaddingTextField.swift */; };
 		A5D2902C25B9C55000041ED8 /* AutoCompleteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D2902B25B9C55000041ED8 /* AutoCompleteTableViewCell.swift */; };
 		A5DA20F925B5A11C00B544D4 /* PinterestLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5DA20F825B5A11C00B544D4 /* PinterestLayout.swift */; };
@@ -167,6 +168,7 @@
 		A5D28E4825BD476A000A010C /* DiskStorageError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiskStorageError.swift; sourceTree = "<group>"; };
 		A5D28E4C25BD484F000A010C /* DiskStorageErrorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiskStorageErrorTests.swift; sourceTree = "<group>"; };
 		A5D28E5025BD511B000A010C /* FileManagerType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileManagerType.swift; sourceTree = "<group>"; };
+		A5D28E6C25BD52D2000A010C /* StubFileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubFileManager.swift; sourceTree = "<group>"; };
 		A5D2902525B9C31000041ED8 /* PaddingTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddingTextField.swift; sourceTree = "<group>"; };
 		A5D2902B25B9C55000041ED8 /* AutoCompleteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoCompleteTableViewCell.swift; sourceTree = "<group>"; };
 		A5DA20F825B5A11C00B544D4 /* PinterestLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinterestLayout.swift; sourceTree = "<group>"; };
@@ -419,6 +421,14 @@
 			path = DetailView;
 			sourceTree = "<group>";
 		};
+		A5D28E6B25BD52C2000A010C /* Stub */ = {
+			isa = PBXGroup;
+			children = (
+				A5D28E6C25BD52D2000A010C /* StubFileManager.swift */,
+			);
+			path = Stub;
+			sourceTree = "<group>";
+		};
 		A5D2902425B9C2F300041ED8 /* CustomView */ = {
 			isa = PBXGroup;
 			children = (
@@ -504,6 +514,7 @@
 		A5DA215725B6B96E00B544D4 /* Test Double */ = {
 			isa = PBXGroup;
 			children = (
+				A5D28E6B25BD52C2000A010C /* Stub */,
 				A5DA21E425B700A600B544D4 /* Dummy */,
 				A5DA215825B6B97C00B544D4 /* Mock */,
 			);
@@ -971,6 +982,7 @@
 				A571317125BC19D300D22E63 /* DiskStorageError+Equatable.swift in Sources */,
 				A5E633CD25B80594004331D9 /* ExpirableObjectTests.swift in Sources */,
 				A5947A8525BAE0B800EBF9FD /* DummySearchResultUseCase.swift in Sources */,
+				A5D28E6D25BD52D2000A010C /* StubFileManager.swift in Sources */,
 				A5947A4425B9F91000EBF9FD /* MockSuccessAutoCompleteUseCase.swift in Sources */,
 				A5DA224F25B73FEB00B544D4 /* GifCellViewModelTests.swift in Sources */,
 				A5DA218525B6CF3400B544D4 /* MockFailureRequesterWithRequestError.swift in Sources */,

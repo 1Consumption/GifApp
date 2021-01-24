@@ -45,9 +45,10 @@ final class DiskStorageTests: XCTestCase {
         XCTAssertNil(diskStorage.data(for: key))
     }
     
-    func testItemList() {
-        let expectation = XCTestExpectation(description: "item list")
+    func testMaintainData() {
+        let expectation = XCTestExpectation(description: "maintain data")
         defer { wait(for: [expectation], timeout: 2.0) }
+        diskStorage = try! DiskStorage(fileManager: fileManager, directoryName: "test")
         let data1 = Data([1, 2, 3, 4])
         let data2 = Data([2, 3, 4, 5])
         let key1 = "key1"
@@ -55,8 +56,6 @@ final class DiskStorageTests: XCTestCase {
         
         try! diskStorage.store(data1, for: key1)
         try! diskStorage.store(data2, for: key2)
-        
-        diskStorage = try! DiskStorage(fileManager: fileManager, directoryName: "test")
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
             XCTAssertTrue(self.diskStorage.isStored(key1))
@@ -77,6 +76,32 @@ final class DiskStorageTests: XCTestCase {
         } catch {
             let path = document.appendingPathComponent("test").appendingPathComponent(key).path
             XCTAssertEqual(DiskStorageError.removeError(path: path), error as! DiskStorageError)
+        }
+    }
+    
+    func testCannotFoundDocumentDirectoryError() {
+        let fileManager = StubFileManagerThrowCannotFoundDocumentDirectoryError()
+        do {
+            diskStorage = try DiskStorage(fileManager: fileManager, directoryName: "test")
+        } catch {
+            XCTAssertEqual(error as! DiskStorageError, DiskStorageError.canNotFoundDocumentDirectory)
+        }
+    }
+    
+    func testCreateDirectoryError() {
+        let fileManager = StubFileManagerThrowCreateDirectoryError(dir: "dir")
+        do {
+            diskStorage = try DiskStorage(fileManager: fileManager, directoryName: "test")
+        } catch {
+            XCTAssertEqual(error as! DiskStorageError, DiskStorageError.canNotCreateStorageDirectory(path: "dir/test"))
+        }
+    }
+    
+    func testCannotStoreError() {
+        do {
+            try diskStorage.store(Data(), for: "//")
+        } catch {
+            XCTAssertEqual(error as! DiskStorageError, DiskStorageError.storeError(path: "\(document.path)/test/"))
         }
     }
     

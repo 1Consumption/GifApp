@@ -12,7 +12,7 @@ final class GifCell: UICollectionViewCell {
     
     static let identifier: String = "GifCell"
 
-    @IBOutlet weak var favoriteImageView: UIImageView!
+    @IBOutlet weak var favoriteImageView: FavoriteImageView!
     @IBOutlet weak var gifImageView: GIFImageView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     

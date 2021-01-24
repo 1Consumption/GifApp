@@ -13,6 +13,8 @@
 		A505439425BDB9320041DF94 /* FavoriteManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A505439325BDB9320041DF94 /* FavoriteManager.swift */; };
 		A505439825BDBD890041DF94 /* FavoriteManagerError+Equatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A505439725BDBD890041DF94 /* FavoriteManagerError+Equatable.swift */; };
 		A505439C25BDC5390041DF94 /* FavoriteImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A505439B25BDC5390041DF94 /* FavoriteImageView.swift */; };
+		A50543A625BDD4C00041DF94 /* MockSuccessFavoriteManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A50543A525BDD4C00041DF94 /* MockSuccessFavoriteManager.swift */; };
+		A50543B425BDD7B00041DF94 /* MockFailureFavoriteManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A50543B325BDD7B00041DF94 /* MockFailureFavoriteManager.swift */; };
 		A51809C625B569BE00E0B589 /* GifInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51809C525B569BE00E0B589 /* GifInfo.swift */; };
 		A51809D725B5757300E0B589 /* GifCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51809D525B5757300E0B589 /* GifCell.swift */; };
 		A51809D825B5757300E0B589 /* GifCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A51809D625B5757300E0B589 /* GifCell.xib */; };
@@ -134,6 +136,8 @@
 		A505439325BDB9320041DF94 /* FavoriteManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteManager.swift; sourceTree = "<group>"; };
 		A505439725BDBD890041DF94 /* FavoriteManagerError+Equatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FavoriteManagerError+Equatable.swift"; sourceTree = "<group>"; };
 		A505439B25BDC5390041DF94 /* FavoriteImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteImageView.swift; sourceTree = "<group>"; };
+		A50543A525BDD4C00041DF94 /* MockSuccessFavoriteManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockSuccessFavoriteManager.swift; sourceTree = "<group>"; };
+		A50543B325BDD7B00041DF94 /* MockFailureFavoriteManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockFailureFavoriteManager.swift; sourceTree = "<group>"; };
 		A51809C525B569BE00E0B589 /* GifInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GifInfo.swift; sourceTree = "<group>"; };
 		A51809D525B5757300E0B589 /* GifCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GifCell.swift; sourceTree = "<group>"; };
 		A51809D625B5757300E0B589 /* GifCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GifCell.xib; sourceTree = "<group>"; };
@@ -267,6 +271,15 @@
 				38F6959E4386668D910C3136 /* Pods_GifAppTests.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A50543A425BDD4A70041DF94 /* FavoriteManager */ = {
+			isa = PBXGroup;
+			children = (
+				A50543A525BDD4C00041DF94 /* MockSuccessFavoriteManager.swift */,
+				A50543B325BDD7B00041DF94 /* MockFailureFavoriteManager.swift */,
+			);
+			path = FavoriteManager;
 			sourceTree = "<group>";
 		};
 		A51809D425B5756000E0B589 /* SearchView */ = {
@@ -546,6 +559,7 @@
 		A5DA215825B6B97C00B544D4 /* Mock */ = {
 			isa = PBXGroup;
 			children = (
+				A50543A425BDD4A70041DF94 /* FavoriteManager */,
 				A5365CB125B88B3D00936522 /* ImageManager */,
 				A5DA223E25B734B800B544D4 /* UseCase */,
 				A5DA21DD25B6FE8A00B544D4 /* NetworkManager */,
@@ -1013,6 +1027,7 @@
 				A5947A8525BAE0B800EBF9FD /* DummySearchResultUseCase.swift in Sources */,
 				A5D28E7E25BD658D000A010C /* DummyNetworkManager.swift in Sources */,
 				A5D28E6D25BD52D2000A010C /* StubFileManager.swift in Sources */,
+				A50543A625BDD4C00041DF94 /* MockSuccessFavoriteManager.swift in Sources */,
 				A5947A4425B9F91000EBF9FD /* MockSuccessAutoCompleteUseCase.swift in Sources */,
 				A5DA224F25B73FEB00B544D4 /* GifCellViewModelTests.swift in Sources */,
 				A524DA6125BDB05200226AF9 /* FavoriteManagerTests.swift in Sources */,
@@ -1027,6 +1042,7 @@
 				A505439825BDBD890041DF94 /* FavoriteManagerError+Equatable.swift in Sources */,
 				A5DA21A725B6D81200B544D4 /* EndpointTests.swift in Sources */,
 				A5DA222B25B71C8000B544D4 /* ObservableTests.swift in Sources */,
+				A50543B425BDD7B00041DF94 /* MockFailureFavoriteManager.swift in Sources */,
 				A571316925BBFC2300D22E63 /* DiskStorageTests.swift in Sources */,
 				A5DA219225B6D56000B544D4 /* MockFailureRequesterWithInvalidHTTPStatusCode.swift in Sources */,
 			);

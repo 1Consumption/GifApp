@@ -13,6 +13,10 @@ extension FavoriteManagerError: Equatable {
         switch (lhs, rhs) {
         case (.diskStorageError(let left), .diskStorageError(let right)):
             return left == right
+        case (.encodeError, .encodeError):
+            return true
+        case (.unknownError, .unknownError):
+            return true
         default:
             return false
         }

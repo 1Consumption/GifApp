@@ -23,7 +23,6 @@ final class GifCellViewModelTests: XCTestCase {
         let expectation = XCTestExpectation(description: "gif delivered")
         defer { wait(for: [expectation], timeout: 1.0) }
         
-        
         let imageManager = MockSuccessImageManager()
         viewModel = GifCellViewModel(gifInfo: gifInfo, imageManager: imageManager)
         
@@ -67,5 +66,62 @@ final class GifCellViewModelTests: XCTestCase {
         }.store(in: &bag)
         
         input.loadGif.fire()
+    }
+    
+    func testViewModelOutputFavoriteDelivered() {
+        let expectation = XCTestExpectation(description: "favorite state is favorite delivered")
+        defer { wait(for: [expectation], timeout: 1.0) }
+        
+        let favoriteManager = MockSuccessFavoriteManager()
+        viewModel = GifCellViewModel(gifInfo: gifInfo, favoriteManager: favoriteManager)
+        
+        let output = viewModel.transform(input).favoriteStateDelivered
+        
+        output.bind {
+            XCTAssertTrue($0)
+            favoriteManager.verify(gifInfo: self.gifInfo)
+            expectation.fulfill()
+        }.store(in: &bag)
+        
+        input.favoriteStateShouldChange.fire()
+    }
+    
+    func testViewModelOutputFavoriteCancelDelivered() {
+        let expectation = XCTestExpectation(description: "favorite state is favorite cancel delivered")
+        defer { wait(for: [expectation], timeout: 1.0) }
+        
+        let favoriteManager = MockSuccessFavoriteManager()
+        favoriteManager.changeFavoriteState(with: gifInfo, failureHandler: { _ in}, successHandler: { _ in})
+        
+        viewModel = GifCellViewModel(gifInfo: gifInfo, favoriteManager: favoriteManager)
+        
+        let output = viewModel.transform(input).favoriteStateDelivered
+        
+        output.bind {
+            XCTAssertFalse($0)
+            favoriteManager.verify(gifInfo: self.gifInfo, callCount: 2)
+            expectation.fulfill()
+        }.store(in: &bag)
+        
+        input.favoriteStateShouldChange.fire()
+    }
+    
+    func testViewModelOutputFavoriteManagerErrorDelivered() {
+        let expectation = XCTestExpectation(description: "favorite error delivered")
+        defer { wait(for: [expectation], timeout: 1.0) }
+        
+        let favoriteManager = MockFailureFavoriteManager()
+        
+        viewModel = GifCellViewModel(gifInfo: gifInfo, favoriteManager: favoriteManager)
+        
+        let output = viewModel.transform(input).favoriteErrorDelivered
+        
+        output.bind {
+            XCTAssertEqual($0, .encodeError)
+            favoriteManager.verify(gifInfo: self.gifInfo)
+            expectation.fulfill()
+        }.store(in: &bag)
+        
+        input.favoriteStateShouldChange.fire()
     }
 }

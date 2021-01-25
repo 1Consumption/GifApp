@@ -20,6 +20,7 @@ protocol FavoriteManagerType {
 final class FavoriteManager: FavoriteManagerType {
     
     private var diskStorage: DiskStorageType?
+    private let diskQueue: DispatchQueue = DispatchQueue(label: "com.favoriteManager")
     
     init(diskStorage: DiskStorageType? = try? DiskStorage(directoryName: "Favorite")) {
         self.diskStorage = diskStorage
@@ -33,7 +34,21 @@ final class FavoriteManager: FavoriteManagerType {
         }
     }
     
-    func store(with gifInfo: GifInfo, failureHandler: @escaping (FavoriteManagerError) -> Void, successHandler: @escaping (Bool) -> Void) {
+    func retrieveGifInfo(failureHandler: @escaping (FavoriteManagerError) -> Void, successHandler: @escaping ([GifInfo]) -> Void) {
+        diskQueue.async { [weak self] in
+            do {
+                guard let dataList = try self?.diskStorage?.itemsInDirectory() else { return }
+                let result = dataList.compactMap { try? JSONDecoder().decode(GifInfo.self, from: $0) }
+                successHandler(result)
+            } catch let error as DiskStorageError {
+                failureHandler(.diskStorageError(error))
+            } catch {
+                failureHandler(.unknownError(error))
+            }
+        }
+    }
+    
+    private func store(with gifInfo: GifInfo, failureHandler: @escaping (FavoriteManagerError) -> Void, successHandler: @escaping (Bool) -> Void) {
         do {
             let encoder = JSONEncoder()
             let data = try encoder.encode(gifInfo)
@@ -46,7 +61,7 @@ final class FavoriteManager: FavoriteManagerType {
         }
     }
     
-    func remove(with gifInfo: GifInfo, failureHandler: @escaping (FavoriteManagerError) -> Void, successHandler: @escaping (Bool) -> Void) {
+    private func remove(with gifInfo: GifInfo, failureHandler: @escaping (FavoriteManagerError) -> Void, successHandler: @escaping (Bool) -> Void) {
         do {
             try diskStorage?.remove(for: gifInfo.id)
             successHandler(false)

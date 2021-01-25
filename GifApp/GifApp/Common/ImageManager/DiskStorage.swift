@@ -12,6 +12,7 @@ protocol DiskStorageType {
     func isStored(_ key: String) -> Bool
     func data(for key: String) -> Data?
     func remove(for key: String) throws
+    func itemsInDirectory() throws -> [Data]?
 }
 
 final class DiskStorage: DiskStorageType {

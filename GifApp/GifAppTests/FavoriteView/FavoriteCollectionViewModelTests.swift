@@ -56,11 +56,11 @@ final class FavoriteCollectionViewModelTests: XCTestCase {
         
         input.loadFavoriteList.fire()
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+        DispatchQueue.global().asyncAfter(deadline: .now() + 1) {
             self.input.loadFavoriteList.fire()
         }
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+        DispatchQueue.global().asyncAfter(deadline: .now() + 2) {
             favoriteManager.verifyRetrieveGifInfo(callCount: 2)
             XCTAssertEqual(count, 1)
             XCTAssertEqual(self.viewModel.gifInfoArray, [self.gifInfo])

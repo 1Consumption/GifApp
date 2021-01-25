@@ -95,4 +95,39 @@ final class FavoriteManagerTests: XCTestCase {
                                                 XCTFail()
                                             })
     }
+    
+    func testRetrieveGifInfo() {
+        let expectation = XCTestExpectation(description: "retreive gifInfo")
+        defer { wait(for: [expectation], timeout: 1.0) }
+        
+        let data = try! JSONEncoder().encode(gifInfo)
+        let diskStorage = MockDiskStorage()
+        favoriteManager = FavoriteManager(diskStorage: diskStorage)
+        
+        try! diskStorage.store(data, for: gifInfo.id)
+        
+        favoriteManager.retrieveGifInfo(failureHandler: { _ in
+            XCTFail()
+        }, successHandler: {
+            XCTAssertEqual($0, [self.gifInfo])
+            diskStorage.verifyItemsInDirectoty()
+            expectation.fulfill()
+        })
+    }
+    
+    func testRetrieveGifInfoFailureWithDiskError() {
+        let expectation = XCTestExpectation(description: "retreive gifInfo failure with diskError")
+        defer { wait(for: [expectation], timeout: 1.0) }
+        
+        let diskStorage = MockDiskStorageThrowLoadFileListError(path: "test")
+        favoriteManager = FavoriteManager(diskStorage: diskStorage)
+        
+        favoriteManager.retrieveGifInfo(failureHandler: {
+            XCTAssertEqual($0, FavoriteManagerError.diskStorageError(.canNotLoadFileList(path: "test")))
+            diskStorage.verifyItemsInDirectoty()
+            expectation.fulfill()
+        }, successHandler: { _ in
+            XCTFail()
+        })
+    }
 }

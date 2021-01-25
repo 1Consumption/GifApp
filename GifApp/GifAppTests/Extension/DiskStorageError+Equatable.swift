@@ -21,6 +21,8 @@ extension DiskStorageError: Equatable {
             return left == right
         case (.removeError(let left), .removeError(let right)):
             return left == right
+        case (.canNotLoadFileList(let left), .canNotLoadFileList(let right)):
+            return left == right
         default:
             return false
         }

@@ -25,6 +25,8 @@ final class MockDiskStorage: DiskStorageType {
     private var removeKey: String?
     private var removeCallCount: Int = 0
     
+    private var itemsInDirectoryCount: Int = 0
+    
     func store(_ value: Data, for key: String) throws {
         storeCallCount += 1
         storeKey = key
@@ -50,6 +52,11 @@ final class MockDiskStorage: DiskStorageType {
         storage[key] = nil
     }
     
+    func itemsInDirectory() throws -> [Data]? {
+        itemsInDirectoryCount += 1
+        return storage.values.map { $0 }
+    }
+    
     func verifyStore(value: Data, key: String, callCount: Int = 1) {
         XCTAssertEqual(storeValue, value)
         XCTAssertEqual(storeKey, key)
@@ -70,6 +77,10 @@ final class MockDiskStorage: DiskStorageType {
         XCTAssertEqual(removeKey, key)
         XCTAssertEqual(removeCallCount, callCount)
     }
+    
+    func verifyItemsInDirectoty(callCount: Int = 1) {
+        XCTAssertEqual(itemsInDirectoryCount, callCount)
+    }
 }
 
 final class MockDiskStorageThrowDirectoryError: DiskStorageType {
@@ -89,6 +100,10 @@ final class MockDiskStorageThrowDirectoryError: DiskStorageType {
     }
     
     func remove(for key: String) throws { }
+    
+    func itemsInDirectory() throws -> [Data]? {
+        return nil
+    }
 }
 
 final class MockDiskStorageThrowStoreError: DiskStorageType {
@@ -119,6 +134,10 @@ final class MockDiskStorageThrowStoreError: DiskStorageType {
         XCTAssertEqual(storeKey, key)
         XCTAssertEqual(storeCallCount, callCount)
     }
+    
+    func itemsInDirectory() throws -> [Data]? {
+        return nil
+    }
 }
 
 final class MockDiskStorageThrowRemoveError: DiskStorageType {
@@ -145,5 +164,40 @@ final class MockDiskStorageThrowRemoveError: DiskStorageType {
     func verifyRemove(value: Data, key: String, callCount: Int = 1) {
         XCTAssertEqual(removeKey, key)
         XCTAssertEqual(removeCallCount, callCount)
+    }
+    
+    func itemsInDirectory() throws -> [Data]? {
+        return nil
+    }
+}
+
+final class MockDiskStorageThrowLoadFileListError: DiskStorageType {
+    
+    private var itemsInDirectoryCount: Int = 0
+    private var path: String
+    
+    init(path: String) {
+        self.path = path
+    }
+    
+    func store(_ value: Data, for key: String) throws { }
+    
+    func isStored(_ key: String) -> Bool {
+        return true
+    }
+    
+    func data(for key: String) -> Data? {
+        return nil
+    }
+    
+    func remove(for key: String) throws { }
+    
+    func itemsInDirectory() throws -> [Data]? {
+        itemsInDirectoryCount += 1
+        throw DiskStorageError.canNotLoadFileList(path: path)
+    }
+    
+    func verifyItemsInDirectoty(callCount: Int = 1) {
+        XCTAssertEqual(itemsInDirectoryCount, callCount)
     }
 }

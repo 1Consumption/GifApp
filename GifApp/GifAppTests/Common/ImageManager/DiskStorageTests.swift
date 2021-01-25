@@ -46,9 +46,6 @@ final class DiskStorageTests: XCTestCase {
     }
     
     func testMaintainData() {
-        let expectation = XCTestExpectation(description: "maintain data")
-        defer { wait(for: [expectation], timeout: 2.0) }
-        diskStorage = try! DiskStorage(fileManager: fileManager, directoryName: "test")
         let data1 = Data([1, 2, 3, 4])
         let data2 = Data([2, 3, 4, 5])
         let key1 = "key1"
@@ -57,11 +54,10 @@ final class DiskStorageTests: XCTestCase {
         try! diskStorage.store(data1, for: key1)
         try! diskStorage.store(data2, for: key2)
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
-            XCTAssertTrue(self.diskStorage.isStored(key1))
-            XCTAssertTrue(self.diskStorage.isStored(key2))
-            expectation.fulfill()
-        })
+        diskStorage = try! DiskStorage(fileManager: fileManager, directoryName: "test")
+        
+        XCTAssertTrue(self.diskStorage.isStored(key1))
+        XCTAssertTrue(self.diskStorage.isStored(key2))
     }
     
     func testRemoveError() {
@@ -103,6 +99,21 @@ final class DiskStorageTests: XCTestCase {
         } catch {
             XCTAssertEqual(error as! DiskStorageError, DiskStorageError.storeError(path: "\(document.path)/test/"))
         }
+    }
+    
+    func testFileListInDirectory() {
+        let data1 = Data([1, 2, 3, 4])
+        let data2 = Data([2, 3, 4, 5])
+        let key1 = "key1"
+        let key2 = "key2"
+        
+        try! diskStorage.store(data1, for: key1)
+        try! diskStorage.store(data2, for: key2)
+        
+        let list = try! diskStorage.fileListInDirectory()
+        
+        XCTAssertTrue(list!.contains(data1))
+        XCTAssertTrue(list!.contains(data2))
     }
     
     override func tearDownWithError() throws {

@@ -19,6 +19,7 @@
 		A51809D725B5757300E0B589 /* GifCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51809D525B5757300E0B589 /* GifCell.swift */; };
 		A51809D825B5757300E0B589 /* GifCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A51809D625B5757300E0B589 /* GifCell.xib */; };
 		A524DA6125BDB05200226AF9 /* FavoriteManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A524DA6025BDB05200226AF9 /* FavoriteManagerTests.swift */; };
+		A556775025BE7EBC002075F0 /* FavoriteCollectionViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A556774F25BE7EBC002075F0 /* FavoriteCollectionViewModelTests.swift */; };
 		A571316925BBFC2300D22E63 /* DiskStorageTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A571316825BBFC2200D22E63 /* DiskStorageTests.swift */; };
 		A571316D25BC0BC600D22E63 /* DiskStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A571316C25BC0BC600D22E63 /* DiskStorage.swift */; };
 		A571317125BC19D300D22E63 /* DiskStorageError+Equatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A571317025BC19D300D22E63 /* DiskStorageError+Equatable.swift */; };
@@ -143,6 +144,7 @@
 		A51809D525B5757300E0B589 /* GifCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GifCell.swift; sourceTree = "<group>"; };
 		A51809D625B5757300E0B589 /* GifCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GifCell.xib; sourceTree = "<group>"; };
 		A524DA6025BDB05200226AF9 /* FavoriteManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteManagerTests.swift; sourceTree = "<group>"; };
+		A556774F25BE7EBC002075F0 /* FavoriteCollectionViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteCollectionViewModelTests.swift; sourceTree = "<group>"; };
 		A571316825BBFC2200D22E63 /* DiskStorageTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiskStorageTests.swift; sourceTree = "<group>"; };
 		A571316C25BC0BC600D22E63 /* DiskStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiskStorage.swift; sourceTree = "<group>"; };
 		A571317025BC19D300D22E63 /* DiskStorageError+Equatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DiskStorageError+Equatable.swift"; sourceTree = "<group>"; };
@@ -302,6 +304,14 @@
 				A5A22FBD25B899740098D80F /* MockFailureImageManager.swift */,
 			);
 			path = ImageManager;
+			sourceTree = "<group>";
+		};
+		A556774E25BE7E72002075F0 /* FavoriteView */ = {
+			isa = PBXGroup;
+			children = (
+				A556774F25BE7EBC002075F0 /* FavoriteCollectionViewModelTests.swift */,
+			);
+			path = FavoriteView;
 			sourceTree = "<group>";
 		};
 		A57D3A1E25B489F0005C3338 = {
@@ -511,8 +521,9 @@
 		A5DA210E25B6AB4300B544D4 /* GifAppTests */ = {
 			isa = PBXGroup;
 			children = (
-				A5DA217D25B6CC9900B544D4 /* Extension */,
 				A5E633AD25B75ADA004331D9 /* Common */,
+				A5DA217D25B6CC9900B544D4 /* Extension */,
+				A556774E25BE7E72002075F0 /* FavoriteView */,
 				A5947A6425BAAF9500EBF9FD /* SearchResultView */,
 				A5E633AE25B75AE1004331D9 /* SearchView */,
 				A5DA215725B6B96E00B544D4 /* Test Double */,
@@ -1006,6 +1017,7 @@
 				A5DA221E25B7149600B544D4 /* CancellableTests.swift in Sources */,
 				A571A0EE25B84E8000526A49 /* ImageManagerTests.swift in Sources */,
 				A5947A2E25B9F0F500EBF9FD /* AutoCompleteUseCaseTests.swift in Sources */,
+				A556775025BE7EBC002075F0 /* FavoriteCollectionViewModelTests.swift in Sources */,
 				A5947A3425B9F17F00EBF9FD /* AutoComplete+Equtable+Encodable.swift in Sources */,
 				A5DA21CF25B6F50800B544D4 /* UseCaseError+Equatable.swift in Sources */,
 				A5DA223925B7349400B544D4 /* TrendingGifViewModelTests.swift in Sources */,

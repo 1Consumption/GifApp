@@ -9,6 +9,7 @@
 import Foundation
 
 extension NetworkError: Equatable {
+    
     public static func == (lhs: Self, rhs: Self) -> Bool {
         switch (lhs, rhs) {
         case (.emptyURL, .emptyURL):

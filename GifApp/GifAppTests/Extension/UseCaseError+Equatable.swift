@@ -9,6 +9,7 @@
 import Foundation
 
 extension UseCaseError: Equatable {
+    
     public static func == (lhs: Self, rhs: Self) -> Bool {
         switch (lhs, rhs) {
         case (.decodeError, .decodeError):

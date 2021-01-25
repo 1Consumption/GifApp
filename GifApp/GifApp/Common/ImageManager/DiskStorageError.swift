@@ -13,6 +13,7 @@ enum DiskStorageError: Error {
     case canNotCreateStorageDirectory(path: String)
     case storeError(path: String)
     case removeError(path: String)
+    case canNotLoadFileList(path: String)
     
     var message: String {
         switch self {
@@ -24,6 +25,8 @@ enum DiskStorageError: Error {
             return "can't store value into \(path)"
         case .removeError(let path):
             return "can't remove value located at \(path)"
+        case .canNotLoadFileList(let path):
+            return "can't load file list in \(path)"
         }
     }
 }

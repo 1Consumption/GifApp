@@ -13,6 +13,7 @@ protocol FileManagerType {
     func contents(atPath path: String) -> Data?
     func removeItem(at URL: URL) throws
     func createDirectory(at url: URL, withIntermediateDirectories createIntermediates: Bool, attributes: [FileAttributeKey : Any]?) throws
+    func contentsOfDirectory(atPath path: String) throws -> [String]
 }
 
 extension FileManager: FileManagerType { }

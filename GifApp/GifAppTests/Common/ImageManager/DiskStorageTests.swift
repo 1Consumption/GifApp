@@ -101,7 +101,7 @@ final class DiskStorageTests: XCTestCase {
         }
     }
     
-    func testFileListInDirectory() {
+    func testItemsInDirectory() {
         let data1 = Data([1, 2, 3, 4])
         let data2 = Data([2, 3, 4, 5])
         let key1 = "key1"
@@ -110,7 +110,7 @@ final class DiskStorageTests: XCTestCase {
         try! diskStorage.store(data1, for: key1)
         try! diskStorage.store(data2, for: key2)
         
-        let list = try! diskStorage.fileListInDirectory()
+        let list = try! diskStorage.itemsInDirectory()
         
         XCTAssertTrue(list!.contains(data1))
         XCTAssertTrue(list!.contains(data2))

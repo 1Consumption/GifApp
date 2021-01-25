@@ -24,7 +24,6 @@ final class DiskStorage: DiskStorageType {
         guard let documentDirectory = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first else { throw DiskStorageError.canNotFoundDocumentDirectory }
         self.fileManager = fileManager
         self.directory = documentDirectory.appendingPathComponent(directoryName)
-        
         try createDirectory(with: self.directory)
     }
     
@@ -58,6 +57,15 @@ final class DiskStorage: DiskStorageType {
             try fileManager.removeItem(at: url)
         } catch {
             throw DiskStorageError.removeError(path: url.path)
+        }
+    }
+    
+    func itemsInDirectory() throws -> [Data]? {
+        do {
+            let itemsList = try fileManager.contentsOfDirectory(atPath: directory.path)
+            return itemsList.compactMap { fileManager.contents(atPath: directory.appendingPathComponent($0).path) }
+        } catch {
+            throw DiskStorageError.canNotLoadFileList(path: directory.path)
         }
     }
     

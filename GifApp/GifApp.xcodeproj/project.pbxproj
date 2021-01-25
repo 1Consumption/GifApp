@@ -20,6 +20,7 @@
 		A51809D825B5757300E0B589 /* GifCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A51809D625B5757300E0B589 /* GifCell.xib */; };
 		A524DA6125BDB05200226AF9 /* FavoriteManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A524DA6025BDB05200226AF9 /* FavoriteManagerTests.swift */; };
 		A556775025BE7EBC002075F0 /* FavoriteCollectionViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A556774F25BE7EBC002075F0 /* FavoriteCollectionViewModelTests.swift */; };
+		A556775625BE8899002075F0 /* FavoriteCollectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A556775525BE8899002075F0 /* FavoriteCollectionViewModel.swift */; };
 		A571316925BBFC2300D22E63 /* DiskStorageTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A571316825BBFC2200D22E63 /* DiskStorageTests.swift */; };
 		A571316D25BC0BC600D22E63 /* DiskStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A571316C25BC0BC600D22E63 /* DiskStorage.swift */; };
 		A571317125BC19D300D22E63 /* DiskStorageError+Equatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A571317025BC19D300D22E63 /* DiskStorageError+Equatable.swift */; };
@@ -145,6 +146,7 @@
 		A51809D625B5757300E0B589 /* GifCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GifCell.xib; sourceTree = "<group>"; };
 		A524DA6025BDB05200226AF9 /* FavoriteManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteManagerTests.swift; sourceTree = "<group>"; };
 		A556774F25BE7EBC002075F0 /* FavoriteCollectionViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteCollectionViewModelTests.swift; sourceTree = "<group>"; };
+		A556775525BE8899002075F0 /* FavoriteCollectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteCollectionViewModel.swift; sourceTree = "<group>"; };
 		A571316825BBFC2200D22E63 /* DiskStorageTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiskStorageTests.swift; sourceTree = "<group>"; };
 		A571316C25BC0BC600D22E63 /* DiskStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiskStorage.swift; sourceTree = "<group>"; };
 		A571317025BC19D300D22E63 /* DiskStorageError+Equatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DiskStorageError+Equatable.swift"; sourceTree = "<group>"; };
@@ -464,6 +466,7 @@
 			isa = PBXGroup;
 			children = (
 				A5A4C69B25BDEF600079BD8E /* FavoriteViewController.swift */,
+				A556775525BE8899002075F0 /* FavoriteCollectionViewModel.swift */,
 			);
 			path = FavoriteView;
 			sourceTree = "<group>";
@@ -971,6 +974,7 @@
 				A571316D25BC0BC600D22E63 /* DiskStorage.swift in Sources */,
 				A5DA216625B6BC5F00B544D4 /* NetworkManager.swift in Sources */,
 				A5E633A125B74B1E004331D9 /* GifCellViewModel.swift in Sources */,
+				A556775625BE8899002075F0 /* FavoriteCollectionViewModel.swift in Sources */,
 				A5A3B94A25BB1F8500389243 /* DetailViewController.swift in Sources */,
 				A571A0F225B8692700526A49 /* ImageManager.swift in Sources */,
 				A5E633A525B75327004331D9 /* GifCollectionViewDataSource.swift in Sources */,

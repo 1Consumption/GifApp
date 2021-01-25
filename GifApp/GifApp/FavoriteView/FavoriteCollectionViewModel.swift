@@ -23,6 +23,7 @@ struct FavoriteCollectionViewModelOutput {
 final class FavoriteCollectionViewModel: ViewModelType {
     
     private var favoriteManager: FavoriteManagerType
+    private var bag: CancellableBag = CancellableBag()
     private(set) var gifInfoList: [GifInfo] = [GifInfo]()
     
     init(favoriteManager: FavoriteManagerType = FavoriteManager()) {
@@ -31,6 +32,14 @@ final class FavoriteCollectionViewModel: ViewModelType {
     
     func transform(_ input: FavoriteCollectionViewModelInput) -> FavoriteCollectionViewModelOutput {
         let output = FavoriteCollectionViewModelOutput()
+        
+        input.loadFavoriteList.bind { [weak self] in
+            self?.favoriteManager.retrieveGifInfo(failureHandler: { _ in},
+                                            successHandler: { [weak self] in
+                                                self?.gifInfoList = $0
+                                                output.favoriteListDelivered.fire()
+                                            })
+        }.store(in: &bag)
         
         return output
     }

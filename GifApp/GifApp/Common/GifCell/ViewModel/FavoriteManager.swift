@@ -15,6 +15,7 @@ enum FavoriteManagerError: Error {
 
 protocol FavoriteManagerType {
     func changeFavoriteState(with gifInfo: GifInfo, failureHandler: @escaping (FavoriteManagerError) -> Void, successHandler: @escaping (Bool) -> Void)
+    func retrieveGifInfo(failureHandler: @escaping (FavoriteManagerError) -> Void, successHandler: @escaping ([GifInfo]) -> Void)
 }
 
 final class FavoriteManager: FavoriteManagerType {

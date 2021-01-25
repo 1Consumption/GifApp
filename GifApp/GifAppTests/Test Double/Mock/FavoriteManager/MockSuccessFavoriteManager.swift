@@ -29,6 +29,7 @@ final class MockSuccessFavoriteManager: FavoriteManagerType {
     }
     
     func retrieveGifInfo(failureHandler: @escaping (FavoriteManagerError) -> Void, successHandler: @escaping ([GifInfo]) -> Void) {
+        retrieveGifInfoCallCount += 1
         successHandler(store.values.map { $0 })
     }
     

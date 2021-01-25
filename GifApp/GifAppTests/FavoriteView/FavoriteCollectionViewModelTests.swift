@@ -24,12 +24,15 @@ final class FavoriteCollectionViewModelTests: XCTestCase {
         defer { wait(for: [expectation], timeout: 1.0) }
         
         let favoriteManager = MockSuccessFavoriteManager()
+        favoriteManager.changeFavoriteState(with: gifInfo, failureHandler: { _ in }, successHandler: { _ in })
+        
         viewModel = FavoriteCollectionViewModel(favoriteManager: favoriteManager)
         
         let output = viewModel.transform(input).favoriteListDelivered
         
         output.bind {
             favoriteManager.verifyRetrieveGifInfo()
+            XCTAssertEqual([self.gifInfo], self.viewModel.gifInfoList)
             expectation.fulfill()
         }.store(in: &bag)
         

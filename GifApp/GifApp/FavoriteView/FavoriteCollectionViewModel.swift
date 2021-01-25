@@ -20,11 +20,11 @@ struct FavoriteCollectionViewModelOutput {
     let showDetailFired: Observable<GifInfo?> = Observable<GifInfo?>(value: nil)
 }
 
-final class FavoriteCollectionViewModel: ViewModelType {
+final class FavoriteCollectionViewModel: ViewModelType, GifManagerType {
     
     private var favoriteManager: FavoriteManagerType
     private var bag: CancellableBag = CancellableBag()
-    private(set) var gifInfoList: [GifInfo] = [GifInfo]()
+    private(set) var gifInfoArray: [GifInfo] = [GifInfo]()
     
     init(favoriteManager: FavoriteManagerType = FavoriteManager()) {
         self.favoriteManager = favoriteManager
@@ -38,10 +38,15 @@ final class FavoriteCollectionViewModel: ViewModelType {
                 output.favoriteErrorDelivered.value = $0
             },
             successHandler: { [weak self] in
-                guard self?.gifInfoList != $0 else { return }
-                self?.gifInfoList = $0
+                guard self?.gifInfoArray != $0 else { return }
+                self?.gifInfoArray = $0
                 output.favoriteListDelivered.fire()
             })
+        }.store(in: &bag)
+        
+        input.showDetail.bind { [weak self] in
+            guard let index = $0?.item else { return }
+            output.showDetailFired.value = self?.gifInfo(of: index)
         }.store(in: &bag)
         
         return output

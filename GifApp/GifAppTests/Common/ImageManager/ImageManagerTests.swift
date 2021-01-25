@@ -19,7 +19,7 @@ final class ImageManagerTests: XCTestCase {
     
     func testRetrieveImageFromNetwork() {
         let expectation = XCTestExpectation(description: "image from network")
-        defer { wait(for: [expectation], timeout: 1.0) }
+        defer { wait(for: [expectation], timeout: 2.0) }
         
         let networkManager = MockSuccessNetworkManager(data: data)
         let diskStorage = MockDiskStorage()

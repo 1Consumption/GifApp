@@ -32,7 +32,7 @@ final class FavoriteCollectionViewModelTests: XCTestCase {
         
         output.bind {
             favoriteManager.verifyRetrieveGifInfo()
-            XCTAssertEqual([self.gifInfo], self.viewModel.gifInfoList)
+            XCTAssertEqual([self.gifInfo], self.viewModel.gifInfoArray)
             expectation.fulfill()
         }.store(in: &bag)
         
@@ -63,7 +63,7 @@ final class FavoriteCollectionViewModelTests: XCTestCase {
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
             favoriteManager.verifyRetrieveGifInfo(callCount: 2)
             XCTAssertEqual(count, 1)
-            XCTAssertEqual(self.viewModel.gifInfoList, [self.gifInfo])
+            XCTAssertEqual(self.viewModel.gifInfoArray, [self.gifInfo])
             expectation.fulfill()
         }
     }
@@ -89,7 +89,10 @@ final class FavoriteCollectionViewModelTests: XCTestCase {
         let expectation = XCTestExpectation(description: "show detail fire")
         defer { wait(for: [expectation], timeout: 1.0) }
         
-        viewModel = FavoriteCollectionViewModel()
+        let favoriteManager = MockSuccessFavoriteManager()
+        favoriteManager.changeFavoriteState(with: gifInfo, failureHandler: { _ in }, successHandler: { _ in })
+        viewModel = FavoriteCollectionViewModel(favoriteManager: favoriteManager)
+        
         let output = viewModel.transform(input).showDetailFired
         
         output.bind {
@@ -97,6 +100,7 @@ final class FavoriteCollectionViewModelTests: XCTestCase {
             expectation.fulfill()
         }.store(in: &bag)
         
+        input.loadFavoriteList.fire()
         input.showDetail.value = IndexPath(item: 0, section: 0)
     }
 }

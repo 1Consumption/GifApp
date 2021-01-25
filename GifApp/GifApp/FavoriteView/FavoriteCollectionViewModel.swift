@@ -34,12 +34,14 @@ final class FavoriteCollectionViewModel: ViewModelType {
         let output = FavoriteCollectionViewModelOutput()
         
         input.loadFavoriteList.bind { [weak self] in
-            self?.favoriteManager.retrieveGifInfo(failureHandler: { _ in},
-                                            successHandler: { [weak self] in
-                                                guard self?.gifInfoList != $0 else { return }
-                                                self?.gifInfoList = $0
-                                                output.favoriteListDelivered.fire()
-                                            })
+            self?.favoriteManager.retrieveGifInfo(failureHandler: {
+                output.favoriteErrorDelivered.value = $0
+            },
+            successHandler: { [weak self] in
+                guard self?.gifInfoList != $0 else { return }
+                self?.gifInfoList = $0
+                output.favoriteListDelivered.fire()
+            })
         }.store(in: &bag)
         
         return output

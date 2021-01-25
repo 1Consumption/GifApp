@@ -41,16 +41,17 @@ final class FavoriteCollectionViewModelTests: XCTestCase {
     
     func testOuputFavoriteListDeliveredWithDuplicatedResult() {
         let expectation = XCTestExpectation(description: "favorite list delivered with duplicated result")
-        defer { wait(for: [expectation], timeout: 3.0) }
+        var count: Int = 0
+        defer { wait(for: [expectation], timeout: 4.0) }
         
         let favoriteManager = MockSuccessFavoriteManager()
+        favoriteManager.changeFavoriteState(with: gifInfo, failureHandler: { _ in }, successHandler: { _ in })
         viewModel = FavoriteCollectionViewModel(favoriteManager: favoriteManager)
         
         let output = viewModel.transform(input).favoriteListDelivered
         
         output.bind {
-            favoriteManager.verifyRetrieveGifInfo()
-            expectation.fulfill()
+            count += 1
         }.store(in: &bag)
         
         input.loadFavoriteList.fire()
@@ -60,7 +61,10 @@ final class FavoriteCollectionViewModelTests: XCTestCase {
         }
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            favoriteManager.verifyRetrieveGifInfo(callCount: 2)
+            XCTAssertEqual(count, 1)
             XCTAssertEqual(self.viewModel.gifInfoList, [self.gifInfo])
+            expectation.fulfill()
         }
     }
     

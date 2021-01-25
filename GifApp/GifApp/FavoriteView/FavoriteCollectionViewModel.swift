@@ -36,6 +36,7 @@ final class FavoriteCollectionViewModel: ViewModelType {
         input.loadFavoriteList.bind { [weak self] in
             self?.favoriteManager.retrieveGifInfo(failureHandler: { _ in},
                                             successHandler: { [weak self] in
+                                                guard self?.gifInfoList != $0 else { return }
                                                 self?.gifInfoList = $0
                                                 output.favoriteListDelivered.fire()
                                             })

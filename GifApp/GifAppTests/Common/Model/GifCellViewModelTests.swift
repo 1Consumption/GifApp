@@ -116,7 +116,7 @@ final class GifCellViewModelTests: XCTestCase {
         
         output.bind {
             XCTAssertEqual($0, .encodeError)
-            favoriteManager.verify(gifInfo: self.gifInfo)
+            favoriteManager.verifyChangeFavoriteState(gifInfo: self.gifInfo)
             expectation.fulfill()
         }.store(in: &bag)
         

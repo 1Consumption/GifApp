@@ -69,11 +69,11 @@ final class FavoriteViewController: UIViewController {
 extension FavoriteViewController: PinterestLayoutDelegate {
     
     func collectionView(_ collectionView: UICollectionView, heightForPhotoAtIndexPath indexPath: IndexPath) -> CGSize {
-        guard let dataSource = collectionView.dataSource as? GifCollectionViewDataSource else { return .zero }
-        guard let strWidth = dataSource.gifInfo(of: indexPath.item)?.images.original.width,
-              let strHeight = dataSource.gifInfo(of: indexPath.item)?.images.original.height,
-              let width = Double(strWidth),
-              let height = Double(strHeight)
+        let model = favoriteCollectionViewModel.gifInfo(of: indexPath.item)
+        guard let gifWidth = model?.images.original.width,
+              let gifHeight = model?.images.original.height,
+              let width = Double(gifWidth),
+              let height = Double(gifHeight)
         else { return .zero }
         
         return CGSize(width: width, height: height)

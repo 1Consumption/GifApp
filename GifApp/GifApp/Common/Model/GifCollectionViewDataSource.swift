@@ -24,8 +24,4 @@ final class GifCollectionViewDataSource: NSObject, UICollectionViewDataSource {
         
         return cell
     }
-    
-    func gifInfo(of index: Int) -> GifInfo? {
-        return viewModel?.gifInfo(of: index)
-    }
 }

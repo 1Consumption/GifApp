@@ -89,18 +89,16 @@ final class FavoriteCollectionViewModelTests: XCTestCase {
         let expectation = XCTestExpectation(description: "show detail fire")
         defer { wait(for: [expectation], timeout: 1.0) }
         
-        let favoriteManager = MockSuccessFavoriteManager()
-        favoriteManager.changeFavoriteState(with: gifInfo, completionHandler: { _ in })
+        let favoriteManager = DummyFavoriteManager()
         viewModel = FavoriteCollectionViewModel(favoriteManager: favoriteManager)
         
         let output = viewModel.transform(input).showDetailFired
         
         output.bind {
-            XCTAssertEqual($0, self.gifInfo)
+            XCTAssertEqual($0, IndexPath(item: 0, section: 0))
             expectation.fulfill()
         }.store(in: &bag)
         
-        input.loadFavoriteList.fire()
         input.showDetail.value = IndexPath(item: 0, section: 0)
     }
     

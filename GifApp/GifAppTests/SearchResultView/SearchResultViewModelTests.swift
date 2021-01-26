@@ -57,10 +57,10 @@ final class SearchResultViewModelTests: XCTestCase {
         
         let output = viewModel.transform(input).showDetailFired
         output.bind {
-            XCTAssertEqual($0, "test")
+            XCTAssertEqual($0, IndexPath(item: 0, section: 0))
             expactation.fulfill()
         }.store(in: &bag)
         
-        input.showDetail.value = "test"
+        input.showDetail.value = IndexPath(item: 0, section: 0)
     }
 }

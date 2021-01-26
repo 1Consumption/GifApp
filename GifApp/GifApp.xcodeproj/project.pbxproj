@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		1AC0DFE47C5E9D44E91AA416 /* Pods_GifAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38F6959E4386668D910C3136 /* Pods_GifAppTests.framework */; };
+		A501C69825C063F000C6D4E3 /* DummyTrendingUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A501C69725C063F000C6D4E3 /* DummyTrendingUseCase.swift */; };
+		A501C69E25C0648E00C6D4E3 /* DummyFavoriteManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A501C69D25C0648E00C6D4E3 /* DummyFavoriteManager.swift */; };
 		A5048B0525B9CD410005CB42 /* DebounceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5048B0425B9CD410005CB42 /* DebounceTests.swift */; };
 		A5048B0925B9D03D0005CB42 /* Debounce.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5048B0825B9D03D0005CB42 /* Debounce.swift */; };
 		A505439425BDB9320041DF94 /* FavoriteManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A505439325BDB9320041DF94 /* FavoriteManager.swift */; };
@@ -134,6 +136,8 @@
 		38F6959E4386668D910C3136 /* Pods_GifAppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GifAppTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4EF534D01114BA785A6D3B92 /* Pods-GifApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GifApp.debug.xcconfig"; path = "Target Support Files/Pods-GifApp/Pods-GifApp.debug.xcconfig"; sourceTree = "<group>"; };
 		94CC51EF00F3DC461E1A3DFA /* Pods-GifAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GifAppTests.debug.xcconfig"; path = "Target Support Files/Pods-GifAppTests/Pods-GifAppTests.debug.xcconfig"; sourceTree = "<group>"; };
+		A501C69725C063F000C6D4E3 /* DummyTrendingUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyTrendingUseCase.swift; sourceTree = "<group>"; };
+		A501C69D25C0648E00C6D4E3 /* DummyFavoriteManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyFavoriteManager.swift; sourceTree = "<group>"; };
 		A5048B0425B9CD410005CB42 /* DebounceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebounceTests.swift; sourceTree = "<group>"; };
 		A5048B0825B9D03D0005CB42 /* Debounce.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Debounce.swift; sourceTree = "<group>"; };
 		A505439325BDB9320041DF94 /* FavoriteManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteManager.swift; sourceTree = "<group>"; };
@@ -655,6 +659,8 @@
 				A5947A4D25B9FABF00EBF9FD /* DummyAutoCompleteUseCase.swift */,
 				A5947A8425BAE0B800EBF9FD /* DummySearchResultUseCase.swift */,
 				A5D28E7D25BD658D000A010C /* DummyNetworkManager.swift */,
+				A501C69725C063F000C6D4E3 /* DummyTrendingUseCase.swift */,
+				A501C69D25C0648E00C6D4E3 /* DummyFavoriteManager.swift */,
 			);
 			path = Dummy;
 			sourceTree = "<group>";
@@ -1029,6 +1035,7 @@
 				A5DA224025B734C700B544D4 /* MockSuccessTrendingUseCase.swift in Sources */,
 				A5DA21DF25B6FE9C00B544D4 /* MockSuccessNetworkManager.swift in Sources */,
 				A5DA21E625B700AE00B544D4 /* DummyRequester.swift in Sources */,
+				A501C69E25C0648E00C6D4E3 /* DummyFavoriteManager.swift in Sources */,
 				A5947A8125BACCB900EBF9FD /* MockFailureSearchResultUseCase.swift in Sources */,
 				A5DA215425B6B91E00B544D4 /* NetworkManagerTests.swift in Sources */,
 				A5DA21FD25B7080900B544D4 /* MockFailureNetworkManagerWithDecodeError.swift in Sources */,
@@ -1049,6 +1056,7 @@
 				A5947A7625BACA9700EBF9FD /* SearchResultViewModelTests.swift in Sources */,
 				A5DA21C925B6F4F000B544D4 /* UseCaseErrorTests.swift in Sources */,
 				A5DA220125B70A0A00B544D4 /* MockFailureNetworkManagerWithNetworkError.swift in Sources */,
+				A501C69825C063F000C6D4E3 /* DummyTrendingUseCase.swift in Sources */,
 				A5DA21F925B7031A00B544D4 /* GifInfoResponse+Equtable+Encodable.swift in Sources */,
 				A571317125BC19D300D22E63 /* DiskStorageError+Equatable.swift in Sources */,
 				A5E633CD25B80594004331D9 /* ExpirableObjectTests.swift in Sources */,

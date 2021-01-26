@@ -15,22 +15,22 @@ final class MockSuccessFavoriteManager: FavoriteManagerType {
     private var retrieveGifInfoCallCount: Int = 0
     private var store: [String: GifInfo] = [String: GifInfo]()
     
-    func changeFavoriteState(with gifInfo: GifInfo, failureHandler: @escaping (FavoriteManagerError) -> Void, successHandler: @escaping (Bool) -> Void) {
+    func changeFavoriteState(with gifInfo: GifInfo, completionHandler: @escaping (Result<Bool, FavoriteManagerError>) -> Void) {
         changeFavoriteStateCallCount += 1
         self.gifInfo = gifInfo
         
         if store[gifInfo.id] == nil {
             store[gifInfo.id] = gifInfo
-            successHandler(true)
+            completionHandler(.success(true))
         } else {
             store[gifInfo.id] = nil
-            successHandler(false)
+            completionHandler(.success(false))
         }
     }
     
-    func retrieveGifInfo(failureHandler: @escaping (FavoriteManagerError) -> Void, successHandler: @escaping ([GifInfo]) -> Void) {
+    func retrieveGifInfo(completionHandler: @escaping (Result<[GifInfo], FavoriteManagerError>) -> Void) {
         retrieveGifInfoCallCount += 1
-        successHandler(store.values.map { $0 })
+        completionHandler(.success(store.values.map { $0 }))
     }
     
     func verifyChangeFavoriteState(gifInfo: GifInfo, storageCount: Int, callCount: Int = 1) {

@@ -24,7 +24,7 @@ final class FavoriteCollectionViewModelTests: XCTestCase {
         defer { wait(for: [expectation], timeout: 1.0) }
         
         let favoriteManager = MockSuccessFavoriteManager()
-        favoriteManager.changeFavoriteState(with: gifInfo, failureHandler: { _ in }, successHandler: { _ in })
+        favoriteManager.changeFavoriteState(with: gifInfo, completionHandler: { _ in })
         
         viewModel = FavoriteCollectionViewModel(favoriteManager: favoriteManager)
         
@@ -45,7 +45,7 @@ final class FavoriteCollectionViewModelTests: XCTestCase {
         defer { wait(for: [expectation], timeout: 4.0) }
         
         let favoriteManager = MockSuccessFavoriteManager()
-        favoriteManager.changeFavoriteState(with: gifInfo, failureHandler: { _ in }, successHandler: { _ in })
+        favoriteManager.changeFavoriteState(with: gifInfo, completionHandler: { _ in })
         viewModel = FavoriteCollectionViewModel(favoriteManager: favoriteManager)
         
         let output = viewModel.transform(input).favoriteListDelivered
@@ -90,7 +90,7 @@ final class FavoriteCollectionViewModelTests: XCTestCase {
         defer { wait(for: [expectation], timeout: 1.0) }
         
         let favoriteManager = MockSuccessFavoriteManager()
-        favoriteManager.changeFavoriteState(with: gifInfo, failureHandler: { _ in }, successHandler: { _ in })
+        favoriteManager.changeFavoriteState(with: gifInfo, completionHandler: { _ in })
         viewModel = FavoriteCollectionViewModel(favoriteManager: favoriteManager)
         
         let output = viewModel.transform(input).showDetailFired

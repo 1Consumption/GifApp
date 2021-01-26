@@ -90,7 +90,7 @@ final class GifCellViewModelTests: XCTestCase {
         defer { wait(for: [expectation], timeout: 1.0) }
         
         let favoriteManager = MockSuccessFavoriteManager()
-        favoriteManager.changeFavoriteState(with: gifInfo, failureHandler: { _ in}, successHandler: { _ in})
+        favoriteManager.changeFavoriteState(with: gifInfo, completionHandler: { _ in })
         
         viewModel = GifCellViewModel(gifInfo: gifInfo, favoriteManager: favoriteManager)
         

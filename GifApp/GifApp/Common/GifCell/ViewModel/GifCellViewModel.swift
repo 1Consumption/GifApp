@@ -53,13 +53,16 @@ final class GifCellViewModel: ViewModelType {
         input.favoriteStateShouldChange.bind { [weak self] in
             guard let gifInfo = self?.gifInfo else { return }
             self?.favoriteManager.changeFavoriteState(with: gifInfo,
-                                                      failureHandler: {
-                                                        output.favoriteErrorDelivered.value = $0
-                                                      }, successHandler: {
-                                                        if $0 == true {
-                                                            output.favoriteConfirm.fire()
-                                                        } else {
-                                                            output.favoriteCanceled.fire()
+                                                      completionHandler: { result in
+                                                        switch result {
+                                                        case .success(let factor):
+                                                            if factor == true {
+                                                                output.favoriteConfirm.fire()
+                                                            } else {
+                                                                output.favoriteCanceled.fire()
+                                                            }
+                                                        case .failure(let error):
+                                                            output.favoriteErrorDelivered.value = error
                                                         }
                                                       })
         }.store(in: &bag)

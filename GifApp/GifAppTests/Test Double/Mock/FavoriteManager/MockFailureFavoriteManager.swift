@@ -19,15 +19,15 @@ final class MockFailureFavoriteManager: FavoriteManagerType {
         self.error = error
     }
     
-    func changeFavoriteState(with gifInfo: GifInfo, failureHandler: @escaping (FavoriteManagerError) -> Void, successHandler: @escaping (Bool) -> Void) {
+    func changeFavoriteState(with gifInfo: GifInfo, completionHandler: @escaping (Result<Bool, FavoriteManagerError>) -> Void) {
         changeFavoriteStateCallCount += 1
         self.gifInfo = gifInfo
-        failureHandler(error)
+        completionHandler(.failure(error))
     }
     
-    func retrieveGifInfo(failureHandler: @escaping (FavoriteManagerError) -> Void, successHandler: @escaping ([GifInfo]) -> Void) {
+    func retrieveGifInfo(completionHandler: @escaping (Result<[GifInfo], FavoriteManagerError>) -> Void) {
         retrieveGifInfoCallCount += 1
-        failureHandler(error)
+        completionHandler(.failure(error))
     }
     
     func verifyChangeFavoriteState(gifInfo: GifInfo, callCount: Int = 1) {

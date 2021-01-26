@@ -42,11 +42,14 @@ final class GifCellViewModel: ViewModelType {
         input.loadGif.bind { [weak self] in
             guard let url = self?.gifInfo.images.fixedWidth.url else { return }
             self?.request = self?.imageManager.retrieveImage(from: url,
-                                                             failureHandler: { output.errorDelivered.fire()
-                                                             },
-                                                             dataHandler: {
-                                                                guard let data = $0 else { return }
-                                                                output.gifDelivered.value = data
+                                                             completionHandler: { result in
+                                                                switch result {
+                                                                case .success(let data):
+                                                                    guard let data = data else { return }
+                                                                    output.gifDelivered.value = data
+                                                                case .failure:
+                                                                    output.errorDelivered.fire()
+                                                                }
                                                              })
         }.store(in: &bag)
         

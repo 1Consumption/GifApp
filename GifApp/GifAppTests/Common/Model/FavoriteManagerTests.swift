@@ -17,6 +17,10 @@ final class FavoriteManagerTests: XCTestCase {
                                            images: GifImages(original: GifImage(height: "", width: "", url: ""),
                                                              fixedWidth: GifImage(height: "", width: "", url: "")))
     
+    override func tearDownWithError() throws {
+        NotificationCenter.default.removeObserver(self)
+    }
+    
     func testFavoriteStateIsFavorite() {
         let expectation = XCTestExpectation(description: "favorite state is favorite")
         defer { wait(for: [expectation], timeout: 1.0) }
@@ -42,6 +46,7 @@ final class FavoriteManagerTests: XCTestCase {
     
     func testFavoriteStateIsFavoriteCancel() {
         let expectation = XCTestExpectation(description: "favorite state is favorite cancel")
+        expectation.expectedFulfillmentCount = 2
         defer { wait(for: [expectation], timeout: 1.0) }
         
         let data = try! JSONEncoder().encode(gifInfo)
@@ -49,6 +54,15 @@ final class FavoriteManagerTests: XCTestCase {
         favoriteManager = FavoriteManager(diskStorage: diskStorage)
         
         try! diskStorage.store(data, for: gifInfo.id)
+        
+        NotificationCenter.default.addObserver(forName: .FavoriteCancel,
+                                               object: nil,
+                                               queue: nil,
+                                               using: { notification in
+                                                guard let gifInfo = notification.userInfo?["gifInfo"] as? GifInfo else { return }
+                                                XCTAssertEqual(gifInfo, self.gifInfo)
+                                                expectation.fulfill()
+                                               })
         
         favoriteManager.changeFavoriteState(with: gifInfo,
                                             completionHandler: { result in

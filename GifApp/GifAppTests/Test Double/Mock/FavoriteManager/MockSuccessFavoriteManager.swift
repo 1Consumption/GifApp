@@ -23,8 +23,12 @@ final class MockSuccessFavoriteManager: FavoriteManagerType {
             store[gifInfo.id] = gifInfo
             completionHandler(.success(true))
         } else {
+            let model = store[gifInfo.id]!
             store[gifInfo.id] = nil
             completionHandler(.success(false))
+            NotificationCenter.default.post(name: .FavoriteCancel,
+                                            object: nil,
+                                            userInfo: ["gifInfo": model])
         }
     }
     

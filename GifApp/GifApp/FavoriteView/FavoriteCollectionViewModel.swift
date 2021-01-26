@@ -17,7 +17,7 @@ struct FavoriteCollectionViewModelOutput {
     
     let favoriteListDelivered: Observable<Void> = Observable<Void>(value: ())
     let favoriteErrorDelivered: Observable<FavoriteManagerError?> = Observable<FavoriteManagerError?>(value: nil)
-    let showDetailFired: Observable<GifInfo?> = Observable<GifInfo?>(value: nil)
+    let showDetailFired: Observable<IndexPath?> = Observable<IndexPath?>(value: nil)
     let favoriteCancel: Observable<[IndexPath]> = Observable<[IndexPath]>(value: [])
 }
 
@@ -47,9 +47,8 @@ final class FavoriteCollectionViewModel: ViewModelType, GifManagerType {
             }
         }.store(in: &bag)
         
-        input.showDetail.bind { [weak self] in
-            guard let index = $0?.item else { return }
-            output.showDetailFired.value = self?.gifInfo(of: index)
+        input.showDetail.bind {
+            output.showDetailFired.value = $0
         }.store(in: &bag)
         
         NotificationCenter.default.addObserver(forName: .FavoriteCancel,

@@ -38,6 +38,7 @@ final class FavoriteViewController: UIViewController {
         favoriteCollectionView.delaysContentTouches = false
         dataSoruce.viewModel = favoriteCollectionViewModel
         favoriteCollectionView.dataSource = dataSoruce
+        favoriteCollectionView.delegate = self
         if let layout = favoriteCollectionView?.collectionViewLayout as? PinterestLayout {
             layout.delegate = self
         }
@@ -58,6 +59,13 @@ final class FavoriteViewController: UIViewController {
                 self?.favoriteCollectionView.deleteItems(at: indexPath)
             }
         }.store(in: &bag)
+        
+        output.showDetailFired.bind { [weak self] in
+            guard let detailViewController = self?.storyboard?.instantiateViewController(withIdentifier: DetailViewController.identifier) as? DetailViewController else { return }
+            detailViewController.indexPath = $0
+            
+            self?.navigationController?.pushViewController(detailViewController, animated: true)
+        }.store(in: &bag)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -77,5 +85,12 @@ extension FavoriteViewController: PinterestLayoutDelegate {
         else { return .zero }
         
         return CGSize(width: width, height: height)
+    }
+}
+
+extension FavoriteViewController: UICollectionViewDelegate {
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        favoriteCollectionViewModelInput.showDetail.value = indexPath
     }
 }

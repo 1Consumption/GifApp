@@ -63,6 +63,13 @@ final class SearchViewController: UIViewController {
                 self?.trendingGifCollectionView.reloadData()
             }
         }.store(in: &bag)
+        
+        output.showDetailFired.bind { [weak self] in
+            guard let detailViewController = self?.storyboard?.instantiateViewController(withIdentifier: DetailViewController.identifier) as? DetailViewController else { return }
+            detailViewController.indexPath = $0
+            
+            self?.navigationController?.pushViewController(detailViewController, animated: true)
+        }.store(in: &bag)
     }
     
     private func setUpSearchView() {
@@ -105,7 +112,7 @@ final class SearchViewController: UIViewController {
 extension SearchViewController: UICollectionViewDelegateFlowLayout {
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print(indexPath)
+        trendingGifViewModelIntput.showDetail.value = indexPath
     }
 }
 

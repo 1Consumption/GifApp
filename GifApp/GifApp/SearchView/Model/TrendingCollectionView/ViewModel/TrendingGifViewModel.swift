@@ -10,12 +10,14 @@ import Foundation
 struct TrendingGifViewModelInput {
     
     let loadGifInfo: Observable<Void> = Observable<Void>(value: ())
+    let showDetail: Observable<IndexPath?> = Observable<IndexPath?>(value: nil)
 }
 
 struct TrendingGifViewModelOutput {
     
     let gifInfoDelivered: Observable<Void> = Observable<Void>(value: ())
     let errorDelivered: Observable<UseCaseError?> = Observable<UseCaseError?>(value: nil)
+    let showDetailFired: Observable<IndexPath?> = Observable<IndexPath?>(value: nil)
 }
 
 final class TrendingGifViewModel: ViewModelType, GifManagerType {
@@ -41,6 +43,10 @@ final class TrendingGifViewModel: ViewModelType, GifManagerType {
                     output.errorDelivered.value = error
                 }
             }
+        }.store(in: &bag)
+        
+        input.showDetail.bind {
+            output.showDetailFired.value = $0
         }.store(in: &bag)
         
         return output

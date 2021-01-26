@@ -10,14 +10,14 @@ import Foundation
 struct SearchResultViewModelInput {
     
     let nextPageRequest: Observable<String?> = Observable<String?>(value: nil)
-    let showDetail: Observable<String?> = Observable<String?>(value: nil)
+    let showDetail: Observable<IndexPath?> = Observable<IndexPath?>(value: nil)
 }
 
 struct SearchResultViewModelOutput {
     
     let nextPageDelivered: Observable<[IndexPath]> = Observable<[IndexPath]>(value: [])
     let errorDelivered: Observable<UseCaseError?> = Observable<UseCaseError?>(value: nil)
-    let showDetailFired: Observable<String> = Observable<String>(value: "")
+    let showDetailFired: Observable<IndexPath?> = Observable<IndexPath?>(value: nil)
 }
 
 final class SearchResultViewModel: ViewModelType, GifManagerType {
@@ -54,8 +54,7 @@ final class SearchResultViewModel: ViewModelType, GifManagerType {
         }.store(in: &bag)
         
         input.showDetail.bind {
-            guard let id = $0 else { return }
-            output.showDetailFired.value = id
+            output.showDetailFired.value = $0
         }.store(in: &bag)
         
         return output

@@ -59,7 +59,7 @@ final class SearchResultViewController: UIViewController {
         
         output.showDetailFired.bind { [weak self] in
             guard let detailViewController = self?.storyboard?.instantiateViewController(withIdentifier: DetailViewController.identifier) as? DetailViewController else { return }
-            detailViewController.id = $0
+            detailViewController.indexPath = $0
             
             self?.navigationController?.pushViewController(detailViewController, animated: true)
         }.store(in: &bag)
@@ -105,7 +105,7 @@ final class SearchResultViewController: UIViewController {
 extension SearchResultViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        searchResultViewModelInput.showDetail.value = searchResultViewModel.gifInfo(of: indexPath.item)?.id
+        searchResultViewModelInput.showDetail.value = indexPath
     }
 }
 

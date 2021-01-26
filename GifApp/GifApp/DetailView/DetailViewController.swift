@@ -11,12 +11,12 @@ final class DetailViewController: UIViewController {
     
     static let identifier: String = "DetailViewController"
 
-    var id: String?
+    var indexPath: IndexPath?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        print(id)
+        print(indexPath)
         navigationItem.title = "GIF"
         navigationItem.backButtonTitle = ""
     }

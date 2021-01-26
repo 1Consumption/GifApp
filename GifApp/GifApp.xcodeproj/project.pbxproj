@@ -10,6 +10,7 @@
 		1AC0DFE47C5E9D44E91AA416 /* Pods_GifAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38F6959E4386668D910C3136 /* Pods_GifAppTests.framework */; };
 		A501C69825C063F000C6D4E3 /* DummyTrendingUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A501C69725C063F000C6D4E3 /* DummyTrendingUseCase.swift */; };
 		A501C69E25C0648E00C6D4E3 /* DummyFavoriteManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A501C69D25C0648E00C6D4E3 /* DummyFavoriteManager.swift */; };
+		A501C6A725C07DE400C6D4E3 /* DetailCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A501C6A625C07DE300C6D4E3 /* DetailCollectionViewCell.swift */; };
 		A5048B0525B9CD410005CB42 /* DebounceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5048B0425B9CD410005CB42 /* DebounceTests.swift */; };
 		A5048B0925B9D03D0005CB42 /* Debounce.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5048B0825B9D03D0005CB42 /* Debounce.swift */; };
 		A505439425BDB9320041DF94 /* FavoriteManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A505439325BDB9320041DF94 /* FavoriteManager.swift */; };
@@ -138,6 +139,7 @@
 		94CC51EF00F3DC461E1A3DFA /* Pods-GifAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GifAppTests.debug.xcconfig"; path = "Target Support Files/Pods-GifAppTests/Pods-GifAppTests.debug.xcconfig"; sourceTree = "<group>"; };
 		A501C69725C063F000C6D4E3 /* DummyTrendingUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyTrendingUseCase.swift; sourceTree = "<group>"; };
 		A501C69D25C0648E00C6D4E3 /* DummyFavoriteManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyFavoriteManager.swift; sourceTree = "<group>"; };
+		A501C6A625C07DE300C6D4E3 /* DetailCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCollectionViewCell.swift; sourceTree = "<group>"; };
 		A5048B0425B9CD410005CB42 /* DebounceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebounceTests.swift; sourceTree = "<group>"; };
 		A5048B0825B9D03D0005CB42 /* Debounce.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Debounce.swift; sourceTree = "<group>"; };
 		A505439325BDB9320041DF94 /* FavoriteManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteManager.swift; sourceTree = "<group>"; };
@@ -462,6 +464,7 @@
 			isa = PBXGroup;
 			children = (
 				A5A3B94925BB1F8500389243 /* DetailViewController.swift */,
+				A501C6A625C07DE300C6D4E3 /* DetailCollectionViewCell.swift */,
 			);
 			path = DetailView;
 			sourceTree = "<group>";
@@ -982,6 +985,7 @@
 				A5E633A125B74B1E004331D9 /* GifCellViewModel.swift in Sources */,
 				A556775625BE8899002075F0 /* FavoriteCollectionViewModel.swift in Sources */,
 				A5A3B94A25BB1F8500389243 /* DetailViewController.swift in Sources */,
+				A501C6A725C07DE400C6D4E3 /* DetailCollectionViewCell.swift in Sources */,
 				A571A0F225B8692700526A49 /* ImageManager.swift in Sources */,
 				A5E633A525B75327004331D9 /* GifCollectionViewDataSource.swift in Sources */,
 				A5947A3A25B9F24F00EBF9FD /* AutoCompleteUseCase.swift in Sources */,

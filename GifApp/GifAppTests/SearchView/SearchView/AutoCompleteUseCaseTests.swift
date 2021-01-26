@@ -14,20 +14,24 @@ final class AutoCompleteUseCaseTests: XCTestCase {
         let expectation = XCTestExpectation(description: "retrieve autoComplete success")
         defer { wait(for: [expectation], timeout: 1.0) }
         
-        let model = AutoCompleteResponse(data: [AutoComplete(name: "test")])
-        let data = try! JSONEncoder().encode(model)
+        let testModel = AutoCompleteResponse(data: [AutoComplete(name: "test")])
+        let data = try! JSONEncoder().encode(testModel)
         let networkManager = MockSuccessNetworkManager(data: data)
         let useCase = AutoCompleteUseCase(networkManager: networkManager)
         
-        useCase.retrieveAutoComplete(keyword: "test", failureHandler: { _ in
-            XCTFail()
-        }, successHandler: {
-            networkManager.verify(url: EndPoint(urlInfomation: .autoComplete(keyword: "test")).url,
-                                  method: .get,
-                                  headers: nil)
-            XCTAssertEqual(model, $0)
-            expectation.fulfill()
-        })
+        useCase.retrieveAutoComplete(keyword: "test",
+                                     completionHandler: { result in
+                                        switch result {
+                                        case .success(let model):
+                                            networkManager.verify(url: EndPoint(urlInfomation: .autoComplete(keyword: "test")).url,
+                                                                  method: .get,
+                                                                  headers: nil)
+                                            XCTAssertEqual(testModel, model)
+                                            expectation.fulfill()
+                                        case .failure:
+                                            XCTFail()
+                                        }
+                                     })
     }
     
     func testRetrieveAutoCompleteFailureWithDecodeError() {
@@ -37,15 +41,19 @@ final class AutoCompleteUseCaseTests: XCTestCase {
         let networkManager = MockFailureNetworkManagerWithDecodeError()
         let useCase = AutoCompleteUseCase(networkManager: networkManager)
         
-        useCase.retrieveAutoComplete(keyword: "test", failureHandler: { error in
-            networkManager.verify(url: EndPoint(urlInfomation: .autoComplete(keyword: "test")).url,
-                                  method: .get,
-                                  headers: nil)
-            XCTAssertEqual(error, .decodeError)
-            expectation.fulfill()
-        }, successHandler: { _ in
-            XCTFail()
-        })
+        useCase.retrieveAutoComplete(keyword: "test",
+                                     completionHandler: { result in
+                                        switch result {
+                                        case .success:
+                                            XCTFail()
+                                        case .failure(let error):
+                                            networkManager.verify(url: EndPoint(urlInfomation: .autoComplete(keyword: "test")).url,
+                                                                  method: .get,
+                                                                  headers: nil)
+                                            XCTAssertEqual(error, .decodeError)
+                                            expectation.fulfill()
+                                        }
+                                     })
     }
     
     func testRetrieveAutoCompleteFailureWithNetworkError() {
@@ -55,14 +63,18 @@ final class AutoCompleteUseCaseTests: XCTestCase {
         let networkManager = MockFailureNetworkManagerWithNetworkError()
         let useCase = AutoCompleteUseCase(networkManager: networkManager)
         
-        useCase.retrieveAutoComplete(keyword: "test", failureHandler: { error in
-            networkManager.verify(url: EndPoint(urlInfomation: .autoComplete(keyword: "test")).url,
-                                  method: .get,
-                                  headers: nil)
-            XCTAssertEqual(error, .networkError(with: .emptyData))
-            expectation.fulfill()
-        }, successHandler: { _ in
-            XCTFail()
-        })
+        useCase.retrieveAutoComplete(keyword: "test",
+                                     completionHandler: { result in
+                                        switch result {
+                                        case .success:
+                                            XCTFail()
+                                        case .failure(let error):
+                                            networkManager.verify(url: EndPoint(urlInfomation: .autoComplete(keyword: "test")).url,
+                                                                  method: .get,
+                                                                  headers: nil)
+                                            XCTAssertEqual(error, .networkError(with: .emptyData))
+                                            expectation.fulfill()
+                                        }
+                                     })
     }
 }

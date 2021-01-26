@@ -51,12 +51,12 @@ final class MemoryCacheStorageTests: XCTestCase {
         memoryCacheStorage.insert(Data([1, 2, 3]), for: "key1")
         memoryCacheStorage.insert(Data([2, 3, 4]), for: "key2")
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+        DispatchQueue.global().asyncAfter(deadline: .now() + 2) {
             self.memoryCacheStorage.insert(Data([3, 4, 5]), for: "key3")
             self.memoryCacheStorage.insert(Data([5, 6, 7]), for: "key4")
         }
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+        DispatchQueue.global().asyncAfter(deadline: .now() + 3) {
             self.memoryCacheStorage.removeExpireAll()
             XCTAssertFalse(self.memoryCacheStorage.isCached("key1"))
             XCTAssertFalse(self.memoryCacheStorage.isCached("key2"))
@@ -75,11 +75,11 @@ final class MemoryCacheStorageTests: XCTestCase {
         memoryCacheStorage.insert(Data([1, 2, 3]), for: "key1")
         memoryCacheStorage.insert(Data([2, 3, 4]), for: "key2")
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+        DispatchQueue.global().asyncAfter(deadline: .now() + 1) {
             let _ = self.memoryCacheStorage.object(for: "key1")
         }
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+        DispatchQueue.global().asyncAfter(deadline: .now() + 2) {
             XCTAssertNotNil(self.memoryCacheStorage.object(for: "key1"))
             XCTAssertNil(self.memoryCacheStorage.object(for: "key2"))
             expectation.fulfill()

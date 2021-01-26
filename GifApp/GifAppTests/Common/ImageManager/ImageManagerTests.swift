@@ -19,7 +19,7 @@ final class ImageManagerTests: XCTestCase {
     
     func testRetrieveImageFromNetwork() {
         let expectation = XCTestExpectation(description: "image from network")
-        defer { wait(for: [expectation], timeout: 1.0) }
+        defer { wait(for: [expectation], timeout: 2.0) }
         
         let networkManager = MockSuccessNetworkManager(data: data)
         let diskStorage = MockDiskStorage()
@@ -80,7 +80,7 @@ final class ImageManagerTests: XCTestCase {
                                             expectation.fulfill()
                                            })
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+        DispatchQueue.global().asyncAfter(deadline: .now() + 1) {
             let _ = self.imageManager.retrieveImage(from: "test",
                                                failureHandler: { XCTFail() },
                                                dataHandler: {
@@ -112,7 +112,7 @@ final class ImageManagerTests: XCTestCase {
                                             expectation.fulfill()
                                            })
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2, execute: {
+        DispatchQueue.global().asyncAfter(deadline: .now() + 2, execute: {
             let _ = self.imageManager.retrieveImage(from: "test",
                                                failureHandler: { XCTFail() },
                                                dataHandler: {
@@ -143,7 +143,7 @@ final class ImageManagerTests: XCTestCase {
                                             expectation.fulfill()
                                            })
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2, execute: {
+        DispatchQueue.global().asyncAfter(deadline: .now() + 2, execute: {
             NotificationCenter.default.post(name: UIApplication.didReceiveMemoryWarningNotification,
                                             object: nil)
             

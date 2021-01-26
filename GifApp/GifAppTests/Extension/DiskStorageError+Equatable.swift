@@ -11,7 +11,6 @@ import Foundation
 extension DiskStorageError: Equatable {
     
     public static func == (lhs: Self, rhs: Self) -> Bool {
-        
         switch (lhs, rhs) {
         case (.canNotFoundDocumentDirectory, .canNotFoundDocumentDirectory):
             return true
@@ -20,6 +19,8 @@ extension DiskStorageError: Equatable {
         case (.storeError(let left), .storeError(let right)):
             return left == right
         case (.removeError(let left), .removeError(let right)):
+            return left == right
+        case (.canNotLoadFileList(let left), .canNotLoadFileList(let right)):
             return left == right
         default:
             return false

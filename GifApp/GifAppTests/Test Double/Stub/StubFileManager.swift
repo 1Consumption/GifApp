@@ -27,6 +27,10 @@ final class StubFileManagerThrowCannotFoundDocumentDirectoryError: FileManagerTy
     func fileExists(atPath path: String) -> Bool {
         return false
     }
+    
+    func contentsOfDirectory(atPath path: String) throws -> [String] {
+        return []
+    }
 }
 
 
@@ -55,5 +59,9 @@ final class StubFileManagerThrowCreateDirectoryError: FileManagerType {
 
     func fileExists(atPath path: String) -> Bool {
         return false
+    }
+    
+    func contentsOfDirectory(atPath path: String) throws -> [String] {
+        return []
     }
 }

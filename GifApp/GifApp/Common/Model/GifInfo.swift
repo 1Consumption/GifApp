@@ -7,7 +7,11 @@
 
 import Foundation
 
-struct GifInfo: Codable {
+struct GifInfo: Codable, Equatable {
+    
+    static func == (lhs: GifInfo, rhs: GifInfo) -> Bool {
+        return lhs.id == rhs.id
+    }
     
     let id: String
     let username: String

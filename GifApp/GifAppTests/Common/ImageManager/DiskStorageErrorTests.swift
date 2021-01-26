@@ -15,5 +15,6 @@ final class DiskStorageErrorTests: XCTestCase {
         XCTAssertEqual(DiskStorageError.canNotCreateStorageDirectory(path: "test").message, "can't create storage directory in test")
         XCTAssertEqual(DiskStorageError.storeError(path: "test").message, "can't store value into test")
         XCTAssertEqual(DiskStorageError.removeError(path: "test").message, "can't remove value located at test")
+        XCTAssertEqual(DiskStorageError.canNotLoadFileList(path: "test").message, "can't load file list in test")
     }
 }

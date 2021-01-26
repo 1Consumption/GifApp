@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="mMl-iO-iEZ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="6Ok-Kn-vew">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Cqc-tm-dOu">
-                                <rect key="frame" x="0.0" y="138" width="414" height="724"/>
+                                <rect key="frame" x="0.0" y="138" width="414" height="675"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewLayout key="collectionViewLayout" id="DPt-f9-cBE" customClass="PinterestLayout" customModule="GifApp" customModuleProvider="target"/>
                                 <cells/>
@@ -63,7 +63,7 @@
                                 </subviews>
                             </stackView>
                             <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="2rP-0B-Edr">
-                                <rect key="frame" x="0.0" y="138" width="414" height="724"/>
+                                <rect key="frame" x="0.0" y="138" width="414" height="675"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="AutoCompleteTableViewCell" id="V1X-Ae-J4W" customClass="AutoCompleteTableViewCell" customModule="GifApp" customModuleProvider="target">
@@ -133,7 +133,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="989.85507246376824" y="93.75"/>
+            <point key="canvasLocation" x="1900.0000000000002" y="93.75"/>
         </scene>
         <!--Search Result View Controller-->
         <scene sceneID="Gcw-sX-gVH">
@@ -257,7 +257,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ymb-yA-X7B" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1691" y="94"/>
+            <point key="canvasLocation" x="2600" y="93.75"/>
         </scene>
         <!--Detail View Controller-->
         <scene sceneID="2WN-oQ-mBp">
@@ -272,12 +272,13 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tnk-pp-hMw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2406" y="94"/>
+            <point key="canvasLocation" x="3315.9420289855075" y="93.75"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Search-->
         <scene sceneID="zrb-8L-POp">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="mMl-iO-iEZ" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Search" image="magnifyingglass.circle" catalog="system" selectedImage="magnifyingglass.circle.fill" id="pEb-EU-otE"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="gSZ-Ix-BNY">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -290,7 +291,78 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qY2-HC-G8u" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="989.85507246376824" y="93.75"/>
+        </scene>
+        <!--Favorite View Controller-->
+        <scene sceneID="YKU-2v-Fe3">
+            <objects>
+                <viewController id="ggj-bb-Mzq" customClass="FavoriteViewController" customModule="GifApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="n7j-HT-q1R">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="pPt-Ch-qjF">
+                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <collectionViewLayout key="collectionViewLayout" id="HQE-6h-AO0" customClass="PinterestLayout" customModule="GifApp" customModuleProvider="target"/>
+                                <cells/>
+                            </collectionView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="CiR-Rw-glX"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="pPt-Ch-qjF" firstAttribute="top" secondItem="CiR-Rw-glX" secondAttribute="top" id="082-Dx-FV9"/>
+                            <constraint firstItem="CiR-Rw-glX" firstAttribute="bottom" secondItem="pPt-Ch-qjF" secondAttribute="bottom" id="C9v-qe-kYJ"/>
+                            <constraint firstItem="pPt-Ch-qjF" firstAttribute="leading" secondItem="CiR-Rw-glX" secondAttribute="leading" id="evO-Pb-Yjj"/>
+                            <constraint firstItem="CiR-Rw-glX" firstAttribute="trailing" secondItem="pPt-Ch-qjF" secondAttribute="trailing" id="i2b-zF-43K"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="9uo-Bb-ik1"/>
+                    <connections>
+                        <outlet property="favoriteCollectionView" destination="pPt-Ch-qjF" id="gWm-Ty-LTH"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mnI-lc-WSU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1900.0000000000002" y="827.67857142857144"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="yhe-Se-Em3">
+            <objects>
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="6Ok-Kn-vew" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="xoc-nf-47a">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="mMl-iO-iEZ" kind="relationship" relationship="viewControllers" id="2zs-3C-p5d"/>
+                        <segue destination="F5a-4b-DtM" kind="relationship" relationship="viewControllers" id="87a-2T-fLO"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rzL-mo-82Q" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
             <point key="canvasLocation" x="79.710144927536234" y="93.75"/>
+        </scene>
+        <!--Favorite-->
+        <scene sceneID="wkt-Ej-XE0">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="F5a-4b-DtM" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Favorite" image="heart.circle" catalog="system" selectedImage="heart.circle.fill" id="7nB-fF-7Wa"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="zmY-Vt-hnG">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="ggj-bb-Mzq" kind="relationship" relationship="rootViewController" id="yqa-3v-Rrk"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tsV-If-vK8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="989.85507246376824" y="827.67857142857144"/>
         </scene>
     </scenes>
     <designables>
@@ -302,7 +374,11 @@
         </designable>
     </designables>
     <resources>
+        <image name="heart.circle" catalog="system" width="128" height="121"/>
+        <image name="heart.circle.fill" catalog="system" width="128" height="121"/>
         <image name="magnifyingglass" catalog="system" width="128" height="115"/>
+        <image name="magnifyingglass.circle" catalog="system" width="128" height="121"/>
+        <image name="magnifyingglass.circle.fill" catalog="system" width="128" height="121"/>
         <systemColor name="systemPurpleColor">
             <color red="0.68627450980392157" green="0.32156862745098042" blue="0.87058823529411766" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>

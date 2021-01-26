@@ -11,16 +11,31 @@ import XCTest
 final class MockFailureFavoriteManager: FavoriteManagerType {
     
     private var gifInfo: GifInfo?
-    private var callCount: Int = 0
+    private var changeFavoriteStateCallCount: Int = 0
+    private var retrieveGifInfoCallCount: Int = 0
+    private let error: FavoriteManagerError
     
-    func changeFavoriteState(with gifInfo: GifInfo, failureHandler: @escaping (FavoriteManagerError) -> Void, successHandler: @escaping (Bool) -> Void) {
-        callCount += 1
-        self.gifInfo = gifInfo
-        failureHandler(.encodeError)
+    init(error: FavoriteManagerError = .encodeError) {
+        self.error = error
     }
     
-    func verify(gifInfo: GifInfo, callCount: Int = 1) {
+    func changeFavoriteState(with gifInfo: GifInfo, completionHandler: @escaping (Result<Bool, FavoriteManagerError>) -> Void) {
+        changeFavoriteStateCallCount += 1
+        self.gifInfo = gifInfo
+        completionHandler(.failure(error))
+    }
+    
+    func retrieveGifInfo(completionHandler: @escaping (Result<[GifInfo], FavoriteManagerError>) -> Void) {
+        retrieveGifInfoCallCount += 1
+        completionHandler(.failure(error))
+    }
+    
+    func verifyChangeFavoriteState(gifInfo: GifInfo, callCount: Int = 1) {
         XCTAssertEqual(self.gifInfo, gifInfo)
-        XCTAssertEqual(self.callCount, callCount)
+        XCTAssertEqual(changeFavoriteStateCallCount, callCount)
+    }
+    
+    func verifyRetrieveGifInfo(callCount: Int = 1) {
+        XCTAssertEqual(retrieveGifInfoCallCount, callCount)
     }
 }

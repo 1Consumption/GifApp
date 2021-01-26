@@ -31,7 +31,7 @@ final class SearchViewModel: ViewModelType {
     init(useCase: AutoCompleteUseCaseType = AutoCompleteUseCase()) {
         self.useCase = useCase
     }
- 
+    
     func transform(_ input: SearchViewModelInput) -> SearchViewModelOutput {
         let output = SearchViewModelOutput()
         
@@ -43,13 +43,15 @@ final class SearchViewModel: ViewModelType {
         input.textFieldChanged.bind { [weak self] in
             guard let text = $0 else { return }
             self?.useCase.retrieveAutoComplete(keyword: text,
-                                         failureHandler: {
-                                            output.errorDelivered.value = $0
-                                         },
-                                         successHandler: { [weak self] response in
-                                            self?.autoCompletes = response.data
-                                            output.autoCompleteDelivered.fire()
-                                         })
+                                               completionHandler: { [weak self] result in
+                                                switch result {
+                                                case .success(let model):
+                                                    self?.autoCompletes = model.data
+                                                    output.autoCompleteDelivered.fire()
+                                                case .failure(let error):
+                                                    output.errorDelivered.value = error
+                                                }
+                                               })
         }.store(in: &bag)
         
         input.searchFire.bind {

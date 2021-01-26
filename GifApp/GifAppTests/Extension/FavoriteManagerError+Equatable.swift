@@ -9,6 +9,7 @@
 import Foundation
 
 extension FavoriteManagerError: Equatable {
+    
     public static func == (lhs: Self, rhs: Self) -> Bool {
         switch (lhs, rhs) {
         case (.diskStorageError(let left), .diskStorageError(let right)):

@@ -45,10 +45,3 @@ extension Pagination: Encodable {
         case offset
     }
 }
-
-extension GifInfo: Equatable {
-    
-    public static func == (lhs: Self, rhs: Self) -> Bool {
-        return lhs.id == rhs.id
-    }
-}

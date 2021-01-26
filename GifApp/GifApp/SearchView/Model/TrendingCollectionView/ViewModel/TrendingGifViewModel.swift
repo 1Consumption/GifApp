@@ -32,13 +32,15 @@ final class TrendingGifViewModel: ViewModelType, GifManagerType {
         let output = TrendingGifViewModelOtuput()
         
         input.loadGifInfo.bind { [weak self] in
-            self?.useCase.retrieveGifInfo(failureHandler: { error in
-                output.errorDelivered.value = error
-            },
-            successHandler: { [weak self] gifInfoResponse in
-                self?.gifInfoArray = gifInfoResponse.data
-                output.gifInfoDelivered.fire()
-            })
+            self?.useCase.retrieveGifInfo { [weak self] result in
+                switch result {
+                case .success(let model):
+                    self?.gifInfoArray = model.data
+                    output.gifInfoDelivered.fire()
+                case .failure(let error):
+                    output.errorDelivered.value = error
+                }
+            }
         }.store(in: &bag)
         
         return output

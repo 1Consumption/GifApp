@@ -13,11 +13,11 @@ final class MockSuccessSearchResultUseCase: SearchResultUseCaseType {
     private var keyword: String?
     private var callCount: Int = 0
     
-    func retrieveGifInfo(keyword: String, failureHandler: @escaping (UseCaseError) -> Void, successHandler: @escaping (GifInfoResponse) -> Void) {
+    func retrieveGifInfo(keyword: String, completionHandler: @escaping (Result<GifInfoResponse, UseCaseError>) -> Void) {
         callCount += 1
         self.keyword = keyword
         
-        successHandler(GifInfoResponse(data:
+        let model = GifInfoResponse(data:
                                         [GifInfo(id: "1",
                                                  username: "",
                                                  source: "",
@@ -29,7 +29,9 @@ final class MockSuccessSearchResultUseCase: SearchResultUseCaseType {
                                                                                         url: "")))],
                                        pagination: Pagination(totalCount: 1,
                                                               count: 1,
-                                                              offset: 0)))
+                                                              offset: 0))
+        
+        completionHandler(.success(model))
     }
     
     func verify(keyword: String?, callCount: Int = 1) {

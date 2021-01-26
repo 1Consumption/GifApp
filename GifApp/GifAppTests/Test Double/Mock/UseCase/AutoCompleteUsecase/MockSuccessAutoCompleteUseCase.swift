@@ -13,10 +13,10 @@ final class MockSuccessAutoCompleteUseCase: AutoCompleteUseCaseType {
     private var keyword: String?
     private var callCount: Int = 0
 
-    func retrieveAutoComplete(keyword: String, failureHandler: @escaping (UseCaseError) -> Void, successHandler: @escaping (AutoCompleteResponse) -> Void) {
+    func retrieveAutoComplete(keyword: String, completionHandler: @escaping (Result<AutoCompleteResponse, UseCaseError>) -> Void) {
         self.keyword = keyword
         callCount += 1
-        successHandler(AutoCompleteResponse(data: [AutoComplete(name: "test")]))
+        completionHandler(.success(AutoCompleteResponse(data: [AutoComplete(name: "test")])))
     }
     
     func verify(keyword: String?) {

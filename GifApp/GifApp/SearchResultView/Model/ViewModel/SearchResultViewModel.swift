@@ -34,18 +34,20 @@ final class SearchResultViewModel: ViewModelType, GifManagerType {
         input.nextPageRequest.bind { [weak self] in
             guard let keyword = $0 else { return }
             self?.useCase.retrieveGifInfo(keyword: keyword,
-                                          failureHandler: {
-                                            output.errorDelivered.value = $0
-                                          },
-                                          successHandler: { [weak self] response in
-                                            guard let count = self?.gifInfoArray.count else { return }
-                                            
-                                            let startIndex = count
-                                            let endIndex = startIndex + response.data.count
-                                            
-                                            self?.gifInfoArray.append(contentsOf: response.data)
-                                            
-                                            output.nextPageDelivered.value = (startIndex..<endIndex).map { IndexPath(row: $0, section: 0) }
+                                          completionHandler: { [weak self] result in
+                                            switch result {
+                                            case .success(let model):
+                                                guard let count = self?.gifInfoArray.count else { return }
+                                                
+                                                let startIndex = count
+                                                let endIndex = startIndex + model.data.count
+                                                
+                                                self?.gifInfoArray.append(contentsOf: model.data)
+                                                
+                                                output.nextPageDelivered.value = (startIndex..<endIndex).map { IndexPath(row: $0, section: 0) }
+                                            case .failure(let error):
+                                                output.errorDelivered.value = error
+                                            }
                                           })
         }.store(in: &bag)
         

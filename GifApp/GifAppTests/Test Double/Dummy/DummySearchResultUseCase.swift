@@ -10,6 +10,6 @@ import Foundation
 
 final class DummySearchResultUseCase: SearchResultUseCaseType {
     
-    func retrieveGifInfo(keyword: String, failureHandler: @escaping (UseCaseError) -> Void, successHandler: @escaping (GifInfoResponse) -> Void) {
+    func retrieveGifInfo(keyword: String, completionHandler: @escaping (Result<GifInfoResponse, UseCaseError>) -> Void) {
     }
 }

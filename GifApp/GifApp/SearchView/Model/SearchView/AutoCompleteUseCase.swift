@@ -9,7 +9,7 @@ import Foundation
 
 protocol AutoCompleteUseCaseType {
     
-    func retrieveAutoComplete(keyword: String, failureHandler: @escaping (UseCaseError) -> Void, successHandler: @escaping (AutoCompleteResponse) -> Void)
+    func retrieveAutoComplete(keyword: String, completionHandler: @escaping (Result<AutoCompleteResponse, UseCaseError>) -> Void)
 }
 
 final class AutoCompleteUseCase: RemoteDataDecodeType, AutoCompleteUseCaseType {
@@ -22,12 +22,12 @@ final class AutoCompleteUseCase: RemoteDataDecodeType, AutoCompleteUseCaseType {
         self.networkManager = networkManager
     }
     
-    func retrieveAutoComplete(keyword: String, failureHandler: @escaping (UseCaseError) -> Void, successHandler: @escaping (T) -> Void) {
+    func retrieveAutoComplete(keyword: String, completionHandler: @escaping (Result<AutoCompleteResponse, UseCaseError>) -> Void) {
         let url = EndPoint(urlInfomation: .autoComplete(keyword: keyword)).url
         
         retrieveModel(with: url,
                       method: .get,
                       headers: nil,
-                      failureHandler: failureHandler, successHandler: successHandler)
+                      completionHandler: completionHandler)
     }
 }

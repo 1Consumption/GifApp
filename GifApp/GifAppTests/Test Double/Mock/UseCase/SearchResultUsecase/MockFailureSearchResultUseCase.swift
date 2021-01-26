@@ -18,11 +18,11 @@ final class MockFailureSearchResultUseCase: SearchResultUseCaseType {
         self.error = error
     }
     
-    func retrieveGifInfo(keyword: String, failureHandler: @escaping (UseCaseError) -> Void, successHandler: @escaping (GifInfoResponse) -> Void) {
+    func retrieveGifInfo(keyword: String, completionHandler: @escaping (Result<GifInfoResponse, UseCaseError>) -> Void) {
         self.keyword = keyword
         self.callCount += 1
         
-        failureHandler(error)
+        completionHandler(.failure(error))
     }
     
     func verify(keyword: String?, callCount: Int = 1) {

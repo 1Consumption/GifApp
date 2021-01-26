@@ -9,7 +9,7 @@ import Foundation
 
 protocol TrendingGifUseCaseType {
     
-    func retrieveGifInfo(failureHandler: @escaping (UseCaseError) -> Void, successHandler: @escaping (GifInfoResponse) -> Void)
+    func retrieveGifInfo(completionHandler: @escaping (Result<GifInfoResponse, UseCaseError>) -> Void)
 }
 
 final class TrendingGifUseCase: TrendingGifUseCaseType, RemoteDataDecodeType {
@@ -23,9 +23,12 @@ final class TrendingGifUseCase: TrendingGifUseCaseType, RemoteDataDecodeType {
         self.networkManager = networkManager
     }
     
-    func retrieveGifInfo(failureHandler: @escaping (UseCaseError) -> Void, successHandler: @escaping (T) -> Void) {
+    func retrieveGifInfo(completionHandler: @escaping (Result<GifInfoResponse, UseCaseError>) -> Void) {
         let url = EndPoint(urlInfomation: .trending).url
         
-        prevTask = retrieveModel(with: url, method: .get, headers: nil, failureHandler: failureHandler, successHandler: successHandler)
+        prevTask = retrieveModel(with: url,
+                                 method: .get,
+                                 headers: nil,
+                                 completionHandler: completionHandler)
     }
 }

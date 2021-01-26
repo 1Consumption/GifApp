@@ -10,13 +10,13 @@ import Foundation
 
 final class MockSuccessTrendingUseCase: TrendingGifUseCaseType {
     
-    func retrieveGifInfo(failureHandler: @escaping (UseCaseError) -> Void, successHandler: @escaping (GifInfoResponse) -> Void) {
+    func retrieveGifInfo(completionHandler: @escaping (Result<GifInfoResponse, UseCaseError>) -> Void) {
         let model = GifInfoResponse(data: [GifInfo(id: "1",
                                                    username: "test",
                                                    source: "test",
                                                    images: GifImages(original: GifImage(height: "", width: "", url: ""), fixedWidth: GifImage(height: "", width: "", url: "")))],
                                     pagination: Pagination(totalCount: 0, count: 0, offset: 0))
         
-        successHandler(model)
+        completionHandler(.success(model))
     }
 }

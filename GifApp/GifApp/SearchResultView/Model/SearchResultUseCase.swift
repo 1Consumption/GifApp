@@ -9,7 +9,7 @@ import Foundation
 
 protocol SearchResultUseCaseType {
     
-    func retrieveGifInfo(keyword: String, failureHandler: @escaping (UseCaseError) -> Void, successHandler: @escaping (GifInfoResponse) -> Void)
+    func retrieveGifInfo(keyword: String, completionHandler: @escaping (Result<GifInfoResponse, UseCaseError>) -> Void)
 }
 
 final class SearchResultUseCase: RemoteDataDecodeType, SearchResultUseCaseType {
@@ -25,31 +25,33 @@ final class SearchResultUseCase: RemoteDataDecodeType, SearchResultUseCaseType {
         self.networkManager = networkManager
     }
     
-    func retrieveGifInfo(keyword: String, failureHandler: @escaping (UseCaseError) -> Void, successHandler: @escaping (T) -> Void) {
+    func retrieveGifInfo(keyword: String, completionHandler: @escaping (Result<GifInfoResponse, UseCaseError>) -> Void) {
         guard !isLoading else {
-            failureHandler(.duplicatedRequest)
+            completionHandler(.failure(.duplicatedRequest))
             return
         }
         
         isLoading = true
         
         guard !isEndOfPage else {
-            failureHandler(.endOfPage)
+            completionHandler(.failure(.endOfPage))
             return
         }
         
         let url = EndPoint(urlInfomation: .search(keyword: keyword, offset: offset)).url
-
+        
         retrieveModel(with: url,
                       method: .get,
                       headers: nil,
-                      failureHandler: failureHandler,
-                      successHandler: { [weak self] response in
-                        let pagination = response.pagination
-                        self?.isEndOfPage = pagination.offset + pagination.count >= pagination.totalCount
-                        self?.offset = pagination.offset + pagination.count
-                        self?.isLoading = false
-                        successHandler(response)
+                      completionHandler: { [weak self] result in
+                        if let response = try? result.get() {
+                            let pagination = response.pagination
+                            self?.isEndOfPage = pagination.offset + pagination.count >= pagination.totalCount
+                            self?.offset = pagination.offset + pagination.count
+                            self?.isLoading = false
+                        }
+                        
+                        completionHandler(result)
                       })
     }
 }

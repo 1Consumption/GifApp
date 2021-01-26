@@ -10,7 +10,7 @@ import Foundation
 
 final class MockFailureTrendingUseCase: TrendingGifUseCaseType {
     
-    func retrieveGifInfo(failureHandler: @escaping (UseCaseError) -> Void, successHandler: @escaping (GifInfoResponse) -> Void) {
-        failureHandler(.decodeError)
+    func retrieveGifInfo(completionHandler: @escaping (Result<GifInfoResponse, UseCaseError>) -> Void) {
+        completionHandler(.failure(.decodeError))
     }
 }

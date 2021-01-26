@@ -52,6 +52,12 @@ final class FavoriteViewController: UIViewController {
                 self?.favoriteCollectionView.reloadData()
             }
         }.store(in: &bag)
+        
+        output.favoriteCancel.bind { indexPath in
+            DispatchQueue.main.async { [weak self] in
+                self?.favoriteCollectionView.deleteItems(at: indexPath)
+            }
+        }.store(in: &bag)
     }
     
     override func viewWillAppear(_ animated: Bool) {

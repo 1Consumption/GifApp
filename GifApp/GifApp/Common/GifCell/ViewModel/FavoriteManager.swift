@@ -66,10 +66,18 @@ final class FavoriteManager: FavoriteManagerType {
         do {
             try diskStorage?.remove(for: gifInfo.id)
             completionHandler(.success(false))
+            NotificationCenter.default.post(name: .FavoriteCancel,
+                                            object: nil,
+                                            userInfo: ["gifInfo": gifInfo])
         } catch let error as DiskStorageError {
             completionHandler(.failure(.diskStorageError(error)))
         } catch {
             completionHandler(.failure(.unknownError(error)))
         }
     }
+}
+
+extension Notification.Name {
+    
+    static let FavoriteCancel = Notification.Name(rawValue: "favorite cancel")
 }

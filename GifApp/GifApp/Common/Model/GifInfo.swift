@@ -17,6 +17,14 @@ struct GifInfo: Codable, Equatable {
     let username: String
     let source: String
     let images : GifImages
+    let user: User?
+}
+
+struct User: Codable {
+    
+    let avatarUrl: String
+    let username: String
+    let displayName: String
 }
 
 struct GifImages: Codable {

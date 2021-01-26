@@ -15,7 +15,8 @@ final class GifCellViewModelTests: XCTestCase {
                                            username: "",
                                            source: "",
                                            images: GifImages(original: GifImage(height: "", width: "", url: ""),
-                                                             fixedWidth: GifImage(height: "", width: "", url: "test")))
+                                                             fixedWidth: GifImage(height: "", width: "", url: "test")),
+                                           user: User(avatarUrl: "", username: "", displayName: ""))
     private var bag: CancellableBag = CancellableBag()
     private var viewModel: GifCellViewModel!
     

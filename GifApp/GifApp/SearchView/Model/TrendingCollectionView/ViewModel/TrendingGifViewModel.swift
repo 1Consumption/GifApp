@@ -12,7 +12,7 @@ struct TrendingGifViewModelInput {
     let loadGifInfo: Observable<Void> = Observable<Void>(value: ())
 }
 
-struct TrendingGifViewModelOtuput {
+struct TrendingGifViewModelOutput {
     
     let gifInfoDelivered: Observable<Void> = Observable<Void>(value: ())
     let errorDelivered: Observable<UseCaseError?> = Observable<UseCaseError?>(value: nil)
@@ -28,8 +28,8 @@ final class TrendingGifViewModel: ViewModelType, GifManagerType {
         self.useCase = useCase
     }
     
-    func transform(_ input: TrendingGifViewModelInput) -> TrendingGifViewModelOtuput {
-        let output = TrendingGifViewModelOtuput()
+    func transform(_ input: TrendingGifViewModelInput) -> TrendingGifViewModelOutput {
+        let output = TrendingGifViewModelOutput()
         
         input.loadGifInfo.bind { [weak self] in
             self?.useCase.retrieveGifInfo { [weak self] result in

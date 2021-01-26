@@ -8,11 +8,13 @@
 import Foundation
 
 struct SearchResultViewModelInput {
+    
     let nextPageRequest: Observable<String?> = Observable<String?>(value: nil)
     let showDetail: Observable<String?> = Observable<String?>(value: nil)
 }
 
 struct SearchResultViewModelOutput {
+    
     let nextPageDelivered: Observable<[IndexPath]> = Observable<[IndexPath]>(value: [])
     let errorDelivered: Observable<UseCaseError?> = Observable<UseCaseError?>(value: nil)
     let showDetailFired: Observable<String> = Observable<String>(value: "")

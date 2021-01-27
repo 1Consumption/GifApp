@@ -17,12 +17,24 @@ final class DetailViewController: UIViewController {
     var gifInfoList: [GifInfo]?
     
     private let dataSource: DetailCollectionViewDataSource = DetailCollectionViewDataSource()
+    private var isLayouted: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setUpNavigationItem()
         setUpDetailCollectionView()
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        guard !isLayouted else { return }
+        
+        guard let indexPath = indexPath else { return }
+        
+        detailCollectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: false)
+        
+        isLayouted = true
     }
     
     private func setUpNavigationItem() {

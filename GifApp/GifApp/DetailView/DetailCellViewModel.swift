@@ -66,6 +66,23 @@ final class DetailCellViewModel: ViewModelType {
                                                    })
         }.store(in: &bag)
         
+        input.favoriteStateShouldChange.bind { [weak self] in
+            guard let gifInfo = self?.gifInfo else { return }
+            self?.detailUseCase.sendFavoriteStateChange(gifInfo: gifInfo,
+                                                        completionHandler: { result in
+                                                            switch result {
+                                                            case .success(let isFavorite):
+                                                                if isFavorite {
+                                                                    output.favoriteConfirm.fire()
+                                                                } else {
+                                                                    output.favoriteCanceled.fire()
+                                                                }
+                                                            case .failure(let error):
+                                                                output.favoriteErrorDelivered.value = error
+                                                            }
+                                                        })
+        }.store(in: &bag)
+        
         return output
     }
 }

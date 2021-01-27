@@ -83,7 +83,7 @@ final class DetailCellViewModelTests: XCTestCase {
         let useCase = MockSuccessDetailUseCase(isFavorite: isFavorite)
         let viewModel = DetailCellViewModel(gifInfo: gifInfo, detailUseCase: useCase)
         
-        let output = viewModel.transform(input).favoriteConfirm
+        let output = viewModel.transform(input).favoriteCanceled
         
         output.bind {
             useCase.verifysendFavoriteStateChange(gifInfo: self.gifInfo)

@@ -121,6 +121,7 @@
 		A5DA224B25B73A2F00B544D4 /* MockFailureTrendingUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5DA224A25B73A2F00B544D4 /* MockFailureTrendingUseCase.swift */; };
 		A5DA224F25B73FEB00B544D4 /* GifCellViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5DA224E25B73FEB00B544D4 /* GifCellViewModelTests.swift */; };
 		A5DFD07325C1629C00DC4319 /* GifCellUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5DFD07225C1629C00DC4319 /* GifCellUseCaseTests.swift */; };
+		A5DFD07925C163EF00DC4319 /* GifCellUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5DFD07825C163EF00DC4319 /* GifCellUseCase.swift */; };
 		A5E633A125B74B1E004331D9 /* GifCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5E633A025B74B1E004331D9 /* GifCellViewModel.swift */; };
 		A5E633A525B75327004331D9 /* GifCollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5E633A425B75327004331D9 /* GifCollectionViewDataSource.swift */; };
 		A5E633C125B803CE004331D9 /* ExpireTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5E633C025B803CE004331D9 /* ExpireTime.swift */; };
@@ -264,6 +265,7 @@
 		A5DA224A25B73A2F00B544D4 /* MockFailureTrendingUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockFailureTrendingUseCase.swift; sourceTree = "<group>"; };
 		A5DA224E25B73FEB00B544D4 /* GifCellViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GifCellViewModelTests.swift; sourceTree = "<group>"; };
 		A5DFD07225C1629C00DC4319 /* GifCellUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GifCellUseCaseTests.swift; sourceTree = "<group>"; };
+		A5DFD07825C163EF00DC4319 /* GifCellUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GifCellUseCase.swift; sourceTree = "<group>"; };
 		A5E633A025B74B1E004331D9 /* GifCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GifCellViewModel.swift; sourceTree = "<group>"; };
 		A5E633A425B75327004331D9 /* GifCollectionViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GifCollectionViewDataSource.swift; sourceTree = "<group>"; };
 		A5E633C025B803CE004331D9 /* ExpireTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpireTime.swift; sourceTree = "<group>"; };
@@ -797,6 +799,7 @@
 			children = (
 				A5E633A025B74B1E004331D9 /* GifCellViewModel.swift */,
 				A505439325BDB9320041DF94 /* FavoriteManager.swift */,
+				A5DFD07825C163EF00DC4319 /* GifCellUseCase.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -1058,6 +1061,7 @@
 				A5947A2825B9F06500EBF9FD /* AutoComplete.swift in Sources */,
 				A5DA222F25B71D7900B544D4 /* Observable.swift in Sources */,
 				A5DA213A25B6AF9700B544D4 /* DefaultRequester.swift in Sources */,
+				A5DFD07925C163EF00DC4319 /* GifCellUseCase.swift in Sources */,
 				A5DA224725B736CB00B544D4 /* TrendingGifViewModel.swift in Sources */,
 				A5E633D125B80777004331D9 /* ExpirableObject.swift in Sources */,
 				A5DA21AF25B6E28100B544D4 /* EndPoint.swift in Sources */,

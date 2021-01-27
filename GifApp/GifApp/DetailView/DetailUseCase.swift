@@ -7,6 +7,12 @@
 
 import Foundation
 
+protocol DetailUseCaseType {
+    
+    func retrieveImage(with url: String, completionHandler: @escaping (Result<Data?, NetworkError>) -> Void) -> Cancellable?
+    func sendFavoriteStateChange(gifInfo: GifInfo, completionHandler: @escaping (Result<Bool, FavoriteManagerError>) -> Void)
+    func retrieveIsFavorite(with gifInfo: GifInfo, completionHandler: @escaping (Result<Bool, FavoriteManagerError>) -> Void)
+}
 
 final class DetailUseCase {
     

@@ -291,7 +291,7 @@
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dm1-YM-GJl">
                                                             <rect key="frame" x="0.0" y="0.0" width="414" height="414"/>
                                                             <subviews>
-                                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="tbu-nc-Gil" customClass="GIFImageView" customModule="Gifu">
+                                                                <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="tbu-nc-Gil" customClass="GIFImageView" customModule="Gifu">
                                                                     <rect key="frame" x="0.0" y="0.0" width="414" height="414"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="width" secondItem="tbu-nc-Gil" secondAttribute="height" multiplier="1:1" id="kk9-zJ-BHd"/>
@@ -345,6 +345,9 @@
                                                                         <constraint firstAttribute="width" secondItem="HZj-GJ-joQ" secondAttribute="height" multiplier="1:1" id="hB9-Dr-8pw"/>
                                                                     </constraints>
                                                                     <state key="normal" image="heartWhite"/>
+                                                                    <connections>
+                                                                        <action selector="favoriteButtonPushed:" destination="ZoG-zV-cKZ" eventType="touchUpInside" id="731-TO-Xv9"/>
+                                                                    </connections>
                                                                 </button>
                                                             </subviews>
                                                         </stackView>

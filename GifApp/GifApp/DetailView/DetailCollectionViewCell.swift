@@ -18,13 +18,21 @@ final class DetailCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var displayNameLabel: UILabel!
     @IBOutlet weak var favoriteButton: UIButton!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    @IBAction func favoriteButtonPushed(_ sender: Any) {
+        viewModelInput.favoriteStateShouldChange.fire()
+    }
     
+    private var gesture: UITapGestureRecognizer!
     private let viewModelInput: DetailCellViewModelInput = DetailCellViewModelInput()
     private var viewModel: DetailCellViewModel?
     private var bag: CancellableBag = CancellableBag()
     
     func bind(with viewModel: DetailCellViewModel) {
         self.viewModel = viewModel
+    
+        gesture = UITapGestureRecognizer(target: self, action: #selector(doubleTapped))
+        gesture.numberOfTapsRequired = 2
+        gifImageView.addGestureRecognizer(gesture)
         
         let output = viewModel.transform(viewModelInput)
         
@@ -41,8 +49,28 @@ final class DetailCollectionViewCell: UICollectionViewCell {
             }
         }.store(in: &bag)
         
-        viewModelInput.isFavorite.fire()
+        output.favoriteConfirm.bind {
+            DispatchQueue.main.async { [weak self] in
+                self?.favoriteButton.setImage(UIImage(named: "heart.fill"), for: .normal)
+            }
+        }.store(in: &bag)
+        
+        output.favoriteCanceled.bind {
+            DispatchQueue.main.async { [weak self] in
+                self?.favoriteButton.setImage(UIImage(named: "heartWhite"), for: .normal)
+            }
+        }.store(in: &bag)
+        
+        isFavoriteFire()
         viewModelInput.loadGif.fire()
+    }
+    
+    func isFavoriteFire() {
+        viewModelInput.isFavorite.fire()
+    }
+    
+    @objc private func doubleTapped() {
+        viewModelInput.favoriteStateShouldChange.fire()
     }
     
     override func prepareForReuse() {
@@ -53,5 +81,6 @@ final class DetailCollectionViewCell: UICollectionViewCell {
         viewModel = nil
         bag.removeAll()
         activityIndicator.startAnimating()
+        gifImageView.removeGestureRecognizer(gesture)
     }
 }

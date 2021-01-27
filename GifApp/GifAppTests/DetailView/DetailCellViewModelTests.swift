@@ -17,7 +17,13 @@ final class DetailCellViewModelTests: XCTestCase {
                                            source: "",
                                            images: GifImages(original: GifImage(height: "", width: "", url: "test"),
                                                              fixedWidth: GifImage(height: "", width: "", url: "test")),
-                                           user: User(avatarUrl: "", username: "", displayName: ""))
+                                           user: User(avatarUrl: "", username: "testUserName", displayName: "testDisplayName"))
+    private let gifInfoWithUserInfoNil: GifInfo = GifInfo(id: "1",
+                                           username: "",
+                                           source: "test",
+                                           images: GifImages(original: GifImage(height: "", width: "", url: "test"),
+                                                             fixedWidth: GifImage(height: "", width: "", url: "test")),
+                                           user: nil)
     private let input: DetailCellViewModelInput = DetailCellViewModelInput()
     
     func testOutputGifDelivered() {
@@ -36,6 +42,40 @@ final class DetailCellViewModelTests: XCTestCase {
         }.store(in: &bag)
         
         input.loadGif.fire()
+    }
+    
+    func testOutputUserInfoDeliveredWithUserInfoNotNil() {
+        let expectation = XCTestExpectation(description: "userInfo with not nil delivered")
+        defer { wait(for: [expectation], timeout: 1.0) }
+        
+        let useCase = DummyDetailUseCase()
+        let viewModel = DetailCellViewModel(gifInfo: gifInfo, detailUseCase: useCase)
+        
+        let output = viewModel.transform(input).userInfoDelivered
+        
+        output.bind {
+            XCTAssertEqual($0, UserInfo(userName: "testUserName", displayName: "testDisplayName"))
+            expectation.fulfill()
+        }.store(in: &bag)
+        
+        input.loadUserInfo.fire()
+    }
+    
+    func testOutputUserInfoDeliveredWithUserInfoNil() {
+        let expectation = XCTestExpectation(description: "userInfo with nil delivered")
+        defer { wait(for: [expectation], timeout: 1.0) }
+        
+        let useCase = MockSuccessDetailUseCase()
+        let viewModel = DetailCellViewModel(gifInfo: gifInfoWithUserInfoNil, detailUseCase: useCase)
+        
+        let output = viewModel.transform(input).userInfoDelivered
+        
+        output.bind {
+            XCTAssertEqual($0, UserInfo(userName: "Source", displayName: "test"))
+            expectation.fulfill()
+        }.store(in: &bag)
+        
+        input.loadUserInfo.fire()
     }
     
     func testOutputIsFavoriteDelivered() {

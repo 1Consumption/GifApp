@@ -19,6 +19,7 @@
 		A501C6C525C1122C00C6D4E3 /* MockFailureDetailUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A501C6C425C1122C00C6D4E3 /* MockFailureDetailUseCase.swift */; };
 		A501C6C925C118AB00C6D4E3 /* DetailCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A501C6C825C118AB00C6D4E3 /* DetailCellViewModel.swift */; };
 		A501C6CD25C12AD800C6D4E3 /* DetailCollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = A501C6CC25C12AD700C6D4E3 /* DetailCollectionViewDataSource.swift */; };
+		A501C6D125C14B7200C6D4E3 /* DummyDetailUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A501C6D025C14B7200C6D4E3 /* DummyDetailUseCase.swift */; };
 		A5048B0525B9CD410005CB42 /* DebounceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5048B0425B9CD410005CB42 /* DebounceTests.swift */; };
 		A5048B0925B9D03D0005CB42 /* Debounce.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5048B0825B9D03D0005CB42 /* Debounce.swift */; };
 		A505439425BDB9320041DF94 /* FavoriteManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A505439325BDB9320041DF94 /* FavoriteManager.swift */; };
@@ -156,6 +157,7 @@
 		A501C6C425C1122C00C6D4E3 /* MockFailureDetailUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockFailureDetailUseCase.swift; sourceTree = "<group>"; };
 		A501C6C825C118AB00C6D4E3 /* DetailCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCellViewModel.swift; sourceTree = "<group>"; };
 		A501C6CC25C12AD700C6D4E3 /* DetailCollectionViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCollectionViewDataSource.swift; sourceTree = "<group>"; };
+		A501C6D025C14B7200C6D4E3 /* DummyDetailUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyDetailUseCase.swift; sourceTree = "<group>"; };
 		A5048B0425B9CD410005CB42 /* DebounceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebounceTests.swift; sourceTree = "<group>"; };
 		A5048B0825B9D03D0005CB42 /* Debounce.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Debounce.swift; sourceTree = "<group>"; };
 		A505439325BDB9320041DF94 /* FavoriteManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteManager.swift; sourceTree = "<group>"; };
@@ -703,6 +705,7 @@
 				A501C69725C063F000C6D4E3 /* DummyTrendingUseCase.swift */,
 				A501C69D25C0648E00C6D4E3 /* DummyFavoriteManager.swift */,
 				A501C6B125C107E800C6D4E3 /* DummyImageManager.swift */,
+				A501C6D025C14B7200C6D4E3 /* DummyDetailUseCase.swift */,
 			);
 			path = Dummy;
 			sourceTree = "<group>";
@@ -1129,6 +1132,7 @@
 				A5DA21B725B6E7A800B544D4 /* TrendingGifUseCaseTests.swift in Sources */,
 				A505439825BDBD890041DF94 /* FavoriteManagerError+Equatable.swift in Sources */,
 				A5DA21A725B6D81200B544D4 /* EndpointTests.swift in Sources */,
+				A501C6D125C14B7200C6D4E3 /* DummyDetailUseCase.swift in Sources */,
 				A5DA222B25B71C8000B544D4 /* ObservableTests.swift in Sources */,
 				A50543B425BDD7B00041DF94 /* MockFailureFavoriteManager.swift in Sources */,
 				A571316925BBFC2300D22E63 /* DiskStorageTests.swift in Sources */,

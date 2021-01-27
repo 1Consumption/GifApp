@@ -7,7 +7,13 @@
 
 import Foundation
 
-final class GifCellUseCase {
+protocol GifCellUseCaseType {
+    
+    func retrieveImage(with url: String, completionHandler: @escaping (Result<Data?, NetworkError>) -> Void) -> Cancellable?
+    func sendFavoriteStateChange(gifInfo: GifInfo, completionHandler: @escaping (Result<Bool, FavoriteManagerError>) -> Void)
+}
+
+final class GifCellUseCase: GifCellUseCaseType {
     
     private let imageManager: ImageManagerType
     private let favoriteManager: FavoriteManagerType

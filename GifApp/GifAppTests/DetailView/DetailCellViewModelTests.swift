@@ -39,14 +39,32 @@ final class DetailCellViewModelTests: XCTestCase {
     }
     
     func testOutputIsFavoriteDelivered() {
-        let expectation = XCTestExpectation(description: "isFavorite delivered")
+        let expectation = XCTestExpectation(description: "isFavorite delivered favorite")
         defer { wait(for: [expectation], timeout: 1.0) }
         
         let isFavorite = true
         let useCase = MockSuccessDetailUseCase(isFavorite: isFavorite)
         let viewModel = DetailCellViewModel(gifInfo: gifInfo, detailUseCase: useCase)
         
-        let output = viewModel.transform(input).isFavoriteDelivered
+        let output = viewModel.transform(input).favoriteConfirm
+        
+        output.bind {
+            useCase.verifyRetrieveIsFavorite(gifInfo: self.gifInfo)
+            expectation.fulfill()
+        }.store(in: &bag)
+        
+        input.isFavorite.fire()
+    }
+    
+    func testOutputIsFavoriteDeliveredWithNonFavorite() {
+        let expectation = XCTestExpectation(description: "isFavorite delivered non favorite")
+        defer { wait(for: [expectation], timeout: 1.0) }
+        
+        let isFavorite = false
+        let useCase = MockSuccessDetailUseCase(isFavorite: isFavorite)
+        let viewModel = DetailCellViewModel(gifInfo: gifInfo, detailUseCase: useCase)
+        
+        let output = viewModel.transform(input).favoriteCanceled
         
         output.bind {
             useCase.verifyRetrieveIsFavorite(gifInfo: self.gifInfo)

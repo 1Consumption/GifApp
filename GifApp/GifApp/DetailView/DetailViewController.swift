@@ -37,6 +37,11 @@ final class DetailViewController: UIViewController {
         isLayouted = true
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        detailCollectionView.reloadData()
+    }
+    
     private func setUpNavigationItem() {
         navigationItem.title = "GIF"
         navigationItem.backButtonTitle = ""

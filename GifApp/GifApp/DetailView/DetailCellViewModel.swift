@@ -17,7 +17,6 @@ struct DetailCellViewModelInput {
 struct DetailCellViewModelOutput {
     
     let gifDelivered: Observable<Data> = Observable<Data>(value: Data())
-    let isFavoriteDelivered: Observable<Void> = Observable<Void>(value: ())
     let favoriteConfirm: Observable<Void> = Observable<Void>(value: ())
     let favoriteCanceled: Observable<Void> = Observable<Void>(value: ())
     let imageErrorDelivered: Observable<Void> = Observable<Void>(value: ())
@@ -60,8 +59,11 @@ final class DetailCellViewModel: ViewModelType {
                                                    completionHandler: { result in
                                                     switch result {
                                                     case .success(let isFavorite):
-                                                        guard isFavorite else { return }
-                                                        output.isFavoriteDelivered.fire()
+                                                        if isFavorite {
+                                                            output.favoriteConfirm.fire()
+                                                        } else {
+                                                            output.favoriteCanceled.fire()
+                                                        }
                                                     case .failure(let error):
                                                         output.favoriteErrorDelivered.value = error
                                                     }

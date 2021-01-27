@@ -11,13 +11,27 @@ final class DetailViewController: UIViewController {
     
     static let identifier: String = "DetailViewController"
 
+    @IBOutlet weak var detailCollectionView: UICollectionView!
+    
     var indexPath: IndexPath?
+    var gifInfoList: [GifInfo]?
+    
+    private let dataSource: DetailCollectionViewDataSource = DetailCollectionViewDataSource()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        print(indexPath)
+        setUpNavigationItem()
+        setUpDetailCollectionView()
+    }
+    
+    private func setUpNavigationItem() {
         navigationItem.title = "GIF"
         navigationItem.backButtonTitle = ""
+    }
+    
+    private func setUpDetailCollectionView() {
+        dataSource.gifInfoList = gifInfoList
+        detailCollectionView.dataSource = dataSource
     }
 }

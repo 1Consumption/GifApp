@@ -67,6 +67,7 @@ final class SearchViewController: UIViewController {
         output.showDetailFired.bind { [weak self] in
             guard let detailViewController = self?.storyboard?.instantiateViewController(withIdentifier: DetailViewController.identifier) as? DetailViewController else { return }
             detailViewController.indexPath = $0
+            detailViewController.gifInfoList = self?.trendingGifViewModel.gifInfoArray
             
             self?.navigationController?.pushViewController(detailViewController, animated: true)
         }.store(in: &bag)

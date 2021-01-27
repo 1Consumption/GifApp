@@ -24,13 +24,13 @@ final class GifCellViewModelTests: XCTestCase {
         let expectation = XCTestExpectation(description: "gif delivered")
         defer { wait(for: [expectation], timeout: 1.0) }
         
-        let imageManager = MockSuccessImageManager()
-        viewModel = GifCellViewModel(gifInfo: gifInfo, imageManager: imageManager)
+        let useCase = MockSuccessGifCellUseCase()
+        viewModel = GifCellViewModel(gifInfo: gifInfo, gifCellUseCase: useCase)
         
         let output = viewModel.transform(input).gifDelivered
         
         output.bind { _ in
-            imageManager.verify(url: "test")
+            useCase.verifyRetrieveImage(url: "test")
             expectation.fulfill()
         }.store(in: &bag)
         
@@ -41,9 +41,8 @@ final class GifCellViewModelTests: XCTestCase {
         let expectation = XCTestExpectation(description: "cancelled")
         defer { wait(for: [expectation], timeout: 1.0) }
         
-        let imageManager = MockSuccessCancellableImageManager { expectation.fulfill() }
-        
-        viewModel = GifCellViewModel(gifInfo: gifInfo, imageManager: imageManager)
+        let useCase = MockSuccessGifCellUseCase(handler: { expectation.fulfill() })
+        viewModel = GifCellViewModel(gifInfo: gifInfo, gifCellUseCase: useCase)
         
         let _ = viewModel?.transform(input)
         
@@ -56,13 +55,13 @@ final class GifCellViewModelTests: XCTestCase {
         let expectation = XCTestExpectation(description: "error delivered")
         defer { wait(for: [expectation], timeout: 1.0) }
         
-        let imageManager = MockFailureImageManager()
-        viewModel = GifCellViewModel(gifInfo: gifInfo, imageManager: imageManager)
+        let useCase = MockFailureGifCellUseCase(retrieveImageError: .emptyData)
+        viewModel = GifCellViewModel(gifInfo: gifInfo, gifCellUseCase: useCase)
         
         let output = viewModel.transform(input).errorDelivered
         
         output.bind {
-            imageManager.verify(url: "test")
+            useCase.verifyRetrieveImage(url: "test")
             expectation.fulfill()
         }.store(in: &bag)
         
@@ -73,13 +72,13 @@ final class GifCellViewModelTests: XCTestCase {
         let expectation = XCTestExpectation(description: "favorite state is favorite delivered")
         defer { wait(for: [expectation], timeout: 1.0) }
         
-        let favoriteManager = MockSuccessFavoriteManager()
-        viewModel = GifCellViewModel(gifInfo: gifInfo, favoriteManager: favoriteManager)
+        let useCase = MockSuccessGifCellUseCase()
+        viewModel = GifCellViewModel(gifInfo: gifInfo, gifCellUseCase: useCase)
         
         let output = viewModel.transform(input).favoriteConfirm
         
         output.bind {
-            favoriteManager.verifyChangeFavoriteState(gifInfo: self.gifInfo, storageCount: 1)
+            useCase.verifysendFavoriteStateChange(gifInfo: self.gifInfo)
             expectation.fulfill()
         }.store(in: &bag)
         
@@ -90,15 +89,13 @@ final class GifCellViewModelTests: XCTestCase {
         let expectation = XCTestExpectation(description: "favorite state is favorite cancel delivered")
         defer { wait(for: [expectation], timeout: 1.0) }
         
-        let favoriteManager = MockSuccessFavoriteManager()
-        favoriteManager.changeFavoriteState(with: gifInfo, completionHandler: { _ in })
-        
-        viewModel = GifCellViewModel(gifInfo: gifInfo, favoriteManager: favoriteManager)
+        let useCase = MockSuccessGifCellUseCase(isFavorite: true)
+        viewModel = GifCellViewModel(gifInfo: gifInfo, gifCellUseCase: useCase)
         
         let output = viewModel.transform(input).favoriteCanceled
         
         output.bind {
-            favoriteManager.verifyChangeFavoriteState(gifInfo: self.gifInfo, storageCount: 0, callCount: 2)
+            useCase.verifysendFavoriteStateChange(gifInfo: self.gifInfo)
             expectation.fulfill()
         }.store(in: &bag)
         
@@ -109,15 +106,14 @@ final class GifCellViewModelTests: XCTestCase {
         let expectation = XCTestExpectation(description: "favorite error delivered")
         defer { wait(for: [expectation], timeout: 1.0) }
         
-        let favoriteManager = MockFailureFavoriteManager()
-        
-        viewModel = GifCellViewModel(gifInfo: gifInfo, favoriteManager: favoriteManager)
+        let useCase = MockFailureGifCellUseCase(sendFavoriteStateChangeError: .encodeError)
+        viewModel = GifCellViewModel(gifInfo: gifInfo, gifCellUseCase: useCase)
         
         let output = viewModel.transform(input).favoriteErrorDelivered
         
         output.bind {
             XCTAssertEqual($0, .encodeError)
-            favoriteManager.verifyChangeFavoriteState(gifInfo: self.gifInfo)
+            useCase.verifysendFavoriteStateChange(gifInfo: self.gifInfo)
             expectation.fulfill()
         }.store(in: &bag)
         

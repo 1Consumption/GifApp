@@ -51,6 +51,7 @@ final class DetailCellViewModel: ViewModelType {
                                                 output.imageErrorDelivered.fire()
                                             }
                                         })?.store(in: &bag)
+            self?.bag = bag
         }.store(in: &bag)
         
         input.isFavorite.bind { [weak self] in

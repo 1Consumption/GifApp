@@ -125,7 +125,7 @@ final class DetailUseCaseTests: XCTestCase {
         
         detailUseCase.sendFavoriteStateChange(gifInfo: gifInfo) { _ in }
         
-        detailUseCase.retrieveIsFavoriteGifInfo(gifInfo: gifInfo) { result in
+        detailUseCase.retrieveIsFavorite(with: gifInfo) { result in
             switch result {
             case .success(let factor):
                 XCTAssertTrue(factor)
@@ -146,7 +146,7 @@ final class DetailUseCaseTests: XCTestCase {
         
         detailUseCase = DetailUseCase(imageManager: imageManager, favoriteManager: favoriteManager)
         
-        detailUseCase.retrieveIsFavoriteGifInfo(gifInfo: gifInfo) { result in
+        detailUseCase.retrieveIsFavorite(with: gifInfo) { result in
             switch result {
             case .success:
                 XCTFail()

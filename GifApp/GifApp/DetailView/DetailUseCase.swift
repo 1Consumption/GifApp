@@ -18,8 +18,8 @@ final class DetailUseCase {
         self.favoriteManager = favoriteManager
     }
     
-    func retrieveImage(with url: String, completionHandler: @escaping (Result<Data?, NetworkError>) -> Void) {
-    
+    func retrieveImage(with url: String, completionHandler: @escaping (Result<Data?, NetworkError>) -> Void) -> Cancellable? {
+        return imageManager.retrieveImage(from: url, completionHandler: completionHandler)
     }
     
     func sendFavoriteStateChange(gifInfo: GifInfo, completionHandler: @escaping (Result<Bool, FavoriteManagerError>) -> Void) {

@@ -27,7 +27,7 @@ final class DetailUseCaseTests: XCTestCase {
         
         detailUseCase = DetailUseCase(imageManager: imageManager, favoriteManager: favoriteManager)
         
-        detailUseCase.retrieveImage(with: "test") { result in
+        let _ = detailUseCase.retrieveImage(with: "test") { result in
             switch result {
             case .success:
                 imageManager.verify(url: "test")
@@ -47,7 +47,7 @@ final class DetailUseCaseTests: XCTestCase {
         
         detailUseCase = DetailUseCase(imageManager: imageManager, favoriteManager: favoriteManager)
         
-        detailUseCase.retrieveImage(with: "test") { result in
+        let _ = detailUseCase.retrieveImage(with: "test") { result in
             switch result {
             case .success:
                 XCTFail()

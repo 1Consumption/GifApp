@@ -341,9 +341,9 @@
 		A51809D425B5756000E0B589 /* SearchView */ = {
 			isa = PBXGroup;
 			children = (
-				A5E633A925B75A00004331D9 /* Model */,
+				A5DFD08B25C1698300DC4319 /* AutoCompleteTableView */,
+				A5947A2525B9F04400EBF9FD /* TrendingCollectionView */,
 				A57D3A2E25B489F0005C3338 /* SearchViewController.swift */,
-				A5D2902B25B9C55000041ED8 /* AutoCompleteTableViewCell.swift */,
 			);
 			path = SearchView;
 			sourceTree = "<group>";
@@ -411,17 +411,6 @@
 				A5DA21BD25B6EDA400B544D4 /* TrendingGifUseCase.swift */,
 			);
 			path = TrendingCollectionView;
-			sourceTree = "<group>";
-		};
-		A5947A2625B9F05700EBF9FD /* SearchView */ = {
-			isa = PBXGroup;
-			children = (
-				A5947A2725B9F06500EBF9FD /* AutoComplete.swift */,
-				A5947A3925B9F24F00EBF9FD /* AutoCompleteUseCase.swift */,
-				A5947A5125BA016400EBF9FD /* SearchViewModel.swift */,
-				A5947A5525BA89F900EBF9FD /* AutoCompleteTableViewDataSource.swift */,
-			);
-			path = SearchView;
 			sourceTree = "<group>";
 		};
 		A5947A2B25B9F0CE00EBF9FD /* TrendingCollectionView */ = {
@@ -507,11 +496,8 @@
 		A5A3B94825BB1F5A00389243 /* DetailView */ = {
 			isa = PBXGroup;
 			children = (
+				A5DFD08F25C169DA00DC4319 /* DetailCollectionView */,
 				A5A3B94925BB1F8500389243 /* DetailViewController.swift */,
-				A501C6A625C07DE300C6D4E3 /* DetailCollectionViewCell.swift */,
-				A501C6B525C10B1000C6D4E3 /* DetailUseCase.swift */,
-				A501C6C825C118AB00C6D4E3 /* DetailCellViewModel.swift */,
-				A501C6CC25C12AD700C6D4E3 /* DetailCollectionViewDataSource.swift */,
 			);
 			path = DetailView;
 			sourceTree = "<group>";
@@ -554,12 +540,8 @@
 			isa = PBXGroup;
 			children = (
 				A5D2902425B9C2F300041ED8 /* CustomView */,
-				A5E633BF25B803B9004331D9 /* ImageManager */,
 				A5E633B025B75B5F004331D9 /* GifCell */,
 				A5E633AA25B75A4A004331D9 /* Model */,
-				A5DA21D625B6FDC300B544D4 /* Protocol */,
-				A5DA222325B7152000B544D4 /* Observable */,
-				A5DA213125B6AF4500B544D4 /* Network */,
 				A5DA20F725B5A10B00B544D4 /* Layout */,
 				A5DA21AA25B6E24B00B544D4 /* Secret.swift */,
 				A5DA21C325B6F36A00B544D4 /* UseCaseError.swift */,
@@ -606,12 +588,10 @@
 		A5DA213125B6AF4500B544D4 /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				A5DFD09425C16A1500DC4319 /* Supports */,
 				A5DA213225B6AF4900B544D4 /* Protocol */,
 				A5DA213925B6AF9700B544D4 /* DefaultRequester.swift */,
-				A5DA21AE25B6E28100B544D4 /* EndPoint.swift */,
-				A5DA214B25B6B63700B544D4 /* NetworkError.swift */,
 				A5DA216525B6BC5F00B544D4 /* NetworkManager.swift */,
-				A5DA217125B6C02800B544D4 /* HTTPMethod.swift */,
 				A571A0E725B84DFF00526A49 /* ImageRequester.swift */,
 			);
 			path = Network;
@@ -768,18 +748,79 @@
 			path = GifCellUseCase;
 			sourceTree = "<group>";
 		};
-		A5E633A925B75A00004331D9 /* Model */ = {
+		A5DFD08B25C1698300DC4319 /* AutoCompleteTableView */ = {
 			isa = PBXGroup;
 			children = (
-				A5947A2625B9F05700EBF9FD /* SearchView */,
-				A5947A2525B9F04400EBF9FD /* TrendingCollectionView */,
+				A5DFD08C25C169A100DC4319 /* Model */,
+				A5D2902B25B9C55000041ED8 /* AutoCompleteTableViewCell.swift */,
+			);
+			path = AutoCompleteTableView;
+			sourceTree = "<group>";
+		};
+		A5DFD08C25C169A100DC4319 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				A5DFD08D25C169A900DC4319 /* ViewModel */,
+				A5947A2725B9F06500EBF9FD /* AutoComplete.swift */,
+				A5947A3925B9F24F00EBF9FD /* AutoCompleteUseCase.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		A5DFD08D25C169A900DC4319 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				A5947A5125BA016400EBF9FD /* SearchViewModel.swift */,
+				A5947A5525BA89F900EBF9FD /* AutoCompleteTableViewDataSource.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		A5DFD08F25C169DA00DC4319 /* DetailCollectionView */ = {
+			isa = PBXGroup;
+			children = (
+				A5DFD09025C169E100DC4319 /* Model */,
+				A501C6A625C07DE300C6D4E3 /* DetailCollectionViewCell.swift */,
+			);
+			path = DetailCollectionView;
+			sourceTree = "<group>";
+		};
+		A5DFD09025C169E100DC4319 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				A5DFD09125C169F400DC4319 /* ViewModel */,
+				A501C6B525C10B1000C6D4E3 /* DetailUseCase.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		A5DFD09125C169F400DC4319 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				A501C6C825C118AB00C6D4E3 /* DetailCellViewModel.swift */,
+				A501C6CC25C12AD700C6D4E3 /* DetailCollectionViewDataSource.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		A5DFD09425C16A1500DC4319 /* Supports */ = {
+			isa = PBXGroup;
+			children = (
+				A5DA21AE25B6E28100B544D4 /* EndPoint.swift */,
+				A5DA214B25B6B63700B544D4 /* NetworkError.swift */,
+				A5DA217125B6C02800B544D4 /* HTTPMethod.swift */,
+			);
+			path = Supports;
 			sourceTree = "<group>";
 		};
 		A5E633AA25B75A4A004331D9 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				A5DA21D625B6FDC300B544D4 /* Protocol */,
+				A5DA213125B6AF4500B544D4 /* Network */,
+				A5DA222325B7152000B544D4 /* Observable */,
+				A5E633BF25B803B9004331D9 /* ImageManager */,
+				A505439325BDB9320041DF94 /* FavoriteManager.swift */,
 				A51809C525B569BE00E0B589 /* GifInfo.swift */,
 				A5DA21D225B6FBB700B544D4 /* GifInfoResponse.swift */,
 				A5A3B94225BAFB0000389243 /* GifManagerType.swift */,
@@ -812,8 +853,6 @@
 			isa = PBXGroup;
 			children = (
 				A5E633A025B74B1E004331D9 /* GifCellViewModel.swift */,
-				A505439325BDB9320041DF94 /* FavoriteManager.swift */,
-				A5DFD07825C163EF00DC4319 /* GifCellUseCase.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -823,6 +862,7 @@
 			children = (
 				A5E633AF25B75B42004331D9 /* ViewModel */,
 				A51809D525B5757300E0B589 /* GifCell.swift */,
+				A5DFD07825C163EF00DC4319 /* GifCellUseCase.swift */,
 				A51809D625B5757300E0B589 /* GifCell.xib */,
 			);
 			path = GifCell;

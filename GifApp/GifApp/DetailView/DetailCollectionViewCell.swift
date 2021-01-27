@@ -35,6 +35,23 @@ final class DetailCollectionViewCell: UICollectionViewCell {
             }
         }.store(in: &bag)
         
+        output.isFavoriteDelivered.bind {
+            DispatchQueue.main.async { [weak self] in
+                self?.favoriteButton.setImage(UIImage(named: "heart.fill"), for: .normal)
+            }
+        }.store(in: &bag)
+        
+        viewModelInput.isFavorite.fire()
         viewModelInput.loadGif.fire()
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        gifImageView.stopAnimatingGIF()
+        gifImageView.image = nil
+        favoriteButton.setImage(UIImage(named: "heartWhite"), for: .normal)
+        viewModel = nil
+        bag.removeAll()
+        activityIndicator.startAnimating()
     }
 }

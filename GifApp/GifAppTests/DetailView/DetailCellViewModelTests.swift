@@ -42,14 +42,13 @@ final class DetailCellViewModelTests: XCTestCase {
         let expectation = XCTestExpectation(description: "isFavorite delivered")
         defer { wait(for: [expectation], timeout: 1.0) }
         
-        let isFavorite = false
+        let isFavorite = true
         let useCase = MockSuccessDetailUseCase(isFavorite: isFavorite)
         let viewModel = DetailCellViewModel(gifInfo: gifInfo, detailUseCase: useCase)
         
         let output = viewModel.transform(input).isFavoriteDelivered
         
         output.bind {
-            XCTAssertEqual(isFavorite, $0)
             useCase.verifyRetrieveIsFavorite(gifInfo: self.gifInfo)
             expectation.fulfill()
         }.store(in: &bag)

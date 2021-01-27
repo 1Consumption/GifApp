@@ -36,7 +36,7 @@ final class DetailCellViewModel: ViewModelType {
     }
     
     func transform(_ input: DetailCellViewModelInput) -> DetailCellViewModelOutput {
-        let ouput = DetailCellViewModelOutput()
+        let output = DetailCellViewModelOutput()
         
         input.loadGif.bind { [weak self] in
             guard let url = self?.gifInfo.images.original.url else { return }
@@ -46,13 +46,26 @@ final class DetailCellViewModel: ViewModelType {
                                             switch result {
                                             case .success(let data):
                                                 guard let data = data else { return }
-                                                ouput.gifDelivered.value = data
+                                                output.gifDelivered.value = data
                                             case .failure:
-                                                ouput.imageErrorDelivered.fire()
+                                                output.imageErrorDelivered.fire()
                                             }
                                         })?.store(in: &bag)
         }.store(in: &bag)
         
-        return ouput
+        input.isFavorite.bind { [weak self] in
+            guard let gifInfo = self?.gifInfo else { return }
+            self?.detailUseCase.retrieveIsFavorite(with: gifInfo,
+                                                   completionHandler: { result in
+                                                    switch result {
+                                                    case .success(let isFavorite):
+                                                        output.isFavoriteDelivered.value = isFavorite
+                                                    case .failure(let error):
+                                                        output.favoriteErrorDelivered.value = error
+                                                    }
+                                                   })
+        }.store(in: &bag)
+        
+        return output
     }
 }

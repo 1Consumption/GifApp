@@ -15,7 +15,7 @@ final class DetailCellViewModelTests: XCTestCase {
     private let gifInfo: GifInfo = GifInfo(id: "1",
                                            username: "",
                                            source: "",
-                                           images: GifImages(original: GifImage(height: "", width: "", url: ""),
+                                           images: GifImages(original: GifImage(height: "", width: "", url: "test"),
                                                              fixedWidth: GifImage(height: "", width: "", url: "test")),
                                            user: User(avatarUrl: "", username: "", displayName: ""))
     private let input: DetailCellViewModelInput = DetailCellViewModelInput()
@@ -31,6 +31,7 @@ final class DetailCellViewModelTests: XCTestCase {
         
         output.bind {
             XCTAssertNotNil($0)
+            useCase.verifyRetrieveImage(url: self.gifInfo.images.original.url)
             expectation.fulfill()
         }.store(in: &bag)
         
@@ -49,6 +50,7 @@ final class DetailCellViewModelTests: XCTestCase {
         
         output.bind {
             XCTAssertEqual(isFavorite, $0)
+            useCase.verifyRetrieveIsFavorite(gifInfo: self.gifInfo)
             expectation.fulfill()
         }.store(in: &bag)
         
@@ -66,6 +68,7 @@ final class DetailCellViewModelTests: XCTestCase {
         let output = viewModel.transform(input).favoriteConfirm
         
         output.bind {
+            useCase.verifysendFavoriteStateChange(gifInfo: self.gifInfo)
             expectation.fulfill()
         }.store(in: &bag)
         
@@ -83,6 +86,7 @@ final class DetailCellViewModelTests: XCTestCase {
         let output = viewModel.transform(input).favoriteConfirm
         
         output.bind {
+            useCase.verifysendFavoriteStateChange(gifInfo: self.gifInfo)
             expectation.fulfill()
         }.store(in: &bag)
         
@@ -99,13 +103,14 @@ final class DetailCellViewModelTests: XCTestCase {
         let output = viewModel.transform(input).imageErrorDelivered
         
         output.bind {
+            useCase.verifyRetrieveImage(url: self.gifInfo.images.original.url)
             expectation.fulfill()
         }.store(in: &bag)
         
         input.loadGif.fire()
     }
     
-    func testOutputFavoriteErrorDelivered() {
+    func testOutputFavoriteErrorDeliveredWithStateChangeMethod() {
         let expectation = XCTestExpectation(description: "favorite error delivered")
         defer { wait(for: [expectation], timeout: 1.0) }
         
@@ -115,10 +120,29 @@ final class DetailCellViewModelTests: XCTestCase {
         let output = viewModel.transform(input).favoriteErrorDelivered
         
         output.bind {
+            useCase.verifysendFavoriteStateChange(gifInfo: self.gifInfo)
             XCTAssertEqual($0, .encodeError)
             expectation.fulfill()
         }.store(in: &bag)
         
         input.favoriteStateShouldChange.fire()
+    }
+    
+    func testOutputFavoriteErrorDeliveredWithIsFavoriteMethod() {
+        let expectation = XCTestExpectation(description: "favorite error delivered")
+        defer { wait(for: [expectation], timeout: 1.0) }
+        
+        let useCase = MockFailureDetailUseCase(retrieveIsFavoriteError: .diskStorageError(.canNotFoundDocumentDirectory))
+        let viewModel = DetailCellViewModel(gifInfo: gifInfo, detailUseCase: useCase)
+        
+        let output = viewModel.transform(input).favoriteErrorDelivered
+        
+        output.bind {
+            useCase.verifyRetrieveIsFavorite(gifInfo: self.gifInfo)
+            XCTAssertEqual($0, .diskStorageError(.canNotFoundDocumentDirectory))
+            expectation.fulfill()
+        }.store(in: &bag)
+        
+        input.isFavorite.fire()
     }
 }

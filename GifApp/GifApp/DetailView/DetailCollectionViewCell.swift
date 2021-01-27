@@ -43,6 +43,11 @@ final class DetailCollectionViewCell: UICollectionViewCell {
             }
         }.store(in: &bag)
         
+        output.userInfoDelivered.bind { [weak self] userInfo in
+            self?.userNameLabel.text = userInfo?.userName
+            self?.displayNameLabel.text = userInfo?.displayName
+        }.store(in: &bag)
+        
         output.favoriteConfirm.bind {
             DispatchQueue.main.async { [weak self] in
                 self?.favoriteButton.setImage(UIImage(named: "heart.fill"), for: .normal)
@@ -56,6 +61,7 @@ final class DetailCollectionViewCell: UICollectionViewCell {
         }.store(in: &bag)
         
         viewModelInput.isFavorite.fire()
+        viewModelInput.loadUserInfo.fire()
         viewModelInput.loadGif.fire()
     }
     

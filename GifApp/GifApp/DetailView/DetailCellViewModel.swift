@@ -10,13 +10,21 @@ import Foundation
 struct DetailCellViewModelInput {
     
     let loadGif: Observable<Void> = Observable<Void>(value: ())
+    let loadUserInfo: Observable<Void> = Observable<Void>(value: ())
     let isFavorite: Observable<Void> = Observable<Void>(value: ())
     let favoriteStateShouldChange: Observable<Void> = Observable<Void>(value: ())
+}
+
+struct UserInfo {
+    
+    let userName: String?
+    let displayName: String?
 }
 
 struct DetailCellViewModelOutput {
     
     let gifDelivered: Observable<Data> = Observable<Data>(value: Data())
+    let userInfoDelivered: Observable<UserInfo?> = Observable<UserInfo?>(value: nil)
     let favoriteConfirm: Observable<Void> = Observable<Void>(value: ())
     let favoriteCanceled: Observable<Void> = Observable<Void>(value: ())
     let imageErrorDelivered: Observable<Void> = Observable<Void>(value: ())
@@ -51,6 +59,14 @@ final class DetailCellViewModel: ViewModelType {
                                             }
                                         })?.store(in: &bag)
             self?.bag = bag
+        }.store(in: &bag)
+        
+        input.loadUserInfo.bind { [weak self] in
+            guard let userInfo = self?.gifInfo.user else {
+                output.userInfoDelivered.value = UserInfo(userName: "Source", displayName: self?.gifInfo.source != nil ? self?.gifInfo.source : self?.gifInfo.username)
+                return
+            }
+            output.userInfoDelivered.value = UserInfo(userName: userInfo.username, displayName: userInfo.displayName)
         }.store(in: &bag)
         
         input.isFavorite.bind { [weak self] in

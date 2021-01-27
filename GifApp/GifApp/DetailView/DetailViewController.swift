@@ -33,5 +33,13 @@ final class DetailViewController: UIViewController {
     private func setUpDetailCollectionView() {
         dataSource.gifInfoList = gifInfoList
         detailCollectionView.dataSource = dataSource
+        detailCollectionView.delegate = self
+    }
+}
+
+extension DetailViewController: UICollectionViewDelegateFlowLayout {
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return detailCollectionView.bounds.size
     }
 }

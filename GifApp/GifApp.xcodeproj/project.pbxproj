@@ -18,6 +18,7 @@
 		A501C6BF25C1110900C6D4E3 /* MockSuccessDetailUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A501C6BE25C1110900C6D4E3 /* MockSuccessDetailUseCase.swift */; };
 		A501C6C525C1122C00C6D4E3 /* MockFailureDetailUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A501C6C425C1122C00C6D4E3 /* MockFailureDetailUseCase.swift */; };
 		A501C6C925C118AB00C6D4E3 /* DetailCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A501C6C825C118AB00C6D4E3 /* DetailCellViewModel.swift */; };
+		A501C6CD25C12AD800C6D4E3 /* DetailCollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = A501C6CC25C12AD700C6D4E3 /* DetailCollectionViewDataSource.swift */; };
 		A5048B0525B9CD410005CB42 /* DebounceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5048B0425B9CD410005CB42 /* DebounceTests.swift */; };
 		A5048B0925B9D03D0005CB42 /* Debounce.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5048B0825B9D03D0005CB42 /* Debounce.swift */; };
 		A505439425BDB9320041DF94 /* FavoriteManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A505439325BDB9320041DF94 /* FavoriteManager.swift */; };
@@ -154,6 +155,7 @@
 		A501C6BE25C1110900C6D4E3 /* MockSuccessDetailUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockSuccessDetailUseCase.swift; sourceTree = "<group>"; };
 		A501C6C425C1122C00C6D4E3 /* MockFailureDetailUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockFailureDetailUseCase.swift; sourceTree = "<group>"; };
 		A501C6C825C118AB00C6D4E3 /* DetailCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCellViewModel.swift; sourceTree = "<group>"; };
+		A501C6CC25C12AD700C6D4E3 /* DetailCollectionViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCollectionViewDataSource.swift; sourceTree = "<group>"; };
 		A5048B0425B9CD410005CB42 /* DebounceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebounceTests.swift; sourceTree = "<group>"; };
 		A5048B0825B9D03D0005CB42 /* Debounce.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Debounce.swift; sourceTree = "<group>"; };
 		A505439325BDB9320041DF94 /* FavoriteManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteManager.swift; sourceTree = "<group>"; };
@@ -499,6 +501,7 @@
 				A501C6A625C07DE300C6D4E3 /* DetailCollectionViewCell.swift */,
 				A501C6B525C10B1000C6D4E3 /* DetailUseCase.swift */,
 				A501C6C825C118AB00C6D4E3 /* DetailCellViewModel.swift */,
+				A501C6CC25C12AD700C6D4E3 /* DetailCollectionViewDataSource.swift */,
 			);
 			path = DetailView;
 			sourceTree = "<group>";
@@ -1044,6 +1047,7 @@
 				A571A0E825B84DFF00526A49 /* ImageRequester.swift in Sources */,
 				A5A3B94325BAFB0000389243 /* GifManagerType.swift in Sources */,
 				A505439425BDB9320041DF94 /* FavoriteManager.swift in Sources */,
+				A501C6CD25C12AD800C6D4E3 /* DetailCollectionViewDataSource.swift in Sources */,
 				A5D2902C25B9C55000041ED8 /* AutoCompleteTableViewCell.swift in Sources */,
 				A5947A2825B9F06500EBF9FD /* AutoComplete.swift in Sources */,
 				A5DA222F25B71D7900B544D4 /* Observable.swift in Sources */,

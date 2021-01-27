@@ -14,7 +14,7 @@ protocol DetailUseCaseType {
     func retrieveIsFavorite(with gifInfo: GifInfo, completionHandler: @escaping (Result<Bool, FavoriteManagerError>) -> Void)
 }
 
-final class DetailUseCase {
+final class DetailUseCase: DetailUseCaseType {
     
     private let imageManager: ImageManagerType
     private let favoriteManager: FavoriteManagerType

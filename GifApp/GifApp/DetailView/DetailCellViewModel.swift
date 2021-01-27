@@ -30,7 +30,7 @@ final class DetailCellViewModel: ViewModelType {
     private let detailUseCase: DetailUseCaseType
     private var bag: CancellableBag = CancellableBag()
     
-    init(gifInfo: GifInfo, detailUseCase: DetailUseCaseType) {
+    init(gifInfo: GifInfo, detailUseCase: DetailUseCaseType = DetailUseCase()) {
         self.gifInfo = gifInfo
         self.detailUseCase = detailUseCase
     }

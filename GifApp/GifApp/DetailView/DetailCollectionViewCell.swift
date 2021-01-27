@@ -10,7 +10,7 @@ import UIKit
 
 final class DetailCollectionViewCell: UICollectionViewCell {
     
-    static let identifer: String = "DetailCollectionViewCell"
+    static let identifier: String = "DetailCollectionViewCell"
     
     @IBOutlet weak var gifImageView: GIFImageView!
     @IBOutlet weak var userImageView: UIImageView!
@@ -18,4 +18,8 @@ final class DetailCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var displayNameLabel: UILabel!
     @IBOutlet weak var favoriteButton: UIButton!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    
+    func bind(with viewModel: DetailCellViewModel) {
+
+    }
 }

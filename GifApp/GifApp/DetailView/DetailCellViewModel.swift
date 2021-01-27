@@ -28,6 +28,7 @@ final class DetailCellViewModel: ViewModelType {
     
     private let gifInfo: GifInfo
     private let detailUseCase: DetailUseCaseType
+    private var bag: CancellableBag = CancellableBag()
     
     init(gifInfo: GifInfo, detailUseCase: DetailUseCaseType) {
         self.gifInfo = gifInfo
@@ -36,6 +37,21 @@ final class DetailCellViewModel: ViewModelType {
     
     func transform(_ input: DetailCellViewModelInput) -> DetailCellViewModelOutput {
         let ouput = DetailCellViewModelOutput()
+        
+        input.loadGif.bind { [weak self] in
+            guard let url = self?.gifInfo.images.original.url else { return }
+            guard var bag = self?.bag else { return }
+            self?.detailUseCase.retrieveImage(with: url,
+                                        completionHandler: { result in
+                                            switch result {
+                                            case .success(let data):
+                                                guard let data = data else { return }
+                                                ouput.gifDelivered.value = data
+                                            case .failure:
+                                                ouput.imageErrorDelivered.fire()
+                                            }
+                                        })?.store(in: &bag)
+        }.store(in: &bag)
         
         return ouput
     }

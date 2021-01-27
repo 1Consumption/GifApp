@@ -27,6 +27,12 @@ final class DetailUseCase {
     }
     
     func retrieveIsFavorite(with gifInfo: GifInfo, completionHandler: @escaping (Result<Bool, FavoriteManagerError>) -> Void) {
-        
+        favoriteManager.retrieveGifInfo { result in
+            let result = result.flatMap { gifInfoList -> Result<Bool, FavoriteManagerError> in
+                return .success(gifInfoList.contains(gifInfo))
+            }
+            
+            completionHandler(result)
+        }
     }
 }

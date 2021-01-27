@@ -42,7 +42,7 @@ final class DetailUseCaseTests: XCTestCase {
         let expectation = XCTestExpectation(description: "retrieve image failure")
         defer { wait(for: [expectation], timeout: 1.0) }
         
-        let imageManager = MockSuccessImageManager()
+        let imageManager = MockFailureImageManager()
         let favoriteManager = DummyFavoriteManager()
         
         detailUseCase = DetailUseCase(imageManager: imageManager, favoriteManager: favoriteManager)
@@ -84,7 +84,7 @@ final class DetailUseCaseTests: XCTestCase {
                 switch result {
                 case .success(let factor):
                     XCTAssertFalse(factor)
-                    favoriteManager.verifyChangeFavoriteState(gifInfo: self.gifInfo, storageCount: 0)
+                    favoriteManager.verifyChangeFavoriteState(gifInfo: self.gifInfo, storageCount: 0, callCount: 2)
                     expectation.fulfill()
                 case .failure:
                     XCTFail()

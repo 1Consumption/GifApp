@@ -23,7 +23,7 @@ final class DetailUseCase {
     }
     
     func sendFavoriteStateChange(gifInfo: GifInfo, completionHandler: @escaping (Result<Bool, FavoriteManagerError>) -> Void) {
-        
+        favoriteManager.changeFavoriteState(with: gifInfo, completionHandler: completionHandler)
     }
     
     func retrieveIsFavorite(with gifInfo: GifInfo, completionHandler: @escaping (Result<Bool, FavoriteManagerError>) -> Void) {

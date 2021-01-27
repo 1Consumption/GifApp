@@ -63,4 +63,21 @@ final class TrendingGifViewModelTests: XCTestCase {
         
         input.loadGifInfo.fire()
     }
+    
+    func testViewModelOutputShowDetailFired() {
+        let expectation = XCTestExpectation(description: "show detail fired")
+        defer { wait(for: [expectation], timeout: 1.0) }
+        
+        let useCase = DummyTrendingUseCase()
+        viewModel = TrendingGifViewModel(useCase: useCase)
+        
+        let output = viewModel.transform(input).showDetailFired
+        
+        output.bind {
+            XCTAssertEqual($0, IndexPath(item: 0, section: 0))
+            expectation.fulfill()
+        }.store(in: &bag)
+        
+        input.showDetail.value = IndexPath(item: 0, section: 0)
+    }
 }

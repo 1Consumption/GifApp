@@ -8,7 +8,7 @@
 import UIKit
 
 protocol ImageManagerType {
-    func retrieveImage(from url: String, failureHandler: @escaping () -> Void, dataHandler: @escaping (Data?) -> Void) -> Cancellable?
+    func retrieveImage(from url: String, completionHandler: @escaping (Result<Data?, NetworkError>) -> Void) -> Cancellable?
 }
 
 final class ImageManager: ImageManagerType {
@@ -30,30 +30,29 @@ final class ImageManager: ImageManagerType {
                                                object: nil)
     }
     
-    func retrieveImage(from url: String, failureHandler: @escaping () -> Void, dataHandler: @escaping (Data?) -> Void) -> Cancellable? {
+    func retrieveImage(from url: String, completionHandler: @escaping (Result<Data?, NetworkError>) -> Void) -> Cancellable? {
         if memoryStorage.isCached(url) {
             let data = memoryStorage.object(for: url)
-            dataHandler(data)
+            completionHandler(.success(data))
         } else if diskStorage?.isStored(url) == true {
             diskQueue.async { [weak self] in
                 guard let data = self?.diskStorage?.data(for: url) else { return }
                 self?.memoryStorage.insert(data, for: url)
-                dataHandler(data)
+                completionHandler(.success(data))
             }
         } else {
-            return loadImage(from: url, fairureHandler: failureHandler, imageHandler: dataHandler)
+            return loadImage(from: url, completionHandler: completionHandler)
         }
         
         return nil
     }
     
-    private func loadImage(from url: String, fairureHandler: @escaping () -> Void, imageHandler: @escaping (Data?) -> Void) -> Cancellable {
+    private func loadImage(from url: String, completionHandler: @escaping (Result<Data?, NetworkError>) -> Void) -> Cancellable? {
         let task = networkManager.loadData(with: URL(string: url),
                                            method: .get,
                                            headers: nil,
                                            completionHandler: { [weak self] result in
-                                            switch result {
-                                            case .success(let data):
+                                            let result = result.flatMap { data -> Result<Data?, NetworkError> in
                                                 self?.diskQueue.async { [weak self] in
                                                     do {
                                                         try self?.diskStorage?.store(data, for: url)
@@ -65,10 +64,9 @@ final class ImageManager: ImageManagerType {
                                                 }
                                                 
                                                 self?.memoryStorage.insert(data, for: url)
-                                                imageHandler(data)
-                                            case .failure(_):
-                                                fairureHandler()
+                                                return .success(data)
                                             }
+                                            completionHandler(result)
                                            })
         
         let cancellable = Cancellable { task?.cancel() }

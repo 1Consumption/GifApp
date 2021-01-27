@@ -15,7 +15,8 @@ final class FavoriteManagerTests: XCTestCase {
                                            username: "",
                                            source: "",
                                            images: GifImages(original: GifImage(height: "", width: "", url: ""),
-                                                             fixedWidth: GifImage(height: "", width: "", url: "")))
+                                                             fixedWidth: GifImage(height: "", width: "", url: "")),
+                                           user: User(avatarUrl: "", username: "", displayName: ""))
     
     override func tearDownWithError() throws {
         NotificationCenter.default.removeObserver(self)

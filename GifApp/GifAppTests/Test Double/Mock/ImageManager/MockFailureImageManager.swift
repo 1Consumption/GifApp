@@ -12,10 +12,10 @@ final class MockFailureImageManager: ImageManagerType {
     
     private var url: String?
     
-    func retrieveImage(from url: String, failureHandler: @escaping () -> Void, dataHandler: @escaping (Data?) -> Void) -> Cancellable? {
+    func retrieveImage(from url: String, completionHandler: @escaping (Result<Data?, NetworkError>) -> Void) -> Cancellable? {
         self.url = url
         
-        failureHandler()
+        completionHandler(.failure(.emptyData))
         
         return nil
     }

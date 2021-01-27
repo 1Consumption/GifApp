@@ -45,3 +45,10 @@ extension Pagination: Encodable {
         case offset
     }
 }
+
+extension UserInfo: Equatable {
+    
+    public static func == (lhs: Self, rhs: Self) -> Bool {
+        return lhs.userName == rhs.userName && lhs.displayName == rhs.displayName
+    }
+}

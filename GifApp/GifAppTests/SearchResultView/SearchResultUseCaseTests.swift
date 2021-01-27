@@ -20,13 +20,15 @@ final class SearchResultUseCaseTests: XCTestCase {
                                         [GifInfo(id: "1",
                                                  username: "test",
                                                  source: "test",
-                                                 images: GifImages(original: GifImage(height: "", width: "", url: ""), fixedWidth: GifImage(height: "", width: "", url: "")))],
+                                                 images: GifImages(original: GifImage(height: "", width: "", url: ""), fixedWidth: GifImage(height: "", width: "", url: "")),
+                                                 user: User(avatarUrl: "", username: "", displayName: ""))],
                                     pagination: Pagination(totalCount: 1, count: 0, offset: 0))
         testModelEndOfPage = GifInfoResponse(data:
                                                 [GifInfo(id: "1",
                                                          username: "test",
                                                          source: "test",
-                                                         images: GifImages(original: GifImage(height: "", width: "", url: ""), fixedWidth: GifImage(height: "", width: "", url: "")))],
+                                                         images: GifImages(original: GifImage(height: "", width: "", url: ""), fixedWidth: GifImage(height: "", width: "", url: "")),
+                                                         user: User(avatarUrl: "", username: "", displayName: ""))],
                                              pagination: Pagination(totalCount: 1, count: 1, offset: 1))
         testModelData = try! JSONEncoder().encode(testModel)
         testModelEndOfPageData = try! JSONEncoder().encode(testModelEndOfPage)
@@ -139,12 +141,7 @@ final class SearchResultUseCaseTests: XCTestCase {
         expectation.expectedFulfillmentCount = 3
         defer { wait(for: [expectation], timeout: 3.0) }
         
-        let model = GifInfoResponse(data: [GifInfo(id: "1",
-                                                   username: "test",
-                                                   source: "test",
-                                                   images: GifImages(original: GifImage(height: "", width: "", url: ""), fixedWidth: GifImage(height: "", width: "", url: "")))],
-                                    pagination: Pagination(totalCount: 0, count: 0, offset: 0))
-        let data = try! JSONEncoder().encode(model)
+        let data = try! JSONEncoder().encode(testModel)
         let networkManager = MockSuccessNetworkManager(data: data, delay: .now() + 1)
         let useCase = SearchResultUseCase(networkManager: networkManager)
         

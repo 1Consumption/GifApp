@@ -26,10 +26,9 @@ final class MockSuccessSearchResultUseCase: SearchResultUseCaseType {
                                                                                       url: ""),
                                                                    fixedWidth: GifImage(height: "",
                                                                                         width: "",
-                                                                                        url: "")))],
-                                       pagination: Pagination(totalCount: 1,
-                                                              count: 1,
-                                                              offset: 0))
+                                                                                        url: "")),
+                                                 user: User(avatarUrl: "", username: "", displayName: ""))],
+                                       pagination: Pagination(totalCount: 1, count: 1, offset: 0))
         
         completionHandler(.success(model))
     }

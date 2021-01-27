@@ -12,10 +12,10 @@ final class MockSuccessImageManager: ImageManagerType {
     
     private var url: String?
     
-    func retrieveImage(from url: String, failureHandler: @escaping () -> Void, dataHandler: @escaping (Data?) -> Void) -> Cancellable? {
+    func retrieveImage(from url: String, completionHandler: @escaping (Result<Data?, NetworkError>) -> Void) -> Cancellable? {
         self.url = url
         
-        dataHandler(Data())
+        completionHandler(.success(Data()))
         
         return nil
     }
@@ -33,7 +33,7 @@ final class MockSuccessCancellableImageManager: ImageManagerType {
         self.handler = handler
     }
     
-    func retrieveImage(from url: String, failureHandler: @escaping () -> Void, dataHandler: @escaping (Data?) -> Void) -> Cancellable? {
+    func retrieveImage(from url: String, completionHandler: @escaping (Result<Data?, NetworkError>) -> Void) -> Cancellable? {
         
         return Cancellable { [weak self] in
             self?.handler()

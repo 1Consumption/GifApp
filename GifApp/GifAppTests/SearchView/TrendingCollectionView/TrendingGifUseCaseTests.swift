@@ -17,7 +17,8 @@ final class TrendingGifUseCaseTests: XCTestCase {
         let testModel = GifInfoResponse(data: [GifInfo(id: "1",
                                                        username: "test",
                                                        source: "test",
-                                                       images: GifImages(original: GifImage(height: "", width: "", url: ""), fixedWidth: GifImage(height: "", width: "", url: "")))],
+                                                       images: GifImages(original: GifImage(height: "", width: "", url: ""), fixedWidth: GifImage(height: "", width: "", url: "")),
+                                                       user: User(avatarUrl: "", username: "", displayName: ""))],
                                         pagination: Pagination(totalCount: 0, count: 0, offset: 0))
         let data = try! JSONEncoder().encode(testModel)
         let networkManager = MockSuccessNetworkManager(data: data)

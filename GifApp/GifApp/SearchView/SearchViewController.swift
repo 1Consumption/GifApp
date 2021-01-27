@@ -63,6 +63,14 @@ final class SearchViewController: UIViewController {
                 self?.trendingGifCollectionView.reloadData()
             }
         }.store(in: &bag)
+        
+        output.showDetailFired.bind { [weak self] in
+            guard let detailViewController = self?.storyboard?.instantiateViewController(withIdentifier: DetailViewController.identifier) as? DetailViewController else { return }
+            detailViewController.indexPath = $0
+            detailViewController.gifInfoList = self?.trendingGifViewModel.gifInfoArray
+            
+            self?.navigationController?.pushViewController(detailViewController, animated: true)
+        }.store(in: &bag)
     }
     
     private func setUpSearchView() {
@@ -105,7 +113,7 @@ final class SearchViewController: UIViewController {
 extension SearchViewController: UICollectionViewDelegateFlowLayout {
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print(indexPath)
+        trendingGifViewModelIntput.showDetail.value = indexPath
     }
 }
 
@@ -116,11 +124,11 @@ extension SearchViewController: PinterestLayoutDelegate {
     }
     
     func collectionView(_ collectionView: UICollectionView, heightForPhotoAtIndexPath indexPath: IndexPath) -> CGSize {
-        guard let dataSource = collectionView.dataSource as? GifCollectionViewDataSource else { return .zero }
-        guard let strWidth = dataSource.gifInfo(of: indexPath.item)?.images.original.width,
-              let strHeight = dataSource.gifInfo(of: indexPath.item)?.images.original.height,
-              let width = Double(strWidth),
-              let height = Double(strHeight)
+        let model = trendingGifViewModel.gifInfo(of: indexPath.item)
+        guard let gifWidth = model?.images.original.width,
+              let gifHeight = model?.images.original.height,
+              let width = Double(gifWidth),
+              let height = Double(gifHeight)
         else { return .zero }
         
         return CGSize(width: width, height: height)

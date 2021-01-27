@@ -26,15 +26,19 @@ final class ImageManagerTests: XCTestCase {
         imageManager = ImageManager(networkManager: networkManager, diskStorage: diskStorage)
         
         let _ = imageManager.retrieveImage(from: "test",
-                                           failureHandler: { XCTFail() },
-                                           dataHandler: {
-                                            XCTAssertNotNil($0)
-                                            networkManager.verify(url: URL(string: "test"),
-                                                                  method: .get,
-                                                                  headers: nil)
-                                            diskStorage.verifyIsStored(key: "test")
-                                            diskStorage.verifyStore(value: self.data, key: "test")
-                                            expectation.fulfill()
+                                           completionHandler: { result in
+                                            switch result {
+                                            case .success(let data):
+                                                XCTAssertNotNil(data)
+                                                networkManager.verify(url: URL(string: "test"),
+                                                                      method: .get,
+                                                                      headers: nil)
+                                                diskStorage.verifyIsStored(key: "test")
+                                                diskStorage.verifyStore(value: self.data, key: "test")
+                                                expectation.fulfill()
+                                            case .failure:
+                                                XCTFail()
+                                            }
                                            })
     }
     
@@ -51,13 +55,17 @@ final class ImageManagerTests: XCTestCase {
         try! diskStorage.store(data, for: "test")
         
         let _ = imageManager.retrieveImage(from: "test",
-                                           failureHandler: { XCTFail() },
-                                           dataHandler: {
-                                            XCTAssertNotNil($0)
-                                            diskStorage.verifyIsStored(key: "test")
-                                            diskStorage.verifyStore(value: self.data, key: "test")
-                                            diskStorage.verifyData(key: "test")
-                                            expectation.fulfill()
+                                           completionHandler: { result in
+                                            switch result {
+                                            case .success(let data):
+                                                XCTAssertNotNil(data)
+                                                diskStorage.verifyIsStored(key: "test")
+                                                diskStorage.verifyStore(value: self.data, key: "test")
+                                                diskStorage.verifyData(key: "test")
+                                                expectation.fulfill()
+                                            case .failure:
+                                                XCTFail()
+                                            }
                                            })
     }
     
@@ -74,22 +82,30 @@ final class ImageManagerTests: XCTestCase {
         try! diskStorage.store(data, for: "test")
         
         let _ = imageManager.retrieveImage(from: "test",
-                                           failureHandler: { XCTFail() },
-                                           dataHandler: {
-                                            XCTAssertNotNil($0)
-                                            expectation.fulfill()
+                                           completionHandler: { result in
+                                            switch result {
+                                            case .success(let data):
+                                                XCTAssertNotNil(data)
+                                                expectation.fulfill()
+                                            case .failure:
+                                                XCTFail()
+                                            }
                                            })
         
         DispatchQueue.global().asyncAfter(deadline: .now() + 1) {
             let _ = self.imageManager.retrieveImage(from: "test",
-                                               failureHandler: { XCTFail() },
-                                               dataHandler: {
-                                                XCTAssertNotNil($0)
-                                                diskStorage.verifyIsStored(key: "test")
-                                                diskStorage.verifyStore(value: self.data, key: "test")
-                                                diskStorage.verifyData(key: "test")
-                                                expectation.fulfill()
-                                               })
+                                                    completionHandler: { result in
+                                                        switch result {
+                                                        case .success(let data):
+                                                            XCTAssertNotNil(data)
+                                                            diskStorage.verifyIsStored(key: "test")
+                                                            diskStorage.verifyStore(value: self.data, key: "test")
+                                                            diskStorage.verifyData(key: "test")
+                                                            expectation.fulfill()
+                                                        case .failure:
+                                                            XCTFail()
+                                                        }
+                                                    })
         }
     }
     
@@ -106,22 +122,30 @@ final class ImageManagerTests: XCTestCase {
         try! diskStorage.store(data, for: "test")
         
         let _ = imageManager.retrieveImage(from: "test",
-                                           failureHandler: { XCTFail() },
-                                           dataHandler: {
-                                            XCTAssertNotNil($0)
-                                            expectation.fulfill()
+                                           completionHandler: { result in
+                                            switch result {
+                                            case .success(let data):
+                                                XCTAssertNotNil(data)
+                                                expectation.fulfill()
+                                            case .failure:
+                                                XCTFail()
+                                            }
                                            })
         
         DispatchQueue.global().asyncAfter(deadline: .now() + 2, execute: {
             let _ = self.imageManager.retrieveImage(from: "test",
-                                               failureHandler: { XCTFail() },
-                                               dataHandler: {
-                                                XCTAssertNotNil($0)
-                                                diskStorage.verifyIsStored(key: "test", callCount: 2)
-                                                diskStorage.verifyStore(value: self.data, key: "test")
-                                                diskStorage.verifyData(key: "test", callCount: 2)
-                                                expectation.fulfill()
-                                               })
+                                                    completionHandler: { result in
+                                                        switch result {
+                                                        case .success(let data):
+                                                            XCTAssertNotNil(data)
+                                                            diskStorage.verifyIsStored(key: "test", callCount: 2)
+                                                            diskStorage.verifyStore(value: self.data, key: "test")
+                                                            diskStorage.verifyData(key: "test", callCount: 2)
+                                                            expectation.fulfill()
+                                                        case .failure:
+                                                            XCTFail()
+                                                        }
+                                                    })
         })
     }
     
@@ -137,25 +161,32 @@ final class ImageManagerTests: XCTestCase {
         try! diskStorage.store(data, for: "test")
         
         let _ = imageManager.retrieveImage(from: "test",
-                                           failureHandler: { XCTFail() },
-                                           dataHandler: {
-                                            XCTAssertNotNil($0)
-                                            expectation.fulfill()
+                                           completionHandler: { result in
+                                            switch result {
+                                            case .success(let data):
+                                                XCTAssertNotNil(data)
+                                                expectation.fulfill()
+                                            case .failure:
+                                                XCTFail()
+                                            }
                                            })
         
         DispatchQueue.global().asyncAfter(deadline: .now() + 2, execute: {
             NotificationCenter.default.post(name: UIApplication.didReceiveMemoryWarningNotification,
                                             object: nil)
-            
             let _ = self.imageManager.retrieveImage(from: "test",
-                                               failureHandler: { XCTFail() },
-                                               dataHandler: {
-                                                XCTAssertNotNil($0)
-                                                diskStorage.verifyIsStored(key: "test", callCount: 2)
-                                                diskStorage.verifyStore(value: self.data, key: "test")
-                                                diskStorage.verifyData(key: "test", callCount: 2)
-                                                expectation.fulfill()
-                                               })
+                                                    completionHandler: { result in
+                                                        switch result {
+                                                        case .success(let data):
+                                                            XCTAssertNotNil(data)
+                                                            diskStorage.verifyIsStored(key: "test", callCount: 2)
+                                                            diskStorage.verifyStore(value: self.data, key: "test")
+                                                            diskStorage.verifyData(key: "test", callCount: 2)
+                                                            expectation.fulfill()
+                                                        case .failure:
+                                                            XCTFail()
+                                                        }
+                                                    })
         })
     }
     
@@ -168,14 +199,16 @@ final class ImageManagerTests: XCTestCase {
         imageManager = ImageManager(networkManager: networkManager, diskStorage: diskStorage)
         
         let _ = imageManager.retrieveImage(from: "test",
-                                           failureHandler: {
-                                            networkManager.verify(url: URL(string: "test"),
-                                                                  method: .get,
-                                                                  headers: nil)
-                                            expectation.fulfill()
-                                           },
-                                           dataHandler: { _ in
-                                            XCTFail()
+                                           completionHandler: { result in
+                                            switch result {
+                                            case .success:
+                                                XCTFail()
+                                            case .failure:
+                                                networkManager.verify(url: URL(string: "test"),
+                                                                      method: .get,
+                                                                      headers: nil)
+                                                expectation.fulfill()
+                                            }
                                            })
     }
     
@@ -187,12 +220,14 @@ final class ImageManagerTests: XCTestCase {
         imageManager = ImageManager(diskStorage: diskStorage)
         
         let cancellable: Cancellable? = imageManager.retrieveImage(from: "www.google.com",
-                                           failureHandler: {
-                                            expectation.fulfill()
-                                           },
-                                           dataHandler: { _ in
-                                            XCTFail()
-                                           })
+                                                                   completionHandler: { result in
+                                                                    switch result {
+                                                                    case .success:
+                                                                        XCTFail()
+                                                                    case .failure:
+                                                                        expectation.fulfill()
+                                                                    }
+                                                                   })
         
         cancellable?.cancel()
     }
@@ -207,14 +242,18 @@ final class ImageManagerTests: XCTestCase {
         imageManager = ImageManager(networkManager: networkManager, diskStorage: diskStorage)
         
         let _ = imageManager.retrieveImage(from: "test",
-                                           failureHandler: { XCTFail() },
-                                           dataHandler: {
-                                            XCTAssertNotNil($0)
-                                            networkManager.verify(url: URL(string: "test"),
-                                                                  method: .get,
-                                                                  headers: nil)
-                                            diskStorage.verifyStore(value: self.data, key: "test")
-                                            expectation.fulfill()
+                                           completionHandler: { result in
+                                            switch result {
+                                            case .success(let data):
+                                                XCTAssertNotNil(data)
+                                                networkManager.verify(url: URL(string: "test"),
+                                                                      method: .get,
+                                                                      headers: nil)
+                                                diskStorage.verifyStore(value: self.data, key: "test")
+                                                expectation.fulfill()
+                                            case .failure:
+                                                XCTFail()
+                                            }
                                            })
     }
 }

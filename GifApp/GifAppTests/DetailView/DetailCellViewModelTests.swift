@@ -17,7 +17,7 @@ final class DetailCellViewModelTests: XCTestCase {
                                            source: "",
                                            images: GifImages(original: GifImage(height: "", width: "", url: "test"),
                                                              fixedWidth: GifImage(height: "", width: "", url: "test")),
-                                           user: User(avatarUrl: "", username: "testUserName", displayName: "testDisplayName"))
+                                           user: User(avatarUrl: "testURL", username: "testUserName", displayName: "testDisplayName"))
     private let gifInfoWithUserInfoNil: GifInfo = GifInfo(id: "1",
                                            username: "",
                                            source: "test",
@@ -72,6 +72,41 @@ final class DetailCellViewModelTests: XCTestCase {
         
         output.bind {
             XCTAssertEqual($0, UserInfo(userName: "Source", displayName: "test"))
+            expectation.fulfill()
+        }.store(in: &bag)
+        
+        input.loadUserInfo.fire()
+    }
+    
+    func testOutputUserImageDeliveredSuccess() {
+        let expectation = XCTestExpectation(description: "userImage delivered success")
+        defer { wait(for: [expectation], timeout: 1.0) }
+        
+        let useCase = MockSuccessDetailUseCase()
+        let viewModel = DetailCellViewModel(gifInfo: gifInfo, detailUseCase: useCase)
+        
+        let output = viewModel.transform(input).userImageDelivered
+        
+        output.bind {
+            useCase.verifyRetrieveImage(url: self.gifInfo.user!.avatarUrl)
+            XCTAssertNotNil($0)
+            expectation.fulfill()
+        }.store(in: &bag)
+        
+        input.loadUserInfo.fire()
+    }
+    
+    func testOutputUserImageDeliveredFailure() {
+        let expectation = XCTestExpectation(description: "userImage delivered failure")
+        defer { wait(for: [expectation], timeout: 1.0) }
+        
+        let useCase = MockFailureDetailUseCase(retrieveImageError: .emptyData)
+        let viewModel = DetailCellViewModel(gifInfo: gifInfo, detailUseCase: useCase)
+        
+        let output = viewModel.transform(input).imageErrorDelivered
+        
+        output.bind {
+            useCase.verifyRetrieveImage(url: self.gifInfo.user!.avatarUrl)
             expectation.fulfill()
         }.store(in: &bag)
         

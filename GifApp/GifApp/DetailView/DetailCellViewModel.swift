@@ -25,6 +25,7 @@ struct DetailCellViewModelOutput {
     
     let gifDelivered: Observable<Data> = Observable<Data>(value: Data())
     let userInfoDelivered: Observable<UserInfo?> = Observable<UserInfo?>(value: nil)
+    let userImageDelivered: Observable<Data> = Observable<Data>(value: Data())
     let favoriteConfirm: Observable<Void> = Observable<Void>(value: ())
     let favoriteCanceled: Observable<Void> = Observable<Void>(value: ())
     let imageErrorDelivered: Observable<Void> = Observable<Void>(value: ())
@@ -67,6 +68,20 @@ final class DetailCellViewModel: ViewModelType {
                 return
             }
             output.userInfoDelivered.value = UserInfo(userName: userInfo.username, displayName: userInfo.displayName)
+            
+            guard var bag = self?.bag else { return }
+            
+            self?.detailUseCase.retrieveImage(with: userInfo.avatarUrl,
+                                              completionHandler: { result in
+                                                switch result {
+                                                case .success(let data):
+                                                    guard let data = data else { return }
+                                                    output.userImageDelivered.value = data
+                                                case .failure:
+                                                    output.imageErrorDelivered.fire()
+                                                }
+                                              })?.store(in: &bag)
+            self?.bag = bag
         }.store(in: &bag)
         
         input.isFavorite.bind { [weak self] in

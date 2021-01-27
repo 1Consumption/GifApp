@@ -48,6 +48,12 @@ final class DetailCollectionViewCell: UICollectionViewCell {
             self?.displayNameLabel.text = userInfo?.displayName
         }.store(in: &bag)
         
+        output.userImageDelivered.bind { data in
+            DispatchQueue.main.async { [weak self] in
+                self?.userImageView.image = UIImage(data: data)
+            }
+        }.store(in: &bag)
+        
         output.favoriteConfirm.bind {
             DispatchQueue.main.async { [weak self] in
                 self?.favoriteButton.setImage(UIImage(named: "heart.fill"), for: .normal)
@@ -73,6 +79,7 @@ final class DetailCollectionViewCell: UICollectionViewCell {
         super.prepareForReuse()
         gifImageView.stopAnimatingGIF()
         gifImageView.image = nil
+        userImageView.image = UIImage(systemName: "person.circle.fill")
         favoriteButton.setImage(UIImage(named: "heartWhite"), for: .normal)
         viewModel = nil
         bag.removeAll()
